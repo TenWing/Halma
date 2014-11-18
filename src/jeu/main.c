@@ -20,6 +20,6 @@
 */
 int main()
 {
-	printf("Coucou\n");
+	printf("CA MARCHE?\n");
 	return 0;
 }

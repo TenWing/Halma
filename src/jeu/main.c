@@ -20,6 +20,6 @@
 */
 int main()
 {
-	printf("%d\n", m.nbLignes);
+	printf("Coucou\n");
 	return 0;
 }

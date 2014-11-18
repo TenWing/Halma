@@ -1,25 +1,50 @@
-#edition des liens (étape finale)
-LINKING=-I ../include/libMatrice -Wl,-R ../lib -L ../lib -lMatrice
-SRC= $(wildcard *.c)
-OBJ= $(SRC:.c=.o)
-CC=gcc
-CFLAGS=-Wall 
-EXEC=halma
+##############################
+#OPTIONS DE COMPILATION
+##############################
 
-all:			$(EXEC)
+#Compilateur
+export CC=gcc
 
-$(EXEC):		$(OBJ)
-				$(CC) -o $@ $^ $(LINKING)
+#Options de compil°
+export CFLAGS=-Wall
 
-#procédure simple de compilation de .c -> .o
-%.o: 			%.c
-				$(CC) -o $@ -c $< $(CFLAGS)
+#Nom de l'executable final
+export EXEC=halma
 
-#destruction des fichiers temporaires
-clean:	
-				rm -rf *.o 
+#Noms des sous dossiers
+export MODEL_DIR=modele
+export VIEW_DIR=vue
+export CONTROLLER_DIR=controleur
+export MAIN_DIR=jeu
 
-#supprime tout pour repartir de 0
-mrproper:
-				rm -rf *.o
-				rm  -rf $(EXEC)
+#la liste des noms des fichiers
+MODEL= $(wildcard ../moteur/*.o)
+VIEW= $(wildcard ../vue/*.o)
+CONTROLLER= $(wildcard ../vue/*.o)
+GAME= $(wildcard ../jeu/*.o)
+
+#Les options pour l'éditions des liens
+LDFLAGS=-I ../include/libMatrice -Wl,-R ../lib -L ../lib -lMatrice 
+
+##############################
+#COMMANDES DE COMPILATION
+##############################
+
+#Construction de l'exécutable
+all: 		$(EXEC)
+
+#Appels des sous makefiles
+$(EXEC):	
+			@(cd $(MODEL_DIR) && $(MAKE))
+			@(cd $(VIEW_DIR) && $(MAKE))
+			@(cd $(CONTROLLER_DIR) && $(MAKE))
+			@(cd $(MAIN_DIR) && $(MAKE))
+	 		$(CC) -o $@ $(MODEL_DIR)/*.o $(VIEW_DIR)/*.o $(CONTROLLER_DIR)/*.o $(MAIN_DIR)/*.o $(LDFLAGS)
+
+#commande de nettoyage
+mrproper:	
+			@(cd $(MODEL_DIR) && $(MAKE) $@)
+			@(cd $(VIEW_DIR) && $(MAKE) $@)
+			@(cd $(CONTROLLER_DIR) && $(MAKE) $@)
+			@(cd $(MAIN_DIR) && $(MAKE) $@)
+			rm -rf $(EXEC)

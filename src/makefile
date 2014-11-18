@@ -5,7 +5,7 @@
 #Compilateur
 export CC=gcc
 
-#Options de compil°
+#Options de compilation des .c
 export CFLAGS=-Wall
 
 #Nom de l'executable final
@@ -17,14 +17,11 @@ export VIEW_DIR=vue
 export CONTROLLER_DIR=controleur
 export MAIN_DIR=jeu
 
-#la liste des noms des fichiers
-MODEL= $(wildcard ../moteur/*.o)
-VIEW= $(wildcard ../vue/*.o)
-CONTROLLER= $(wildcard ../vue/*.o)
-GAME= $(wildcard ../jeu/*.o)
+#Nom du dossier de build (stockage des .o)
+BUILD_DIR=../build
 
-#Les options pour l'éditions des liens
-LDFLAGS=-I ../include/libMatrice -Wl,-R ../lib -L ../lib -lMatrice 
+#Les options pour l'éditions des liens (IMPORTANT LIBRAIRIE DYNAMIQUE)
+export LDFLAGS=-I ../include/libMatrice -Wl,-R ../lib -L ../lib -lMatrice 
 
 ##############################
 #COMMANDES DE COMPILATION
@@ -33,18 +30,14 @@ LDFLAGS=-I ../include/libMatrice -Wl,-R ../lib -L ../lib -lMatrice
 #Construction de l'exécutable
 all: 		$(EXEC)
 
-#Appels des sous makefiles
+#Appels des sous makefiles pour build les .o puis editer les liens
 $(EXEC):	
 			@(cd $(MODEL_DIR) && $(MAKE))
 			@(cd $(VIEW_DIR) && $(MAKE))
 			@(cd $(CONTROLLER_DIR) && $(MAKE))
 			@(cd $(MAIN_DIR) && $(MAKE))
-	 		$(CC) -o $@ $(MODEL_DIR)/*.o $(VIEW_DIR)/*.o $(CONTROLLER_DIR)/*.o $(MAIN_DIR)/*.o $(LDFLAGS)
+	 		@(cd $(BUILD_DIR) && $(MAKE))
 
-#commande de nettoyage
+#commande de nettoyage du projet (suppr les .o)
 mrproper:	
-			@(cd $(MODEL_DIR) && $(MAKE) $@)
-			@(cd $(VIEW_DIR) && $(MAKE) $@)
-			@(cd $(CONTROLLER_DIR) && $(MAKE) $@)
-			@(cd $(MAIN_DIR) && $(MAKE) $@)
-			rm -rf $(EXEC)
+			@(cd $(BUILD_DIR) && $(MAKE) $@)

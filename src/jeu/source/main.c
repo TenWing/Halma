@@ -12,10 +12,10 @@
 //INCLUDES
 //###########################################
 //Inclusion de la bibliothèque matrice
-#include "../../include/libMatrice/matrice.h"
+#include "../../../include/libMatrice/matrice.h"
 
 //Inclusion de la vue
-#include "../vue/vue.h"
+#include "../../vue/header/vue.h"
 //###########################################
 
 /**
@@ -28,6 +28,6 @@ int main()
 {
 	Matrice m = alloue(5,5);
 	affiche();
-	printf("%d tu pues\n", m.nbLignes);
+	printf("%d tu pues du cul\n", m.nbLignes);
 	return 0;
 }

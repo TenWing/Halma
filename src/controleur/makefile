@@ -1,19 +1,29 @@
 ########################################
-#RECUPERATION DES FICHIERS DU DOSSIER
+#VARIABLES DE COMPILATION
 ########################################
-SRC= $(wildcard *.c)
+
+#Sous dossier ou sont les fichiers .c 
+SOURCE_FOLDER=source
+
+#Recherche de tous les fichiers .c du sous dossier
+SRC= $(wildcard $(SOURCE_FOLDER)/*.c)
+
+#Création de la liste des dépendances (.o)
 OBJ= $(SRC:.c=.o)
 
-#Commande d'exécution
-all: 		 $(EXEC)
+#Cible ou sont stocker les .o
+BUILD_TARGET=../../build
 
-#Listage de tous les fichiers objets du dossier et compilation
-$(EXEC):	 $(OBJ)
+########################################
+#COMMANDES D'EXECUTION
+########################################
 
-#Procédure simple de compilation .c -> .o
-%.o: 		 %.c
-	 	 	 @$(CC) -o $@ -c $< $(CFLAGS)
+#Création des fichiers .o
+all: 		 								$(EXEC)
 
-#efface TOUT
-mrproper:	
-			 @rm -rf *.o
+#Pour créer les .o du dossier de destination on a besoin des fichiers .c du sous dossier
+$(EXEC):	 								$(BUILD_TARGET)/$(OBJ)
+
+#Procédure simple de compilation .c -> .o prise en charge des dossiers d'arrivée/départ
+$(BUILD_TARGET)/$(SOURCE_FOLDER)/%.o: 		$(SOURCE_FOLDER)/%.c
+	 	 	 								$(CC) -o $@ -c $< $(CFLAGS)

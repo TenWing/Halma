@@ -1,3 +1,4 @@
+
 /**
  * \file      coup.h
  * \author    Tendry
@@ -26,7 +27,7 @@
 * \author Tendry
 * \version 1.0
 */
-typedef (struct Coup, Coup);
+typedef struct Coup Coup;
 struct Coup
 {
 	/**
@@ -48,7 +49,7 @@ struct Coup
 * \author Tendry
 * \version 1.0
 */
-typedef(struct Coups, Coups);
+typedef struct Coups Coups;
 struct Coups
 {
 	//TODO

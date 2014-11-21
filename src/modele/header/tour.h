@@ -1,3 +1,4 @@
+
 /**
 * \file		tour.h
 * \author	Tendry
@@ -22,7 +23,7 @@
 * \author Tendry
 * \version 1.0
 */
-typedef(struct Tour, Tour);
+typedef struct Tour Tour;
 struct Tour
 {
 	/**

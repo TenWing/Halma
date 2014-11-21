@@ -1,3 +1,4 @@
+
 /**
  * \file      plateau.h
  * \author    Quentin
@@ -7,20 +8,18 @@
  * \details   Définit une matrice pour le plateau
  */
 
-#ifndef PION_H
-#define PION_H
+#ifndef PLATEAU_H
+#define PLATEAU_H
 
-//Inclusion des éléments nécessaires à notre strucutre
-#include "position.h"
-#include "couleur.h"
-#include "pion.h"
+//Inclusion des éléments nécessaires à notre structure
+#include "../../../include/libMatrice/matrice.h"
 
 /**
 * \brief Le plateau où se déroule une partie
 * \author Quentin
 * \version 1.0
 */
-typedef(struct Plateau, Plateau);
+typedef struct Plateau Plateau;
 struct Plateau
 {
 	/**

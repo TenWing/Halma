@@ -1,3 +1,4 @@
+
 /**
  * \file      couleurs.h
  * \author    Quentin
@@ -17,7 +18,7 @@
 * \version 1.0
 * \details Les seuls éléments ayant une couleur seront les pions
 */
-typedef (enum Couleur, Couleur);
+typedef enum Couleur Couleur;
 enum Couleur
 {
 	ROUGE, BLEU, VERT, JAUNE, BLANC, ORANGE 

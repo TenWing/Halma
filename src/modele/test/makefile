@@ -35,11 +35,11 @@ all: 		 	$(EXEC) clean run
 
 #Pour créer les .o du dossier de destination on a besoin des fichiers .c du sous dossier
 $(EXEC):	 	$(OBJ)
-				@$(CC) -o $@ $^ $(LDFLAGS)
+				$(CC) -o $@ $^ $(LDFLAGS)
 
 #Procédure simple de compilation .c -> .o 
 %.o: 			%.c
-	 	 	 	@$(CC) -o $@ -c $< $(CFLAGS)
+	 	 	 	$(CC) -o $@ -c $< $(CFLAGS)
 
 #nettoyage des .o
 clean:
@@ -47,7 +47,7 @@ clean:
 
 #execution
 run:
-				@./$(EXEC)
+				./$(EXEC)
 
 #suppression de l'exec
 mrproper:		

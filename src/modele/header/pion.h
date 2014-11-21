@@ -1,3 +1,4 @@
+
 /**
  * \file      pion.h
  * \author    Quentin
@@ -11,15 +12,18 @@
 #ifndef PION_H
 #define PION_H
 
+ //######################################
+//Inclusions
 #include "position.h"
 #include "couleur.h"
+ //######################################
 
 /**
 * \brief Un pion, un élément de jeu du plateau
 * \author Quentin
 * \version 1.0
 */
-typedef(struct Pion, Pion);
+typedef struct Pion Pion;
 struct Pion
 {
 	/**
@@ -45,7 +49,7 @@ struct Pion
 typedef(struct Pions, Pions);
 struct Pions {
 	int totalPions; //total des pions de l'ensemble ( 9 ou 8 selon la partie jouée)
-	Pion pion;*/
-};
+	Pion pion;
+};*/
 
  #endif

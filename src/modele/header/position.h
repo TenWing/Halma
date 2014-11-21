@@ -1,3 +1,4 @@
+
 /**
  * \file      position.h
  * \author    Quentin
@@ -16,7 +17,7 @@
 * \auhtor Quentin
 * \version 1.0
 */
-typedef(struct Position, Position);
+typedef struct Position Position;
 struct Position 
 {
 	/**

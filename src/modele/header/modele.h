@@ -29,6 +29,6 @@
  * \param    Plateau plateau
  * \return   Le plateau de jeu
  */
-Plateau init_plateau(Plateau plateau);
+Plateau alloue_plateau(Plateau plateau);
 
  #endif

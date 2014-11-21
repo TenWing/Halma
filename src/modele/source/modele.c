@@ -32,15 +32,19 @@
  * \param    Plateau plateau
  * \return   Le plateau de jeu
  */
-Plateau init_plateau(Plateau plateau) 
+Plateau alloue_plateau(Plateau plateau, int nombre_joueur) 
 {
-	
+	int i,j;
+
 	plateau.matrice.nbLignes = 16;
 	plateau.matrice.nbColonnes = 16;
 	plateau.matrice = alloue(plateau.matrice.nbLignes,plateau.matrice.nbColonnes);
 
+
 	return plateau;
 }
 
-
-
+Joueur alloue_joueur(Joueur joueur, Couleur couleur) 
+{
+	
+}

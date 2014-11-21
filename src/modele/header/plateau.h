@@ -10,15 +10,24 @@
 #ifndef PION_H
 #define PION_H
 
+//Inclusion des éléments nécessaires à notre strucutre
 #include "position.h"
 #include "couleur.h"
 #include "pion.h"
 
- typedef(struct Plateau, Plateau);
-
- struct Plateau {
+/**
+* \brief Le plateau où se déroule une partie
+* \author Quentin
+* \version 1.0
+*/
+typedef(struct Plateau, Plateau);
+struct Plateau
+{
+	/**
+	* \brief La matrice, tableau à 2 dimensions représentant le plateau physique
+	* \see Matrice
+	*/
  	Matrice matrice;
- 	Pion pion;
- };
+};
 
  #endif

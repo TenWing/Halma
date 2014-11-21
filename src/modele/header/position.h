@@ -11,11 +11,23 @@
 #ifndef POSITION_H
 #define POSITION_H
 
- typedef(struct Position, Position);
-
- struct Position {
+/**
+* \brief Une position est l'association d'une abscisse et d'une ordonnée
+* \auhtor Quentin
+* \version 1.0
+*/
+typedef(struct Position, Position);
+struct Position 
+{
+	/**
+	* \brief La position x correspondant à l'abscisse
+	*/
  	int x;
+
+ 	/**
+ 	* \brief La position y correspondant à l'ordonnée
+ 	*/
  	int y;
- };
+};
 
  #endif

@@ -11,8 +11,16 @@
 #ifndef COULEURS_H
 #define COULEURS_H
 
+/**
+* \brief Une Couleur pour distinghuer des éléments
+* \author Quentin
+* \version 1.0
+* \details Les seuls éléments ayant une couleur seront les pions
+*/
 typedef (enum Couleur, Couleur);
-
-enum Couleur { ROUGE, BLEU, VERT, JAUNE, BLANC, ORANGE };
+enum Couleur
+{
+	ROUGE, BLEU, VERT, JAUNE, BLANC, ORANGE 
+};
 
 #endif

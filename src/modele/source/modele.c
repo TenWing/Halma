@@ -41,3 +41,6 @@ Plateau init_plateau(Plateau plateau)
 
 	return plateau;
 }
+
+
+

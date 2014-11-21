@@ -25,12 +25,6 @@
 typedef struct Joueur Joueur;
 
  struct Joueur{
-
- 	/**
-	* \brief Le nombre de pions que le joueur a
-	*/
- 	int nombrePions; //Nombre total de pions necessaires ( 9 ou 15 selon le mode de jeu)
-
  	/**
 	* \brief Un pion
 	* /see Pion

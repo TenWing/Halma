@@ -12,7 +12,7 @@
 #define PLATEAU_H
 
 //Inclusion des éléments nécessaires à notre structure
-#include "../../../include/libMatrice/matrice.h"
+#include <matrice.h>
 
 /**
 * \brief Le plateau où se déroule une partie

@@ -15,16 +15,26 @@ EXEC=testModele
 CFLAGS=-Wall
 
 #Les options d'édition des liens
-LDFLAGS=-I ../../../include/libMatrice -Wl,-R ../../../lib -L ../../../lib -lMatrice 
+LDFLAGS= -Wl,-R ../../../lib -L ../../../lib -lMatrice
 
-#Sous dossier ou sont les fichiers .c 
+#Dossiers où se trouvent les .h des librairies externes /Rapport au makefile
+LIBINCLUDEPATH=-I ../../../include/libMatrice
+
+#Dossiers où se trouvent les .h des sources /Rapport au makefile
+INCLUDEPATH=-I ../header
+
+#Sous dossier ou sont les fichiers .c  
 SOURCE_FOLDER=../source
 
 #Recherche de tous les fichiers .c du sous dossier
 SRC= $(wildcard $(SOURCE_FOLDER)/*.c)
 
+#Recherche le main de test
+TEST= $(wildcard *.c)
+
 #Création de la liste des dépendances (.o)
 OBJ= $(SRC:.c=.o)
+MAIN= $(TEST:.c=.o)
 
 ########################################
 #COMMANDES D'EXECUTION
@@ -34,16 +44,17 @@ OBJ= $(SRC:.c=.o)
 all: 		 	$(EXEC) clean run
 
 #Pour créer les .o du dossier de destination on a besoin des fichiers .c du sous dossier
-$(EXEC):	 	$(OBJ)
-				@$(CC) -o $@ $^ $(LDFLAGS)
+$(EXEC):	 	$(OBJ) $(MAIN)
+				@$(CC) -o $@ $^ $(LIBINCLUDEPATH) $(LDFLAGS)
 
 #Procédure simple de compilation .c -> .o 
 %.o: 			%.c
-	 	 	 	@$(CC) -o $@ -c $< $(CFLAGS)
+	 	 	 	@$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDEPATH) $(LIBINCLUDEPATH)
 
 #nettoyage des .o
 clean:
 				@rm -rf $(SOURCE_FOLDER)/*.o
+				@rm -rf *.o
 
 #execution
 run:
@@ -51,4 +62,4 @@ run:
 
 #suppression de l'exec
 mrproper:		
-				rm -rf $(EXEC)
+				@rm -rf $(EXEC)

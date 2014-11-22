@@ -12,14 +12,7 @@
 
  //######################################
 //Inclusions
-#include "../../../include/libMatrice/matrice.h"
-#include "../header/position.h"
-#include "../header/couleur.h"
-#include "../header/pion.h"
-#include "../header/joueur.h"
-#include "../header/coup.h"
-#include "../header/tour.h"
-#include "../header/plateau.h"
+#include <plateau.h>
 //######################################
 
 /**

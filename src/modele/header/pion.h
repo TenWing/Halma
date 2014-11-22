@@ -14,8 +14,8 @@
 
  //######################################
 //Inclusions
-#include "position.h"
-#include "couleur.h"
+#include <position.h>
+#include <couleur.h>
  //######################################
 
 /**

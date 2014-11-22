@@ -12,22 +12,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../../include/libMatrice/matrice.h"
-#include "../header/position.h"
-#include "../header/couleur.h"
-#include "../header/pion.h"
-#include "../header/joueur.h"
-#include "../header/coup.h"
-#include "../header/tour.h"
-#include "../header/plateau.h"
-#include "../header/modele.h"
+#include <matrice.h>
+#include <modele.h>
 
  int main () 
  {
  
   	Plateau plateau;
 
- 	plateau=init_plateau(plateau);
+ 	plateau=alloue_plateau(plateau);
 
  	if(plateau.matrice.nbLignes != 16 && plateau.matrice.nbColonnes != 16)
  	{

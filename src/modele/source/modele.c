@@ -12,18 +12,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../../include/libMatrice/matrice.h"
-#include "../header/position.h"
-#include "../header/couleur.h"
-#include "../header/pion.h"
-#include "../header/joueur.h"
-#include "../header/coup.h"
-#include "../header/tour.h"
-#include "../header/plateau.h"
-#include "../header/modele.h"
-
-
-
+#include <matrice.h>
+#include <modele.h>
 
 /**
  * \brief    Génère le plateau de jeu
@@ -32,19 +22,17 @@
  * \param    Plateau plateau
  * \return   Le plateau de jeu
  */
-Plateau alloue_plateau(Plateau plateau, int nombre_joueur) 
+Plateau alloue_plateau(Plateau plateau) 
 {
-	int i,j;
-
 	plateau.matrice.nbLignes = 16;
 	plateau.matrice.nbColonnes = 16;
 	plateau.matrice = alloue(plateau.matrice.nbLignes,plateau.matrice.nbColonnes);
 
-
 	return plateau;
 }
 
+/*
 Joueur alloue_joueur(Joueur joueur, Couleur couleur) 
 {
 	
-}
+}*/

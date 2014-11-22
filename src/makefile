@@ -17,8 +17,19 @@ export VIEW_DIR=vue
 export CONTROLLER_DIR=controleur
 export MAIN_DIR=jeu
 
+#Résolutions des inclusions
+#Dossiers où se trouvent les .h des librairies externes /rapport à la position des sous makefiles
+export LIBINCLUDEPATH=-I ../../include/libMatrice
+
+#Dossiers où se trouvent les .h des sources /rapport à la position des sous makefiles
+export INCLUDEPATH=-I header
+###########################
+
 #Nom du dossier de build (stockage des .o)
 BUILD_DIR=../build
+
+#Nom du dossier de stockage de l'exécutable
+RUN_DIR=../bin
 
 #Les options pour l'éditions des liens (IMPORTANT LIBRAIRIE DYNAMIQUE)
 export LDFLAGS=-I ../include/libMatrice -Wl,-R ../lib -L ../lib -lMatrice 
@@ -41,3 +52,7 @@ $(EXEC):
 #commande de nettoyage du projet (suppr les .o)
 mrproper:	
 			@(cd $(BUILD_DIR) && $(MAKE) $@)
+
+#pour lancer l'exécutable final
+run:
+			@(./$(RUN_DIR)/$(EXEC))

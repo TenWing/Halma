@@ -12,26 +12,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <matrice.h>
-#include <modele.h>
+
+#include <pion.h>
+#include <coup.h>
 
  int main () 
  {
  
-  	Plateau plateau;
+Pion pion;
+pion.position.x=7;
+pion.position.y=7;
 
- 	plateau=alloue_plateau(plateau);
+printf("x=%d\n", pion.position.x);
+printf("y=%d\n", pion.position.y);
 
- 	if(plateau.matrice.nbLignes != 16 && plateau.matrice.nbColonnes != 16)
- 	{
- 		printf("erreur de dimension\n");
- 	}
+pion=init_pion(1,1,2,0);
 
- 	else
- 	{
- 		printf("plateau créer\n");
- 	}
+printf("x=%d\n", pion.position.x);
+printf("y=%d\n", pion.position.y);
 
+pion=coupSimple(pion,0,0);
+
+printf("x=%d\n", pion.position.x);
+printf("y=%d\n", pion.position.y);
+if(pion.position.x != 0 || pion.position.y != 0)
+{
+	printf("erreur de la fonction coupSimple\n");
+}
+else
+{
+	printf("ca fonctionne\n");
+}
 
 
  return 0;}

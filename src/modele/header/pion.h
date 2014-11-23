@@ -1,4 +1,5 @@
 
+
 /**
  * \file      pion.h
  * \author    Quentin
@@ -43,6 +44,15 @@ struct Pion
  	*/
  	Couleur couleur;
 };
+
+/**
+ * \brief    Génère un pion
+ * \details  Permet de créer un pion (son identifiant, sa position et sa couleur)
+ *             
+ * \param    Pion pion, int choixCouleur, int x, int y, int identifiant
+ * \return   Le pion
+ */
+Pion init_pion(int choixCouleur, int x, int y, int identifiant);
 
 //TODO On reverra à la modélisation si on va faire comme ça mais il y a des fautes la dedans en plus ;)
 /*

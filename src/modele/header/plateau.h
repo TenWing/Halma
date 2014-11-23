@@ -1,4 +1,5 @@
 
+
 /**
  * \file      plateau.h
  * \author    Quentin
@@ -28,5 +29,14 @@ struct Plateau
 	*/
  	Matrice matrice;
 };
+
+/**
+ * \brief    Génère le plateau de jeu
+ * \details  Permet de créer le plateau de jeu à partir des fonctions de la librairie matrice
+ *             
+ * \param    Plateau plateau
+ * \return   Le plateau de jeu
+ */
+Plateau alloue_plateau(Plateau plateau);
 
  #endif

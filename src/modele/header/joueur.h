@@ -16,6 +16,21 @@
 #include <pion.h>
 //######################################
 
+  /**
+* \brief Une liste de pions
+* \auhtor Quentin
+* \version 1.0
+*/
+
+typedef struct EnsemblePion EnsemblePion;
+struct EnsemblePion
+{
+	int val;
+	struct EnsemblePion *next;
+};
+
+typedef EnsemblePion* llists;
+
  /**
 * \brief Un joueur est un ensemble de pions
 * \auhtor Quentin
@@ -30,15 +45,8 @@ typedef struct Joueur Joueur;
 	* \detail 	Un pointeur qui sera un tableau où le numéro de la case du tableau sera l'identifiant du pion
 	* /see Pion
 	*/
- 	Pion *ensemble_pion;
-
-// petit commentaire pour Tendry :)
- 	// on peut pas juste définir un joueur par Pion.. le joueur ne peut pas se résumer a 1 pion.
- 	//j'ai pensé à un pointeur ou tableau.. je sais pas lequel est le mieux pour faire une liste. Ensuite ce que je ne sais pas, c'est
- 	//si on fait un pointeur sur Pion, comment est gérer l'adresse et la valeur ? Les 3 définitions de Pion où sont-elles ?...
- 	//Ce que j'aimerai faire c'est que quand on choisit un case du tableau, genre *(ensemble_pion+2), le 2 devienne l'identifiant du pion, et 
- 	//qu'on puisse définir dans cette case la couleur du pion et ca position en meme temps...
- };
+ 	EnsemblePion;
+};
 
   #endif
 

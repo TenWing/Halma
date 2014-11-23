@@ -85,11 +85,6 @@ struct PileCoups
 	NoeudCoup* premier;
 };
 
-<<<<<<< HEAD
-
-
-
-=======
 //######################################
 //FONCTIONS COUP
 //######################################
@@ -133,6 +128,5 @@ Coup pileCoups_depiler(PileCoups* pile);
 * \param coup le coup à ajouter
 */
 void pileCoups_ajouterCoup(PileCoups* pile, Coup coup);
->>>>>>> ccd8a93946359553769c40db6785730decfb506c
 
 #endif

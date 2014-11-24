@@ -12,17 +12,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 #include <pion.h>
-
 #include <matrice.h>
 #include <modele.h>
-
 #include <coup.h>
 
- int main () 
- {
+int main () 
+{
+
  	//###########################################
  	//TEST MODULE COUP
  	//###########################################

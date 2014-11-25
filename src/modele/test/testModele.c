@@ -19,25 +19,24 @@
 
 int main () 
 {
+	// ##########################################
+	// TEST MODULE PION 
+	// ##########################################
 
- 	//###########################################
- 	//TEST MODULE COUP
- 	//###########################################
  	Position position;
  	position.x = 0;
  	position.y = 0;
 
-
  	//On crée deux pions la seule différence qu'ils ont c'est leur couleur et leur ID
- 	Pion pion;
- 	pion.couleur = ROUGE;//0
- 	pion.identifiant = 1;
- 	pion.position = position;
+ 	Pion pion = pion_init(ROUGE, position, 1);
+ 	Pion pion2 = pion_init(ORANGE, position, 2);
 
- 	Pion pion2;
- 	pion2.couleur = ORANGE;//5
- 	pion2.identifiant = 2;
- 	pion2.position = position;
+ 	printf("ID : %d, couleur : %d\n", pion.identifiant, pion.couleur);
+ 	printf("ID : %d, couleur : %d\n", pion2.identifiant, pion2.couleur);
+
+ 	//###########################################
+ 	//TEST MODULE COUP
+ 	//###########################################
 
  	//On empile 1 puis 2
  	printf("J'empile 1 puis 2\n");

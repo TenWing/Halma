@@ -1,5 +1,3 @@
-
-
 /**
  * \file      pion.h
  * \author    Quentin
@@ -49,17 +47,11 @@ struct Pion
  * \brief    Génère un pion
  * \details  Permet de créer un pion (son identifiant, sa position et sa couleur)
  *             
- * \param    Pion pion, int choixCouleur, int x, int y, int identifiant
- * \return   Le pion
+ * \param    couleur la couleur du pion
+ * \param	 position la position par défaut du pion
+ * \version  2.0
+ * \return   Le pion initialisé
  */
-Pion init_pion(int choixCouleur, int x, int y, int identifiant);
-
-//TODO On reverra à la modélisation si on va faire comme ça mais il y a des fautes la dedans en plus ;)
-/*
-typedef(struct Pions, Pions);
-struct Pions {
-	int totalPions; //total des pions de l'ensemble ( 9 ou 8 selon la partie jouée)
-	Pion pion;
-};*/
+Pion pion_init(Couleur couleur, Position position, int identifiant);
 
  #endif

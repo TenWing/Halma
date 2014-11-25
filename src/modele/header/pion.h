@@ -15,6 +15,7 @@
 //Inclusions
 #include <position.h>
 #include <couleur.h>
+#include <direction.h>
  //######################################
 
 /**
@@ -41,6 +42,11 @@ struct Pion
  	* \see Couleur
  	*/
  	Couleur couleur;
+
+ 	/**
+ 	* \brief indique si le pion est entrain d'effectuer des sauts ou non
+ 	*/
+ 	int saut;
 };
 
 /**
@@ -53,5 +59,27 @@ struct Pion
  * \return   Le pion initialisé
  */
 Pion pion_init(Couleur couleur, Position position, int identifiant);
+
+/**
+* \brief	déplace un pion sur la grille
+* \author 	Tendry
+* \param	pion le pion qui sera déplacé
+* \param 	plateau le plateau (la grille de jeu)
+* \param 	direction la direction dans laquelle le pion se déplace
+* \details	Gère les déplacements complexes via des sous fonctions (saut de pion etc.)	
+* \return 	1 Si le déplacement s'est bien effectué, 0 pour déplacement raté
+*/
+int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction);
+
+/**
+* \brief 	Vérifie si le pion pion peut sauter par dessus un pion situé au niveau de la direction de saut
+* \author 	Tendry
+* \param	pion le pion qui saute
+* \param	direction la direction de déplacement
+* \param	plateau le plateau où se situe l'ensemble des pions
+* \version	1.0
+* \return 	1 Succès il est possible de se déplacer, 0 non ce n'est pas possible
+*/
+int pion_peut_sauter(Pion* pion, Direction direction, Plateau* plateau);
 
  #endif

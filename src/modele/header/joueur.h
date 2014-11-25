@@ -15,22 +15,6 @@
 //Inclusions
 #include <pion.h>
 //######################################
-
-  /**
-* \brief Une liste de pions
-* \auhtor Quentin
-* \version 1.0
-*/
-
-typedef struct EnsemblePion EnsemblePion;
-struct EnsemblePion
-{
-	int val;
-	struct EnsemblePion *next;
-};
-
-typedef EnsemblePion* llists;
-
  /**
 * \brief Un joueur est un ensemble de pions
 * \auhtor Quentin

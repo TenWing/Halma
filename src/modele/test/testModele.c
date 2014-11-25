@@ -89,5 +89,24 @@ int main ()
  		printf("Fonction position OK. Abscisse : %d, ordonnée : %d\n", position.x, position.y);
  	}
 
+	// ##########################################
+	// TEST MODULE LISTE DE PIONS
+	// ##########################################
+
+ 	Pion pion3, pion4;
+ 	pion3 = pion_init(ROUGE, position_init(0,0), 8);
+ 	pion4 = pion_init(BLEU, position_init(1,1), 7);
+
+ 	Liste *liste_pions=liste_pion_init();
+
+ 	insertion_pion(liste_pions, pion3);
+ 	insertion_pion(liste_pions, pion4);
+
+ 	Element *actuel = liste_pions -> premier;
+
+ 	//Probleme pour vérifier ce qu'il y a dans la liste...
+ 	//je n'arrive pas à vérifier si les pions créés plus haut
+ 	//sont bien dans la liste
+
 	return 0;
 }

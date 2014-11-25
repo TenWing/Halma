@@ -16,6 +16,7 @@
 #include <position.h>
 #include <couleur.h>
 #include <direction.h>
+#include <plateau.h>
  //######################################
 
 /**

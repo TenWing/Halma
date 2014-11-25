@@ -22,7 +22,7 @@ Pion pion_init(Couleur couleur, Position position, int identifiant)
 	Pion pion;
 	
 	// Couleur
-	pion.couleur = couleur
+	pion.couleur = couleur;
 
 	//Copie de la position
 	pion.position = position;

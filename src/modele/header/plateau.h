@@ -11,6 +11,7 @@
 
 #ifndef PLATEAU_H
 #define PLATEAU_H
+#define Taille_plateau 16;
 
 //Inclusion des éléments nécessaires à notre structure
 #include <matrice.h>
@@ -37,6 +38,6 @@ struct Plateau
  * \param    Plateau plateau
  * \return   Le plateau de jeu
  */
-Plateau alloue_plateau(Plateau plateau);
+Plateau plateau_init(Plateau plateau);
 
  #endif

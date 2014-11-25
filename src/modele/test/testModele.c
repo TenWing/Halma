@@ -51,5 +51,43 @@ int main ()
  	printf("%d\n", pileCoups_depiler(&pile).pion->identifiant);
  	printf("%d\n", pileCoups_depiler(&pile).pion->identifiant);
 
+	// ##########################################
+	// TEST MODULE PLATEAU 
+	// ##########################################
+
+ 	Plateau plateau;
+
+ 	//on crée le plateau de jeu
+ 	plateau=plateau_init(plateau);
+
+ 	// On teste si le plateau est bien un carré de 16x16
+ 	if(	plateau.matrice.nbLignes != 16 || plateau.matrice.nbColonnes != 16 )
+ 	{
+ 		printf("erreur de la définition de Taille_plateau\n");
+ 	}
+
+ 	else 
+ 	{
+ 		printf("Plateau fonctionnel\n");
+ 	}
+
+	// ##########################################
+	// TEST MODULE POSITION
+	// ##########################################
+
+ 	//On crée une position
+	position=position_init(1,2);
+
+	//On teste si les coordonnées sont les bonnes
+ 	if(	position.x != 1 || position.y != 2)
+ 	{
+ 		printf("erreur de la fonction position\n");
+ 	}
+
+ 	else 
+ 	{
+ 		printf("Fonction position OK. Abscisse : %d, ordonnée : %d\n", position.x, position.y);
+ 	}
+
 	return 0;
 }

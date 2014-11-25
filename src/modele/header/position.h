@@ -31,4 +31,13 @@ struct Position
  	int y;
 };
 
+/**
+ * \brief    Génère la position d'un pion
+ * \author	 Quentin        
+ * \param    int x	l'abscisse du pion
+ * \param	 int y 	l'ordonnée du pion
+ * \return   La position du pion
+ */
+Position position_init(int x, int y);
+
  #endif

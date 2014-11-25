@@ -22,10 +22,10 @@
  * \param    Plateau plateau
  * \return   Le plateau de jeu
  */
-Plateau alloue_plateau(Plateau plateau) 
+Plateau plateau_init(Plateau plateau) 
 {
-	plateau.matrice.nbLignes = 16;
-	plateau.matrice.nbColonnes = 16;
+	plateau.matrice.nbLignes = Taille_plateau;
+	plateau.matrice.nbColonnes = Taille_plateau;
 	plateau.matrice = alloue(plateau.matrice.nbLignes,plateau.matrice.nbColonnes);
 
 	return plateau;

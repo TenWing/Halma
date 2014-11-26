@@ -33,12 +33,6 @@ struct Tour
 	Pion pion;
 
 	/**
-	* \brief la pile de tours jouée dans ce tour
-	* \see tours
-	*/
-	tours tours;
-
-	/**
 	* \brief la position de départ du pion concerné au début du tour
 	* \see position
 	*/
@@ -112,18 +106,18 @@ PileTours pileTours_init();
 * \author Tendry
 * \version 1.0
 * \param pile la pile de tours
-* \return Le coup en haut de la pile
+* \return Le tour en haut de la pile
 */
-Coup pileTours_depiler(PileTours* pile);
+Tour pileTours_depiler(PileTours* pile);
 
 /**
 * \brief ajoute un coup en haut de la pile
 * \author Tendry
 * \version 1.0
 * \param pile la pile de tours
-* \param coup le coup à ajouter
+* \param coup le tour à ajouter
 */
-void pileTours_ajouterCoup(PileTours* pile, Coup coup);
+void pileTours_ajouterTour(PileTours* pile, Tour tour);
 
 
 #endif

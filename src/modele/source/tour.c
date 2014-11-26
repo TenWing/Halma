@@ -28,13 +28,13 @@ Tour tour_init(Pion p)
 PileTours pileTours_init()
 {
 	// Création de la pile
-	Pile pile;
+	PileTours piletours;
 	
 	// Initialisation du premier élément
-	pile.premier = NULL;
+	piletours.premier = NULL;
 
 	// renvoi de la pile prête
-	return pile;
+	return piletours;
 }
 
 Tour pileTours_depiler(PileTours* pile)

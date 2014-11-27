@@ -1,3 +1,4 @@
+
 /**
  * \file      testModele.c
  * \author    Geliot
@@ -94,19 +95,46 @@ int main ()
 	// ##########################################
 
  	Pion pion3, pion4;
- 	pion3 = pion_init(ROUGE, position_init(0,0), 8);
+
+ 	//Initialisation de 2 pions
+ 	pion3 = pion_init(ROUGE, position_init(1,0), 8);
  	pion4 = pion_init(BLEU, position_init(1,1), 7);
 
+ 	//Création de la liste de pions
  	Liste *liste_pions=liste_pion_init();
 
+ 	//Insertion des 2 pions dans la liste_pions
  	insertion_pion(liste_pions, pion3);
  	insertion_pion(liste_pions, pion4);
 
- 	Element *actuel = liste_pions -> premier;
+ 	//Création d'un élément qui va se balader dans la liste
+ 	Element* actuel;
+ 	actuel = liste_pions -> premier;
 
- 	//Probleme pour vérifier ce qu'il y a dans la liste...
- 	//je n'arrive pas à vérifier si les pions créés plus haut
- 	//sont bien dans la liste
+ 	//Dans que actuel n'a pas atteint l'élément NULL
+ 	while( actuel != NULL)
+ 	{
+ 		//Actuel pointe sur l'identfiant de l'élément de la liste (ici dans l'ordre 7 8 1)
+ 		printf("%d\n", actuel->pion.identifiant);
+
+ 		//Actuel pointe sur l'élément suivant
+ 		actuel = actuel -> suivant;
+ 	}
+
+	// ##########################################
+	// TEST MODULE FONCTIONS GETPION
+	// ##########################################
+
+ 	//On crée les paramètres pour tester la fonction getpion
+
+ 	//Pour tester pleinement la fonction, il faut changer les symboles * et .
+ 	plateau.matrice.donnees[1][1]='*';
+ 	Position position1;
+ 	position1=position_init(1,1);
+
+ 	//On regarde l'identifiant du pion. Si on affiche un -1, c'est que la position selectionnée n'est pas un pion.
+ 	//Sinon, elle retourne bien un identifiant d'un pion du jeu
+	printf("%d\n", (plateau_getpion(position1,plateau,liste_pions).identifiant));
 
 	return 0;
 }

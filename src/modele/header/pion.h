@@ -1,3 +1,4 @@
+
 /**
  * \file      pion.h
  * \author    Quentin
@@ -129,10 +130,11 @@ int pion_peut_sauter(Pion* pion, Direction direction, Plateau* plateau);
 * \brief 	Vérifie si la position choisie est un pion ou non
 * \author 	Quentin
 * \param	Position 	la position choisie
-* \param	plateau le plateau où se situe l'ensemble des pions
+* \param	plateau 	le plateau où se situe l'ensemble des pions
+* \param	liste_pions	la liste de tous les pions du plateau
 * \version	1.0
-* \return 	NULL s'il ne sagit pas d'un pion, un pion si c'en était bien un
+* \return 	Un pion : soit un pion fictif avec des donnees seulement utiles pour le développeur, soit un pion du jeu
 */
-Pion plateau_getpion(Position position, Plateau plateau);
+Pion plateau_getpion(Position position, Plateau plateau, Liste *liste_pions);
 
  #endif

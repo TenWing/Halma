@@ -1,3 +1,4 @@
+
 /**
  * \file      modele.c
  * \author    Geliot
@@ -84,25 +85,47 @@ void insertion_pion(Liste *liste_pions, Pion pion_nouveau)
 	liste_pions -> premier = nouveau;
 }
 
-/*Pion plateau_getpion(Position position, Plateau plateau)
+Pion plateau_getpion(Position position, Plateau plateau, Liste *liste_pions)
 {
+	//Création d'un pointeur sur element qui se balladera dans la liste
+	Element *actuel = liste_pions -> premier;
 
+	//Création d'un pion fictif qui sera retourner si à la postion demandée il n'y a pas le symbole d'un pion
+	Pion pion_fictif;
+	Position position_fictive=position_init(100,100);
+	pion_fictif=pion_init(ORANGE, position_fictive, -1);
+
+	//Condition pour savoir si à la position choisie, il y a un pion ou non
 	if(plateau.matrice.donnees[position.x][position.y] != '*')
 	{
-		return NULL;
+		// le symbole n'est pas celui d'un pion, retourner le pion fictif
+		return pion_fictif;
 	}
 
 	else
 	{
-		// Un petit Commentaire que je dois disctuer avec toi mon grand !
-		// Il faudrait qu'on créer un tableau ( ou un liste ...) qui répertorie TOUS LES PIONS ! (Pour moi ce serait une liste)
-		// En effet, quand on initialisera 1 pion, on le mettra dans la liste. Ainsi on pourra savoir par cette liste la position, couleur, identifiant
-		// d'un pion choisi.
-		// Je comptais utiliser la fonction plateau_choisi comme ca : (reprise à partir du else)
+		//le symbole est celui d'un pion
 
-		// On fait une boucle for qui parcourt notre liste avec la condition que si un pion a la position choisi dans le paramètre
-		//on retourne direct le pion
+		//tant que actuel n'a pas atteint le dernier element de la liste
+		while(actuel != NULL)
+		{
+			//On fait pointer actuel sur la position du pion de la liste et on teste l'égalité des positions
 
-		//En gros, 
+			if((actuel->pion.position.x == position.x) && (actuel -> pion.position.y == position.y) )
+			{
+				//les positions sont correctes
+
+				//On retourne le pion qui est pointé par actuel
+				return (actuel -> pion);
+			}
+
+			else
+			{
+				//les positions ne sont pas correctes
+
+				//On fait pointer actuel sur le prochain élément
+				actuel = actuel -> suivant;
+			}
+		}
 	}
-}*/
+}

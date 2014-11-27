@@ -85,8 +85,14 @@ void insertion_pion(Liste *liste_pions, Pion pion_nouveau)
 	liste_pions -> premier = nouveau;
 }
 
-Pion plateau_getpion(Position position, Plateau plateau, Liste *liste_pions)
+Pion plateau_getpion(Position position, Plateau* plateau, Liste *liste_pions)
 {
+
+	if (liste_pions == NULL || plateau == NULL)
+	{
+		exit(EXIT_FAILURE);
+	}
+
 	//Création d'un pointeur sur element qui se balladera dans la liste
 	Element *actuel = liste_pions -> premier;
 
@@ -96,7 +102,7 @@ Pion plateau_getpion(Position position, Plateau plateau, Liste *liste_pions)
 	pion_fictif=pion_init(ORANGE, position_fictive, -1);
 
 	//Condition pour savoir si à la position choisie, il y a un pion ou non
-	if(plateau.matrice.donnees[position.x][position.y] != '*')
+	if(plateau->matrice.donnees[position.x][position.y] != '*')
 	{
 		// le symbole n'est pas celui d'un pion, retourner le pion fictif
 		return pion_fictif;
@@ -126,6 +132,503 @@ Pion plateau_getpion(Position position, Plateau plateau, Liste *liste_pions)
 				//On fait pointer actuel sur le prochain élément
 				actuel = actuel -> suivant;
 			}
+		}
+	}
+}
+
+int pion_peut_sauter(Pion* pion, Direction direction, Plateau* plateau, Liste* liste_pions)
+{
+	if (liste_pions == NULL || pion == NULL || plateau == NULL)
+	{
+		exit(EXIT_FAILURE);
+	}
+
+	//Création d'un pion fictif et de la postion de la direction où le pion doit aller
+	Position position_direction;
+	Pion pion_fictif;
+
+	//Selon la direction voulue, on assigne la postion_direction
+	if(direction == GAUCHE)
+	{
+		position_direction.x = (*pion).position.x;
+		position_direction.y = (*pion).position.y - 2;
+		
+	}
+
+	else if(direction == HAUT_GAUCHE)
+	{
+		position_direction.x = (*pion).position.x - 2;
+		position_direction.y = (*pion).position.y - 2;
+	}
+
+	else if(direction == HAUT)
+	{
+		position_direction.x = (*pion).position.x - 2;
+		position_direction.y = (*pion).position.y;
+	}
+
+	else if(direction == HAUT_DROITE)
+	{
+		position_direction.x = (*pion).position.x - 2;
+		position_direction.y = (*pion).position.y + 2;
+	}
+
+	else if(direction == DROITE)
+	{
+		position_direction.x = (*pion).position.x;
+		position_direction.y = (*pion).position.y + 2;
+	}
+
+	else if(direction == BAS_DROITE)
+	{
+		position_direction.x = (*pion).position.x + 2;
+		position_direction.y = (*pion).position.y + 2;
+	}
+
+	else if(direction == BAS)
+	{
+		position_direction.x = (*pion).position.x + 2;
+		position_direction.y = (*pion).position.y;
+	}
+
+	else if(direction == BAS_GAUCHE)
+	{
+		position_direction.x = (*pion).position.x + 2;
+		position_direction.y = (*pion).position.y - 2;
+	}
+
+	//On regarde si à l'emplacement de la direction souhaitée, il y a un pion ou non
+	pion_fictif=plateau_getpion(position_direction, plateau, liste_pions);
+
+	//On retourne un entier selon si le pion fictif est un vrai pion ou non
+	if(pion_fictif.identifiant == -1)
+	{
+		//Le pion fictif n'est pas un pion de la liste des pions
+
+		//On retourne la valeur 1
+		return 1;
+	}
+
+	else
+	{
+		//Le pion fictif est pas un pion de la liste des pions
+
+		//On retourne la valeur 0
+		return 0;
+	}
+	
+}
+
+
+int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction, Liste* liste_pions)
+{
+
+	Position position_direction;
+	Element* actuel = liste_pions -> premier;
+	int saut;
+
+	if (pion == NULL || plateau == NULL)
+	{
+		exit(EXIT_FAILURE);
+	}
+
+
+	else
+	{
+
+
+		if(direction == GAUCHE)
+		{
+			if((*pion).position.y!=0)
+			{
+				position_direction=position_init((*pion).position.x, ((*pion).position.y) - 1);
+
+				if((*pion).position.y==1)
+				{
+					if( (plateau_getpion(position_direction, plateau, liste_pions)).identifiant == -1)
+					{
+						(*pion).position=position_init( (*pion).position.x, ((*pion).position.y - 1) );
+						return 1;
+					}
+
+					return 0;
+				}
+
+				else
+				{
+					while(actuel != NULL)
+					{
+
+						if((actuel -> pion.position.x == position_direction.x )&& 
+							(actuel -> pion.position.y == position_direction.y))
+						{
+							saut=pion_peut_sauter(pion,direction,plateau,liste_pions);
+
+							if(saut == 1)
+							{
+								(*pion).position=position_init((*pion).position.x, ((*pion).position.y - 2));
+								return 1;
+							}
+							return 0;
+						}
+
+						actuel = actuel -> suivant;
+					}
+
+					(*pion).position=position_init((*pion).position.x, ((*pion).position.y) - 1);
+					return 1;
+				}
+			}
+
+			return 0;
+		}
+
+
+
+
+		else if(direction == HAUT_GAUCHE)
+		{
+			if( ( (*pion).position.y != 0 ) && ( (*pion).position.x != 0) )
+			{
+				position_direction=position_init( (*pion).position.x - 1, (*pion).position.y - 1 );
+
+				if( ( (*pion).position.y == 1 ) || ( (*pion).position.x == 1) )
+				{
+					if( (plateau_getpion(position_direction, plateau, liste_pions)).identifiant == -1)
+					{
+						(*pion).position=position_init( (*pion).position.x -1, (*pion).position.y - 1);
+						return 1;
+					}
+
+					return 0;
+				}
+
+				else
+				{
+					while(actuel != NULL)
+					{
+
+						if((actuel -> pion.position.x == position_direction.x )&& 
+							(actuel -> pion.position.y == position_direction.y))
+						{
+							saut=pion_peut_sauter(pion,direction,plateau,liste_pions);
+
+							if(saut == 1)
+							{
+								(*pion).position=position_init( (*pion).position.x - 2, (*pion).position.y - 2);
+								return 1;
+							}
+							return 0;
+						}
+
+						actuel = actuel -> suivant;
+					}
+
+					(*pion).position=position_init( (*pion).position.x - 1, ((*pion).position.y) - 1);
+					return 1;
+				}
+			}
+
+			return 0;
+		}
+
+
+
+
+		else if(direction == HAUT)
+		{
+			if( (*pion).position.x != 0 )
+			{
+				position_direction=position_init( (*pion).position.x - 1, (*pion).position.y );
+
+				if( (*pion).position.x == 1 )
+				{
+					if( (plateau_getpion(position_direction, plateau, liste_pions)).identifiant == -1)
+					{
+						(*pion).position=position_init( (*pion).position.x -1, (*pion).position.y );
+						return 1;
+					}
+
+					return 0;
+				}
+
+				else
+				{
+					while(actuel != NULL)
+					{
+
+						if((actuel -> pion.position.x == position_direction.x )&& 
+							(actuel -> pion.position.y == position_direction.y))
+						{
+							saut=pion_peut_sauter(pion,direction,plateau,liste_pions);
+
+							if(saut == 1)
+							{
+								(*pion).position=position_init( (*pion).position.x - 2, (*pion).position.y );
+								return 1;
+							}
+							return 0;
+						}
+
+						actuel = actuel -> suivant;
+					}
+
+					(*pion).position=position_init( (*pion).position.x - 1, ((*pion).position.y) );
+					return 1;
+				}
+			}
+
+			return 0;
+		}
+
+
+
+
+		else if(direction == HAUT_DROITE)
+		{
+			if( ( (*pion).position.x != 0 ) && ( (*pion).position.y != 15 ) )
+			{
+				position_direction=position_init( (*pion).position.x - 1, (*pion).position.y + 1);
+
+				if( ( (*pion).position.x == 1 ) || ( (*pion).position.y == 14 ) )
+				{
+					if( (plateau_getpion(position_direction, plateau, liste_pions)).identifiant == -1)
+					{
+						(*pion).position=position_init( (*pion).position.x -1, (*pion).position.y + 1 );
+						return 1;
+					}
+
+					return 0;
+				}
+
+				else
+				{
+					while(actuel != NULL)
+					{
+
+						if((actuel -> pion.position.x == position_direction.x )&& 
+							(actuel -> pion.position.y == position_direction.y))
+
+						{
+							saut=pion_peut_sauter(pion,direction,plateau,liste_pions);
+
+							if(saut == 1)
+							{
+								(*pion).position=position_init( (*pion).position.x - 2, (*pion).position.y + 2 );
+								return 1;
+							}
+							return 0;
+						}
+
+						actuel = actuel -> suivant;
+					}
+
+					(*pion).position=position_init( (*pion).position.x - 1, (*pion).position.y + 1);
+					return 1;
+				}
+			}
+
+			return 0;
+		}
+
+
+
+
+		else if(direction == DROITE)
+		{
+			if( (*pion).position.y != 15  )
+			{
+				position_direction=position_init( (*pion).position.x, (*pion).position.y + 1);
+
+				if( (*pion).position.y == 14 )
+				{
+					if( (plateau_getpion(position_direction, plateau, liste_pions)).identifiant == -1)
+					{
+						(*pion).position=position_init( (*pion).position.x, (*pion).position.y + 1 );
+						return 1;
+					}
+
+					return 0;
+				}
+
+				else
+				{
+					while(actuel != NULL)
+					{
+
+						if((actuel -> pion.position.x == position_direction.x )&& 
+							(actuel -> pion.position.y == position_direction.y))
+
+						{
+							saut=pion_peut_sauter(pion,direction,plateau,liste_pions);
+
+							if(saut == 1)
+							{
+								(*pion).position=position_init( (*pion).position.x, (*pion).position.y + 2 );
+								return 1;
+							}
+							return 0;
+						}
+
+						actuel = actuel -> suivant;
+					}
+
+					(*pion).position=position_init( (*pion).position.x, (*pion).position.y + 1);
+					return 1;
+				}
+			}
+
+			return 0;
+		}
+
+
+
+
+		else if(direction == BAS_DROITE)
+		{
+			if( ( (*pion).position.y != 15 ) && ( (*pion).position.x != 15 ) )
+			{
+				position_direction=position_init( (*pion).position.x + 1, (*pion).position.y + 1);
+
+				if( (*pion).position.y == 14 || (*pion).position.x == 14 )
+				{
+					if( (plateau_getpion(position_direction, plateau, liste_pions)).identifiant == -1)
+					{
+						(*pion).position=position_init( (*pion).position.x + 1, (*pion).position.y + 1 );
+						return 1;
+					}
+
+					return 0;
+				}
+
+				else
+				{
+					while(actuel != NULL)
+					{
+
+						if((actuel -> pion.position.x == position_direction.x )&& 
+							(actuel -> pion.position.y == position_direction.y))
+
+						{
+							saut=pion_peut_sauter(pion,direction,plateau,liste_pions);
+
+							if(saut == 1)
+							{
+								(*pion).position=position_init( (*pion).position.x + 2, (*pion).position.y + 2 );
+								return 1;
+							}
+							return 0;
+						}
+
+						actuel = actuel -> suivant;
+					}
+
+					(*pion).position=position_init( (*pion).position.x + 1, (*pion).position.y + 1);
+					return 1;
+				}
+			}
+
+			return 0;
+		}
+
+
+
+
+		else if(direction == BAS)
+		{
+			if( (*pion).position.x != 15 )
+			{
+				position_direction=position_init( (*pion).position.x + 1, (*pion).position.y);
+
+				if( (*pion).position.x == 14 )
+				{
+					if( (plateau_getpion(position_direction, plateau, liste_pions)).identifiant == -1)
+					{
+						(*pion).position=position_init( (*pion).position.x + 1, (*pion).position.y );
+						return 1;
+					}
+
+					return 0;
+				}
+
+				else
+				{
+					while(actuel != NULL)
+					{
+
+						if((actuel -> pion.position.x == position_direction.x )&& 
+							(actuel -> pion.position.y == position_direction.y))
+
+						{
+							saut=pion_peut_sauter(pion,direction,plateau,liste_pions);
+
+							if(saut == 1)
+							{
+								(*pion).position=position_init( (*pion).position.x + 2, (*pion).position.y );
+								return 1;
+							}
+							return 0;
+						}
+
+						actuel = actuel -> suivant;
+					}
+
+					(*pion).position=position_init( (*pion).position.x + 1, (*pion).position.y );
+					return 1;
+				}
+			}
+
+			return 0;
+		}
+
+
+
+
+		else if(direction == BAS_GAUCHE)
+		{
+			if( ( (*pion).position.x != 15 ) && ( (*pion).position.y != 0 ) )
+			{
+				position_direction=position_init( (*pion).position.x + 1, (*pion).position.y - 1);
+
+				if( ( (*pion).position.x == 14 ) || ( (*pion).position.y == 0 ) ) 
+				{
+					if( (plateau_getpion(position_direction, plateau, liste_pions)).identifiant == -1)
+					{
+						(*pion).position=position_init( (*pion).position.x + 1, (*pion).position.y - 1);
+						return 1;
+					}
+
+					return 0;
+				}
+
+				else
+				{
+					while(actuel != NULL)
+					{
+
+						if((actuel -> pion.position.x == position_direction.x )&& 
+							(actuel -> pion.position.y == position_direction.y))
+
+						{
+							saut=pion_peut_sauter(pion,direction,plateau,liste_pions);
+
+							if(saut == 1)
+							{
+								(*pion).position=position_init( (*pion).position.x + 2, (*pion).position.y - 2);
+								return 1;
+							}
+							return 0;
+						}
+
+						actuel = actuel -> suivant;
+					}
+
+					(*pion).position=position_init( (*pion).position.x + 1, (*pion).position.y - 1 );
+					return 1;
+				}
+			}
+
+			return 0;
 		}
 	}
 }

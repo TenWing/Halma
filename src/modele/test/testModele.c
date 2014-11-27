@@ -17,6 +17,7 @@
 #include <matrice.h>
 #include <modele.h>
 #include <coup.h>
+#include <direction.h>
 
 int main () 
 {
@@ -91,19 +92,21 @@ int main ()
  	}
 
 	// ##########################################
-	// TEST MODULE LISTE DE PIONS
+	// TEST LISTE DE PIONS
 	// ##########################################
 
  	Pion pion3, pion4;
 
  	//Initialisation de 2 pions
- 	pion3 = pion_init(ROUGE, position_init(1,0), 8);
- 	pion4 = pion_init(BLEU, position_init(1,1), 7);
+ 	pion3 = pion_init(ROUGE, position_init(16,15), 8);
+ 	pion4 = pion_init(BLEU, position_init(16,16), 7);
+  	Pion pion5 = pion_init(ROUGE, position_init(0,16), 10);
 
  	//Création de la liste de pions
  	Liste *liste_pions=liste_pion_init();
 
  	//Insertion des 2 pions dans la liste_pions
+  	insertion_pion(liste_pions, pion5);
  	insertion_pion(liste_pions, pion3);
  	insertion_pion(liste_pions, pion4);
 
@@ -115,26 +118,52 @@ int main ()
  	while( actuel != NULL)
  	{
  		//Actuel pointe sur l'identfiant de l'élément de la liste (ici dans l'ordre 7 8 1)
- 		printf("%d\n", actuel->pion.identifiant);
+ 		printf("x = %d, y = %d\n", actuel->pion.position.x, actuel -> pion.position.y);
 
  		//Actuel pointe sur l'élément suivant
  		actuel = actuel -> suivant;
  	}
 
 	// ##########################################
-	// TEST MODULE FONCTIONS GETPION
+	// TEST FONCTIONS GETPION
 	// ##########################################
 
  	//On crée les paramètres pour tester la fonction getpion
 
  	//Pour tester pleinement la fonction, il faut changer les symboles * et .
- 	plateau.matrice.donnees[1][1]='*';
+ 	plateau.matrice.donnees[1][5]='*';
  	Position position1;
  	position1=position_init(1,1);
 
  	//On regarde l'identifiant du pion. Si on affiche un -1, c'est que la position selectionnée n'est pas un pion.
  	//Sinon, elle retourne bien un identifiant d'un pion du jeu
-	printf("%d\n", (plateau_getpion(position1,plateau,liste_pions).identifiant));
+	printf("x = %d, y = %d\n", (plateau_getpion(position1,&plateau,liste_pions).position.x), (plateau_getpion(position1,&plateau,liste_pions).position.y));
+
+	// ##########################################
+	// TEST FONCTION DEPLACEMENT PION
+	// ##########################################
+
+	int deplacement;
+	Direction direction = BAS_GAUCHE;
+	Pion pion10, pion11, pion12;
+ 	pion10 = pion_init(ROUGE, position_init(13,7), 80);
+ 	pion11 = pion_init(BLEU, position_init(14,6), 70);
+  	pion12 = pion_init(ROUGE, position_init(0,10), 19);
+  	
+
+  	insertion_pion(liste_pions, pion10);
+ 	insertion_pion(liste_pions, pion11);
+ 	insertion_pion(liste_pions, pion12);
+
+
+	printf("Pour le pion10 : x = %d, y = %d\n", pion10.position.x, pion10.position.y);
+	deplacement=pion_deplacer(&pion10, &plateau, direction, liste_pions);
+	
+	if(deplacement == 1) 
+	{
+	printf("pion10 : x = %d, y = %d\n", pion10.position.x, pion10.position.y);
+	}
+
 
 	return 0;
 }

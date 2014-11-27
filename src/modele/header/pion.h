@@ -107,24 +107,25 @@ void insertion_pion(Liste *liste_pions, Pion pion_nouveau);
 /**
 * \brief	déplace un pion sur la grille
 * \author 	Tendry
-* \param	pion le pion qui sera déplacé
-* \param 	plateau le plateau (la grille de jeu)
-* \param 	direction la direction dans laquelle le pion se déplace
+* \param	pion 		le pion qui sera déplacé
+* \param 	plateau 	le plateau (la grille de jeu)
+* \param 	direction 	la direction dans laquelle le pion se déplace
 * \details	Gère les déplacements complexes via des sous fonctions (saut de pion etc.)	
 * \return 	1 Si le déplacement s'est bien effectué, 0 pour déplacement raté
 */
-int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction);
+int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction, Liste* liste_pions);
 
 /**
-* \brief 	Vérifie si le pion pion peut sauter par dessus un pion situé au niveau de la direction de saut
+* \brief 	Vérifie si le pion peut sauter par dessus un pion situé au niveau de la direction de saut
 * \author 	Tendry
-* \param	pion le pion qui saute
-* \param	direction la direction de déplacement
-* \param	plateau le plateau où se situe l'ensemble des pions
+* \param	pion 			le pion qui saute
+* \param	direction 		la direction de déplacement
+* \param	plateau 		le plateau où se situe l'ensemble des pions
+* \param	liste_pions		tous les pions du jeu
 * \version	1.0
 * \return 	1 Succès il est possible de se déplacer, 0 non ce n'est pas possible
 */
-int pion_peut_sauter(Pion* pion, Direction direction, Plateau* plateau);
+int pion_peut_sauter(Pion* pion, Direction direction, Plateau* plateau, Liste* liste_pions);
 
 /**
 * \brief 	Vérifie si la position choisie est un pion ou non
@@ -135,6 +136,6 @@ int pion_peut_sauter(Pion* pion, Direction direction, Plateau* plateau);
 * \version	1.0
 * \return 	Un pion : soit un pion fictif avec des donnees seulement utiles pour le développeur, soit un pion du jeu
 */
-Pion plateau_getpion(Position position, Plateau plateau, Liste *liste_pions);
+Pion plateau_getpion(Position position, Plateau* plateau, Liste *liste_pions);
 
  #endif

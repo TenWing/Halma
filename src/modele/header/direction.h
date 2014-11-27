@@ -20,7 +20,8 @@ enum Direction
 {
 	GAUCHE, 
 	HAUT_GAUCHE, 
-	HAUT, HAUT_DROITE, 
+	HAUT, 
+	HAUT_DROITE, 
 	DROITE, 
 	BAS_DROITE, 
 	BAS, 

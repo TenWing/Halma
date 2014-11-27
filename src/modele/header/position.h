@@ -21,12 +21,12 @@ typedef struct Position Position;
 struct Position 
 {
 	/**
-	* \brief La position x correspondant à l'abscisse
+	* \brief La position x correspondant à l'abscisse (la ligne de la matrice)
 	*/
  	int x;
 
  	/**
- 	* \brief La position y correspondant à l'ordonnée
+ 	* \brief La position y correspondant à l'ordonnée (la colonne de la matrice)
  	*/
  	int y;
 };

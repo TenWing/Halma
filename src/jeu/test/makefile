@@ -41,15 +41,15 @@ MAIN= $(TEST:.c=.o)
 ########################################
 
 #Création de l'exécutable et TEST
-all: 		 	$(EXEC) clean run
+all: 		 	clean $(EXEC) clean run
 
 #Pour créer les .o du dossier de destination on a besoin des fichiers .c du sous dossier
 $(EXEC):	 	$(OBJ) $(MAIN)
-				@$(CC) -o $@ $^ $(LIBINCLUDEPATH) $(LDFLAGS)
+				$(CC) -o $@ $^ $(LIBINCLUDEPATH) $(LDFLAGS)
 
 #Procédure simple de compilation .c -> .o 
 %.o: 			%.c
-	 	 	 	@$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDEPATH) $(LIBINCLUDEPATH)
+	 	 	 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDEPATH) $(LIBINCLUDEPATH)
 
 #nettoyage des .o
 clean:

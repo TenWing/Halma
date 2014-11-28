@@ -78,7 +78,7 @@ Coup pileCoups_depiler(PileCoups* pile)
 void pileCoups_ajouterCoup(PileCoups* pile, Coup coup)
 {
 	//L'élément ajouté à la pile
-	NoeudCoup* ajout = malloc(sizeof(NoeudCoup*));
+	NoeudCoup* ajout = malloc(sizeof(NoeudCoup));
 
 	//On créé le noeud qui sera ajouté à la pile
 	ajout->coup = coup;

@@ -17,13 +17,15 @@
 #include <position.h>
 #include <couleur.h>
 #include <direction.h>
-#include <plateau.h>
  //######################################
+
+typedef struct Plateau Plateau;
+struct Plateau;
 
 /**
 * \brief Un pion, un élément de jeu du plateau
 * \author Quentin
-* \version 1.0
+* \version 2.0
 */
 typedef struct Pion Pion;
 struct Pion
@@ -49,33 +51,7 @@ struct Pion
  	* \brief indique si le pion est entrain d'effectuer des sauts ou non
  	*/
  	int saut;
-
- 	/**
- 	* \brief le symbôle du pion sur le plateau
- 	*/
- 	char symbole;
 };
-
-
-  /**
-* \brief Une liste de pions
-* \auhtor Quentin
-* \version 1.0
-*/
-
-typedef struct Element Element;
-struct Element
-{
-	Pion pion;
-	Element *suivant;
-};
-
-typedef struct Liste Liste;
-struct Liste
-{
-	Element *premier;
-};
-
 
 /**
  * \brief    Génère un pion
@@ -89,22 +65,6 @@ struct Liste
 Pion pion_init(Couleur couleur, Position position, int identifiant);
 
 /**
- * \brief    Génère la liste des pions
- * \details  Permet de créer la liste des pions de l'ensemble du tableau
- * \author 	 Quentin          
- * \version  1.0
- * \return   La Liste des pions
- */
-Liste *liste_pion_init();
-
-/**
- * \brief    Ajoute un pion dans la liste des pions
- * \author 	 Quentin          
- * \version  1.0
- */
-void insertion_pion(Liste *liste_pions, Pion pion_nouveau);
-
-/**
 * \brief	déplace un pion sur la grille
 * \author 	Tendry
 * \param	pion 		le pion qui sera déplacé
@@ -113,29 +73,9 @@ void insertion_pion(Liste *liste_pions, Pion pion_nouveau);
 * \details	Gère les déplacements complexes via des sous fonctions (saut de pion etc.)	
 * \return 	1 Si le déplacement s'est bien effectué, 0 pour déplacement raté
 */
-int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction, Liste* liste_pions);
+int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction);
 
-/**
-* \brief 	Vérifie si le pion peut sauter par dessus un pion situé au niveau de la direction de saut
-* \author 	Tendry
-* \param	pion 			le pion qui saute
-* \param	direction 		la direction de déplacement
-* \param	plateau 		le plateau où se situe l'ensemble des pions
-* \param	liste_pions		tous les pions du jeu
-* \version	1.0
-* \return 	1 Succès il est possible de se déplacer, 0 non ce n'est pas possible
-*/
-int pion_peut_sauter(Pion* pion, Direction direction, Plateau* plateau, Liste* liste_pions);
-
-/**
-* \brief 	Vérifie si la position choisie est un pion ou non
-* \author 	Quentin
-* \param	Position 	la position choisie
-* \param	plateau 	le plateau où se situe l'ensemble des pions
-* \param	liste_pions	la liste de tous les pions du plateau
-* \version	1.0
-* \return 	Un pion : soit un pion fictif avec des donnees seulement utiles pour le développeur, soit un pion du jeu
-*/
-Pion plateau_getpion(Position position, Plateau* plateau, Liste *liste_pions);
+// TODO documenter
+int pion_sauter(Pion* pion, Direction direction, Plateau* plateau);
 
  #endif

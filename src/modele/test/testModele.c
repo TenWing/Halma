@@ -62,7 +62,19 @@ int main ()
  	Plateau plateau;
 
  	//on crée le plateau de jeu
- 	plateau=plateau_init();
+ 	plateau=plateau_init(2);
+ 	int i,j;
+
+ 	  for(i=0;i<16;i++) {
+
+    for(j=0; j<16; j++) {
+
+	printf("%c", plateau.matrice.donnees[i][j]);
+
+    }
+  printf("\n");
+  }
+
 
  	// On teste si le plateau est bien un carré de 16x16
  	if(	plateau.matrice.nbLignes != 16 || plateau.matrice.nbColonnes != 16 )
@@ -138,9 +150,9 @@ int main ()
 	int deplacement;
 	Direction direction = BAS_GAUCHE;
 	Pion pion10, pion11, pion12;
- 	pion10 = pion_init(ROUGE, position_init(13,7), 80);
- 	pion11 = pion_init(BLEU, position_init(14,6), 70);
-  	pion12 = pion_init(ROUGE, position_init(0,10), 19);
+ 	pion10 = pion_init(ROUGE, position_init(10,7), 80);
+ 	pion11 = pion_init(BLEU, position_init(11,6), 70);
+  	pion12 = pion_init(ROUGE, position_init(13,4), 19);
   	
 
   	liste_pions_ajout(&plateau.liste_pions, pion10);
@@ -150,11 +162,13 @@ int main ()
 
 	printf("Pour le pion10 : x = %d, y = %d\n", pion10.position.x, pion10.position.y);
 	deplacement=pion_deplacer(&pion10, &plateau, direction);
-	
+	deplacement=pion_deplacer(&pion10, &plateau, direction);
 	if(deplacement == 1) 
 	{
 	printf("pion10 : x = %d, y = %d\n", pion10.position.x, pion10.position.y);
 	}
+
+
 	
 	return 0;
 }

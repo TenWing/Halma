@@ -11,6 +11,7 @@
 #ifndef PLATEAU_H
 #define PLATEAU_H
 #define Taille_plateau 16;
+#define TAILLE_MAX 1000
 
 //Inclusion des éléments nécessaires à notre structure
 #include <matrice.h>

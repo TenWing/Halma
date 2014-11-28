@@ -18,20 +18,74 @@
 /**
  * \brief    Génère le plateau de jeu
  * \details  Permet de créer le plateau de jeu à partir des fonctions de la librairie matrice
- *             
+ * \param	 int nombre_joueur        
  * \param    Plateau plateau
  * \return   Le plateau de jeu
  */
-Plateau plateau_init() 
+Plateau plateau_init(int nombre_joueur) 
 {
 	Plateau plateau;
+	FILE* fichier_contient_halma_4;
+	FILE* fichier_contient_halma_2;
+	int nombre,i,j;
 
 	plateau.matrice.nbLignes = Taille_plateau;
 	plateau.matrice.nbColonnes = Taille_plateau;
 	plateau.matrice = alloue(plateau.matrice.nbLignes,plateau.matrice.nbColonnes);
 	
 	plateau.liste_pions = liste_pions_init();
-	return plateau;
+
+	if(nombre_joueur == 4)
+	{
+		fichier_contient_halma_4 = fopen("../../../depart_jeu_halma_4.txt", "r+");
+
+		if(fichier_contient_halma_4 != NULL)
+		{
+			for(i=0; i<plateau.matrice.nbLignes; i++)
+			{
+				for(j=0; j<plateau.matrice.nbColonnes; j++)
+				{
+					nombre=fgetc(fichier_contient_halma_4);
+
+	   				if(nombre != 32 && nombre != 10)
+	   				{
+						plateau.matrice.donnees[i][j]=nombre;
+					}
+					else
+					{
+						j--;
+					}
+				}
+			}
+			return plateau;
+		}
+	}
+
+	else
+	{
+		fichier_contient_halma_2 = fopen("../../../depart_jeu_halma_2.txt", "r+");
+
+		if(fichier_contient_halma_2 != NULL)
+		{
+			for(i=0; i<plateau.matrice.nbLignes; i++)
+			{
+				for(j=0; j<plateau.matrice.nbColonnes; j++)
+				{
+					nombre=fgetc(fichier_contient_halma_2);
+
+	   				if(nombre != 32 && nombre != 10)
+	   				{
+						plateau.matrice.donnees[i][j]=nombre;
+					}
+					else
+					{
+						j--;
+					}
+				}
+			}
+			return plateau;
+		}
+	}
 }
 
 // JAMAIS JAMAIS ON NE MET QUELQUE CHOSE DANS UNE LISTE

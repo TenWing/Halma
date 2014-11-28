@@ -15,6 +15,28 @@
 //Inclusions
 #include <pion.h>
 //######################################
+/**
+* \brief Un élément d'une liste de pions pour un joueur
+* \auhtor Quentin
+* \version 1.0
+*/
+typedef struct NoeudReferencePion NoeudReferencePion;
+struct NoeudReferencePion
+{
+	Pion* pion;
+	NoeudReferencePion *suivant;
+};
+
+/**
+* \brief une liste de pions pour un joueur
+* \author Quentin
+* \version 1.0
+*/
+typedef struct ListeReferencePions ListeReferencePions;
+struct ListeReferencePions
+{
+	NoeudReferencePion *premier;
+};
  /**
 * \brief Un joueur est un ensemble de pions
 * \auhtor Quentin
@@ -29,8 +51,12 @@ typedef struct Joueur Joueur;
 	* \detail 	Un pointeur qui sera un tableau où le numéro de la case du tableau sera l'identifiant du pion
 	* /see Pion
 	*/
- 	EnsemblePion;
+ 	ListeReferencePions;
 };
+
+
+
+
 
   #endif
 

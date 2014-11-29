@@ -9,7 +9,8 @@ SOURCE_FOLDER=source
 SRC= $(wildcard $(SOURCE_FOLDER)/*.c)
 
 #Création de la liste des dépendances (.o)
-OBJ= $(SRC:.c=.o)
+LST= $(foreach one, $(SRC), $(BUILD_TARGET)/$(one))
+OBJ= $(LST:.c=.o)
 
 #Cible ou sont stocker les .o
 BUILD_TARGET=../../build
@@ -22,7 +23,7 @@ BUILD_TARGET=../../build
 all: 		 								$(EXEC)
 
 #Pour créer les .o du dossier de destination on a besoin des fichiers .c du sous dossier
-$(EXEC):	 								$(BUILD_TARGET)/$(OBJ)
+$(EXEC):	 								$(OBJ)
 
 #Procédure simple de compilation .c -> .o prise en charge des dossiers d'arrivée/départ
 $(BUILD_TARGET)/$(SOURCE_FOLDER)/%.o: 		$(SOURCE_FOLDER)/%.c

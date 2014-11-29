@@ -22,7 +22,7 @@ export MAIN_DIR=jeu
 export LIBINCLUDEPATH=-I ../../include/libMatrice
 
 #Dossiers où se trouvent les .h des sources /rapport à la position des sous makefiles
-export INCLUDEPATH=-I header
+export INCLUDEPATH=-I header -I ../modele/header
 ###########################
 
 #Nom du dossier de build (stockage des .o)

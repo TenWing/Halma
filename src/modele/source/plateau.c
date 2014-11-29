@@ -25,67 +25,43 @@
 Plateau plateau_init(int nombre_joueur) 
 {
 	Plateau plateau;
-	FILE* fichier_contient_halma_4;
-	FILE* fichier_contient_halma_2;
-	int nombre,i,j;
-
-	plateau.matrice.nbLignes = Taille_plateau;
-	plateau.matrice.nbColonnes = Taille_plateau;
-	plateau.matrice = alloue(plateau.matrice.nbLignes,plateau.matrice.nbColonnes);
-	
+		
+	// On initialise la liste
 	plateau.liste_pions = liste_pions_init();
 
+	// On initialise avec les fichiers
 	if(nombre_joueur == 4)
 	{
-		fichier_contient_halma_4 = fopen("../../../depart_jeu_halma_4.txt", "r+");
-
-		if(fichier_contient_halma_4 != NULL)
-		{
-			for(i=0; i<plateau.matrice.nbLignes; i++)
-			{
-				for(j=0; j<plateau.matrice.nbColonnes; j++)
-				{
-					nombre=fgetc(fichier_contient_halma_4);
-
-	   				if(nombre != 32 && nombre != 10)
-	   				{
-						plateau.matrice.donnees[i][j]=nombre;
-					}
-					else
-					{
-						j--;
-					}
-				}
-			}
-			return plateau;
-		}
+		plateau.matrice = initMatrice("../../../depart_jeu_halma_4.txt");
 	}
-
 	else
 	{
-		fichier_contient_halma_2 = fopen("../../../depart_jeu_halma_2.txt", "r+");
+		plateau.matrice = initMatrice("../../../depart_jeu_halma_2.txt");
+	}
 
-		if(fichier_contient_halma_2 != NULL)
+	// On récupère les pions !
+	int i =0, j = 0, id = 0;
+
+	// On parcoure notre matrice
+	for(i = 0; i < plateau.matrice.nbLignes; i++)
+	{
+		for(j = 0; j < plateau.matrice.nbColonnes; j++)
 		{
-			for(i=0; i<plateau.matrice.nbLignes; i++)
+			// S'il y a un pion
+			if(plateau.matrice.donnees[i][j] != '.')
 			{
-				for(j=0; j<plateau.matrice.nbColonnes; j++)
-				{
-					nombre=fgetc(fichier_contient_halma_2);
-
-	   				if(nombre != 32 && nombre != 10)
-	   				{
-						plateau.matrice.donnees[i][j]=nombre;
-					}
-					else
-					{
-						j--;
-					}
-				}
+				// Convertit bien le nombre récupéré en entier
+				int number = plateau.matrice.donnees[i][j] - '0';
+				
+				// Récupération de la couleur
+				Pion pion = pion_init(number, position_init(i, j), id);
+				liste_pions_ajout(&plateau.liste_pions, pion);
+				id++;
 			}
-			return plateau;
 		}
 	}
+
+	return plateau;
 }
 
 // JAMAIS JAMAIS ON NE MET QUELQUE CHOSE DANS UNE LISTE

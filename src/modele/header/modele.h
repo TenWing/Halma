@@ -10,10 +10,24 @@
 #ifndef MODELE_H
 #define MODELE_H
 
- //######################################
+//######################################
 //Inclusions
 //######################################
 
+/**
+* \brief	Commence un tour de jeu
+* \author	Tendry
+* \param	modele le modèle qui joue
+* \version 	1.0
+*/
+void commencer_tour(Modele* modele);
 
+/**
+* \brief	Fini le tour de jeu
+* \author	Tendry
+* \param	modele le modèle qui joue
+* \version 	1.0
+*/
+void fin_tour(Modele* modele);
 
- #endif
+#endif

@@ -41,7 +41,7 @@ void commencer_tour(Modele* modele, Pion* pion)
 }
 
 void annuler_coup(Modele* modele, Pion* pion)
-{	
+{
 	// On accède au tour courant
 	NoeudTour* noeud = modele->pile_tours.premier;
 
@@ -53,11 +53,14 @@ void annuler_coup(Modele* modele, Pion* pion)
 	Coup dernier = pileCoups_depiler(&noeud->tour.pile_coups);
 
 	// S'il n'y a pas de coup avant
-	if(dernier.pion == NULL)
+	if(dernier.pion.identifiant == -1)
 		return; 
 
 	// On change la position du pion concerné par le coup
-	pion->position = position_init(dernier.pion->position.x, dernier.pion->position.y);
+	pion->position = position_init(dernier.precedente.x, dernier.precedente.y);
+
+	// On change aussi son état (saut ou pas)
+	pion->saut = dernier.pion.saut;
 }
 
 void annuler_tour(Modele* modele, Pion* pion)
@@ -89,10 +92,6 @@ int jouer_coup(Modele* modele, Pion* pion, Direction direction)
 	{
 		// On l'ajoute à la pile des coups du tour
 		NoeudTour* noeud = modele->pile_tours.premier;
-		while(noeud->suivant != NULL)
-		{
-			noeud = noeud->suivant;
-		}
 
 		// noeud est le tour courant 
 		// On ajoute le coup à la pile de coups du tour courant

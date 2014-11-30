@@ -71,5 +71,5 @@ void annuler_tour(Modele* modele, Pion* pion)
 
 int jouer_coup(Modele* modele, Pion* pion, Direction direction)
 {
-	pion_deplacer(pion, direction);
+	//pion_deplacer(pion, direction);
 }

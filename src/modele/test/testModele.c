@@ -161,12 +161,12 @@ int main ()
 	// #########################################
 
 	//Initialisation de la zone
-	Zone zone = zone_init(ROUGE);
+	Zone zone = zone_init(ROUGE, 4);
 
 	//Initialisation position arbitraire
-	Position position100=position_init(100,100);
+	//Position position100=position_init(100,100);
 
-	liste_positions_ajout(&zone.liste_positions, position100);
+	//liste_positions_ajout(&zone.liste_positions, position100);
 
  	//Création d'un élément qui va se balader dans la liste
  	NoeudPosition* actuel_position = zone.liste_positions.premier;
@@ -179,7 +179,6 @@ int main ()
  		actuel_position = actuel_position->suivant;
  	}
 
-	return 0;
 
 	// #########################################
 	// TEST ANNULER
@@ -189,5 +188,7 @@ int main ()
 	Pion* testeur = &modele.plateau.liste_pions.premier->pion;
 
 	commencer_tour(&modele, testeur);
+
+	return 0;
 }
 

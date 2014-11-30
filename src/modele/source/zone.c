@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <zone.h>
+#include <position.h>
 
 ListePositions liste_positions_init()
  {
@@ -57,7 +58,7 @@ void liste_positions_ajout(ListePositions* liste, Position position)
 	}
 }
 
-Zone zone_init(Couleur couleur)
+Zone zone_init(Couleur couleur, int nombre_joueur)
 {
 	//Initialise la zone
 	Zone zone;
@@ -68,5 +69,59 @@ Zone zone_init(Couleur couleur)
 	//La couleur de la zone
 	zone.couleur_zone = couleur;
 
+	if(nombre_joueur < 3)
+	{
+		switch(couleur)
+		{
+			case JAUNE:
+				liste_positions_ajout(&zone.liste_positions, position_init(0,12));
+				liste_positions_ajout(&zone.liste_positions, position_init(1,12));
+				liste_positions_ajout(&zone.liste_positions, position_init(2,13));
+				liste_positions_ajout(&zone.liste_positions, position_init(3,14));
+				liste_positions_ajout(&zone.liste_positions, position_init(4,14));
+				break;
+			case BLEU:
+				liste_positions_ajout(&zone.liste_positions, position_init(11,1));
+				liste_positions_ajout(&zone.liste_positions, position_init(12,2));
+				liste_positions_ajout(&zone.liste_positions, position_init(13,3));
+				liste_positions_ajout(&zone.liste_positions, position_init(14,4));
+				liste_positions_ajout(&zone.liste_positions, position_init(15,4));
+				break;
+			default:
+				break;
+		}
+	}
+
+	else
+	{
+		switch(couleur)
+		{
+			case ROUGE :
+				liste_positions_ajout(&zone.liste_positions, position_init(12,14));
+				liste_positions_ajout(&zone.liste_positions, position_init(13,13));
+				liste_positions_ajout(&zone.liste_positions, position_init(14,12));
+				liste_positions_ajout(&zone.liste_positions, position_init(15,12));
+				break;
+			case BLEU:
+				liste_positions_ajout(&zone.liste_positions, position_init(12,1));
+				liste_positions_ajout(&zone.liste_positions, position_init(13,2));
+				liste_positions_ajout(&zone.liste_positions, position_init(14,3));
+				liste_positions_ajout(&zone.liste_positions, position_init(15,3));
+				break;
+			case VERT:
+				liste_positions_ajout(&zone.liste_positions, position_init(0,3));
+				liste_positions_ajout(&zone.liste_positions, position_init(1,3));
+				liste_positions_ajout(&zone.liste_positions, position_init(2,2));
+				liste_positions_ajout(&zone.liste_positions, position_init(3,1));
+				break;
+			case JAUNE:
+				liste_positions_ajout(&zone.liste_positions, position_init(0,12));
+				liste_positions_ajout(&zone.liste_positions, position_init(1,12));
+				liste_positions_ajout(&zone.liste_positions, position_init(2,13));
+				liste_positions_ajout(&zone.liste_positions, position_init(3,14));
+				break;
+		}
+	}
 	return zone;
 }
+

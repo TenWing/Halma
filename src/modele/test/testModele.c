@@ -138,12 +138,21 @@ int main ()
 	// TEST JOUEUR
 	// #########################################
 
- 	plateau = plateau_init(4);
+ 	plateau = plateau_init(2);
 
 	Joueur joueur1 = joueur_init(&plateau, JAUNE);
 	Joueur joueur2 = joueur_init(&plateau, VERT);	
+	Pion* pion_test;
 
 	printf("Id de pions : %d\n", joueur1.liste_references_pions.premier->pion->identifiant);
+
+	pion_test=joueur_get_reference_pion(&joueur1, 25);
+
+	if(pion_test != NULL)
+	printf("%d\n", pion_test->identifiant);
+
+	else
+	printf("caca\n");
 
 	return 0;
 }

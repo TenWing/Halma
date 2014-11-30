@@ -95,3 +95,4 @@ Pion* joueur_get_reference_pion(Joueur* joueur, int identifiant)
 
 	return pion_nulle;
 }
+

@@ -96,5 +96,14 @@ ListeReferencePions liste_references_pions_init();
 */
 void liste_references_pions_ajout(ListeReferencePions* liste, Pion* pion);
 
+/**
+* \brief renvoie la référence d'un pion, si elle est nulle le joueur n'a pas ce pion
+* \author Tendry
+* \param Joueur* joueur 	Un joueur du jeu
+* \param int indentifiant	un entier qui est l'identifiant d'un pion
+* \version 1.0
+*/
+Pion* joueur_get_reference_pion(Joueur* joueur, int identifiant);
+
 #endif
 

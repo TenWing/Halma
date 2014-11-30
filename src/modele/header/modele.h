@@ -14,6 +14,29 @@
 //Inclusions
 //######################################
 
+typedef struct Modele Modele
+struct Modele
+{
+	/**
+	* \brief le plateau du jeu 
+	* \see plateau
+	*/
+	Plateau plateau;
+
+	/**
+	* \brief La pile de tours
+	* \see tour
+	*/
+	PileTours PileTours;
+
+	/**
+	* \brief le tableau des joueurs
+	* 
+	*/
+	Joueur tableau_joueur[4];
+
+};
+
 /**
 * \brief	Commence un tour de jeu
 * \author	Tendry

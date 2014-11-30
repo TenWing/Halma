@@ -51,7 +51,7 @@ PileCoups pileCoups_init()
 Coup pileCoups_depiler(PileCoups* pile)
 {
 	//Pointeur pour manipuler le haut de la pile
-	NoeudCoup* tete;
+	NoeudCoup* tete = malloc(sizeof(NoeudCoup));
 
 	//Le coup qu'on cherche
 	Coup coup;
@@ -70,7 +70,7 @@ Coup pileCoups_depiler(PileCoups* pile)
 		pile->premier = tete->suivant;
 
 		//On détruit le précédent haut de pile
-		// free(tete);
+		free(tete);
 	}
 
 	return coup;

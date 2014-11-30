@@ -192,16 +192,21 @@ int main ()
 	annuler_coup(&modele, testeur);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	jouer_coup(&modele, testeur, GAUCHE);
+	fin_tour(testeur);
+
+	printf("fin tour\n");
+	commencer_tour(&modele, testeur);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	jouer_coup(&modele, testeur, DROITE);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	jouer_coup(&modele, testeur, BAS);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
+	
 	annuler_coup(&modele, testeur);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	annuler_coup(&modele, testeur);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
-
+	
 	return 0;	
 }
 

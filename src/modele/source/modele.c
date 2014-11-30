@@ -73,10 +73,6 @@ void annuler_tour(Modele* modele, Pion* pion)
 {
 	// On accède au tour courant
 	NoeudTour* noeud = modele->pile_tours.premier;
-	while(noeud -> suivant != NULL)
-	{
-		noeud = noeud->suivant;	
-	}
 
 	// On change la position du pion
 	pion->position = position_init(noeud->tour.pion.position.x, noeud->tour.pion.position.y);

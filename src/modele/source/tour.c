@@ -40,7 +40,7 @@ PileTours pileTours_init()
 Tour pileTours_depiler(PileTours* pile)
 {
 	//Pointeur pour manipuler le haut de la pile
-	NoeudTour* tete;
+	NoeudTour* tete = malloc(sizeof(NoeudTour));
 
 	//Le tour qu'on cherche
 	Tour tour;
@@ -68,7 +68,7 @@ Tour pileTours_depiler(PileTours* pile)
 void pileTours_ajouterTour(PileTours* pile, Tour tour)
 {
 	//L'élément ajouté à la pile
-	NoeudTour* ajout = malloc(sizeof(NoeudTour*));
+	NoeudTour* ajout = malloc(sizeof(NoeudTour));
 
 	//On créé le noeud qui sera ajouté à la pile
 	ajout->tour = tour;

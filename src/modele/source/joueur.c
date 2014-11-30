@@ -76,3 +76,22 @@ void liste_references_pions_ajout(ListeReferencePions* liste, Pion* pion)
 		tmp->suivant = noeud;
 	}
 }
+
+Pion* joueur_get_reference_pion(Joueur* joueur, int identifiant)
+{
+	NoeudReferencePion* actuel;
+	actuel = joueur -> liste_references_pions.premier;
+	Pion* pion_nulle=NULL;
+
+	while(actuel != NULL)
+	{
+		if(identifiant == actuel->pion->identifiant)
+		{
+			return (actuel->pion);
+		}
+
+		actuel = actuel -> suivant;
+	}
+
+	return pion_nulle;
+}

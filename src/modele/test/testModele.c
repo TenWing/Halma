@@ -19,6 +19,7 @@
 #include <coup.h>
 #include <direction.h>
 #include <plateau.h>
+#include <joueur.h>
 
 int main () 
 {
@@ -133,42 +134,16 @@ int main ()
  		actuel = actuel->suivant;
  	}
 
-	// ##########################################
-	// TEST FONCTIONS GETPION
-	// ##########################################
+	// #########################################
+	// TEST JOUEUR
+	// #########################################
 
- 	liste_pions_ajout(&plateau.liste_pions, pion5);
- 	liste_pions_ajout(&plateau.liste_pions, pion3);
- 	liste_pions_ajout(&plateau.liste_pions, pion4);
+ 	plateau = plateau_init(4);
 
- 	printf("Id du pion trouvé : %d\n", plateau_getpion(&plateau, position_init(16,15)).identifiant);
+	Joueur joueur1 = joueur_init(&plateau, JAUNE);
+	Joueur joueur2 = joueur_init(&plateau, VERT);	
 
-	// ##########################################
-	// TEST FONCTION DEPLACEMENT PION
-	// ##########################################
+	printf("Id de pions : %d\n", joueur1.liste_references_pions.premier->pion->identifiant);
 
-	int deplacement;
-	Direction direction = BAS_GAUCHE;
-	Pion pion10, pion11, pion12;
- 	pion10 = pion_init(ROUGE, position_init(10,7), 80);
- 	pion11 = pion_init(BLEU, position_init(11,6), 70);
-  	pion12 = pion_init(ROUGE, position_init(13,4), 19);
-  	
-
-  	liste_pions_ajout(&plateau.liste_pions, pion10);
- 	liste_pions_ajout(&plateau.liste_pions, pion11);
- 	liste_pions_ajout(&plateau.liste_pions, pion12);
-
-
-	printf("Pour le pion10 : x = %d, y = %d\n", pion10.position.x, pion10.position.y);
-	deplacement=pion_deplacer(&pion10, &plateau, direction);
-	deplacement=pion_deplacer(&pion10, &plateau, direction);
-	if(deplacement == 1) 
-	{
-	printf("pion10 : x = %d, y = %d\n", pion10.position.x, pion10.position.y);
-	}
-
-
-	
 	return 0;
 }

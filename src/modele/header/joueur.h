@@ -11,10 +11,11 @@
 #ifndef JOUEUR_H
 #define JOUEUR_H
 
- //######################################
+//######################################
 //Inclusions
 #include <pion.h>
 //######################################
+
 /**
 * \brief Un élément d'une liste de pions pour un joueur
 * \auhtor Quentin
@@ -24,39 +25,76 @@ typedef struct NoeudReferencePion NoeudReferencePion;
 struct NoeudReferencePion
 {
 	Pion* pion;
-	NoeudReferencePion *suivant;
+	NoeudReferencePion* suivant;
 };
 
 /**
 * \brief une liste de pions pour un joueur
 * \author Quentin
 * \version 1.0
+* \details Il est nécessaire que la liste liste bien des
+		   références vers les pions pour ne pas surcharger
+		   la mémoire
 */
 typedef struct ListeReferencePions ListeReferencePions;
 struct ListeReferencePions
 {
-	NoeudReferencePion *premier;
+	NoeudReferencePion* premier;
 };
+
  /**
-* \brief Un joueur est un ensemble de pions
+* \brief  Un joueur, peut effectuer des actions
+*		  mais n'est qu'une référence de liste et une couleur
 * \auhtor Quentin
 * \version 1.0
 */
-
 typedef struct Joueur Joueur;
-
- struct Joueur{
- 	/**
-	* \brief Un ensemble de pions
-	* \detail 	Un pointeur qui sera un tableau où le numéro de la case du tableau sera l'identifiant du pion
-	* /see Pion
+struct Joueur
+{
+	/**
+	* \brief la couleur du joueur
+	* \see Couleur
 	*/
- 	ListeReferencePions;
+	Couleur couleur;
+
+ 	/**
+	* \brief    Une liste de références de pions
+	*/
+ 	ListeReferencePions liste_references_pions;
 };
 
+// ###################################
+// FONCTIONS JOUEUR
+// ###################################
 
+/**
+* \brief initialise un joueur à partir de sa couleur
+* \author Tendry
+* \param plateau le plateau qui contient tout 
+* \param couleur la futur couleur du joueur
+* \return un joueur initialisé
+*/
+Joueur joueur_init(Plateau* plateau, Couleur couleur);
 
+// ###################################
+// FONCTIONS REFERENCES PIONS
+// ###################################
 
+/**
+* \brief initialise une liste de références vers les pions
+* \author Tendry
+* \return une liste initialisée
+*/
+ListeReferencePions liste_references_pions_init();
 
-  #endif
+/**
+* \brief ajoute une référence vers un pion à la liste
+* \author Tendry
+* \param liste la liste modifiée
+* \param pion la référence ajoutée
+* \version 1.0
+*/
+void liste_references_pions_ajout(ListeReferencePions* liste, Pion* pion);
+
+#endif
 

@@ -37,6 +37,12 @@ struct Tour
 	* \see position
 	*/
 	Position depart;
+
+	/**
+	* \brief la pile de coups faite pendant le tour
+	* \see tour
+	*/
+	Pilecoups;
 };
 
 /**

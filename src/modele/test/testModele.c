@@ -20,7 +20,7 @@
 #include <direction.h>
 #include <plateau.h>
 #include <joueur.h>
-
+#include <zone.h>
 int main () 
 {
 	// ##########################################
@@ -152,7 +152,31 @@ int main ()
 	printf("%d\n", pion_test->identifiant);
 
 	else
-	printf("caca\n");
+	printf("Le pointeur est nul\n");
+
+	// #########################################
+	// TEST ZONE
+	// #########################################
+
+	//Initialisation de la zone
+	Zone zone = zone_init(ROUGE);
+
+	//Initialisation position arbitraire
+	Position position100=position_init(100,100);
+
+	liste_positions_ajout(&zone.liste_positions, position100);
+
+ 	//Création d'un élément qui va se balader dans la liste
+ 	NoeudPosition* actuel_position = zone.liste_positions.premier;
+
+ 	//Dans que actuel n'a pas atteint l'élément NULL
+ 	while( actuel_position != NULL)
+ 	{
+ 		printf("x = %d, y = %d\n", actuel_position->position.x, actuel_position -> position.y);
+ 		//Actuel pointe sur l'élément suivant
+ 		actuel_position = actuel_position->suivant;
+ 	}
 
 	return 0;
 }
+

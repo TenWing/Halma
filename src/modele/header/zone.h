@@ -15,6 +15,7 @@
 //######################################
 //Inclusions
 #include <position.h>
+ #include <couleur.h>
 //######################################
 
 /**
@@ -75,4 +76,31 @@ struct Zone
 	* \see Couleur
 	*/
 	Couleur couleur_zone;
-}
+};
+
+/**
+* \brief initialise la liste des positions pour la zone
+* \auhtor Quentin
+* \version 1.0
+*/
+ListePositions liste_positions_init();
+
+/**
+* \brief Ajout d'une position dans la liste des positions
+* \auhtor Quentin
+* \version 1.0
+* \param liste 		la liste des positions
+* \param position 	la position à ajouter	
+*/
+void liste_positions_ajout(ListePositions* liste, Position position);
+
+/**
+* \brief Initialise la zone par rapport à la couleur
+* \auhtor Quentin
+* \version 1.0
+* \param couleur 	la couleur de la zone
+* \details La couleur correspond aux pions qui doivent se situer dans la zone pour gagner
+*/
+Zone zone_init(Couleur couleur);
+
+#endif

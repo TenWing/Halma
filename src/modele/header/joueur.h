@@ -105,5 +105,12 @@ void liste_references_pions_ajout(ListeReferencePions* liste, Pion* pion);
 */
 Pion* joueur_get_reference_pion(Joueur* joueur, int identifiant);
 
+/**
+* \brief renvoie le nombre de pion qu'à un joueur
+* \author Tendry
+* \param Joueur* joueur 	Un joueur du jeu
+* \version 1.0
+*/
+int joueur_nombre_pions(Joueur* joueur);
 #endif
 

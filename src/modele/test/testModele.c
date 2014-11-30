@@ -161,10 +161,10 @@ int main ()
 	// #########################################
 
 	//Initialisation de la zone
-	Zone zone_JAUNE = zone_init(JAUNE, 2);
+	Zone zone_BLEU = zone_init(BLEU, 2);
 
  	//Création d'un élément qui va se balader dans la liste
- 	NoeudPosition* actuel_position = zone_JAUNE.liste_positions.premier;
+ 	NoeudPosition* actuel_position = zone_BLEU.liste_positions.premier;
 
  	//Dans que actuel n'a pas atteint l'élément NULL
  	while( actuel_position != NULL)
@@ -173,8 +173,8 @@ int main ()
  		//Actuel pointe sur l'élément suivant
  		actuel_position = actuel_position->suivant;
  	}
-
- 	printf("compteur :%d\n", verification_zone(&zone_JAUNE, &joueur2));
+ 	printf("%d\n", joueur_nombre_pions(&joueur2));
+ 	printf("victoire si 1 :%d\n", verification_zone(&zone_BLEU, &joueur1));
 
 
 

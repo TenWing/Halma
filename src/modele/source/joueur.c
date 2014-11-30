@@ -96,3 +96,17 @@ Pion* joueur_get_reference_pion(Joueur* joueur, int identifiant)
 	return pion_nulle;
 }
 
+int joueur_nombre_pions(Joueur* joueur)
+{
+	NoeudReferencePion* actuel;
+	actuel = joueur -> liste_references_pions.premier;
+	int nombre_joueur=0;
+
+	while(actuel != NULL)
+	{
+		nombre_joueur++;
+		actuel = actuel -> suivant;
+	}
+
+	return nombre_joueur;
+}

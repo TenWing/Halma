@@ -136,14 +136,43 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 
 int verification_zone(Zone* zone, Joueur* joueur)
 {
+	
 	int compteur_pion=0;
 
 	NoeudReferencePion* actuel_pion = joueur->liste_references_pions.premier;
 
+
 	NoeudPosition* actuel_position = zone->liste_positions.premier;
 
  	//Dans que actuel_position n'a pas atteint l'élément NULL
- 	if(zone->zone_direction = GAUCHE)
+ 	if(zone->zone_direction == GAUCHE)
+ 	{
+ 		
+ 		while( actuel_position != NULL)
+ 		{
+ 			
+ 			while(actuel_pion != NULL)
+ 			{
+ 			
+ 				if((actuel_position -> position.x == actuel_pion -> pion->position.x) &&
+ 					(actuel_position -> position.y >= actuel_pion -> pion->position.y))
+ 				{
+ 						compteur_pion++;
+ 				}
+ 			
+ 				actuel_pion = actuel_pion -> suivant;
+ 			}
+
+ 			actuel_pion = joueur->liste_references_pions.premier;
+ 			actuel_position = actuel_position->suivant;
+ 		}
+
+ 		if(compteur_pion == joueur_nombre_pions(joueur))
+ 			return 1;
+ 		else
+ 			return 0;
+ 	}
+ 	else
  	{
  		while( actuel_position != NULL)
  		{
@@ -151,16 +180,22 @@ int verification_zone(Zone* zone, Joueur* joueur)
  			while(actuel_pion != NULL)
  			{
  				if((actuel_position -> position.x == actuel_pion -> pion->position.x) &&
- 					((actuel_position -> position.y <= actuel_pion -> pion->position.y && )))
+ 					(actuel_position -> position.y <= actuel_pion -> pion->position.y))
  				{
  						compteur_pion++;
  				}
  			
  				actuel_pion = actuel_pion -> suivant;
  			}
+
+ 			actuel_pion = joueur->liste_references_pions.premier;
  			actuel_position = actuel_position->suivant;
  		}
- 	}
 
- 	return compteur_pion;
+ 		if(compteur_pion == joueur_nombre_pions(joueur))
+ 			return 1;
+ 		else
+ 			return 0;
+ 	}
+return 0;
 }

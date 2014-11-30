@@ -13,14 +13,16 @@
 #include <modele.h>
 // ###################################
 
-void commencer_tour(Modele* modele)
+void commencer_tour(Modele* modele, Pion* pion)
 {
 	// On crée un tour
-	Tour tour = tour_init();
-	modele->
+	Tour tour = tour_init(*pion);
+	
+	// On dit au modèle qu'il y a un nouveau tour joué
+	pileTours_ajouterTour(&modele->pile_tours, tour);
 }
 
 void fin_tour(Modele* modele)
 {
-
+	
 }

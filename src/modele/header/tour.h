@@ -16,6 +16,7 @@
 //Inclusions
 #include <pion.h>
 #include <position.h>
+#include <coup.h>
 //######################################
 
 /**
@@ -42,7 +43,7 @@ struct Tour
 	* \brief la pile de coups faite pendant le tour
 	* \see tour
 	*/
-	Pilecoups pile_coups;
+	PileCoups pile_coups;
 };
 
 /**

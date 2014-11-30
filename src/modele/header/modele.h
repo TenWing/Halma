@@ -12,9 +12,12 @@
 
 //######################################
 //Inclusions
+#include <plateau.h>
+#include <joueur.h>
+#include <tour.h>
 //######################################
 
-typedef struct Modele Modele
+typedef struct Modele Modele;
 struct Modele
 {
 	/**
@@ -27,7 +30,7 @@ struct Modele
 	* \brief La pile de tours
 	* \see tour
 	*/
-	PileTours PileTours;
+	PileTours pile_tours;
 
 	/**
 	* \brief le tableau des joueurs
@@ -41,9 +44,10 @@ struct Modele
 * \brief	Commence un tour de jeu
 * \author	Tendry
 * \param	modele le modèle qui joue
+* \param	pion le pion selectionné par le joueur
 * \version 	1.0
 */
-void commencer_tour(Modele* modele);
+void commencer_tour(Modele* modele, Pion* pion);
 
 /**
 * \brief	Fini le tour de jeu

@@ -69,7 +69,7 @@ Coup pileCoups_depiler(PileCoups* pile)
 		pile->premier = tete->suivant;
 
 		//On détruit le précédent haut de pile
-		free(tete);
+		// free(tete);
 	}
 
 	return coup;

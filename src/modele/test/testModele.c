@@ -179,8 +179,6 @@ int main ()
  		actuel_position = actuel_position->suivant;
  	}
 
-	return 0;
-
 	// #########################################
 	// TEST ANNULER
 	// #########################################
@@ -189,5 +187,11 @@ int main ()
 	Pion* testeur = &modele.plateau.liste_pions.premier->pion;
 
 	commencer_tour(&modele, testeur);
+	int succes = jouer_coup(&modele, testeur, BAS);
+	printf("succes ? : %d\n", succes);
+	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
+	annuler_coup(&modele, testeur);
+
+	return 0;	
 }
 

@@ -74,4 +74,14 @@ void annuler_coup(Modele* modele, Pion* pion);
 */
 void annuler_tour(Modele* modele, Pion* pion);
 
+/**
+* \brief 	Joue un coup, cad fait un déplacement
+* \author 	Tendry
+* \param	modele le modele qui sera modifié
+* \param	pion le pion qui va se déplacer
+* \param	direction la direction de déplacement du pion
+* \return	1 coup a pu être joué 0 coup n'a pas pu
+*/
+int jouer_coup(Modele* modele, Pion* pion, Direction direction);
+
 #endif

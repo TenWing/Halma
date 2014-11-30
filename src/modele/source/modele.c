@@ -68,3 +68,8 @@ void annuler_tour(Modele* modele, Pion* pion)
 	// On change la position du pion
 	pion->position = position_init(noeud->tour.pion.position.x, noeud->tour.pion.position.y);
 }
+
+int jouer_coup(Modele* modele, Pion* pion, Direction direction)
+{
+	pion_deplacer(pion, direction);
+}

@@ -75,7 +75,13 @@ Pion pion_init(Couleur couleur, Position position, int identifiant);
 */
 int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction);
 
-// TODO documenter
+/**
+* \brief 	fait sauter un pion
+* \author	Tendry
+* \version 	1.0
+* \param	pion le pion qui saute
+* \param	direction la direction
+*/
 int pion_sauter(Pion* pion, Direction direction, Plateau* plateau);
 
  #endif

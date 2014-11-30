@@ -40,6 +40,12 @@ void commencer_tour(Modele* modele, Pion* pion)
 	pileTours_ajouterTour(&modele->pile_tours, tour);
 }
 
+void fin_tour(Pion* pion)
+{
+	// Le pion ne peut plus sauter
+	pion->saut = 0;
+}
+
 void annuler_coup(Modele* modele, Pion* pion)
 {
 	// On accède au tour courant

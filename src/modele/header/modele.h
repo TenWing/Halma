@@ -57,6 +57,13 @@ Modele modele_init(int nombreJoueurs);
 void commencer_tour(Modele* modele, Pion* pion);
 
 /**
+* \brief 	Finit un tour de jeu
+* \param	pion le pion modifié
+* \author	Tendry
+*/
+void fin_tour(Pion* pion);
+
+/**
 * \brief	Annule un coup dans le modèle
 * \author	Tendry
 * \param	modele le modèle qui est modifié

@@ -141,10 +141,12 @@ int main ()
  	plateau = plateau_init(2);
 
 	Joueur joueur1 = joueur_init(&plateau, JAUNE);
-	Joueur joueur2 = joueur_init(&plateau, VERT);	
+	Joueur joueur2 = joueur_init(&plateau, BLEU);	
 	Pion* pion_test;
 
 	printf("Id de pions : %d\n", joueur1.liste_references_pions.premier->pion->identifiant);
+	printf("Id de pions : %d\n", joueur2.liste_references_pions.premier->pion->identifiant);
+
 
 	pion_test=joueur_get_reference_pion(&joueur1, 25);
 
@@ -178,5 +180,14 @@ int main ()
  	}
 
 	return 0;
+
+	// #########################################
+	// TEST ANNULER
+	// #########################################
+
+	Modele modele = modele_init(2);	
+	Pion* testeur = &modele.plateau.liste_pions.premier->pion;
+
+	commencer_tour(&modele, testeur);
 }
 

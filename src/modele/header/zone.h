@@ -72,7 +72,8 @@ struct Zone
 
 	/**
 	* \brief la couleur de la zone
-	* \details la couleur des pions doit correspondre à la couleur de la zone
+	* \details la couleur des pions doit correspondre à la couleur de la zone, car la couleur correspond 
+			   à la couleur de victoire du joueur qui arrive dans cette zone (le joueur jaune doit aller dans la zone jaune)
 	* \see Couleur
 	*/
 	Couleur couleur_zone;
@@ -101,6 +102,6 @@ void liste_positions_ajout(ListePositions* liste, Position position);
 * \param couleur 	la couleur de la zone
 * \details La couleur correspond aux pions qui doivent se situer dans la zone pour gagner
 */
-Zone zone_init(Couleur couleur);
+Zone zone_init(Couleur couleur, int nombre_joueur);
 
 #endif

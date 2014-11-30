@@ -40,22 +40,6 @@ Pion pion_init(Couleur couleur, Position position, int identifiant)
 
 int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction)
 {
-	// ############################################
-	// Si le pion est entrain de sauter
-	if(pion->saut)
-	{
-		// On essaye de le faire sauter
-		if(pion_sauter(pion, direction, plateau))
-		{
-			// S'il a réussit a sauter déplacement fait
-			return 1;		
-		}
-		else
-			// Sinon il n'a pas réussit a sauter il peut essayer de sauter dans une autre direction
-			return 0;
-	}
-	// ############################################
-
 	//La position de la direction souhaitée
 	Position position_direction = pion->position;
 
@@ -105,6 +89,30 @@ int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction)
 			position_direction.y--;
 			break;
 	}
+
+	// ############################################
+	// Si le pion est entrain de sauter
+	if(pion->saut)
+	{
+		// On regarde s'il va sauter par dessus un pion
+		if(plateau_getpion(plateau, position_direction).identifiant != -1)
+		{
+			// On essaye de le faire sauter
+			if(pion_sauter(pion, direction, plateau))
+			{
+				// S'il a réussit a sauter déplacement fait
+				return 1;		
+			}
+			else
+				// Sinon il n'a pas réussit a sauter il peut essayer de sauter dans une autre direction
+				return 0;
+		}
+		else
+			// Sinon il n'a pas réussit a sauter il peut essayer de sauter dans une autre direction
+			return 0;
+	}
+	// ############################################
+
 
 	// On regarde si quelque chose empêche le déplacement !
 	if(position_hors_plateau(&position_direction, plateau))

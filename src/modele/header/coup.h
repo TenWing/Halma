@@ -38,7 +38,7 @@ struct Coup
 	* \details Un pointeur car il s'agit d'une information ne nécessitant pas d'exister en tant que tel
 	* \see Pion
 	*/
-	Pion* pion;
+	Pion pion;
 
 	/**
 	* \brief la position que le pion occupait juste avant la fin de ce coup

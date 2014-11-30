@@ -52,8 +52,8 @@ int main ()
 
  	//Donc normalement on devrait lire 2 puis 1
  	printf("Je dépile\n");
- 	printf("%d\n", pileCoups_depiler(&pile).pion->identifiant);
- 	printf("%d\n", pileCoups_depiler(&pile).pion->identifiant);
+ 	printf("%d\n", pileCoups_depiler(&pile).pion.identifiant);
+ 	printf("%d\n", pileCoups_depiler(&pile).pion.identifiant);
 
 	// ##########################################
 	// TEST MODULE PLATEAU 
@@ -191,6 +191,17 @@ int main ()
 	printf("succes ? : %d\n", succes);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	annuler_coup(&modele, testeur);
+	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
+	jouer_coup(&modele, testeur, GAUCHE);
+	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
+	jouer_coup(&modele, testeur, DROITE);
+	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
+	jouer_coup(&modele, testeur, BAS);
+	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
+	annuler_coup(&modele, testeur);
+	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
+	annuler_coup(&modele, testeur);
+	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 
 	return 0;	
 }

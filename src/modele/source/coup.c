@@ -25,7 +25,7 @@ Coup coup_init(Pion* p, Position pos)
 	Coup coup;
 
 	//Attribution du coup
-	coup.pion = p;
+	coup.pion = pion_init(p->couleur, p->position, p->identifiant);
 	coup.precedente = pos;
 
 	//On renvoie la structure initialisée
@@ -55,6 +55,7 @@ Coup pileCoups_depiler(PileCoups* pile)
 
 	//Le coup qu'on cherche
 	Coup coup;
+	coup.pion.identifiant = -1;
 
 	//Si la pile n'est pas vide
 	if(pile->premier != NULL)

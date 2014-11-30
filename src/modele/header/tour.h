@@ -42,7 +42,7 @@ struct Tour
 	* \brief la pile de coups faite pendant le tour
 	* \see tour
 	*/
-	Pilecoups;
+	Pilecoups pile_coups;
 };
 
 /**

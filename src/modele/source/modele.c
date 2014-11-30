@@ -15,7 +15,9 @@
 
 void commencer_tour(Modele* modele)
 {
-
+	// On crée un tour
+	Tour tour = tour_init();
+	modele->
 }
 
 void fin_tour(Modele* modele)

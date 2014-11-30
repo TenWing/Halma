@@ -1,5 +1,3 @@
-
-
 /**
  * \file      coup.h
  * \author    Tendry

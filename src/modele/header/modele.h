@@ -37,8 +37,15 @@ struct Modele
 	* 
 	*/
 	Joueur tableau_joueur[4];
-
 };
+
+/**
+* \brief 	initialise le modèle
+* \author 	Tendry
+* \param	nombreJoueurs le nombre de joueurs dans le modèle
+* \version	1.0
+*/
+Modele modele_init(int nombreJoueurs);
 
 /**
 * \brief	Commence un tour de jeu
@@ -50,11 +57,21 @@ struct Modele
 void commencer_tour(Modele* modele, Pion* pion);
 
 /**
-* \brief	Fini le tour de jeu
+* \brief	Annule un coup dans le modèle
 * \author	Tendry
-* \param	modele le modèle qui joue
-* \version 	1.0
+* \param	modele le modèle qui est modifié
+* \param	pion le pion qui sera modifié
+* \version	1.0
 */
-void fin_tour(Modele* modele);
+void annuler_coup(Modele* modele, Pion* pion);
+
+/**
+* \brief	Annule un tour dans le modèle
+* \author	Tendry
+* \param	modele le modèle qui est modifié
+* \param	pion le pion qui sera modifié
+* \version	1.0
+*/
+void annuler_tour(Modele* modele, Pion* pion);
 
 #endif

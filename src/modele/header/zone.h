@@ -15,7 +15,8 @@
 //######################################
 //Inclusions
 #include <position.h>
- #include <couleur.h>
+#include <couleur.h>
+#include <joueur.h>
 //######################################
 
 /**
@@ -77,6 +78,14 @@ struct Zone
 	* \see Couleur
 	*/
 	Couleur couleur_zone;
+
+	/**
+	* \brief la direction pour la vérification de la zone
+	* \details La direction permet de savoir dans quel sens la fonction verification_zone doit calculer pour
+				compter le nombre de pion que la zone possède
+	* \see Direction
+	*/
+	Direction zone_direction;
 };
 
 /**
@@ -103,5 +112,15 @@ void liste_positions_ajout(ListePositions* liste, Position position);
 * \details La couleur correspond aux pions qui doivent se situer dans la zone pour gagner
 */
 Zone zone_init(Couleur couleur, int nombre_joueur);
+
+/**
+* \brief verifie que la zone contient tous les pions du joueur
+* \auhtor Quentin
+* \version 1.0
+* \param zone 		la zone où doivent être les pions
+* \param joueur 	le joueur qui doit amener ses pions à la zone de sa victoire
+* \return le nombre de pion dans la zone
+*/
+int verification_zone(Zone* zone, Joueur* joueur);
 
 #endif

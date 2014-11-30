@@ -13,9 +13,10 @@
 #include <stdlib.h>
 #include <zone.h>
 #include <position.h>
+#include <joueur.h>
 
 ListePositions liste_positions_init()
- {
+{
  	//Création de la liste des positions
  	ListePositions liste_positions;
 
@@ -24,7 +25,7 @@ ListePositions liste_positions_init()
 
  	//Retourne la liste des positions initialisée
  	return liste_positions;
- }
+}
 
 void liste_positions_ajout(ListePositions* liste, Position position)
 {
@@ -74,13 +75,15 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 		switch(couleur)
 		{
 			case JAUNE:
-				liste_positions_ajout(&zone.liste_positions, position_init(0,12));
-				liste_positions_ajout(&zone.liste_positions, position_init(1,12));
-				liste_positions_ajout(&zone.liste_positions, position_init(2,13));
-				liste_positions_ajout(&zone.liste_positions, position_init(3,14));
+				zone.zone_direction = DROITE;
+				liste_positions_ajout(&zone.liste_positions, position_init(0,11));
+				liste_positions_ajout(&zone.liste_positions, position_init(1,11));
+				liste_positions_ajout(&zone.liste_positions, position_init(2,12));
+				liste_positions_ajout(&zone.liste_positions, position_init(3,13));
 				liste_positions_ajout(&zone.liste_positions, position_init(4,14));
 				break;
 			case BLEU:
+				zone.zone_direction = GAUCHE;
 				liste_positions_ajout(&zone.liste_positions, position_init(11,1));
 				liste_positions_ajout(&zone.liste_positions, position_init(12,2));
 				liste_positions_ajout(&zone.liste_positions, position_init(13,3));
@@ -97,31 +100,67 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 		switch(couleur)
 		{
 			case ROUGE :
+				zone.zone_direction = DROITE;
 				liste_positions_ajout(&zone.liste_positions, position_init(12,14));
 				liste_positions_ajout(&zone.liste_positions, position_init(13,13));
 				liste_positions_ajout(&zone.liste_positions, position_init(14,12));
 				liste_positions_ajout(&zone.liste_positions, position_init(15,12));
 				break;
 			case BLEU:
+				zone.zone_direction = GAUCHE;
 				liste_positions_ajout(&zone.liste_positions, position_init(12,1));
 				liste_positions_ajout(&zone.liste_positions, position_init(13,2));
 				liste_positions_ajout(&zone.liste_positions, position_init(14,3));
 				liste_positions_ajout(&zone.liste_positions, position_init(15,3));
 				break;
 			case VERT:
+				zone.zone_direction = GAUCHE;
 				liste_positions_ajout(&zone.liste_positions, position_init(0,3));
 				liste_positions_ajout(&zone.liste_positions, position_init(1,3));
 				liste_positions_ajout(&zone.liste_positions, position_init(2,2));
 				liste_positions_ajout(&zone.liste_positions, position_init(3,1));
 				break;
 			case JAUNE:
+				zone.zone_direction = DROITE;
 				liste_positions_ajout(&zone.liste_positions, position_init(0,12));
 				liste_positions_ajout(&zone.liste_positions, position_init(1,12));
 				liste_positions_ajout(&zone.liste_positions, position_init(2,13));
 				liste_positions_ajout(&zone.liste_positions, position_init(3,14));
+				break;
+			default:
 				break;
 		}
 	}
 	return zone;
 }
 
+int verification_zone(Zone* zone, Joueur* joueur)
+{
+	int compteur_pion=0;
+
+	NoeudReferencePion* actuel_pion = joueur->liste_references_pions.premier;
+
+	NoeudPosition* actuel_position = zone->liste_positions.premier;
+
+ 	//Dans que actuel_position n'a pas atteint l'élément NULL
+ 	if(zone->zone_direction = GAUCHE)
+ 	{
+ 		while( actuel_position != NULL)
+ 		{
+
+ 			while(actuel_pion != NULL)
+ 			{
+ 				if((actuel_position -> position.x == actuel_pion -> pion->position.x) &&
+ 					((actuel_position -> position.y <= actuel_pion -> pion->position.y && )))
+ 				{
+ 						compteur_pion++;
+ 				}
+ 			
+ 				actuel_pion = actuel_pion -> suivant;
+ 			}
+ 			actuel_position = actuel_position->suivant;
+ 		}
+ 	}
+
+ 	return compteur_pion;
+}

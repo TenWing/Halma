@@ -9,12 +9,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
-* \brief fonction basique de test d'affichage
-* \author Tendry
-* \version 1.0
-*/
-void affiche()
+void affiche_menu_principal()
 {
-	printf("Ceci est un test d'affichage\n");
+	printf("########################################\n");
+	printf("||*----------MENU PRINCIPAL----------*||\n");
+	printf("########################################\n");
+	printf("____Menu principal du jeu de l'Halma____\n");
+	printf("a. Lancer une partie\n");
+	printf("b. Charger une partie\n");
+	printf("c. Afficher les règles du jeu\n");
+	printf("d. Quitter\n");
+	printf("########################################\n");
+}
+
+void affiche_regles()
+{
+
+}
+
+void affiche_configuration_partie()
+{
+
 }

@@ -27,7 +27,6 @@
 int main()
 {
 	Matrice m = alloue(5,5);
-	affiche();
 	printf("%d tu pues du cul\n", m.nbLignes);
 	return 0;
 }

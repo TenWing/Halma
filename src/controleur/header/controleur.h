@@ -41,3 +41,10 @@ int recuperer_entier();
 * \param	joueur le joueur qui joue le tour
 */
 void jouer_tour(Joueur* joueur);
+
+/**
+* \brief 	permet de supprimer '\n' d'une chaine
+* \author 	Quentin
+* \param	chaine la chaine où l'on veut enlever '\n'
+*/
+void clean(char* chaine);

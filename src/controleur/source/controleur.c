@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <vue.h>
 #include <modele.h>
+#include <string.h>
 // #################################
 
 void viderBuffer()
@@ -20,6 +21,16 @@ void viderBuffer()
     {
         c = getchar();
     }
+}
+
+void clean (char* chaine)
+{
+	char* p = strchr(chaine, '\n');
+
+	if(p)
+		*p = 0;
+	else
+		viderBuffer();
 }
 
 char recuperer_caractere()
@@ -32,12 +43,13 @@ char recuperer_caractere()
 int recuperer_entier()
 {	
 	char chaine[100];
+	int nombre;
 
-	fgets(chaine, 100, stdin);
+	fgets(chaine, sizeof chaine, stdin);
 
-	int nombre = atoi(chaine);
+	clean(chaine);
 
-	viderBuffer();
+	sscanf(chaine, "%d", &nombre);
 
 	return nombre;
 }

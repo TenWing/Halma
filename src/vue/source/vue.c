@@ -49,8 +49,8 @@ void affiche_configuration_partie()
 	printf("		########################################\n");
 	printf("		||*-------CONFIGURATION PARTIE-------*||\n");
 	printf("		########################################\n");	
-	printf("		Sélectionnez le nombre de joueurs\n");
-	printf("		!Soit 2 soit 4 joueurs !\n");
+	printf("		Sélectionnez le nombre de joueurs!\n");
+	printf("		Le nombre de joueurs varie entre 1 et 4 joueurs\n");
 	printf("		La partie commencera juste après !\n");
 	printf("		########################################\n");	
 }
@@ -68,4 +68,14 @@ void presentation_jeu()
 	printf("		####  ||  || ||   || |||||| ||       || ||   ||  ####\n");
 	printf("		#####################################################\n");
 	printf("\n\n\n\n\n");
+}
+
+void clean_terminal()
+{
+	system("clear");
+}
+
+void erreur_saisie()
+{
+	printf("		Veuillez rentrer les caractères qui vous sont demandés !\n");
 }

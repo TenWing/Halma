@@ -15,6 +15,7 @@
 #include <plateau.h>
 #include <joueur.h>
 #include <tour.h>
+#include <zone.h>
 //######################################
 
 typedef struct Modele Modele;
@@ -37,6 +38,12 @@ struct Modele
 	* 
 	*/
 	Joueur tableau_joueur[4];
+
+	/**
+	* \brief les zones de victoire
+	* 
+	*/
+	Zone tableau_zone[4];
 };
 
 /**

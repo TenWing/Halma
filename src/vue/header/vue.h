@@ -42,4 +42,17 @@ void affiche_configuration_partie();
 */
 void presentation_jeu();
 
+/**
+* \brief	rafraîchit le terminal
+* \author	Tendry
+* \version	1.0
+*/
+void clean_terminal();
+
+/**
+* \brief	Demande à l'utilisateur de saisir les choix imposés
+* \author	Quentin
+* \version	1.0
+*/
+void erreur_saisie();
 #endif

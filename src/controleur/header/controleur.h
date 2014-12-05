@@ -44,4 +44,9 @@ void jouer_tour(Joueur* joueur, Modele* modele);
 */
 void clean(char* chaine);
 
+/**
+* \brief 	permet d'initialiser le controleur du jeu de l'halma
+* \author 	Quentin
+* \param	nombreJoueurs	le nombre de joueurs qui veut jouer au jeu de l'Halma
+*/
 Controleur controleur_init(int nombreJoueurs);

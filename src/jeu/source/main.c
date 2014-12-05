@@ -15,7 +15,7 @@
 #include "../../../include/libMatrice/matrice.h"
 
 //Inclusion de la vue
-#include "../../vue/header/vue.h"
+#include <vue.h>
 //###########################################
 
 /**
@@ -28,5 +28,57 @@ int main()
 {
 	Matrice m = alloue(5,5);
 	printf("%d tu pues du cul\n", m.nbLignes);
+
+	/*	char choix;
+	int nombre_joueur;
+
+	presentation_jeu();
+
+	affiche_menu_principal();
+
+	choix=saisir_caractere();
+
+	switch(choix)
+	{
+		case 'a' :
+					clean_terminal();
+					affiche_configuration_partie();
+
+					nombre_joueur = recuperer_entier();
+
+					switch(nombre_joueur)
+					{
+						case 2 :
+									controleur_init(nombre_joueur);
+									clean_terminal();
+									break;
+						case 4 :
+									controleur_init(nombre_joueur);
+									clean_terminal();
+									break;
+						default  :
+									erreur_saisie();
+									affiche_configuration_partie();
+									nombre_joueur = recuperer_entier();
+									clean_terminal();
+									break;
+					}
+
+					break;
+		case 'b' :
+					clean_terminal();
+					break;
+		case 'c' :
+					clean_terminal();
+					break;
+		case 'd' :
+					clean_terminal();
+					break;
+		default  :
+					clean_terminal();
+					break;
+	}
+
+	*/
 	return 0;
 }

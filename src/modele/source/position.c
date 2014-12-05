@@ -23,3 +23,4 @@ Position position_init(int x, int y)
 
 	return position;
 }
+

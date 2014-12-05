@@ -51,6 +51,11 @@ struct Pion
  	* \brief indique si le pion est entrain d'effectuer des sauts ou non
  	*/
  	int saut;
+
+ 	/**
+ 	* \brief indique si le pion a été selectionné par le joueur
+ 	*/
+ 	int selectionne;
 };
 
 /**

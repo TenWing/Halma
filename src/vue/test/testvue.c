@@ -1,3 +1,4 @@
+
 /**
 *	\file	testvue.c
 *	\brief	teste les fonctions d'affichage
@@ -22,15 +23,20 @@
 */
 int main(void)
 {
+	Mode mode;
 	Plateau plateau = plateau_init(2);
 
-	affiche_plateau(&plateau);
+	affiche_plateau(&plateau, mode);
 
 	printf("\n\n");
 
 	pion_deplacer(&plateau.liste_pions.premier->pion, &plateau, BAS);
 
-	affiche_plateau(&plateau);
-	
+	affiche_plateau(&plateau, mode);
+
+	presentation_jeu();
+	affiche_menu_principal();
+	affiche_configuration_partie();
+	affiche_regles();
 	return 0;
 }

@@ -35,4 +35,11 @@ void affiche_regles();
 */
 void affiche_configuration_partie();
 
+/**
+* \brief	affiche la présentation du jeu de l'Halma
+* \author	Tendry
+* \version	1.0
+*/
+void presentation_jeu();
+
 #endif

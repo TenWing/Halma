@@ -11,22 +11,22 @@
 */
 int main(void)
 {
+
+	// ##########################################
+	// TEST MODULE SAISIE
+	// ##########################################
 	printf("%c\n", recuperer_caractere());
 	printf("%d\n", recuperer_entier());
 
-	Plateau plateau;
-	Joueur joueur_ROUGE;
-	ListePions liste_pions;
-	Pion pion;
+	// ##########################################
+	// TEST MODULE CONTROLEUR 
+	// ##########################################
 
-	plateau = plateau_init(4);
-	liste_pions = liste_pions_init();
-	pion = pion_init(ROUGE, position_init(0,0), 3);
-	liste_pions_ajout(&liste_pions, pion);
-	
-	joueur_ROUGE = joueur_init(&plateau, ROUGE);
+	Controleur controleur = controleur_init(4);
 
-	jouer_tour(&joueur_ROUGE);
+	Joueur joueur_ROUGE = joueur_init(&(controleur.modele.plateau), ROUGE);
+
+	jouer_tour(&joueur_ROUGE, &(controleur.modele));
 
 
 	return 0;

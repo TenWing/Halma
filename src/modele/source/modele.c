@@ -24,8 +24,15 @@ Modele modele_init(int nombreJoueurs)
 	// On attribue le bon nombre de joueurs
 	if(nombreJoueurs > 2)
 	{
-		modele.tableau_joueur[0] = joueur_init(&modele.plateau, BLEU);
+		modele.tableau_joueur[0] = joueur_init(&modele.plateau, ROUGE);		
+		modele.tableau_joueur[1] = joueur_init(&modele.plateau, BLEU);
+		modele.tableau_joueur[2] = joueur_init(&modele.plateau, VERT);
+		modele.tableau_joueur[3] = joueur_init(&modele.plateau, JAUNE);
+	}
+	else
+	{
 		modele.tableau_joueur[1] = joueur_init(&modele.plateau, JAUNE);
+		modele.tableau_joueur[0] = joueur_init(&modele.plateau, BLEU);
 	}
 
 	return modele;

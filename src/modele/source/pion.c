@@ -36,6 +36,9 @@ Pion pion_init(Couleur couleur, Position position, int identifiant)
 	// Il saute pas !!!!
 	pion.saut = 0;
 
+	// Il est pas selectionné 
+	pion.selectionne = 0;
+
 	return pion;
 }
 
@@ -205,3 +208,47 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau)
 
 	return 1;
 }
+/*
+int direction_opposée(Direction direction, Pion* pion)
+{
+	//On regarde qu'elle est le direction souhaitée
+	switch(direction)
+	{
+		case HAUT:
+			if(pion->position.x)
+
+			position_direction.x -= 2;
+			break;
+
+		case HAUT_DROITE:
+			position_direction.x -= 2;
+			position_direction.y += 2;
+			break;
+
+		case DROITE:
+			position_direction.y += 2;
+			break;
+
+		case BAS_DROITE:
+			position_direction.y += 2;
+			position_direction.x += 2;
+			break;
+
+		case BAS:
+			position_direction.x += 2;
+			break;
+
+		case BAS_GAUCHE:
+			position_direction.x += 2;
+			position_direction.y -= 2;
+			break;
+
+		case GAUCHE:
+			position_direction.y -= 2;
+			break;
+
+		case HAUT_GAUCHE:
+			position_direction.x -= 2;
+			position_direction.y -= 2;
+			break;
+}*/

@@ -12,35 +12,30 @@
 // #################################
 
 /**
-* \brief 	vide le buffer
-* \author 	internet
+* \brief Un contrôleur du jeu de l'Halma
+* \author Quentin
+* \version 1.0
 */
-void viderBuffer();
+typedef struct Controleur Controleur;
+struct Controleur
+{
+	/**
+ 	* \brief Le modele du jeu de l'Halma
+ 	* \see Modele
+ 	*/
+	Modele modele;
 
-// TOUTES LES FONCTIONS CONCERNENT LE JEU DE L'HALMA
-
-/**
-* \brief	Demande à l'utilisateur d'entrer un caractère
-* \author	Tendry
-* \version 	1.0
-* \return	Le caractère saisit
-*/
-char recuperer_caractere();
-
-/**
-* \brief	Demande à l'utilisateur d'entrer un entier
-* \author	Tendry
-* \version 	1.0
-* \return	L'entier saisit
-*/
-int recuperer_entier();
-
+	/**
+ 	* \brief le nombre de joueurs 
+ 	*/
+ 	int nombreJoueurs;
+};
 /**
 * \brief 	permet de jouer un tour de jeu complet
 * \author 	Tendry
 * \param	joueur le joueur qui joue le tour
 */
-void jouer_tour(Joueur* joueur);
+void jouer_tour(Joueur* joueur, Modele* modele);
 
 /**
 * \brief 	permet de supprimer '\n' d'une chaine
@@ -48,3 +43,5 @@ void jouer_tour(Joueur* joueur);
 * \param	chaine la chaine où l'on veut enlever '\n'
 */
 void clean(char* chaine);
+
+Controleur controleur_init(int nombreJoueurs);

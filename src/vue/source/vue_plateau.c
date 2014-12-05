@@ -1,3 +1,4 @@
+
 /**
 * \file		vue_plateau.c
 * \brief	Contient le code source du module vue_plateau
@@ -13,7 +14,7 @@
 #include <position.h>
 // ######################
 
-void affiche_plateau(Plateau* plateau)
+void affiche_plateau(Plateau* plateau, Mode mode)
 {
 	// Variables de parcours
 	int i = 0, j = 0;
@@ -23,13 +24,13 @@ void affiche_plateau(Plateau* plateau)
 		for(j = 0; j < plateau->matrice.nbColonnes; j++)
 		{
 			Position position = position_init(i, j);
-			affiche_case(plateau, &position);
+			affiche_case(plateau, &position, mode);
 		}
 		printf("\n");
 	}
 }
 
-void affiche_case(Plateau* plateau, Position* position)
+void affiche_case(Plateau* plateau, Position* position, Mode mode)
 {
 	// On récupère le contenu 
 	Pion pion = plateau_getpion(plateau, *position);
@@ -48,33 +49,43 @@ void affiche_case(Plateau* plateau, Position* position)
 		// On adapte la couleur !!
 		char couleur[10];
 
-		switch(pion.couleur)
+		// Si le pion est selectionné alors il est mis en surbrillance
+		if(pion.selectionne)
+			sprintf(couleur,"%s", "\033[30m\033[47m");
+		// Sinon il s'affiche normalement
+		else
 		{
-			case ROUGE:
-				sprintf(couleur,"%s", "\033[31m");
-				break;
+			switch(pion.couleur)
+			{
+				case ROUGE:
+					sprintf(couleur,"%s", "\033[30m\033[41m");
+					break;
 
-			case BLEU:
-				sprintf(couleur,"%s", "\033[34m");
-				break;
+				case BLEU:
+					sprintf(couleur,"%s", "\033[30m\033[44m");
+					break;
 
-			case VERT:
-				sprintf(couleur,"%s", "\033[32m");
-				break;
+				case VERT:
+					sprintf(couleur,"%s", "\033[30m\033[42m");
+					break;
 
-			case JAUNE:
-				sprintf(couleur,"%s", "\033[33m");
-				break;
+				case JAUNE:
+					sprintf(couleur,"%s", "\033[30m\033[43m");					
+					break;
 
-			default:
-				break;		
+				default:
+					break;		
+			}
 		}
 
 		// On affiche la couleur
 		printf("%s", couleur);
 
 		// Puis le pion
-		printf("[%s]", affiche);
+		if(mode == SELECTION)
+			printf("[%s]", affiche);
+		else
+			printf("[☯☯]");
 	}
 	else
 	{

@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vue.h>
+#include <vue_jeu.h>
+#include <vue_plateau.h>
 #include <modele.h>
 #include <string.h>
 #include <saisie.h>
@@ -28,23 +30,43 @@ Controleur controleur_init(int nombreJoueurs)
 	return controleur;
 }
 
-void jouer_tour(Joueur* joueur, Modele* modele)
+void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 {
 	// Le pion qui jouera
 	Pion* pion = NULL;
 
-	// La direction qu'il prendra
-	//Direction direction;
+	// La variable qui stocke les choix utilisateur
+	char choix;
 
-	// int deplacement=1, jouer=1;
-	// char demande_fin_tour, demande_annuler_coup, demande_garder_pion;
-	// int pave_numerique;
+	do
+	{
+		system("clear");
+		// On affiche le menu de debut de tour
+		affiche_menu_commencer_tour();
+		choix = recuperer_caractere();
 
-	// On demande à l'utilisateur de sélectionner
-	// ABSOLUMENT un pion
-	while(!selectionner_pion(joueur, &pion));	
+		// Cas joueur joue un coup :
+		if(choix == 'a')
+		{
+			// On doit selectionner un pion
+			while(!selectionner_pion(modele, joueur, &pion));			 
+		
+			// On joue un coup
+			controleur_jouer_coup(joueur, modele, pion);
+		}
+		// Cas joueur revient au tour d'avant
+		else if(choix == 'b')
+		{
+			// TODO
+		}
+		// Cas sauvegarder
+		else if(choix == 'c')
+		{
+			// TODO
+		}
 
-	commencer_tour(modele, pion);
+	}while(choix != 'd');
+
 	/*
 	// Tant que l'utilisateur DOIT jouer
 	while(jouer)
@@ -117,13 +139,22 @@ void jouer_tour(Joueur* joueur, Modele* modele)
 	}*/
 }
 
-int selectionner_pion(Joueur* joueur, Pion** pion)
+void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
+{
+	system("clear");
+	affiche_plateau(&modele->plateau, AFFICHAGE);
+	affiche_menu_coup(0);
+}
+
+int selectionner_pion(Modele* modele, Joueur* joueur, Pion** pion)
 {
 	// L'identifiant du pion qu'on veut récuperer
 	int identifiant;
 
 	// FONCTION DE LA VUE QUI AFFICHE CE QUE DOIT FAIRE L'UTILISATEUR
-	printf("Selectionnez un pion\n");
+	system("clear");
+	affiche_plateau(&modele->plateau, SELECTION);
+	affiche_selection_pion();
 
 	//On récupère un identifiant d'un pion
 	identifiant=recuperer_entier();
@@ -146,7 +177,7 @@ int selectionner_direction(Direction* direction)
 	int pave_numerique;
 
 	//FONCTION DE LA VUE QUI Demander la direction
-	printf("Direction: \n");
+	affiche_selection_direction();
 
 	// On récupère la direction souhaitée
 	pave_numerique = recuperer_entier();

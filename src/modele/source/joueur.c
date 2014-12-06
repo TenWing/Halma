@@ -87,6 +87,7 @@ Pion* joueur_get_reference_pion(Joueur* joueur, int identifiant)
 	{
 		if(identifiant == actuel->pion->identifiant)
 		{
+			actuel->pion->selectionne = 1;
 			return (actuel->pion);
 		}
 

@@ -70,6 +70,12 @@ struct Pion
 Pion pion_init(Couleur couleur, Position position, int identifiant);
 
 /**
+* \brief	permet de copier un pion
+* \author 	Tendry
+*/
+Pion pion_copie(Pion pion);
+
+/**
 * \brief	déplace un pion sur la grille
 * \author 	Tendry
 * \param	pion 		le pion qui sera déplacé

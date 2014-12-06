@@ -36,10 +36,33 @@ Pion pion_init(Couleur couleur, Position position, int identifiant)
 	// Il saute pas !!!!
 	pion.saut = 0;
 
-	// Il est pas selectionné 
+	// Il est pas selectionné
 	pion.selectionne = 0;
 
 	return pion;
+}
+
+Pion pion_copie(Pion pion)
+{
+	// La copie
+	Pion copie;
+	
+	// Couleur
+	copie.couleur = pion.couleur;
+
+	//Copie de la position
+	copie.position = pion.position;
+	
+	// Copie de l'identifiant
+	copie.identifiant = pion.identifiant;
+
+	// Il saute pas !!!!
+	copie.saut = pion.saut;
+
+	// Il est pas selectionné
+	copie.selectionne = pion.selectionne;
+
+	return copie;
 }
 
 int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction)

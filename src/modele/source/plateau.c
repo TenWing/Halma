@@ -136,7 +136,7 @@ Pion plateau_getpion(Plateau* plateau, Position position)
 	{	
 		if(actuel->pion.position.x == position.x && actuel->pion.position.y == position.y)
 		{
-			pion = pion_init(actuel->pion.couleur, actuel->pion.position, actuel->pion.identifiant);
+			pion = pion_copie(actuel->pion);
 			return pion;
 		}
 

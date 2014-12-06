@@ -31,9 +31,7 @@ int main(void)
 	affiche_plateau(&controleur.modele.plateau, AFFICHAGE);
 	affiche_plateau(&controleur.modele.plateau, SELECTION);
 
-	jouer_tour(&controleur.modele.tableau_joueur[0], &(controleur.modele));
-	affiche_plateau(&controleur.modele.plateau, AFFICHAGE);
-
+	controleur_jouer_tour(&controleur.modele.tableau_joueur[0], &(controleur.modele));
 
 	return 0;
 

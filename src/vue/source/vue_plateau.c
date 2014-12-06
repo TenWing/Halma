@@ -21,6 +21,8 @@ void affiche_plateau(Plateau* plateau, Mode mode)
 
 	for(i = 0; i < plateau->matrice.nbLignes; i++)
 	{
+		// A chaque ligne on décale l'affichage
+		printf("\t");
 		for(j = 0; j < plateau->matrice.nbColonnes; j++)
 		{
 			Position position = position_init(i, j);
@@ -34,7 +36,6 @@ void affiche_case(Plateau* plateau, Position* position, Mode mode)
 {
 	// On récupère le contenu 
 	Pion pion = plateau_getpion(plateau, *position);
-
 	// S'il y a un pion à la position
 	if(pion.identifiant != -1)
 	{

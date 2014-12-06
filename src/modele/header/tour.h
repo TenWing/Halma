@@ -96,6 +96,15 @@ struct PileTours
 */
 Tour tour_init(Pion p);
 
+/**
+* \brief change le pion associé à un tour
+* \author Tendry
+* \version 1.0
+* \param tour le tour modifié
+* \param pion le nouveau pion
+*/
+void tour_changer_pion(Tour* tour, Pion* pion);
+
 //######################################
 //FONCTIONS PILE TOURS
 //######################################

@@ -25,6 +25,11 @@ Tour tour_init(Pion p)
 	return tour;
 }
 
+void tour_changer_pion(Tour* tour, Pion* pion)
+{
+	tour->pion = pion_init(pion->couleur, pion->position, pion->identifiant);	
+}
+
 PileTours pileTours_init()
 {
 	// Création de la pile

@@ -65,7 +65,8 @@ $(EXEC):	 	$(OBJ) $(MAIN) $(MODEL) $(VUE)
 #nettoyage des .o
 clean:
 				@rm -rf $(MODEL_FOLDER)/*.o
-				@rm -rf $(SOURCE_FOLDER)/*.o
+				@rm -rf $(SOURCE_FOLDER)/*.o				@rm -rf $(SOURCE_FOLDER)/*.o
+				@rm -rf $(VUE_FOLDER)/*.o
 				@rm -rf *.o
 
 #execution

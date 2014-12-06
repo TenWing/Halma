@@ -26,7 +26,7 @@ Coup coup_init(Pion* p, Position pos)
 	Coup coup;
 
 	//Attribution du coup
-	coup.pion = pion_init(p->couleur, p->position, p->identifiant);
+	coup.pion = pion_copie(*p);
 	coup.precedente = pos;
 
 	//On renvoie la structure initialisée

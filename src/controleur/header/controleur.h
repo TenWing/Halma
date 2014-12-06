@@ -34,8 +34,18 @@ struct Controleur
 * \brief 	permet de jouer un tour de jeu complet
 * \author 	Tendry
 * \param	joueur le joueur qui joue le tour
+* \param	modele le moteur de jeu pour jouer le coup
 */
-void jouer_tour(Joueur* joueur, Modele* modele);
+void controleur_jouer_tour(Joueur* joueur, Modele* modele);
+
+/**
+* \brief	sous fonction permettant de jouer un coup
+* \author	Tendry
+* \version	1.0
+* \param	joueur le joueur qui joue le tour
+* \param	modele le moteur de jeu pour jouer le coup 
+*/
+void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion);
 
 /**
 * \brief 	permet de supprimer '\n' d'une chaine
@@ -59,7 +69,7 @@ Controleur controleur_init(int nombreJoueurs);
 * \version 	1.0
 * \return	1 si succès 0 si échec
 */
-int selectionner_pion(Joueur* joueur, Pion** pion);
+int selectionner_pion(Modele* modele, Joueur* joueur, Pion** pion);
 
 /**
 * \brief 	Demande à l'utilisateur une direction

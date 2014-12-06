@@ -41,4 +41,13 @@ void affiche_menu_commencer_tour();
 */
 void affiche_menu_coup(int retour);
 
+
+/**
+* \brief	Affiche ce que l'utilisateur peut faire dans le cas d'un échec
+			de déplacement
+* \author	Tendry
+* \version	1.0
+*/
+void affiche_echec_deplacement();
+
 #endif

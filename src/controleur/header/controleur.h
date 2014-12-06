@@ -78,4 +78,4 @@ int selectionner_pion(Modele* modele, Joueur* joueur, Pion** pion);
 * \version	1.0
 * \return	1 si succès 0 si échec
 */
-int selectionner_direction(Direction* direction);
+int selectionner_direction(Modele* modele, Direction* direction);

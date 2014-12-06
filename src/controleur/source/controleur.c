@@ -51,7 +51,10 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 			// On doit selectionner un pion
 			while(!selectionner_pion(modele, joueur, &pion));			 
 		
-			// On joue un coup
+			// On commence un tour
+			commencer_tour(modele, pion);
+
+			// On joue un ou des coups
 			controleur_jouer_coup(joueur, modele, pion);
 		}
 		// Cas joueur revient au tour d'avant
@@ -141,9 +144,42 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 
 void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 {
-	system("clear");
-	affiche_plateau(&modele->plateau, AFFICHAGE);
-	affiche_menu_coup(0);
+	// La variable qui stocke les choix utilisateur
+	char choix;
+
+	// La dircetion d'envoi du pion
+	Direction direction;
+
+	do
+	{
+		// Affichage + demande choix utilisateur
+		system("clear");
+		affiche_plateau(&modele->plateau, AFFICHAGE);
+		affiche_menu_coup(0);
+		choix = recuperer_caractere();
+
+		// Cas joueur déplace :
+		if(choix == 'a')
+		{
+			// Il doit selectionner une direction
+			while(!selectionner_direction(modele, &direction));
+		
+			// Tout est bon on joue le coup !
+			jouer_coup(modele, pion, direction);
+		}
+		// Cas joueur annule un coup
+		else if(choix == 'b')
+		{
+			// TODO
+		}
+		// Cas sauvegarder
+		else if(choix == 'c')
+		{
+			// TODO
+		}
+
+	}while(choix != 'd');
+
 }
 
 int selectionner_pion(Modele* modele, Joueur* joueur, Pion** pion)
@@ -171,12 +207,14 @@ int selectionner_pion(Modele* modele, Joueur* joueur, Pion** pion)
 	return 1;
 }
 
-int selectionner_direction(Direction* direction)
+int selectionner_direction(Modele* modele, Direction* direction)
 {
 	// La selection de la direction
 	int pave_numerique;
 
 	//FONCTION DE LA VUE QUI Demander la direction
+	system("clear");
+	affiche_plateau(&modele->plateau, AFFICHAGE);
 	affiche_selection_direction();
 
 	// On récupère la direction souhaitée

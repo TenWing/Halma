@@ -62,3 +62,13 @@ void affiche_menu_coup(int retour)
 	
 	printf("		########################################\n");
 }
+
+void affiche_echec_deplacement()
+{
+	printf("		########################################\n");
+	printf("		Vous n'avez pas réussi à vous déplacer, \n");
+	printf("		Changer de pion ou retenter une autre direction ?\n");
+	printf("		a. changer de pion\n");	
+	printf("		b. changer de direction\n");
+	printf("		########################################\n");
+}

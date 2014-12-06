@@ -15,7 +15,7 @@
 
 Direction direction_souhaitee(int pave_numerique)
 {
-	Direction direction = GAUCHE;
+	Direction direction = ERREUR;
 
 	switch(pave_numerique)
 	{
@@ -50,6 +50,8 @@ Direction direction_souhaitee(int pave_numerique)
 		case 9:
 			direction = HAUT_GAUCHE;
 			return direction;
+			break;
+		default:
 			break;
 	}
 

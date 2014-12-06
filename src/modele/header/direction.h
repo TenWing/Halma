@@ -25,7 +25,8 @@ enum Direction
 	DROITE, 
 	BAS_DROITE, 
 	BAS, 
-	BAS_GAUCHE
+	BAS_GAUCHE,
+	ERREUR
 };
 
 Direction direction_souhaitee(int pave_numerique);

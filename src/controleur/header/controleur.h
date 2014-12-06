@@ -51,3 +51,21 @@ void clean(char* chaine);
 */
 Controleur controleur_init(int nombreJoueurs);
 
+/**
+* \brief 	Fait sélectionner un pion par le joueur courant
+* \author	Tendry
+* \param	joueur le joueur qui sélectionne un de ses pions
+* \param	pion le pion qui sera selectionné
+* \version 	1.0
+* \return	1 si succès 0 si échec
+*/
+int selectionner_pion(Joueur* joueur, Pion** pion);
+
+/**
+* \brief 	Demande à l'utilisateur une direction
+* \author	Tendry
+* \param	direction la direction qui sera choisie
+* \version	1.0
+* \return	1 si succès 0 si échec
+*/
+int selectionner_direction(Direction* direction);

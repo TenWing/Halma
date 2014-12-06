@@ -57,6 +57,9 @@ void fin_tour(Pion* pion)
 {
 	// Le pion ne peut plus sauter
 	pion->saut = 0;
+
+	// Le pion n'est plus selectionné
+	pion->selectionne = 0;
 }
 
 void annuler_coup(Modele* modele, Pion* pion)

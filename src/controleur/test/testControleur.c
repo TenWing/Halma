@@ -3,6 +3,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <controleur.h>
+#include <saisie.h>
+#include <vue_plateau.h>
+#include <vue.h>
+#include <mode.h>
 // ###############################
 
 /**
@@ -15,8 +19,8 @@ int main(void)
 	// ##########################################
 	// TEST MODULE SAISIE
 	// ##########################################
-	printf("%c\n", recuperer_caractere());
-	printf("%d\n", recuperer_entier());
+	// printf("%c\n", recuperer_caractere());
+	// printf("%d\n", recuperer_entier());
 
 	// ##########################################
 	// TEST MODULE CONTROLEUR 
@@ -24,9 +28,11 @@ int main(void)
 
 	Controleur controleur = controleur_init(4);
 
-	Joueur joueur_ROUGE = joueur_init(&(controleur.modele.plateau), ROUGE);
+	affiche_plateau(&controleur.modele.plateau, AFFICHAGE);
+	affiche_plateau(&controleur.modele.plateau, SELECTION);
 
-	jouer_tour(&joueur_ROUGE, &(controleur.modele));
+	jouer_tour(&controleur.modele.tableau_joueur[0], &(controleur.modele));
+	affiche_plateau(&controleur.modele.plateau, AFFICHAGE);
 
 
 	return 0;

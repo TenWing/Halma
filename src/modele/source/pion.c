@@ -92,6 +92,9 @@ int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction)
 			position_direction.x--;
 			position_direction.y--;
 			break;
+
+		default:
+			break;
 	}
 
 	// ############################################
@@ -187,6 +190,9 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau)
 		case HAUT_GAUCHE:
 			position_direction.x -= 2;
 			position_direction.y -= 2;
+			break;
+
+		default:
 			break;
 	}
 

@@ -14,6 +14,7 @@
 #include <matrice.h>
 #include <plateau.h>
 #include <pion.h>
+#include <unistd.h>
 
 /**
  * \brief    Génère le plateau de jeu
@@ -32,11 +33,11 @@ Plateau plateau_init(int nombre_joueur)
 	// On initialise avec les fichiers
 	if(nombre_joueur == 4)
 	{
-		plateau.matrice = initMatrice("../../../depart_jeu_halma_4.txt");
+		plateau.matrice = initMatrice("depart_jeu_halma_4.txt");
 	}
 	else
 	{
-		plateau.matrice = initMatrice("../../../depart_jeu_halma_2.txt");
+		plateau.matrice = initMatrice("depart_jeu_halma_2.txt");
 	}
 
 	// On récupère les pions !

@@ -50,3 +50,4 @@ void clean(char* chaine);
 * \param	nombreJoueurs	le nombre de joueurs qui veut jouer au jeu de l'Halma
 */
 Controleur controleur_init(int nombreJoueurs);
+

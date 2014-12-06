@@ -13,11 +13,9 @@
 #include <direction.h>
 // ############################
 
-
-
 Direction direction_souhaitee(int pave_numerique)
 {
-	Direction direction;
+	Direction direction = GAUCHE;
 
 	switch(pave_numerique)
 	{
@@ -54,4 +52,6 @@ Direction direction_souhaitee(int pave_numerique)
 			return direction;
 			break;
 	}
+
+	return direction;
 }

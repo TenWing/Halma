@@ -22,6 +22,8 @@
 
 //Inclusion du controleur
 #include <controleur.h>
+#include <saisie.h>
+#include <vue_plateau.h>
 //###########################################
 
 /**
@@ -78,7 +80,7 @@ int main()
 								jouer_tour(&(controleur.modele.tableau_joueur[i]), &(controleur.modele));
 
 								//Si l'un des joueur a placé tous ses pions dans la zone de victoire
-								if(victoire = verification_zone(&(controleur.modele.tableau_zone[i]), &(controleur.modele.tableau_joueur[i])))
+								if(victoire == verification_zone(&(controleur.modele.tableau_zone[i]), &(controleur.modele.tableau_joueur[i])))
 								{
 									//i=8 va permettre de sortir de la boucle for
 									i=8;

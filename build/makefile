@@ -20,7 +20,7 @@ all: 		 				$(TARGET_FOLDER)/$(EXEC)
 
 #Listage de tous les fichiers objets du sous dossier source
 $(TARGET_FOLDER)/$(EXEC):	$(OBJ)
-			 				$(CC) -o $@ $^ $(LDFLAGS)
+			 				@$(CC) -o $@ $^ $(LDFLAGS) $(LIBINCLUDEPATH)
 
 #efface TOUT les .o du sous dossier source
 mrproper:	

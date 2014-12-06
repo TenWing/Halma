@@ -28,4 +28,6 @@ enum Direction
 	BAS_GAUCHE
 };
 
+Direction direction_souhaitee(int pave_numerique);
+
 #endif

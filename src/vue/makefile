@@ -27,4 +27,4 @@ $(EXEC):	 								$(OBJ)
 
 #Procédure simple de compilation .c -> .o prise en charge des dossiers d'arrivée/départ
 $(BUILD_TARGET)/$(SOURCE_FOLDER)/%.o: 		$(SOURCE_FOLDER)/%.c
-	 	 	 								$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDEPATH) $(LIBINCLUDEPATH)
+	 	 	 								@$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDEPATH) $(LIBINCLUDEPATH)

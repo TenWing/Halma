@@ -22,7 +22,7 @@ export MAIN_DIR=jeu
 export LIBINCLUDEPATH=-I ../../include/libMatrice
 
 #Dossiers où se trouvent les .h des sources /rapport à la position des sous makefiles
-export INCLUDEPATH=-I header -I ../modele/header
+export INCLUDEPATH=-I header -I ../modele/header -I ../vue/header -I ../controleur/header 
 ###########################
 
 #Nom du dossier de build (stockage des .o)
@@ -55,4 +55,4 @@ mrproper:
 
 #pour lancer l'exécutable final
 run:
-			@(./$(RUN_DIR)/$(EXEC))
+			@cd $(RUN_DIR); ./$(EXEC)

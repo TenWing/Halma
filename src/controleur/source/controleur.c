@@ -147,7 +147,7 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 	// La variable qui stocke les choix utilisateur
 	char choix;
 
-	// La dircetion d'envoi du pion
+	// La direction d'envoi du pion
 	Direction direction;
 
 	do
@@ -170,7 +170,7 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 		// Cas joueur annule un coup
 		else if(choix == 'b')
 		{
-			// TODO
+			annuler_coup(modele, pion);
 		}
 		// Cas sauvegarder
 		else if(choix == 'c')

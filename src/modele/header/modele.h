@@ -34,6 +34,11 @@ struct Modele
 	PileTours pile_tours;
 
 	/**
+	* \brief Le nombre de joueurs
+	*/
+	int nombreJoueurs;
+
+	/**
 	* \brief le tableau des joueurs
 	* 
 	*/

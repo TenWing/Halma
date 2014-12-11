@@ -55,4 +55,11 @@ void clean_terminal();
 * \version	1.0
 */
 void erreur_saisie();
+
+/**
+* \brief	Demande à l'utilisateur combien de coups à annuler
+* \author	Quentin
+* \version	1.0
+*/
+void nombre_coup();
 #endif

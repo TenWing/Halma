@@ -79,3 +79,8 @@ void erreur_saisie()
 {
 	printf("		Veuillez rentrer les caractères qui vous sont demandés !\n");
 }
+
+void nombre_coup()
+{
+	printf("		Nombre de coups à annuler : ");
+}

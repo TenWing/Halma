@@ -1,3 +1,4 @@
+
 /**
 * \file		vue_jeu.c
 * \author	Tendry
@@ -41,9 +42,9 @@ void affiche_menu_commencer_tour()
 	printf("		||*----------DEBUT DE TOUR-----------*||\n");
 	printf("		########################################\n");
 	printf("		a. Sélectionner un pion\n");
-	printf("		b. Revenir au tour précédent\n");
+	printf("		b. Revenir à votre tour précédent\n");
 	printf("		c. Sauvegarder la partie\n");
-	printf("		d. Quitter ATTENTION PENSER A SAUVEGARDER\n");
+	printf("		d. Fin de votre tour\n");
 	printf("		########################################\n");
 }
 
@@ -55,7 +56,7 @@ void affiche_menu_coup(int retour)
 	printf("		a. Déplacer le pion\n");
 	printf("		b. Revenir au coup précédent\n");
 	printf("		c. Sauvegarder la partie\n");
-	printf("		d. Quitter ATTENTION PENSER A SAUVEGARDER\n");
+	printf("		d. Fin du(es) déplacement de votre pion\n");
 	
 	if(retour)
 	printf("		e.Changer de pion\n");

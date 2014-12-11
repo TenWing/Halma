@@ -20,6 +20,7 @@ Modele modele_init(int nombreJoueurs)
 	// On Crée le modèle
 	Modele modele;
 
+	modele.nombreJoueurs = nombreJoueurs;
 	modele.plateau = plateau_init(nombreJoueurs);
 	modele.pile_tours = pileTours_init();
 

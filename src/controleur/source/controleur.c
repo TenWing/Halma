@@ -32,6 +32,7 @@ Controleur controleur_init(int nombreJoueurs)
 
 void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 {
+	int i;
 	// Le pion qui jouera
 	Pion* pion = NULL;
 
@@ -60,7 +61,20 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		// Cas joueur revient au tour d'avant
 		else if(choix == 'b')
 		{
-			// TODO
+			if(modele->nombreJoueurs>2)
+			{
+				for(i=0; i<4; i++)
+				{
+					supprimer_tour(modele);
+				}
+			}
+			else
+			{
+				for(i=0; i<2; i++)
+				{
+					supprimer_tour(modele);
+				}
+			}
 		}
 		// Cas sauvegarder
 		else if(choix == 'c')
@@ -146,6 +160,7 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 {
 	// La variable qui stocke les choix utilisateur
 	char choix;
+	int nombreCoup,i;
 
 	// La direction d'envoi du pion
 	Direction direction;
@@ -170,7 +185,17 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 		// Cas joueur annule un coup
 		else if(choix == 'b')
 		{
-			annuler_coup(modele, pion);
+			//Demande à l'utilisateur combien de coups il souhaite annuler
+			nombre_coup();
+
+			//On récupère le nombre de coups à annuler
+			nombreCoup=recuperer_entier();
+
+			//On annule les coups
+			for(i=0; i<nombreCoup; i++)
+			{
+				annuler_coup(modele, pion);
+			}
 		}
 		// Cas sauvegarder
 		else if(choix == 'c')

@@ -98,4 +98,11 @@ void annuler_tour(Modele* modele, Pion* pion);
 */
 int jouer_coup(Modele* modele, Pion* pion, Direction direction);
 
+/**
+* \brief 	Supprime un tour de la pile de tours
+* \author 	Tendry
+* \param	modele le modele qui sera modifié
+*/
+void supprimer_tour(Modele* modele);
+
 #endif

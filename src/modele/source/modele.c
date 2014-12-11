@@ -121,3 +121,11 @@ int jouer_coup(Modele* modele, Pion* pion, Direction direction)
 	return succes;
 }
 
+void supprimer_tour(Modele* modele)
+{
+	//On cherche le tour voulu
+	Tour tour;
+
+	//On dépile le tour choisi
+	tour=pileTours_depiler(&modele->pile_tours);
+}

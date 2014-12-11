@@ -57,6 +57,8 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 
 			// On joue un ou des coups
 			controleur_jouer_coup(joueur, modele, pion);
+
+
 		}
 		// Cas joueur revient au tour d'avant
 		else if(choix == 'b')
@@ -158,9 +160,15 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 
 void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 {
-	// La variable qui stocke les choix utilisateur
+	// Les variable qui stocke les choix utilisateur
 	char choix;
-	int nombreCoup,i;
+	int nombreCoup;
+
+	//Booléen pour l'erreur de déplacement
+	int jouerCoup=0;
+
+	//Autre variables
+	int i;
 
 	// La direction d'envoi du pion
 	Direction direction;
@@ -176,11 +184,32 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 		// Cas joueur déplace :
 		if(choix == 'a')
 		{
-			// Il doit selectionner une direction
-			while(!selectionner_direction(modele, &direction));
+			while(jouerCoup == 0)
+			{	
+				// Il doit selectionner une direction
+				while(!selectionner_direction(modele, &direction));
 		
-			// Tout est bon on joue le coup !
-			jouer_coup(modele, pion, direction);
+				// Tout est bon on joue le coup !
+				jouerCoup=jouer_coup(modele, pion, direction);
+
+				if(jouerCoup == 0)
+				{
+					//Affichage + demande utilisateur
+					affiche_echec_deplacement();
+					choix = recuperer_caractere();
+
+					if(choix == 'a')
+					{
+						//L'utilisateur va changer de pion
+
+						//On brise la boucle du while de jouerCoup
+						jouerCoup = 1;
+
+						//On brise la boucle du while de choix
+						choix = 'd';
+					}
+				}
+			}
 		}
 		// Cas joueur annule un coup
 		else if(choix == 'b')

@@ -186,27 +186,33 @@ int main ()
 	Pion* testeur = &modele.plateau.liste_pions.premier->pion;
 
 	commencer_tour(&modele, testeur);
+	printf("Position du pion au tout début : %d // %d\n", testeur->position.x, testeur->position.y);
 	int succes = jouer_coup(&modele, testeur, BAS);
 	printf("succes ? : %d\n", succes);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	annuler_coup(&modele, testeur);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	jouer_coup(&modele, testeur, GAUCHE);
-	fin_tour(testeur);
+	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
+	//fin_tour(testeur);
 
-	printf("fin tour\n");
+	/*printf("fin tour\n");
 	commencer_tour(&modele, testeur);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	jouer_coup(&modele, testeur, DROITE);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	jouer_coup(&modele, testeur, BAS);
-	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
+	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);*/
 	
+/*	annuler_coup(&modele, testeur);
+	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	annuler_coup(&modele, testeur);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
-	annuler_coup(&modele, testeur);
-	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
-	
+*/
+
+	supprimer_tour(&modele);
+
+	printf("Position du pion (après la suppression du tour) maintenant : %d // %d\n", testeur->position.x, testeur->position.y);	
 	return 0;	
 }
 

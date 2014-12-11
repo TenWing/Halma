@@ -34,6 +34,11 @@ struct Modele
 	PileTours pile_tours;
 
 	/**
+	* \brief Le nombre de joueurs
+	*/
+	int nombreJoueurs;
+
+	/**
 	* \brief le tableau des joueurs
 	* 
 	*/
@@ -68,7 +73,7 @@ void commencer_tour(Modele* modele, Pion* pion);
 * \param	pion le pion modifié
 * \author	Tendry
 */
-void fin_tour(Pion* pion);
+void fin_tour(Pion** pion);
 
 /**
 * \brief	Annule un coup dans le modèle
@@ -97,5 +102,12 @@ void annuler_tour(Modele* modele, Pion* pion);
 * \return	1 coup a pu être joué 0 coup n'a pas pu
 */
 int jouer_coup(Modele* modele, Pion* pion, Direction direction);
+
+/**
+* \brief 	Supprime un tour de la pile de tours
+* \author 	Tendry
+* \param	modele le modele qui sera modifié
+*/
+void supprimer_tour(Modele* modele);
 
 #endif

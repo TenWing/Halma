@@ -19,8 +19,8 @@ int main(void)
 	// ##########################################
 	// TEST MODULE SAISIE
 	// ##########################################
-	// printf("%c\n", recuperer_caractere());
-	// printf("%d\n", recuperer_entier());
+	printf("%c\n", recuperer_caractere());
+	printf("%d\n", recuperer_entier());
 
 	// ##########################################
 	// TEST MODULE CONTROLEUR 
@@ -28,10 +28,12 @@ int main(void)
 
 	Controleur controleur = controleur_init(4);
 
-	affiche_plateau(&controleur.modele.plateau, AFFICHAGE);
-	affiche_plateau(&controleur.modele.plateau, SELECTION);
+//	affiche_plateau(&controleur.modele.plateau, AFFICHAGE);
+//	affiche_plateau(&controleur.modele.plateau, SELECTION);
 
 	controleur_jouer_tour(&controleur.modele.tableau_joueur[0], &(controleur.modele));
+
+	
 
 	return 0;
 

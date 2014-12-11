@@ -20,13 +20,14 @@ Modele modele_init(int nombreJoueurs)
 	// On Crée le modèle
 	Modele modele;
 
+	modele.nombreJoueurs = nombreJoueurs;
 	modele.plateau = plateau_init(nombreJoueurs);
 	modele.pile_tours = pileTours_init();
 
 	// On attribue le bon nombre de joueurs
 	if(nombreJoueurs > 2)
 	{
-		for(i=0; i<3; i++)
+		for(i=0; i<4; i++)
 		{
 			modele.tableau_joueur[i] = joueur_init(&modele.plateau, i);		
 			modele.tableau_zone[i] = zone_init(i, nombreJoueurs);
@@ -35,11 +36,11 @@ Modele modele_init(int nombreJoueurs)
 	}
 	else
 	{
-		for(i=0; i<2; i++)
-		{
-			modele.tableau_joueur[i] = joueur_init(&modele.plateau, i);		
-			modele.tableau_zone[i] = zone_init(i, nombreJoueurs);
-		}
+			modele.tableau_joueur[0] = joueur_init(&modele.plateau, 1);		
+			modele.tableau_zone[0] = zone_init(1, nombreJoueurs);
+			modele.tableau_joueur[1] = joueur_init(&modele.plateau, 3);		
+			modele.tableau_zone[1] = zone_init(3, nombreJoueurs);
+		
 	}
 
 	return modele;
@@ -54,13 +55,14 @@ void commencer_tour(Modele* modele, Pion* pion)
 	pileTours_ajouterTour(&modele->pile_tours, tour);
 }
 
-void fin_tour(Pion* pion)
+void fin_tour(Pion** pion)
 {
+	Pion* direct = *pion;
 	// Le pion ne peut plus sauter
-	pion->saut = 0;
+	direct->saut = 0;
 
 	// Le pion n'est plus selectionné
-	pion->selectionne = 0;
+	direct->selectionne = 0;
 }
 
 void annuler_coup(Modele* modele, Pion* pion)
@@ -119,4 +121,13 @@ int jouer_coup(Modele* modele, Pion* pion, Direction direction)
 
 	// On indique si il y a eu succes du coup
 	return succes;
+}
+
+void supprimer_tour(Modele* modele)
+{
+	//On cherche le tour voulu
+	Tour tour;
+
+	//On dépile le tour choisi
+	tour=pileTours_depiler(&modele->pile_tours);
 }

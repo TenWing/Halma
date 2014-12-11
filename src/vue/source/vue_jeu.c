@@ -1,3 +1,4 @@
+
 /**
 * \file		vue_jeu.c
 * \author	Tendry
@@ -41,9 +42,9 @@ void affiche_menu_commencer_tour()
 	printf("		||*----------DEBUT DE TOUR-----------*||\n");
 	printf("		########################################\n");
 	printf("		a. Sélectionner un pion\n");
-	printf("		b. Revenir au tour précédent\n");
+	printf("		b. Revenir à votre tour précédent\n");
 	printf("		c. Sauvegarder la partie\n");
-	printf("		d. Quitter ATTENTION PENSER A SAUVEGARDER\n");
+	printf("		d. Fin de votre tour\n");
 	printf("		########################################\n");
 }
 
@@ -55,7 +56,7 @@ void affiche_menu_coup(int retour)
 	printf("		a. Déplacer le pion\n");
 	printf("		b. Revenir au coup précédent\n");
 	printf("		c. Sauvegarder la partie\n");
-	printf("		d. Quitter ATTENTION PENSER A SAUVEGARDER\n");
+	printf("		d. Fin du(es) déplacement de votre pion\n");
 	
 	if(retour)
 	printf("		e.Changer de pion\n");
@@ -65,10 +66,55 @@ void affiche_menu_coup(int retour)
 
 void affiche_echec_deplacement()
 {
-	printf("		########################################\n");
+	printf("		#################################################\n");
 	printf("		Vous n'avez pas réussi à vous déplacer, \n");
 	printf("		Changer de pion ou retenter une autre direction ?\n");
 	printf("		a. changer de pion\n");	
 	printf("		b. changer de direction\n");
-	printf("		########################################\n");
+	printf("		#################################################\n");
+}
+
+void affiche_joueur(int couleur)
+{
+	switch(couleur)
+	{
+		case 0 :
+			printf("\n");
+			printf("			########################\n");
+			printf("			||*---JOUEUR ROUGE---*||\n");
+			printf("			########################\n");
+			printf("\n");
+			break;
+		case 1 :
+			printf("\n");
+			printf("			#######################\n");
+			printf("			||*---JOUEUR BLEU---*||\n");
+			printf("			#######################\n");
+			printf("\n");
+			break;
+		case 2 :
+			printf("\n");
+			printf("			#######################\n");
+			printf("			||*---JOUEUR VERT---*||\n");
+			printf("			#######################\n");
+			printf("\n");
+			break;
+		case 3 :
+			printf("\n");
+			printf("			########################\n");
+			printf("			||*---JOUEUR JAUNE---*||\n");
+			printf("			########################\n");
+			printf("\n");
+			break;
+		default :
+			break;
+	}
+}
+
+void affiche_echec_pion()
+{
+	printf("		###############################################\n");
+	printf("		Vous n'avez pas sélecionner l'un de vos pions!\n");
+	printf("		Veuillez rentrer un identifiant de vos pions!\n");
+	printf("		###############################################\n");
 }

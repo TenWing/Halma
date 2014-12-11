@@ -10,7 +10,7 @@
 CC=gcc
 
 #Nom de l'exécutable
-EXEC=testModele
+EXEC=testControleur
 
 #Options de compilation
 CFLAGS=-Wall

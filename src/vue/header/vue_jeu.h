@@ -50,4 +50,18 @@ void affiche_menu_coup(int retour);
 */
 void affiche_echec_deplacement();
 
+/**
+* \brief	Dit à l'utilisateur quel joueur doit jouer
+* \author	Quentin
+* \version	1.0
+*/
+void affiche_joueur(int couleur);
+
+/**
+* \brief	Dit à l'utilisateur qu'il n'a pas pris un de ces pions
+* \author	Quentin
+* \version	1.0
+*/
+void affiche_echec_pion();
+
 #endif

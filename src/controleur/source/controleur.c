@@ -60,7 +60,10 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		// Cas joueur revient au tour d'avant
 		else if(choix == 'b')
 		{
-			// TODO
+			if(controleur.nombreJoueurs>2)
+			{
+				 annuler_tour(Modele* modele, Pion* pion)
+			}
 		}
 		// Cas sauvegarder
 		else if(choix == 'c')

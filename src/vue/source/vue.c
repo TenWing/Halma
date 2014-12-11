@@ -84,3 +84,5 @@ void nombre_coup()
 {
 	printf("		Nombre de coups à annuler : ");
 }
+
+

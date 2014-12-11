@@ -73,3 +73,24 @@ void affiche_echec_deplacement()
 	printf("		b. changer de direction\n");
 	printf("		########################################\n");
 }
+
+void affiche_joueur(int couleur)
+{
+	switch(couleur)
+	{
+		case 0 :
+			printf("		Joueur Rouge : c'est à vous de jouer !\n");
+			break;
+		case 1 :
+			printf("		Joueur Bleu : c'est à vous de jouer !\n");
+			break;
+		case 2 :
+			printf("		Joueur Vert : c'est à vous de jouer !\n");
+			break;
+		case 3 :
+			printf("		Joueur Jaune : c'est à vous de jouer !\n");
+			break;
+		default :
+			break;
+	}
+}

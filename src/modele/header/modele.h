@@ -73,7 +73,7 @@ void commencer_tour(Modele* modele, Pion* pion);
 * \param	pion le pion modifié
 * \author	Tendry
 */
-void fin_tour(Pion* pion);
+void fin_tour(Pion** pion);
 
 /**
 * \brief	Annule un coup dans le modèle

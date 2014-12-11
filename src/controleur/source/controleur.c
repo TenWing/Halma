@@ -43,6 +43,8 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 	{
 		system("clear");
 		// On affiche le menu de debut de tour
+		affiche_plateau(&modele->plateau, SELECTION);
+		affiche_joueur(joueur->couleur);
 		affiche_menu_commencer_tour();
 		choix = recuperer_caractere();
 
@@ -83,79 +85,12 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		{
 			// TODO
 		}
-
 	}while(choix != 'd');
 
-	/*
-	// Tant que l'utilisateur DOIT jouer
-	while(jouer)
+	if(pion != NULL)
 	{
-		// L'utilisateur DOIT choisir une direction
-		while(!selectionner_direction(&direction));
-
-		// Ensuite il joue le coup
-		deplacement = jouer_coup(modele, pion, direction_souhaitee(pave_numerique));
-		
-		// S'il n'a pas réussit à jouer du tout :(
-		if(deplacement == 0 && pion->saut == 0)
-		{	
-			printf("déplacement impossible\n");
-			printf("Voulez vous garder votre pion : Y/N\n");
-			//On demande si le joueur veut garder son pion ou non
-			demande_garder_pion = recuperer_caractere();
-			
-			if(demande_garder_pion == 'y')
-				jouer = 1;
-			else
-			{	//On demande au joueur de selectionner un pion avec son identifiant
-				printf("saisir l'identifiant d'un pion\n");
-				//On récupère un identifiant d'un pion
-				identifiant=recuperer_entier();
-					//On vérifie que l'identifiant correspond à un pion du joueur
-				pion = joueur_get_reference_pion(joueur, identifiant);
-				jouer = 1;
-			}
-		}
-
-		if(pion->saut == 0 && deplacement == 1)
-		{
-			printf("Fin du tour ? Y/N\n");
-			//Demande si c'est la fin du tour
-			demande_fin_tour = recuperer_caractere();
-			if(demande_fin_tour == 'y')
-				jouer = 0;
-			else
-				annuler_coup(modele, pion);
-		}
-
-		while(pion->saut)
-		{
-			printf("direction: \n");
-			pave_numerique = recuperer_entier();
-
-			//On joue le coup voulu
-			jouer_coup(modele, pion, direction_souhaitee(pave_numerique));
-
-			printf("Fin du tour ? Y/N\n");
-			//Demande si c'est la fin du tour
-			demande_fin_tour = recuperer_caractere();
-				
-			if(demande_fin_tour == 'y')
-			{	
-				fin_tour(pion);
-				jouer = 0;
-			}
-			else
-			{
-				printf("Annulation du coup ? Y/N\n");
-				//Demande si on veut annuler le coup
-				demande_annuler_coup = recuperer_caractere();
-			
-				if(demande_annuler_coup == 'y')
-					annuler_coup(modele, pion);
-			}
-		}
-	}*/
+		fin_tour(&pion);	
+	}
 }
 
 void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
@@ -225,15 +160,15 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 			{
 				annuler_coup(modele, pion);
 			}
+
+			jouerCoup = 0;
 		}
 		// Cas sauvegarder
 		else if(choix == 'c')
 		{
 			// TODO
 		}
-
 	}while(choix != 'd');
-
 }
 
 int selectionner_pion(Modele* modele, Joueur* joueur, Pion** pion)

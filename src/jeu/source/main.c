@@ -69,7 +69,7 @@ int main()
 						clean_terminal();
 
 						//On affiche le tableau de départ
-						affiche_plateau(&(controleur.modele.plateau), 0);
+						//affiche_plateau(&(controleur.modele.plateau), 0);
 
 						//Tant qu'il n'y a pas de joueur gagnant
 						while(victoire != 1)
@@ -77,17 +77,17 @@ int main()
 							//Les joueurs jouent chacuns à leur tour
 							for(i=0; i<nombre_joueur; i++)
 							{
-								jouer_tour(&(controleur.modele.tableau_joueur[i]), &(controleur.modele));
+								controleur_jouer_tour(&(controleur.modele.tableau_joueur[i]), &(controleur.modele));
 
 								//Si l'un des joueur a placé tous ses pions dans la zone de victoire
-								if(victoire == verification_zone(&(controleur.modele.tableau_zone[i]), &(controleur.modele.tableau_joueur[i])))
+								/*if(victoire == verification_zone(&(controleur.modele.tableau_zone[i]), &(controleur.modele.tableau_joueur[i])))
 								{
 									//i=8 va permettre de sortir de la boucle for
 									i=8;
 
 									//Permet de savoir quel joueur a gagné par rapport à sa couleur
 									couleur= controleur.modele.tableau_joueur[i].couleur;
-								}
+								}*/
 							}
 						}
 

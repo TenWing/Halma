@@ -28,10 +28,12 @@ int main(void)
 
 	Controleur controleur = controleur_init(4);
 
-	affiche_plateau(&controleur.modele.plateau, AFFICHAGE);
-	affiche_plateau(&controleur.modele.plateau, SELECTION);
+//	affiche_plateau(&controleur.modele.plateau, AFFICHAGE);
+//	affiche_plateau(&controleur.modele.plateau, SELECTION);
 
 	controleur_jouer_tour(&controleur.modele.tableau_joueur[0], &(controleur.modele));
+
+	
 
 	return 0;
 

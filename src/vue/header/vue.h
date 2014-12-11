@@ -62,4 +62,6 @@ void erreur_saisie();
 * \version	1.0
 */
 void nombre_coup();
+
+
 #endif

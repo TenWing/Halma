@@ -19,8 +19,8 @@ int main(void)
 	// ##########################################
 	// TEST MODULE SAISIE
 	// ##########################################
-	// printf("%c\n", recuperer_caractere());
-	// printf("%d\n", recuperer_entier());
+	printf("%c\n", recuperer_caractere());
+	printf("%d\n", recuperer_entier());
 
 	// ##########################################
 	// TEST MODULE CONTROLEUR 

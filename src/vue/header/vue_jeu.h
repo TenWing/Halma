@@ -57,4 +57,11 @@ void affiche_echec_deplacement();
 */
 void affiche_joueur(int couleur);
 
+/**
+* \brief	Dit à l'utilisateur qu'il n'a pas pris un de ces pions
+* \author	Quentin
+* \version	1.0
+*/
+void affiche_echec_pion();
+
 #endif

@@ -66,12 +66,12 @@ void affiche_menu_coup(int retour)
 
 void affiche_echec_deplacement()
 {
-	printf("		########################################\n");
+	printf("		#################################################\n");
 	printf("		Vous n'avez pas réussi à vous déplacer, \n");
 	printf("		Changer de pion ou retenter une autre direction ?\n");
 	printf("		a. changer de pion\n");	
 	printf("		b. changer de direction\n");
-	printf("		########################################\n");
+	printf("		#################################################\n");
 }
 
 void affiche_joueur(int couleur)
@@ -79,18 +79,42 @@ void affiche_joueur(int couleur)
 	switch(couleur)
 	{
 		case 0 :
-			printf("		Joueur Rouge : c'est à vous de jouer !\n");
+			printf("\n");
+			printf("			########################\n");
+			printf("			||*---JOUEUR ROUGE---*||\n");
+			printf("			########################\n");
+			printf("\n");
 			break;
 		case 1 :
-			printf("		Joueur Bleu : c'est à vous de jouer !\n");
+			printf("\n");
+			printf("			#######################\n");
+			printf("			||*---JOUEUR BLEU---*||\n");
+			printf("			#######################\n");
+			printf("\n");
 			break;
 		case 2 :
-			printf("		Joueur Vert : c'est à vous de jouer !\n");
+			printf("\n");
+			printf("			#######################\n");
+			printf("			||*---JOUEUR VERT---*||\n");
+			printf("			#######################\n");
+			printf("\n");
 			break;
 		case 3 :
-			printf("		Joueur Jaune : c'est à vous de jouer !\n");
+			printf("\n");
+			printf("			########################\n");
+			printf("			||*---JOUEUR JAUNE---*||\n");
+			printf("			########################\n");
+			printf("\n");
 			break;
 		default :
 			break;
 	}
+}
+
+void affiche_echec_pion()
+{
+	printf("		###############################################\n");
+	printf("		Vous n'avez pas sélecionner l'un de vos pions!\n");
+	printf("		Veuillez rentrer un identifiant de vos pions!\n");
+	printf("		###############################################\n");
 }

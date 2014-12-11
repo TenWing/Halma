@@ -187,6 +187,18 @@ int selectionner_pion(Modele* modele, Joueur* joueur, Pion** pion)
 	// On récupère le pion dans ceux possible
 	*pion = joueur_get_reference_pion(joueur, identifiant);
 
+	while(*pion == NULL)
+	{
+		affiche_joueur(joueur->couleur);
+		affiche_echec_pion();
+
+		//On récupère un identifiant d'un pion
+		identifiant=recuperer_entier();
+
+		// On récupère le pion dans ceux possible
+		*pion = joueur_get_reference_pion(joueur, identifiant);
+	}
+
 	// Si on a pas réussit à récupèrer de pion on indique 
 	// Que c'est faux
 	if(pion == NULL)

@@ -1,3 +1,4 @@
+
 /**
 * \file		modele.c
 * \author	Tendry
@@ -119,3 +120,4 @@ int jouer_coup(Modele* modele, Pion* pion, Direction direction)
 	// On indique si il y a eu succes du coup
 	return succes;
 }
+

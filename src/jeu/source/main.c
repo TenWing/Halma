@@ -12,7 +12,7 @@
 //INCLUDES
 //###########################################
 //Inclusion de la bibliothèque matrice
-#include "../../../include/libMatrice/matrice.h"
+#include <matrice.h>
 
 //Inclusion de la vue
 #include <vue.h>
@@ -24,7 +24,7 @@
 #include <controleur.h>
 #include <saisie.h>
 #include <vue_plateau.h>
-//###########################################
+//##########################################
 
 /**
 * \brief Fonction principale du programme
@@ -41,6 +41,7 @@ int main()
 	
 	//Permettra de savoir quel joueur a gagné
 	int victoire=0;
+	int verification = 1;
 
 	clean_terminal();
 	presentation_jeu();
@@ -78,35 +79,35 @@ int main()
 							for(i=0; i<nombre_joueur; i++)
 							{
 								controleur_jouer_tour(&(controleur.modele.tableau_joueur[i]), &(controleur.modele));
-
+printf("%d\n", verification_zone(&(controleur.modele.tableau_zone[i]), &(controleur.modele.tableau_joueur[i])));
 								//Si l'un des joueur a placé tous ses pions dans la zone de victoire
-								/*if(victoire == verification_zone(&(controleur.modele.tableau_zone[i]), &(controleur.modele.tableau_joueur[i])))
-								{
+								if(verification == verification_zone(&(controleur.modele.tableau_zone[i]), &(controleur.modele.tableau_joueur[i])))
+								{ printf("ici");
 									//i=8 va permettre de sortir de la boucle for
-									i=8;
-
+									victoire = 1;
 									//Permet de savoir quel joueur a gagné par rapport à sa couleur
 									couleur= controleur.modele.tableau_joueur[i].couleur;
-								}*/
+									break;
+								}
 							}
 						}
 
 						//On regarge la couleur du joueur gagnant et on le félicite
 						switch(couleur)
 						{
-							case 0 :
+							case ROUGE :
 								printf("\n\n\n Felicitation Joueur Rouge!\n");
 								printf("Vous avez ecrasé vos concurrents!");
 								break;
-							case 1 :
+							case BLEU :
 								printf("\n\n\n Felicitation Joueur Bleu!\n");
 								printf("Vous avez ecrasé vos concurrents!");
 								break;
-							case 2 :
+							case VERT :
 								printf("\n\n\n Felicitation Joueur Vert!\n");
 								printf("Vous avez ecrasé vos concurrents!");
 								break;
-							case 3 :
+							case JAUNE :
 								printf("\n\n\n Felicitation Joueur Jaune!\n");
 								printf("Vous avez ecrasé vos concurrents!");
 								break;

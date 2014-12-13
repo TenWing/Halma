@@ -77,7 +77,7 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 		{
 			case JAUNE:
 				zone.zone_direction = DROITE;
-				liste_positions_ajout(&zone.liste_positions, position_init(0,11));
+				liste_positions_ajout(&zone.liste_positions, position_init(0,10));
 				liste_positions_ajout(&zone.liste_positions, position_init(1,11));
 				liste_positions_ajout(&zone.liste_positions, position_init(2,12));
 				liste_positions_ajout(&zone.liste_positions, position_init(3,13));
@@ -89,7 +89,7 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 				liste_positions_ajout(&zone.liste_positions, position_init(12,2));
 				liste_positions_ajout(&zone.liste_positions, position_init(13,3));
 				liste_positions_ajout(&zone.liste_positions, position_init(14,4));
-				liste_positions_ajout(&zone.liste_positions, position_init(15,4));
+				liste_positions_ajout(&zone.liste_positions, position_init(15,5));
 				break;
 			default:
 				break;

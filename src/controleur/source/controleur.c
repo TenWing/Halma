@@ -9,6 +9,7 @@
 // INCLUSIONS
 #include <stdio.h>
 #include <stdlib.h>
+#include <matrice.h>
 #include <vue.h>
 #include <vue_jeu.h>
 #include <vue_plateau.h>
@@ -43,7 +44,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 	{
 		system("clear");
 		// On affiche le menu de debut de tour
-		affiche_plateau(&modele->plateau, SELECTION);
+		affiche_plateau(&modele->plateau, AFFICHAGE);
 		affiche_joueur(joueur->couleur);
 		affiche_menu_commencer_tour();
 		choix = recuperer_caractere();
@@ -65,21 +66,22 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		// Cas joueur revient au tour d'avant
 		else if(choix == 'b')
 		{
-
-			if(modele->nombreJoueurs>2)
+			if(modele->pile_tours.premier != NULL)
 			{
-				for(i=0; i<4; i++)
+				if(modele->nombreJoueurs>2)
 				{
-					annuler_tour(modele, &pion);
+					for(i=0; i<4; i++)
+					{
+						annuler_tour(modele);
+					}
 				}
-			}
-			else
-			{
-				for(i=0; i<2; i++)
+				else
 				{
-					annuler_tour(modele, &pion);
+					for(i=0; i<2; i++)
+					{
+						annuler_tour(modele);
+					}
 				}
-
 			}
 		}
 		// Cas sauvegarder

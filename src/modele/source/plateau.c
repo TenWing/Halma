@@ -37,7 +37,7 @@ Plateau plateau_init(int nombre_joueur)
 	}
 	else
 	{
-		plateau.matrice = initMatrice("../../../bin/depart_jeu_halma_2.txt");
+		plateau.matrice = initMatrice("../../../bin/toast.txt");
 	}
 
 	// On récupère les pions !

@@ -13,14 +13,14 @@
 #include <tour.h>
 // #######################
 
-Tour tour_init(Pion p)
+Tour tour_init(Pion* p)
 {
 	// Création du tour
 	Tour tour;
 
 	// On alloue ce qui peut-être alloué
-	tour.pion = pion_copie(p);
-	tour.depart = position_init(p.position.x, p.position.y);
+	tour.pion = p;
+	tour.depart = position_init(p->position.x, p->position.y);
 
 	// on renvoie le tour initialisé
 	return tour;

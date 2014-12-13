@@ -91,7 +91,7 @@ void annuler_coup(Modele* modele, Pion* pion);
 * \param	pion le pion qui sera modifié
 * \version	1.0
 */
-void annuler_tour(Modele* modele, Pion** pion);
+void annuler_tour(Modele* modele);
 
 /**
 * \brief 	Joue un coup, cad fait un déplacement

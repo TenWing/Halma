@@ -49,7 +49,7 @@ Modele modele_init(int nombreJoueurs)
 void commencer_tour(Modele* modele, Pion* pion)
 {
 	// On crée un tour
-	Tour tour = tour_init(*pion);
+	Tour tour = tour_init(pion);
 	
 	// On dit au modèle qu'il y a un nouveau tour joué
 	pileTours_ajouterTour(&modele->pile_tours, tour);
@@ -88,21 +88,17 @@ void annuler_coup(Modele* modele, Pion* pion)
 	pion->saut = dernier.pion.saut;
 }
 
-void annuler_tour(Modele* modele, Pion** pion)
+void annuler_tour(Modele* modele)
 {
-	Pion* direct = *pion;
 	Tour dernier;
 	//On dépile le tour du joueur qui joue
-	dernier = pileTours_depiler(&modele->pile_tours);
-
-	// On accède au tour courant
-	//NoeudTour* noeud = modele->pile_tours.premier;
 
 	//On prend le tour du joueur précedent
 	dernier = pileTours_depiler(&modele->pile_tours);
 
 	// On change la position du pion
-	direct->position = position_init(dernier.depart.x, dernier.depart.y);
+	dernier.pion->position.x = dernier.depart.x;
+	dernier.pion->position.y = dernier.depart.y;
 }
 
 int jouer_coup(Modele* modele, Pion* pion, Direction direction)

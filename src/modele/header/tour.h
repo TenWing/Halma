@@ -95,7 +95,7 @@ struct PileTours
 * \param p le pion qui concerne le tour
 * \return renvoie un Tour bien initialisé
 */
-Tour tour_init(Pion p);
+Tour tour_init(Pion* p);
 
 //######################################
 //FONCTIONS PILE TOURS

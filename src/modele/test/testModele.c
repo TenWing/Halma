@@ -211,7 +211,7 @@ int main ()
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 */
 
-	annuler_tour(&modele, &testeur);
+	annuler_tour(&modele);
 
 	printf("Position du pion (après la suppression du tour) maintenant : %d // %d\n", testeur->position.x, testeur->position.y);	
 	return 0;	

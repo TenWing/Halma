@@ -79,3 +79,9 @@ int selectionner_pion(Modele* modele, Joueur* joueur, Pion** pion);
 * \return	1 si succès 0 si échec
 */
 int selectionner_direction(Modele* modele, Direction* direction);
+
+/**
+* \brief 	Lance une partie du jeu
+* \author	Tendry
+*/
+void jouer_partie(char choix);

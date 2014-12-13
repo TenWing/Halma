@@ -48,7 +48,7 @@ Direction direction_souhaitee(int pave_numerique)
 			return direction;
 			break;
 		case 9:
-			direction = HAUT_GAUCHE;
+			direction = HAUT_DROITE;
 			return direction;
 			break;
 		default:

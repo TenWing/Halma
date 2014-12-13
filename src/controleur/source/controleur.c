@@ -108,6 +108,7 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 	//Autre variables
 	int i;
 	int coup=0;
+	int echec=0;
 
 	// La direction d'envoi du pion
 	Direction direction;
@@ -124,6 +125,12 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 		// Cas joueur déplace :
 		if(choix == 'a')
 		{
+			if(jouerCoup == 1 && pion->saut == 1)
+				{
+					jouerCoup=0;
+					echec=1;
+				}
+
 			while(jouerCoup == 0)
 			{	
 				// Il doit selectionner une direction
@@ -134,34 +141,43 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 
 				if(jouerCoup == 0)
 				{
-					//Affichage + demande utilisateur
-					affiche_joueur(joueur->couleur);
-					affiche_echec_deplacement();
-					choix = recuperer_caractere();
-
-					if(choix == 'a')
+					if(pion->saut == 0)
 					{
-						//L'utilisateur va changer de pion
+						//Affichage + demande utilisateur
+						affiche_joueur(joueur->couleur);
+						affiche_echec_deplacement(echec);
+						choix = recuperer_caractere();
 
-						//On brise la boucle du while de jouerCoup
-						jouerCoup = 1;
+						if(choix == 'a')
+						{
+							//L'utilisateur va changer de pion
 
-						//On brise la boucle du while de choix
-						choix = 'd';
+							//On brise la boucle du while de jouerCoup
+							jouerCoup = 1;
 
-						//On  déselectionne le pion qui avait été choisi
-						pion->selectionne=0;
+							//On brise la boucle du while de choix
+							choix = 'd';
 
-						//On dépile le tour qui est inutile
-						pileTours_depiler(&modele->pile_tours);
+							//On  déselectionne le pion qui avait été choisi
+							pion->selectionne=0;
 
-						return 0;
+							//On dépile le tour qui est inutile
+							pileTours_depiler(&modele->pile_tours);
+
+							return 0;
+						}
 					}
-				}
+					else
+					{
+						affiche_joueur(joueur->couleur);
+						affiche_echec_deplacement(echec);
+						choix = recuperer_caractere();
 
-				if(jouerCoup == 1)
-				{
-					coup=1;
+						if(choix == 'd')
+						{
+							return 1;
+						}
+					}
 				}
 
 			}

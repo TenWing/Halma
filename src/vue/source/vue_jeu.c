@@ -75,14 +75,27 @@ void affiche_menu_coup(int coup)
 		printf("		########################################\n");
 }
 
-void affiche_echec_deplacement()
+void affiche_echec_deplacement(int echec)
 {
-	printf("		#################################################\n");
-	printf("		Vous n'avez pas réussi à vous déplacer, \n");
-	printf("		Changer de pion ou retenter une autre direction ?\n");
-	printf("		a. changer de pion\n");	
-	printf("		b. changer de direction\n");
-	printf("		#################################################\n");
+	if(echec == 0)
+	{
+		printf("		#################################################\n");
+		printf("		Vous n'avez pas réussi à vous déplacer, \n");
+		printf("		Changer de pion ou retenter une autre direction ?\n");
+		printf("		a. changer de pion\n");	
+		printf("		b. changer de direction\n");
+		printf("		#################################################\n");
+	}
+
+	else
+	{
+		printf("		#################################################\n");
+		printf("		Vous n'avez pas réussi à vous déplacer, \n");
+		printf("		Retenter une autre direction ou mettre fin à vos déplacements?\n");
+		printf("		b. changer de direction\n");
+		printf("		d. Fin du(es) déplacement de votre pion\n");
+		printf("		#################################################\n");
+	}
 }
 
 void affiche_joueur(int couleur)

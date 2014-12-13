@@ -26,11 +26,12 @@ void affiche_selection_pion();
 void affiche_selection_direction();
 
 /**
-* \brief	Affiche un menu contextuel des actions en début de tour
+* \brief	Affiche un menu contextuel des actions du tour
+* \param	entier 		tour qui change le menu selon l'avancée du tour
 * \author	Tendry
 * \version	1.0
 */
-void affiche_menu_commencer_tour();
+void affiche_menu_tour(int tour);
 
 /**
 * \brief	Affiche un menu contextuel des actions pendant un coup
@@ -39,7 +40,7 @@ void affiche_menu_commencer_tour();
 			au menu de départ du tour
 * \version	1.0
 */
-void affiche_menu_coup(int retour);
+void affiche_menu_coup(int coup);
 
 
 /**
@@ -66,6 +67,7 @@ void affiche_echec_pion();
 
 /**
 * \brief	Affiche qui a gagné !!!
+
 * \author	Quentin
 * \version	1.0
 */

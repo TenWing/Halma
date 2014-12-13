@@ -45,7 +45,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele);
 * \param	joueur le joueur qui joue le tour
 * \param	modele le moteur de jeu pour jouer le coup 
 */
-void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion);
+int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion);
 
 /**
 * \brief 	permet de supprimer '\n' d'une chaine

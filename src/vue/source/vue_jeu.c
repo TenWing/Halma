@@ -37,32 +37,42 @@ void affiche_selection_direction()
 	printf("		########################################\n");
 }
 
-void affiche_menu_commencer_tour()
+void affiche_menu_tour(int tour)
 {
-	printf("		########################################\n");
-	printf("		||*----------DEBUT DE TOUR-----------*||\n");
-	printf("		########################################\n");
-	printf("		a. Sélectionner un pion\n");
-	printf("		b. Revenir à votre tour précédent\n");
-	printf("		c. Sauvegarder la partie\n");
-	printf("		d. Fin de votre tour\n");
-	printf("		########################################\n");
+	if(!tour)
+	{
+		printf("		########################################\n");
+		printf("		||*----------DEBUT DE TOUR-----------*||\n");
+		printf("		########################################\n");
+		printf("		a. Sélectionner un pion\n");
+		printf("		b. Revenir à votre tour précédent\n");
+		printf("		########################################\n");
+	}
+	else
+	{
+		printf("		########################################\n");
+		printf("		||*----------FIN  DU  TOUR-----------*||\n");
+		printf("		########################################\n");
+		printf("		c. Sauvegarder la partie\n");
+		printf("		d. Fin de votre tour\n");
+		printf("		########################################\n");
+	}
 }
 
-void affiche_menu_coup(int retour)
-{
-	printf("		########################################\n");
-	printf("		||*-----------JOUER UN COUP----------*||\n");
-	printf("		########################################\n");
-	printf("		a. Déplacer le pion\n");
-	printf("		b. Revenir au coup précédent\n");
-	printf("		c. Sauvegarder la partie\n");
-	printf("		d. Fin du(es) déplacement de votre pion\n");
-	
-	if(retour)
-	printf("		e.Changer de pion\n");
-	
-	printf("		########################################\n");
+void affiche_menu_coup(int coup)
+{	
+		printf("		########################################\n");
+		printf("		||*-----------JOUER UN COUP----------*||\n");
+		printf("		########################################\n");
+		printf("		a. Déplacer le pion\n");
+
+		if(coup)
+		{
+		printf("		b. Revenir au(x) coup(s) précédent(s)\n");
+		}
+		printf("		c. Sauvegarder la partie\n");
+		printf("		d. Fin du(es) déplacement de votre pion\n");
+		printf("		########################################\n");
 }
 
 void affiche_echec_deplacement()
@@ -115,7 +125,7 @@ void affiche_joueur(int couleur)
 void affiche_echec_pion()
 {
 	printf("		###############################################\n");
-	printf("		Vous n'avez pas sélecionner l'un de vos pions!\n");
+	printf("		Vous n'avez pas sélectionner l'un de vos pions!\n");
 	printf("		Veuillez rentrer un identifiant de vos pions!\n");
 	printf("		###############################################\n");
 }

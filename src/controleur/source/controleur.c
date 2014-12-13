@@ -34,6 +34,7 @@ Controleur controleur_init(int nombreJoueurs)
 void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 {
 	int i;
+	int tour=0;
 	// Le pion qui jouera
 	Pion* pion = NULL;
 
@@ -46,7 +47,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		// On affiche le menu de debut de tour
 		affiche_plateau(&modele->plateau, AFFICHAGE);
 		affiche_joueur(joueur->couleur);
-		affiche_menu_commencer_tour();
+		affiche_menu_tour(tour);
 		choix = recuperer_caractere();
 
 		// Cas joueur joue un coup :
@@ -59,9 +60,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 			commencer_tour(modele, pion);
 
 			// On joue un ou des coups
-			controleur_jouer_coup(joueur, modele, pion);
-
-
+			tour=controleur_jouer_coup(joueur, modele, pion);
 		}
 		// Cas joueur revient au tour d'avant
 		else if(choix == 'b')
@@ -72,7 +71,6 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 				{
 					for(i=0; i<4; i++)
 					{
-						printf("ahah\n");
 						annuler_tour(modele);
 					}
 				}
@@ -98,7 +96,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 	}
 }
 
-void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
+int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 {
 	// Les variable qui stocke les choix utilisateur
 	char choix;
@@ -109,6 +107,7 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 
 	//Autre variables
 	int i;
+	int coup=0;
 
 	// La direction d'envoi du pion
 	Direction direction;
@@ -119,7 +118,7 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 		system("clear");
 		affiche_plateau(&modele->plateau, AFFICHAGE);
 		affiche_joueur(joueur->couleur);
-		affiche_menu_coup(0);
+		affiche_menu_coup(coup);
 		choix = recuperer_caractere();
 
 		// Cas joueur déplace :
@@ -150,11 +149,21 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 						//On brise la boucle du while de choix
 						choix = 'd';
 
+						//On  déselectionne le pion qui avait été choisi
 						pion->selectionne=0;
 
+						//On dépile le tour qui est inutile
 						pileTours_depiler(&modele->pile_tours);
+
+						return 0;
 					}
 				}
+
+				if(jouerCoup == 1)
+				{
+					coup=1;
+				}
+
 			}
 		}
 		// Cas joueur annule un coup
@@ -173,6 +182,7 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 			}
 
 			jouerCoup = 0;
+			coup=0;
 		}
 		// Cas sauvegarder
 		else if(choix == 'c')
@@ -180,6 +190,8 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 			// TODO
 		}
 	}while(choix != 'd');
+
+	return 1;
 }
 
 int selectionner_pion(Modele* modele, Joueur* joueur, Pion** pion)

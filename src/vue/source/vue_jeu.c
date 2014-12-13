@@ -131,6 +131,15 @@ void affichage_victoire(Couleur couleur)
 			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
 			printf("		#########################################\n");
 			printf("\n");
+
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*--Appuyer sur entrée pour revenir--*||\n");
+			printf("		||*---------au menu principal---------*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+
+			getchar();
 			break;
 		case BLEU :
 			printf("\n");
@@ -139,6 +148,15 @@ void affichage_victoire(Couleur couleur)
 			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
 			printf("		#########################################\n");
 			printf("\n");
+
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*--Appuyer sur entrée pour revenir--*||\n");
+			printf("		||*---------au menu principal---------*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+
+			getchar();
 			break;
 		case VERT :
 			printf("\n");
@@ -147,6 +165,15 @@ void affichage_victoire(Couleur couleur)
 			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
 			printf("		#########################################\n");
 			printf("\n");
+
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*--Appuyer sur entrée pour revenir--*||\n");
+			printf("		||*---------au menu principal---------*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+
+			getchar();
 			break;
 		case JAUNE :
 			printf("\n");
@@ -155,6 +182,15 @@ void affichage_victoire(Couleur couleur)
 			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
 			printf("		#########################################\n");
 			printf("\n");
+			
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*--Appuyer sur entrée pour revenir--*||\n");
+			printf("		||*---------au menu principal---------*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+
+			getchar();
 			break;
 		default :
 			break;

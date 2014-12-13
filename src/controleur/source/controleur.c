@@ -72,6 +72,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 				{
 					for(i=0; i<4; i++)
 					{
+						printf("ahah\n");
 						annuler_tour(modele);
 					}
 				}
@@ -148,6 +149,10 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 
 						//On brise la boucle du while de choix
 						choix = 'd';
+
+						pion->selectionne=0;
+
+						pileTours_depiler(&modele->pile_tours);
 					}
 				}
 			}

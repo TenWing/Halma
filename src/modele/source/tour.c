@@ -19,16 +19,11 @@ Tour tour_init(Pion p)
 	Tour tour;
 
 	// On alloue ce qui peut-être alloué
-	tour.pion = p;
-	tour.depart = p.position;
+	tour.pion = pion_copie(p);
+	tour.depart = position_init(p.position.x, p.position.y);
 
 	// on renvoie le tour initialisé
 	return tour;
-}
-
-void tour_changer_pion(Tour* tour, Pion* pion)
-{
-	tour->pion = pion_init(pion->couleur, pion->position, pion->identifiant);	
 }
 
 PileTours pileTours_init()
@@ -41,6 +36,7 @@ PileTours pileTours_init()
 
 	// renvoi de la pile prête
 	return piletours;
+	
 }
 
 Tour pileTours_depiler(PileTours* pile)

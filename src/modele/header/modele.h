@@ -91,7 +91,7 @@ void annuler_coup(Modele* modele, Pion* pion);
 * \param	pion le pion qui sera modifié
 * \version	1.0
 */
-void annuler_tour(Modele* modele, Pion* pion);
+void annuler_tour(Modele* modele, Pion** pion);
 
 /**
 * \brief 	Joue un coup, cad fait un déplacement
@@ -102,12 +102,5 @@ void annuler_tour(Modele* modele, Pion* pion);
 * \return	1 coup a pu être joué 0 coup n'a pas pu
 */
 int jouer_coup(Modele* modele, Pion* pion, Direction direction);
-
-/**
-* \brief 	Supprime un tour de la pile de tours
-* \author 	Tendry
-* \param	modele le modele qui sera modifié
-*/
-void supprimer_tour(Modele* modele);
 
 #endif

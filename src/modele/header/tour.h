@@ -1,4 +1,5 @@
 
+
 /**
 * \file		tour.h
 * \author	Tendry
@@ -31,7 +32,7 @@ struct Tour
 	* \brief Le pion concerné par le tour 
 	* \see Pion
 	*/
-	Pion pion;
+	Pion* pion;
 
 	/**
 	* \brief la position de départ du pion concerné au début du tour
@@ -95,15 +96,6 @@ struct PileTours
 * \return renvoie un Tour bien initialisé
 */
 Tour tour_init(Pion p);
-
-/**
-* \brief change le pion associé à un tour
-* \author Tendry
-* \version 1.0
-* \param tour le tour modifié
-* \param pion le nouveau pion
-*/
-void tour_changer_pion(Tour* tour, Pion* pion);
 
 //######################################
 //FONCTIONS PILE TOURS

@@ -1,4 +1,5 @@
 
+
 /**
  * \file      testModele.c
  * \author    Geliot
@@ -194,7 +195,7 @@ int main ()
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	jouer_coup(&modele, testeur, GAUCHE);
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
-	//fin_tour(testeur);
+	fin_tour(&testeur);
 
 	/*printf("fin tour\n");
 	commencer_tour(&modele, testeur);
@@ -210,7 +211,7 @@ int main ()
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 */
 
-	supprimer_tour(&modele);
+	annuler_tour(&modele, &testeur);
 
 	printf("Position du pion (après la suppression du tour) maintenant : %d // %d\n", testeur->position.x, testeur->position.y);	
 	return 0;	

@@ -65,25 +65,21 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		// Cas joueur revient au tour d'avant
 		else if(choix == 'b')
 		{
-<<<<<<< HEAD
-			if(controleur.nombreJoueurs>2)
-			{
-				 annuler_tour(Modele* modele, Pion* pion)
-=======
+
 			if(modele->nombreJoueurs>2)
 			{
 				for(i=0; i<4; i++)
 				{
-					supprimer_tour(modele);
+					annuler_tour(modele, &pion);
 				}
 			}
 			else
 			{
 				for(i=0; i<2; i++)
 				{
-					supprimer_tour(modele);
+					annuler_tour(modele, &pion);
 				}
->>>>>>> 32096a29215deb9a6faca66c35fe6bc9b7469279
+
 			}
 		}
 		// Cas sauvegarder

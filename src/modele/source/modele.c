@@ -88,13 +88,21 @@ void annuler_coup(Modele* modele, Pion* pion)
 	pion->saut = dernier.pion.saut;
 }
 
-void annuler_tour(Modele* modele, Pion* pion)
+void annuler_tour(Modele* modele, Pion** pion)
 {
+	Pion* direct = *pion;
+	Tour dernier;
+	//On dépile le tour du joueur qui joue
+	dernier = pileTours_depiler(&modele->pile_tours);
+
 	// On accède au tour courant
-	NoeudTour* noeud = modele->pile_tours.premier;
+	//NoeudTour* noeud = modele->pile_tours.premier;
+
+	//On prend le tour du joueur précedent
+	dernier = pileTours_depiler(&modele->pile_tours);
 
 	// On change la position du pion
-	pion->position = position_init(noeud->tour.pion.position.x, noeud->tour.pion.position.y);
+	direct->position = position_init(dernier.depart.x, dernier.depart.y);
 }
 
 int jouer_coup(Modele* modele, Pion* pion, Direction direction)
@@ -123,11 +131,3 @@ int jouer_coup(Modele* modele, Pion* pion, Direction direction)
 	return succes;
 }
 
-void supprimer_tour(Modele* modele)
-{
-	//On cherche le tour voulu
-	Tour tour;
-
-	//On dépile le tour choisi
-	tour=pileTours_depiler(&modele->pile_tours);
-}

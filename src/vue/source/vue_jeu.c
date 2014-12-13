@@ -12,6 +12,7 @@
 #include <vue_jeu.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <couleur.h>
 //######################################
 
 void affiche_selection_pion()
@@ -117,4 +118,45 @@ void affiche_echec_pion()
 	printf("		Vous n'avez pas sélecionner l'un de vos pions!\n");
 	printf("		Veuillez rentrer un identifiant de vos pions!\n");
 	printf("		###############################################\n");
+}
+
+void affichage_victoire(Couleur couleur)
+{
+	switch(couleur)
+	{
+		case ROUGE :
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*----Felicitation! Joueur Rouge!----*||\n");
+			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+			break;
+		case BLEU :
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*----Felicitation! Joueur  Bleu!----*||\n");
+			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+			break;
+		case VERT :
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*----Felicitation! Joueur  Vert!----*||\n");
+			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+			break;
+		case JAUNE :
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*----Felicitation! Joueur Jaune!----*||\n");
+			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+			break;
+		default :
+			break;
+	}
 }

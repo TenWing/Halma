@@ -79,10 +79,10 @@ int main()
 							for(i=0; i<nombre_joueur; i++)
 							{
 								controleur_jouer_tour(&(controleur.modele.tableau_joueur[i]), &(controleur.modele));
-printf("%d\n", verification_zone(&(controleur.modele.tableau_zone[i]), &(controleur.modele.tableau_joueur[i])));
+
 								//Si l'un des joueur a placé tous ses pions dans la zone de victoire
 								if(verification == verification_zone(&(controleur.modele.tableau_zone[i]), &(controleur.modele.tableau_joueur[i])))
-								{ printf("ici");
+								{
 									//i=8 va permettre de sortir de la boucle for
 									victoire = 1;
 									//Permet de savoir quel joueur a gagné par rapport à sa couleur
@@ -92,28 +92,9 @@ printf("%d\n", verification_zone(&(controleur.modele.tableau_zone[i]), &(control
 							}
 						}
 
-						//On regarge la couleur du joueur gagnant et on le félicite
-						switch(couleur)
-						{
-							case ROUGE :
-								printf("\n\n\n Felicitation Joueur Rouge!\n");
-								printf("Vous avez ecrasé vos concurrents!");
-								break;
-							case BLEU :
-								printf("\n\n\n Felicitation Joueur Bleu!\n");
-								printf("Vous avez ecrasé vos concurrents!");
-								break;
-							case VERT :
-								printf("\n\n\n Felicitation Joueur Vert!\n");
-								printf("Vous avez ecrasé vos concurrents!");
-								break;
-							case JAUNE :
-								printf("\n\n\n Felicitation Joueur Jaune!\n");
-								printf("Vous avez ecrasé vos concurrents!");
-								break;
-							default :
-								break;
-						}
+						affichage_victoire(couleur);
+						choix ='d';
+
 
 						break;
 			case 'b' :

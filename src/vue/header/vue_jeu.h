@@ -64,4 +64,10 @@ void affiche_joueur(int couleur);
 */
 void affiche_echec_pion();
 
+/**
+* \brief	Affiche qui a gagné !!!
+* \author	Quentin
+* \version	1.0
+*/
+void affichage_victoire();
 #endif

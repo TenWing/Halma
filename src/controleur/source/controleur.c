@@ -117,6 +117,7 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 		// Affichage + demande choix utilisateur
 		system("clear");
 		affiche_plateau(&modele->plateau, AFFICHAGE);
+		affiche_joueur(joueur->couleur);
 		affiche_menu_coup(0);
 		choix = recuperer_caractere();
 
@@ -134,6 +135,7 @@ void controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 				if(jouerCoup == 0)
 				{
 					//Affichage + demande utilisateur
+					affiche_joueur(joueur->couleur);
 					affiche_echec_deplacement();
 					choix = recuperer_caractere();
 
@@ -183,6 +185,7 @@ int selectionner_pion(Modele* modele, Joueur* joueur, Pion** pion)
 	// FONCTION DE LA VUE QUI AFFICHE CE QUE DOIT FAIRE L'UTILISATEUR
 	system("clear");
 	affiche_plateau(&modele->plateau, SELECTION);
+	affiche_joueur(joueur->couleur);
 	affiche_selection_pion();
 
 	//On récupère un identifiant d'un pion

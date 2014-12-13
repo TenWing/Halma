@@ -240,7 +240,7 @@ int selectionner_direction(Modele* modele, Direction* direction)
 
 void jouer_partie(char choix)
 {
-	char choix, choix2;
+	char choix2;
 	int nombre_joueur,i;
 	Controleur controleur;
 	Couleur couleur;

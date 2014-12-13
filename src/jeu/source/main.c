@@ -34,14 +34,7 @@
 */
 int main()
 {
-	char choix, choix2;
-	int nombre_joueur,i;
-	Controleur controleur;
-	Couleur couleur;
-	
-	//Permettra de savoir quel joueur a gagné
-	int victoire=0;
-	int verification = 1;
+	char choix;	
 
 	clean_terminal();
 	presentation_jeu();

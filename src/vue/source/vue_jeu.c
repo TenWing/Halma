@@ -68,7 +68,7 @@ void affiche_menu_coup(int coup)
 
 		if(coup)
 		{
-		printf("		b. Revenir au(x) coup(s) précédent(s)\n");
+		printf("		r. Revenir au(x) coup(s) précédent(s)\n");
 		}
 		printf("		c. Sauvegarder la partie\n");
 		printf("		d. Fin du(es) déplacement de votre pion\n");
@@ -93,6 +93,7 @@ void affiche_echec_deplacement(int echec)
 		printf("		Vous n'avez pas réussi à vous déplacer, \n");
 		printf("		Retenter une autre direction ou mettre fin à vos déplacements?\n");
 		printf("		b. changer de direction\n");
+		printf("		r. Revenir au(x) coup(s) précédent(s)\n");
 		printf("		d. Fin du(es) déplacement de votre pion\n");
 		printf("		#################################################\n");
 	}

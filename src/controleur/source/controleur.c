@@ -175,7 +175,18 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 
 						if(choix == 'd')
 						{
+							//On retourne que le deplacement du pion a bien été effectué
 							return 1;
+						}
+						else if(choix =='r')
+						{
+							//L'utilisateur veut annuler son coup
+
+							//Le joueur ne peut plus déplacer son pion
+							jouerCoup =1;
+							
+							//On affiche le menu adéquate
+							coup=1;
 						}
 					}
 				}
@@ -183,7 +194,7 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 			}
 		}
 		// Cas joueur annule un coup
-		else if(choix == 'b')
+		else if(choix == 'r')
 		{
 			//Demande à l'utilisateur combien de coups il souhaite annuler
 			nombre_coup();

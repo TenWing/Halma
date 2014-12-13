@@ -84,4 +84,4 @@ int selectionner_direction(Modele* modele, Direction* direction);
 * \brief 	Lance une partie du jeu
 * \author	Tendry
 */
-void jouer_partie(char choix);
+void jouer_partie();

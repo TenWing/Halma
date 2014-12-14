@@ -106,6 +106,14 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau);
 void pion_marquer(Pion* pion, Plateau* plateau);
 
 /**
+* \brief	démarque les positions autour du pion
+* \author	Tendry
+* \version	1.0
+* \param	plateau le plateau qui contient toutes les positions
+*/
+void pion_demarquer(Plateau* plateau);
+
+/**
 * \brief	marque les positions possible de déplacement autour du pion pour un direction donnée
 * \author	Tendry
 * \version	1.0

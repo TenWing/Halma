@@ -278,6 +278,16 @@ void pion_marquer(Pion* pion, Plateau* plateau)
 	pion_analyse_marquage_direction(pion, plateau, HAUT_GAUCHE);	
 }
 
+void pion_demarquer(Plateau* plateau)
+{
+	NoeudPosition* noeud = plateau->vides.premier;
+	while(noeud -> suivant != NULL)
+	{
+		noeud->position.marque = 0;
+		noeud = noeud -> suivant;
+	}
+}
+
 void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction direction)
 {
 	// La position analysée

@@ -123,7 +123,8 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 	{
 		// une fois selectionné on marque les positions possibles
 		// autour du pion
-		pion_marquer(pion, &modele->plateau);
+		if(pion->saut || jouerCoup == 0)
+			pion_marquer(pion, &modele->plateau);
 
 		// Affichage + demande choix utilisateur
 		system("clear");
@@ -148,7 +149,7 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 		
 				// Tout est bon on joue le coup !
 				jouerCoup=jouer_coup(modele, pion, direction);
-
+				pion_demarquer(&modele->plateau);
 				if(jouerCoup == 0)
 				{
 					if(pion->saut == 0)
@@ -214,7 +215,7 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 
 			jouerCoup = 0;
 			coup=0;
-		}		
+		}
 	}while(choix != 'd');
 
 	return 1;

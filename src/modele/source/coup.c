@@ -93,43 +93,22 @@ void pileCoups_ajouterCoup(PileCoups* pile, Coup coup)
 	pile->premier = ajout;
 }
 
-void sauvegardeCoup(Coup coup, char* emplacement_fichier_sauvegarde)
+void sauvegardeCoup(Coup coup, FILE* emplacement_fichier_sauvegarde)
 {
 	sauvegardePion(coup.pion, emplacement_fichier_sauvegarde);
 
-	FILE *fichier_contient_coup;
-	fichier_contient_coup = fopen(emplacement_fichier_sauvegarde, "ab");
-
-	if (fichier_contient_coup != NULL)
-	    {
-	    	fwrite(&coup.precedente.x, sizeof(int) , 1, fichier_contient_coup);
-	    	fwrite(&coup.precedente.y, sizeof(int) , 1, fichier_contient_coup);
-			fclose(fichier_contient_coup);			
-	    }
-
-	else
-	    {
-	         printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
-	    }
+	fwrite(&coup.precedente.x, sizeof(int) , 1, emplacement_fichier_sauvegarde);
+	fwrite(&coup.precedente.y, sizeof(int) , 1, emplacement_fichier_sauvegarde);	
 }
 
-Coup chargerCoup(char* emplacement_fichier)
+Coup chargerCoup(FILE* emplacement_fichier)
 {
 	Coup coup;
-	FILE *fichier_contient_coup;
-	fichier_contient_coup = fopen(emplacement_fichier, "rb");
+	
 	coup.pion = chargerPion(emplacement_fichier);
 
-	if (fichier_contient_coup != NULL)
-	{
-		fread(&coup.precedente.x, sizeof(int) , 1, fichier_contient_coup);
-	    fread(&coup.precedente.y, sizeof(int) , 1, fichier_contient_coup);	
-		fclose(fichier_contient_coup);
-	}
-	else
-	{
-	    printf("Impossible d'ouvrir le fichier depart.txt");
-	}
-
+	fread(&coup.precedente.x, sizeof(int) , 1, emplacement_fichier);
+	fread(&coup.precedente.y, sizeof(int) , 1, emplacement_fichier);	
+	
 	return coup;
 }

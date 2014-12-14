@@ -136,4 +136,13 @@ void pileTours_ajouterTour(PileTours* pile, Tour tour);
 * \param 	emplacement_fichier_sauvegarde
 */
 void sauvegardeTour(Tour tour, char* emplacement_fichier_sauvegarde);
+
+/**
+* \brief 	charge un tour
+* \author 	Quentin
+* \version 1.0
+* \param 	emplacement_fichier_sauvegarde
+* \return	le tour chargé
+*/
+Tour chargerTour(char* emplacement_fichier);
 #endif

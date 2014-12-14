@@ -95,4 +95,23 @@ int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction);
 */
 int pion_sauter(Pion* pion, Direction direction, Plateau* plateau);
 
+/**
+* \brief	marque les positions autour du pion où celui-ci peut se rendre
+* \author	Tendry
+* \version	1.0
+* \param	pion le pion qui sert à marquer les positions
+* \param	plateau le plateau qui contient toutes les positions
+*/
+void pion_marquer(Pion* pion, Plateau* plateau);
+
+/**
+* \brief	marque les positions possible de déplacement autour du pion pour un direction donnée
+* \author	Tendry
+* \version	1.0
+* \param	pion le pion qui sert à marquer les positions
+* \param	plateau le plateau qui contient toutes les positions
+* \param	direction la direction dans laquelle on teste les déplacements
+*/
+void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction direction);
+
  #endif

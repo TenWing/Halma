@@ -92,3 +92,8 @@ void pileCoups_ajouterCoup(PileCoups* pile, Coup coup)
 	//On indique bien que l'élément ajouté est la tête de la pile
 	pile->premier = ajout;
 }
+
+void sauvegardePion(Coup coup, char* emplacement_fichier_sauvegarde)
+{
+	
+}

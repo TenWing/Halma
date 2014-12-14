@@ -8,6 +8,14 @@
 #ifndef FICHIER_H
 #define FICHIER_H
 
-
+/**
+* \brief 	Sauvegarder une partie
+* \author 	Quentin
+* \param	Modele
+* \param	L'emplacement où sera le fichier de sauvegarde
+* \version 1.0
+* \return 	1 si la sauvegarde a reussi, 0 si echec
+*/
+int sauvegardePartie(Modele* modele, char* emplacement_fichier_sauvegarde);
 
 #endif

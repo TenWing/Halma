@@ -96,6 +96,7 @@ int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction);
 int pion_sauter(Pion* pion, Direction direction, Plateau* plateau);
 
 /**
+<<<<<<< HEAD
 * \brief	marque les positions autour du pion où celui-ci peut se rendre
 * \author	Tendry
 * \version	1.0
@@ -114,4 +115,12 @@ void pion_marquer(Pion* pion, Plateau* plateau);
 */
 void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction direction);
 
+/**
+* \brief 	sauvegarde un pion dans un fichier texte
+* \author	Quentin
+* \version 	1.0
+* \param	pion 	le pion a sauvegardé
+* \param	emplacement_fichier_sauvegarde
+*/
+void sauvegardePion(Pion* pion, char* emplacement_fichier_sauvegarde);
  #endif

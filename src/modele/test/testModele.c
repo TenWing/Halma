@@ -38,6 +38,7 @@ int main ()
 
  	printf("ID : %d, couleur : %d\n", pion.identifiant, pion.couleur);
  	printf("ID : %d, couleur : %d\n", pion2.identifiant, pion2.couleur);
+ 	sauvegardePion(&pion, "sauvegardetest.txt");
 
  	//###########################################
  	//TEST MODULE COUP

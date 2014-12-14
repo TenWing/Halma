@@ -158,12 +158,6 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 						{
 							//L'utilisateur va changer de pion
 
-							//On brise la boucle du while de jouerCoup
-							jouerCoup = 1;
-
-							//On brise la boucle du while de choix
-							choix = 'd';
-
 							//On  déselectionne le pion qui avait été choisi
 							pion->selectionne=0;
 

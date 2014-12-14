@@ -7,7 +7,6 @@
  * \details   Définit une matrice pour le plateau
  */
 
-
 #ifndef PLATEAU_H
 #define PLATEAU_H
 #define Taille_plateau 16;
@@ -16,6 +15,7 @@
 //Inclusion des éléments nécessaires à notre structure
 #include <matrice.h>
 #include <pion.h>
+#include <zone.h>
 
 /**
 * \brief Un élément d'une liste de pions

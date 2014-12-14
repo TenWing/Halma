@@ -92,7 +92,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 			affiche_sauvegarde(0);
 			sauvegarde=recuperer_entier();
 
-			SauvegarderPartie(sauvegarde, modele);
+			// SauvegarderPartie(sauvegarde, modele);
 		}
 	}while(choix != 'd');
 
@@ -279,7 +279,6 @@ int selectionner_direction(Modele* modele, Direction* direction)
 
 void jouer_partie()
 {
-	char choix2;
 	int nombre_joueur,i;
 	Controleur controleur;
 	Couleur couleur;

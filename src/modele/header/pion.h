@@ -125,7 +125,4 @@ void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction dir
 
 void sauvegardePion(Pion pion, char* emplacement_fichier_sauvegarde);
 
-
-void sauvegardePion(Pion* pion, char* emplacement_fichier_sauvegarde);
-
  #endif

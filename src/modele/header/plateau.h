@@ -59,6 +59,11 @@ struct Plateau
  	* \see ListePions
  	*/
  	ListePions liste_pions;
+
+ 	/**
+ 	* \brief la liste des positions vides
+ 	*/
+ 	ListePositions vides;
 };
 
 /**

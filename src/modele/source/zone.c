@@ -42,8 +42,12 @@ void liste_positions_supprimer(ListePositions* liste, Position position)
 	if(noeud != NULL)
 	{
 		// On la supprime de la liste
-		noeud -> precedent -> suivant = noeud -> suivant;
-		noeud -> suivant -> precedent = noeud -> precedent;
+		if(noeud -> precedent != NULL && noeud -> precedent != noeud)
+			noeud -> precedent -> suivant = noeud -> suivant;
+		
+		if(noeud -> suivant != NULL && noeud -> suivant != noeud)
+			noeud -> suivant -> precedent = noeud -> precedent;
+		
 		noeud -> precedent = NULL;
 		noeud -> suivant = NULL;
 		free(noeud);
@@ -76,7 +80,7 @@ void liste_positions_ajout(ListePositions* liste, Position position)
 	{
 		// On parcoure la liste
 		NoeudPosition* tmp = liste -> premier;
-		while(tmp -> suivant != NULL)
+		while(tmp -> suivant != NULL && tmp -> suivant != tmp)
 		{
 			tmp = tmp -> suivant;
 		}

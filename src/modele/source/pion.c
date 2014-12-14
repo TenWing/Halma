@@ -250,15 +250,14 @@ void sauvegardePion(Pion pion, char* emplacement_fichier_sauvegarde)
 	    	fprintf(fichier_contient_pion, "%d%d", pion.position.x, pion.position.y);
 	    	fprintf(fichier_contient_pion, "%d", pion.identifiant);
 			fclose(fichier_contient_pion);
-			return 1;
 	    }
 
-	    else
+	else
 	    {
 	         printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
-	         return 0;
 	    }
 }
+
 
 void pion_marquer(Pion* pion, Plateau* plateau)
 {
@@ -317,3 +316,4 @@ void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction dir
 	if(plateau_getpion(plateau, position_direction).identifiant == -1)
 		printf("\n");
 }
+

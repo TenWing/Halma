@@ -38,7 +38,7 @@ int main ()
 
  	printf("ID : %d, couleur : %d\n", pion.identifiant, pion.couleur);
  	printf("ID : %d, couleur : %d\n", pion2.identifiant, pion2.couleur);
- 	sauvegardePion(&pion, "sauvegardetest.txt");
+
 
  	//###########################################
  	//TEST MODULE COUP
@@ -51,6 +51,7 @@ int main ()
  	PileCoups pile = pileCoups_init();
  	pileCoups_ajouterCoup(&pile, coup);
  	pileCoups_ajouterCoup(&pile, coup2);
+ 	sauvegardeCoup(coup, "sauvegardetest.txt");
 
  	//Donc normalement on devrait lire 2 puis 1
  	printf("Je dépile\n");

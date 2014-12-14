@@ -20,6 +20,7 @@ Position position_init(int x, int y)
 
 	position.x=x;
 	position.y=y;
+	position.marque = 0;
 
 	return position;
 }

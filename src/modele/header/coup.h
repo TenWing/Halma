@@ -136,6 +136,6 @@ void pileCoups_ajouterCoup(PileCoups* pile, Coup coup);
 * \param 	Coup 	le coup à sauvegarder
 * \param 	emplacement_fichier_sauvegarde
 */
-void sauvegardePion(Coup coup, char* emplacement_fichier_sauvegarde);
+void sauvegardeCoup(Coup coup, char* emplacement_fichier_sauvegarde);
 
 #endif

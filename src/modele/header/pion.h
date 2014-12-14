@@ -102,6 +102,6 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau);
 * \param	pion 	le pion a sauvegardé
 * \param	emplacement_fichier_sauvegarde
 */
-void sauvegardePion(Pion* pion, char* emplacement_fichier_sauvegarde);
+void sauvegardePion(Pion pion, char* emplacement_fichier_sauvegarde);
 
  #endif

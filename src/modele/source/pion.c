@@ -250,56 +250,10 @@ void sauvegardePion(Pion pion, char* emplacement_fichier_sauvegarde)
 	    	fprintf(fichier_contient_pion, "%d%d", pion.position.x, pion.position.y);
 	    	fprintf(fichier_contient_pion, "%d", pion.identifiant);
 			fclose(fichier_contient_pion);
-			return 1;
 	    }
 
-	    else
+	else
 	    {
 	         printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
-	         return 0;
 	    }
 }
-/*
-int direction_opposée(Direction direction, Pion* pion)
-{
-	//On regarde qu'elle est le direction souhaitée
-	switch(direction)
-	{
-		case HAUT:
-			if(pion->position.x)
-
-			position_direction.x -= 2;
-			break;
-
-		case HAUT_DROITE:
-			position_direction.x -= 2;
-			position_direction.y += 2;
-			break;
-
-		case DROITE:
-			position_direction.y += 2;
-			break;
-
-		case BAS_DROITE:
-			position_direction.y += 2;
-			position_direction.x += 2;
-			break;
-
-		case BAS:
-			position_direction.x += 2;
-			break;
-
-		case BAS_GAUCHE:
-			position_direction.x += 2;
-			position_direction.y -= 2;
-			break;
-
-		case GAUCHE:
-			position_direction.y -= 2;
-			break;
-
-		case HAUT_GAUCHE:
-			position_direction.x -= 2;
-			position_direction.y -= 2;
-			break;
-}*/

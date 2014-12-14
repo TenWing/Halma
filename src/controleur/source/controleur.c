@@ -121,6 +121,10 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 
 	do
 	{
+		// une fois selectionné on marque les positions possibles
+		// autour du pion
+		pion_marquer(pion, &modele->plateau);
+
 		// Affichage + demande choix utilisateur
 		system("clear");
 		affiche_plateau(&modele->plateau, AFFICHAGE);

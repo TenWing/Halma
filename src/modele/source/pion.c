@@ -256,60 +256,108 @@ void sauvegardePion(Pion pion, FILE* emplacement_fichier_sauvegarde)
 
 void pion_marquer(Pion* pion, Plateau* plateau)
 {
-
+	pion_analyse_marquage_direction(pion, plateau, HAUT);	
+	pion_analyse_marquage_direction(pion, plateau, HAUT_DROITE);	
+	pion_analyse_marquage_direction(pion, plateau, DROITE);	
+	pion_analyse_marquage_direction(pion, plateau, BAS_DROITE);	
+	pion_analyse_marquage_direction(pion, plateau, BAS);	
+	pion_analyse_marquage_direction(pion, plateau, BAS_GAUCHE);	
+	pion_analyse_marquage_direction(pion, plateau, GAUCHE);	
+	pion_analyse_marquage_direction(pion, plateau, HAUT_GAUCHE);	
 }
 
 void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction direction)
 {
 	// La position analysée
 	Position position_direction = position_init(pion->position.x, pion->position.y);
+	Position position_direction_saut = position_init(pion->position.x, pion->position.y);
 
 	// On regarde la direction analysée
 	switch(direction)
 	{
 		case HAUT:
-			position_direction.x -= 2;
+			position_direction.x -= 1;
+			position_direction_saut.x -= 2;
 			break;
 
 		case HAUT_DROITE:
-			position_direction.x -= 2;
-			position_direction.y += 2;
+			position_direction.x -= 1;
+			position_direction.y += 1;
+			position_direction_saut.x -= 2;
+			position_direction_saut.y += 2;
 			break;
 
 		case DROITE:
-			position_direction.y += 2;
+			position_direction.y += 1;
+			position_direction_saut.y += 2;
 			break;
 
 		case BAS_DROITE:
-			position_direction.y += 2;
-			position_direction.x += 2;
+			position_direction_saut.y += 2;
+			position_direction_saut.x += 2;
+			position_direction.y += 1;
+			position_direction.x += 1;
 			break;
 
 		case BAS:
-			position_direction.x += 2;
+			position_direction_saut.x += 2;
+			position_direction.x += 1;
 			break;
 
 		case BAS_GAUCHE:
-			position_direction.x += 2;
-			position_direction.y -= 2;
+			position_direction_saut.x += 2;
+			position_direction_saut.y -= 2;
+			position_direction.x += 1;
+			position_direction.y -= 1;
 			break;
 
 		case GAUCHE:
-			position_direction.y -= 2;
+			position_direction_saut.y -= 2;
+			position_direction.y -= 1;
 			break;
 
 		case HAUT_GAUCHE:
-			position_direction.x -= 2;
-			position_direction.y -= 2;
+			position_direction.x -= 1;
+			position_direction.y -= 1;
+			position_direction_saut.x -= 2;
+			position_direction_saut.y -= 2;
 			break;
 
 		default:
 			break;
 	}
 
-	// Si la case est vide ET dans la portée de déplacement
-	if(plateau_getpion(plateau, position_direction).identifiant == -1)
-		printf("\n");
+	// Si on saute
+	if(pion->saut)
+	{
+		// On ne regarde la portée de ce qui est a portée dez saut
+		// SI ET SEULEMENT SI un pion est a portée directe
+		if(plateau_getVide(plateau, position_direction) == NULL)
+		{
+			Position* p = plateau_getVide(plateau, position_direction_saut);
+			if(p != NULL)
+			{
+				p -> marque = 1;
+			}
+		}
+	}
+	// Si on saute pas
+	else
+	{
+		// On regarde ce qui est à portée
+		Position* p = plateau_getVide(plateau, position_direction);
+		if(p != NULL)
+		{
+			p -> marque = 1;
+		}
+		// S'il y a un pion a portée on regarde s'il on peut sauter
+		else
+		{
+			p = plateau_getVide(plateau, position_direction_saut);
+			if(p != NULL)
+				p -> marque = 1;
+		}
+	}
 }
 
 Pion chargerPion(FILE* emplacement_fichier)

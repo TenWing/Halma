@@ -102,6 +102,16 @@ void liste_pions_ajout(ListePions* liste, Pion pion);
 Pion plateau_getpion(Plateau* plateau, Position position);
 
 /**
+* \brief	Renvoie un accès direct à la position vide donnée
+* \author	Tendry
+* \version	1.0
+* \param	plateau le plateau contenant les positions vides
+* \param	position les coordonnées cherchées
+* \return	un pointeur si il y a eu résultat, NULL si la position n'est pas vide
+*/
+Position* plateau_getVide(Plateau* plateau, Position position);
+
+/**
 * \brief indique si une position est en dehors de la zone de jeu
 * \author Tendry
 * \version 1.0

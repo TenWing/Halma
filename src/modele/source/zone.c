@@ -23,7 +23,6 @@ ListePositions liste_positions_init()
 
  	//Attribution des valeurs
  	liste_positions.premier = NULL;
- 	liste_positions.dernier = NULL;
 
  	//Retourne la liste des positions initialisée
  	return liste_positions;
@@ -42,14 +41,10 @@ void liste_positions_supprimer(ListePositions* liste, Position position)
 	if(noeud != NULL)
 	{
 		// On la supprime de la liste
-		if(noeud -> precedent != NULL && noeud -> precedent != noeud)
-			noeud -> precedent -> suivant = noeud -> suivant;
+		noeud -> precedent -> suivant = noeud -> suivant;
 		
-		if(noeud -> suivant != NULL && noeud -> suivant != noeud)
-			noeud -> suivant -> precedent = noeud -> precedent;
+		noeud -> suivant -> precedent = noeud -> precedent;
 		
-		noeud -> precedent = NULL;
-		noeud -> suivant = NULL;
 		free(noeud);
 	}
 }
@@ -72,7 +67,6 @@ void liste_positions_ajout(ListePositions* liste, Position position)
 	//Le premier élément de la liste
 	if(liste->premier == NULL)
 	{
-		liste -> dernier = nouveau;	
 		liste -> premier = nouveau;
 	}
 	// Après on ajoute à la fin
@@ -80,7 +74,7 @@ void liste_positions_ajout(ListePositions* liste, Position position)
 	{
 		// On parcoure la liste
 		NoeudPosition* tmp = liste -> premier;
-		while(tmp -> suivant != NULL && tmp -> suivant != tmp)
+		while(tmp -> suivant != NULL)
 		{
 			tmp = tmp -> suivant;
 		}

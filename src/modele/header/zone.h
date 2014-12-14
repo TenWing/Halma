@@ -59,11 +59,6 @@ struct ListePositions
 	* \see NoeudPosition
 	*/
 	NoeudPosition* premier;
-
-	/**
-	* \brief le dernier noeud de la liste
-	*/
-	NoeudPosition* dernier;
 };
 
 /**

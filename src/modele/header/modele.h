@@ -1,4 +1,3 @@
-
 /**
  * \file      modele.h
  * \author    Quentin

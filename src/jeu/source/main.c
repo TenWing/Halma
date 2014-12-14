@@ -56,6 +56,7 @@ int main()
 						jouer_partie();
 						break;
 			case 'b' :
+						
 						clean_terminal();
 						break;
 			case 'c' :

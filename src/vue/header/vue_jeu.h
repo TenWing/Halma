@@ -78,6 +78,6 @@ void affichage_victoire();
 * \author	Quentin
 * \version	1.0
 */
-void affiche_sauvegarde();
+void affiche_sauvegarde(int sauvegarde);
 
 #endif

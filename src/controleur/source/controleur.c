@@ -88,7 +88,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		// Cas sauvegarder
 		else if(choix == 'c')
 		{
-			affiche_sauvegarde();
+			affiche_sauvegarde(0);
 			sauvegarde=recuperer_entier();
 
 			SauvegarderPartie(sauvegarde, modele);
@@ -330,7 +330,7 @@ void jouer_partie()
 		affichage_victoire(couleur);			
 }
 
-void SauvegardeMatrice(Matrice matrice, char *emplacement_fichier_sauvegarde, int choix) 
+int SauvegardeMatrice(Matrice matrice, char *emplacement_fichier_sauvegarde, int choix) 
 {
    FILE *fichier_contient_sauvegarde_matrice;
    fichier_contient_sauvegarde_matrice = fopen(emplacement_fichier_sauvegarde, "wb");
@@ -376,11 +376,13 @@ void SauvegardeMatrice(Matrice matrice, char *emplacement_fichier_sauvegarde, in
 				break;	
 		}
 		fclose(fichier_contient_sauvegarde_matrice);
+		return 1;
     }
 
     else
     {
          printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
+         return 0;
     }
 }
 
@@ -440,25 +442,76 @@ Matrice chargerMatrice(char *emplacement_fichier, int choix)
 
     else
     {
-         printf("Impossible d'ouvrir le fichier depart.txt");
+         //printf("Impossible d'ouvrir le fichier depart.txt");
     }
   return matrice;
 }
 
 void SauvegarderPartie(int sauvegarde, Modele* modele)
 {
+	int booleen;
+
 	switch(sauvegarde)
 	{
 		case 1 :
-			SauvegardeMatrice(modele->plateau.matrice, "../../../bin/Parties/Partie_1/sauvegarde_1.txt", 1);
+			booleen=SauvegardeMatrice(modele->plateau.matrice, "../../../bin/Parties/sauvegarde_1.txt", 1);
+
+			if(booleen)
+			{
+				affiche_sauvegarde(1);
+			}
+			else
+			{
+				affiche_sauvegarde(2);
+			}
 			break;
 		case 2 :
+			booleen=SauvegardeMatrice(modele->plateau.matrice, "../../../bin/Partiessauvegarde_2.txt", 1);
+
+			if(booleen)
+			{
+				affiche_sauvegarde(1);
+			}
+			else
+			{
+				affiche_sauvegarde(2);
+			}
 			break;
 		case 3 :
+			booleen=SauvegardeMatrice(modele->plateau.matrice, "../../../bin/Parties/sauvegarde_3.txt", 1);
+
+			if(booleen)
+			{
+				affiche_sauvegarde(1);
+			}
+			else
+			{
+				affiche_sauvegarde(2);
+			}
 			break;
 		case 4 :
+			booleen=SauvegardeMatrice(modele->plateau.matrice, "../../../bin/Parties/sauvegarde_4.txt", 1);
+
+			if(booleen)
+			{
+				affiche_sauvegarde(1);
+			}
+			else
+			{
+				affiche_sauvegarde(2);
+			}
 			break;
 		case 5 :
+			booleen=SauvegardeMatrice(modele->plateau.matrice, "../../../bin/Parties/sauvegarde_5.txt", 1);
+
+			if(booleen)
+			{
+				affiche_sauvegarde(1);
+			}
+			else
+			{
+				affiche_sauvegarde(2);
+			}
 			break;
 		default :
 			break;

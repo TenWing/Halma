@@ -222,18 +222,39 @@ void affichage_victoire(Couleur couleur)
 	}
 }
 
-void affiche_sauvegarde()
+void affiche_sauvegarde(int sauvegarde)
 {
-	printf("\n");
-	printf("		##################################################\n");
-	printf("		||*-----------Sauvegarder une Partie-----------*||\n");
-	printf("		##################################################\n");
-	printf("		1.emplacement 1 pour la sauvegarde de votre partie\n");
-	printf("		2.emplacement 2 pour la sauvegarde de votre partie\n");
-	printf("		3.emplacement 3 pour la sauvegarde de votre partie\n");
-	printf("		4.emplacement 4 pour la sauvegarde de votre partie\n");
-	printf("		5.emplacement 5 pour la sauvegarde de votre partie\n");
-	printf("		##################################################\n");
-	printf("\n");
+	if(sauvegarde == 0)
+	{
+		printf("\n");
+		printf("		##################################################\n");
+		printf("		||*-----------Sauvegarder une Partie-----------*||\n");
+		printf("		##################################################\n");
+		printf("		1.emplacement 1 pour la sauvegarde de votre partie\n");
+		printf("		2.emplacement 2 pour la sauvegarde de votre partie\n");
+		printf("		3.emplacement 3 pour la sauvegarde de votre partie\n");
+		printf("		4.emplacement 4 pour la sauvegarde de votre partie\n");
+		printf("		5.emplacement 5 pour la sauvegarde de votre partie\n");
+		printf("		##################################################\n");
+		printf("\n");
+	}
 
+	else if(sauvegarde == 1)
+	{
+		printf("		##################################################\n");
+		printf("		Votre partie a été enregistrée avec succès!!\n");
+		printf("		Appuyer sur entrée pour continuer votre partie\n");
+		printf("		##################################################\n");
+		getchar();
+
+	}
+
+	else
+	{
+		printf("		##################################################\n");
+		printf("		Echec lors de la sauvegarde de votre partie\n");
+		printf("		Appuyer sur entrée pour continuer votre partie\n");
+		printf("		##################################################\n");
+		getchar();
+	}
 }

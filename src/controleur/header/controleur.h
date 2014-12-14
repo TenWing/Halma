@@ -93,8 +93,9 @@ void jouer_partie();
 * \param	pointeur : emplacement_fichier_sauvegarde	là où le fichier contenant la matrice
 * \param 	choix 		si la sauvegarde est en décimale ou binaire
 * \version	1.0
+* \return 	1 si succès 0 si échec
 */
-void SauvegardeMatrice(Matrice matrice, char *emplacement_fichier_sauvegarde, int choix);
+int SauvegardeMatrice(Matrice matrice, char *emplacement_fichier_sauvegarde, int choix);
 
 /**
 * \brief 	Charge une partie

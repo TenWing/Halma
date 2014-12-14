@@ -1,3 +1,4 @@
+
 /**
 * \file 	vue_jeu.h
 * \author	Tendry
@@ -67,9 +68,16 @@ void affiche_echec_pion();
 
 /**
 * \brief	Affiche qui a gagné !!!
-
 * \author	Quentin
 * \version	1.0
 */
 void affichage_victoire();
+
+/**
+* \brief	Affiche un menu pour la sauvegarde
+* \author	Quentin
+* \version	1.0
+*/
+void affiche_sauvegarde();
+
 #endif

@@ -82,6 +82,27 @@ int selectionner_direction(Modele* modele, Direction* direction);
 
 /**
 * \brief 	Lance une partie du jeu
-* \author	Tendry
+* \author	Quentin
 */
 void jouer_partie();
+
+/**
+* \brief 	Sauvegarde une partie
+* \author	Quentin
+* \param	Matrice 	la matrice du jeu de l'halma
+* \param	pointeur : emplacement_fichier_sauvegarde	là où le fichier contenant la matrice
+* \param 	choix 		si la sauvegarde est en décimale ou binaire
+* \version	1.0
+*/
+void SauvegardeMatrice(Matrice matrice, char *emplacement_fichier_sauvegarde, int choix);
+
+/**
+* \brief 	Charge une partie
+* \author	Quentin
+* \param	pointeur : emplacement_fichier_	là où le fichier contenant la matrice
+* \param 	choix 		si le chargement doit être en décimale ou binaire
+* \version	1.0
+* \return 	la matrice qui est en fait le plateau du jeu de l'halma
+*/
+Matrice chargerMatrice(char *emplacement_fichier, int choix);
+

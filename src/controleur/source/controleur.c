@@ -1,3 +1,4 @@
+
 /**
 * \file		controleur.c
 * \brief	Contient le code source des fonctions de contrôle
@@ -35,6 +36,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 {
 	int i;
 	int tour=0;
+	int sauvegarde;
 	// Le pion qui jouera
 	Pion* pion = NULL;
 
@@ -86,7 +88,10 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		// Cas sauvegarder
 		else if(choix == 'c')
 		{
-			// TODO
+			affiche_sauvegarde();
+			sauvegarde=recuperer_entier();
+
+			SauvegarderPartie(sauvegarde, modele);
 		}
 	}while(choix != 'd');
 
@@ -323,4 +328,139 @@ void jouer_partie()
 		}
 
 		affichage_victoire(couleur);			
+}
+
+void SauvegardeMatrice(Matrice matrice, char *emplacement_fichier_sauvegarde, int choix) 
+{
+   FILE *fichier_contient_sauvegarde_matrice;
+   fichier_contient_sauvegarde_matrice = fopen(emplacement_fichier_sauvegarde, "wb");
+
+   int i, j;
+
+ if (fichier_contient_sauvegarde_matrice != NULL)
+    {
+	    switch(choix)
+	    {
+			case 0 :
+
+				fprintf(fichier_contient_sauvegarde_matrice, "%d %d", matrice.nbLignes, matrice.nbColonnes);
+	    		fprintf(fichier_contient_sauvegarde_matrice, "\n");
+				
+				for(i=0; i<matrice.nbLignes; i++)
+				{
+
+					for(j=0; j<matrice.nbColonnes; j++)
+					{
+			    		fprintf(fichier_contient_sauvegarde_matrice, "%d", matrice.donnees[i][j]);
+			    		fprintf(fichier_contient_sauvegarde_matrice, " ");		    		
+		  			}
+
+	    			fprintf(fichier_contient_sauvegarde_matrice, "\n");
+				}
+				break;
+			case 1 :
+
+				fwrite(&matrice.nbLignes, sizeof(int), 1 ,fichier_contient_sauvegarde_matrice);
+				fwrite(&matrice.nbColonnes, sizeof(int), 1 ,fichier_contient_sauvegarde_matrice);
+				
+				for(i=0; i<matrice.nbLignes; i++)
+				{
+
+					for(j=0; j<matrice.nbColonnes; j++)
+					{
+			    		fwrite(&matrice.donnees[i][j], sizeof(int**), 1, fichier_contient_sauvegarde_matrice);
+		  			}
+				}
+				break;
+			default :
+				break;	
+		}
+		fclose(fichier_contient_sauvegarde_matrice);
+    }
+
+    else
+    {
+         printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
+    }
+}
+
+Matrice chargerMatrice(char *emplacement_fichier, int choix)
+{
+   FILE *fichier_contient_matrice;
+   fichier_contient_matrice = fopen(emplacement_fichier, "r+");
+
+   Matrice matrice;
+   int i, j;
+   char chaine[1000] = "";
+   int nombre;
+
+ if (fichier_contient_matrice != NULL)
+    {
+	    switch(choix)
+	    {
+			case 0 :
+
+			fgets(chaine, 1000, fichier_contient_matrice);
+			scanf(chaine, "%d %d", &matrice.nbLignes, &matrice.nbColonnes);
+			matrice=alloue(matrice.nbLignes, matrice.nbColonnes);
+
+			for(i=0; i<matrice.nbLignes; i++)
+			{
+				for(j=0; j<matrice.nbColonnes; j++)
+				{
+					fscanf(fichier_contient_matrice, "%d", &nombre);
+
+					if(nombre != ' ' && nombre != '\n')
+			    	{
+			    		matrice.donnees[i][j]=nombre;
+			    	}
+			    }
+			}
+				break;
+			case 1 :
+
+				fread(&matrice.nbLignes, sizeof(matrice.nbLignes), 1 ,fichier_contient_matrice);
+				fread(&matrice.nbColonnes, sizeof(matrice.nbColonnes), 1 ,fichier_contient_matrice);
+				matrice=alloue(matrice.nbLignes, matrice.nbColonnes);
+
+				for(i=0; i<matrice.nbLignes; i++)
+				{
+
+					for(j=0; j<matrice.nbColonnes; j++)
+					{
+			    		fread(&matrice.donnees[i][j], sizeof(matrice.donnees), 1, fichier_contient_matrice);
+		  			}
+				}
+				break;
+			default :
+				break;	
+		}
+		fclose(fichier_contient_matrice);
+    }
+
+    else
+    {
+         printf("Impossible d'ouvrir le fichier depart.txt");
+    }
+  return matrice;
+}
+
+void SauvegarderPartie(int sauvegarde, Modele* modele)
+{
+	switch(sauvegarde)
+	{
+		case 1 :
+			SauvegardeMatrice(modele->plateau.matrice, "../../../bin/Parties/Partie_1/sauvegarde_1.txt", 1);
+			break;
+		case 2 :
+			break;
+		case 3 :
+			break;
+		case 4 :
+			break;
+		case 5 :
+			break;
+		default :
+			break;
+	}
 }

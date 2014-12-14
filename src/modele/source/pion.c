@@ -339,22 +339,37 @@ void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction dir
 			break;
 	}
 
-	// Si la case est vide ET dans la portée de déplacement
-	Position* ptr = plateau_getVide(plateau, position_direction);
-	if(ptr != NULL)
+	// Si on saute
+	if(pion->saut)
 	{
-		ptr->marque = 1;
+		// On ne regarde la portée de ce qui est a portée dez saut
+		// SI ET SEULEMENT SI un pion est a portée directe
+		if(plateau_getVide(plateau, position_direction) == NULL)
+		{
+			Position* p = plateau_getVide(plateau, position_direction_saut);
+			if(p != NULL)
+			{
+				p -> marque = 1;
+			}
+		}
 	}
-	// Si il y a un pion alors on regarde s'il est possible de sauter par dessus
+	// Si on saute pas
 	else
 	{
-		ptr = plateau_getVide(plateau, position_direction_saut);
-		if(ptr != NULL)
+		// On regarde ce qui est à portée
+		Position* p = plateau_getVide(plateau, position_direction);
+		if(p != NULL)
 		{
-			ptr->marque = 1;
-		}	
+			p -> marque = 1;
+		}
+		// S'il y a un pion a portée on regarde s'il on peut sauter
+		else
+		{
+			p = plateau_getVide(plateau, position_direction_saut);
+			if(p != NULL)
+				p -> marque = 1;
+		}
 	}
-
 }
 
 Pion chargerPion(char* emplacement_fichier)

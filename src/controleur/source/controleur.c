@@ -58,10 +58,6 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		{
 			// On doit selectionner un pion
 			while(!selectionner_pion(modele, joueur, &pion));			 
-
-			// une fois selectionné on marque les positions possibles
-			// autour du pion
-			pion_marquer(pion, &modele->plateau);
 		
 			// On commence un tour
 			commencer_tour(modele, pion);
@@ -125,6 +121,10 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 
 	do
 	{
+		// une fois selectionné on marque les positions possibles
+		// autour du pion
+		pion_marquer(pion, &modele->plateau);
+
 		// Affichage + demande choix utilisateur
 		system("clear");
 		affiche_plateau(&modele->plateau, AFFICHAGE);

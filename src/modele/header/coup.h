@@ -138,4 +138,13 @@ void pileCoups_ajouterCoup(PileCoups* pile, Coup coup);
 */
 void sauvegardeCoup(Coup coup, char* emplacement_fichier_sauvegarde);
 
+/**
+* \brief 	charge un coup
+* \author 	Quentin
+* \version 1.0
+* \param 	emplacement_fichier_sauvegarde
+* \return 	le coup chargé
+*/
+Coup chargerCoup(char* emplacement_fichier);
+
 #endif

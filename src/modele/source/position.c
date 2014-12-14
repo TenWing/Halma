@@ -25,3 +25,10 @@ Position position_init(int x, int y)
 	return position;
 }
 
+int position_egale(Position a, Position b)
+{
+	if(a.x == b.x && a.y == b.y)
+		return 1;
+
+	return 0;
+}

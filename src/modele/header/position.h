@@ -45,4 +45,14 @@ struct Position
  */
 Position position_init(int x, int y);
 
+/**
+* \brief	Indique si deux positions sont égales
+* \author	Tendry
+* \version	1.0
+* \param 	a la première position testée
+* \param	b la deuxième position testée
+* \return	1 si les positions sont égales, 0 sinon
+*/
+int position_egale(Position a, Position b);
+
  #endif

@@ -58,6 +58,10 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		{
 			// On doit selectionner un pion
 			while(!selectionner_pion(modele, joueur, &pion));			 
+
+			// une fois selectionné on marque les positions possibles
+			// autour du pion
+			pion_marquer(pion, &modele->plateau);
 		
 			// On commence un tour
 			commencer_tour(modele, pion);

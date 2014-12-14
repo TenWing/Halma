@@ -157,6 +157,32 @@ Pion plateau_getpion(Plateau* plateau, Position position)
 	return pion;
 }
 
+Position* plateau_getVide(Plateau* plateau, Position position)
+{
+	// On récupère le premier noeud de la liste des noeuds
+	NoeudPosition* noeud = plateau->vides.premier;
+
+	// liste non vide
+	if(noeud != NULL)
+	{
+		// Parcours de la liste
+		while(noeud->suivant != NULL
+			&& !position_egale(noeud->position, position))
+		{
+			noeud = noeud -> suivant;
+		}
+
+		// Renvoi du vide
+		if(position_egale(noeud->position, position))
+		{
+			return &noeud->position;
+		}
+	}
+
+	// Sinon renvoi de rien
+	return NULL;
+}
+
 int position_hors_plateau(Position* position, Plateau* plateau)
 {
 	// On vérifie si on ne déborde pas du plateau en sautant

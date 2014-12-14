@@ -35,10 +35,13 @@ int main ()
  	//On crée deux pions la seule différence qu'ils ont c'est leur couleur et leur ID
  	Pion pion = pion_init(ROUGE, position, 1);
  	Pion pion2 = pion_init(ORANGE, position, 2);
+
  	sauvegardePion(pion, "sauvegardetest.txt");
+ 	Pion pion100=chargerPion("sauvegardetest.txt");
+
  	printf("ID : %d, couleur : %d\n", pion.identifiant, pion.couleur);
  	printf("ID : %d, couleur : %d\n", pion2.identifiant, pion2.couleur);
-
+ 	printf("ID : %d, couleur : %d\n", pion100.identifiant, pion100.couleur);
 
  	//###########################################
  	//TEST MODULE COUP
@@ -51,7 +54,7 @@ int main ()
  	PileCoups pile = pileCoups_init();
  	pileCoups_ajouterCoup(&pile, coup);
  	pileCoups_ajouterCoup(&pile, coup2);
- 	sauvegardeCoup(coup, "sauvegardetest.txt");
+ 	//sauvegardeCoup(coup, "sauvegardetest.txt");
 
  	//Donc normalement on devrait lire 2 puis 1
  	printf("Je dépile\n");
@@ -199,23 +202,18 @@ int main ()
 	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
 	fin_tour(&testeur);
 
-	/*printf("fin tour\n");
-	commencer_tour(&modele, testeur);
-	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
-	jouer_coup(&modele, testeur, DROITE);
-	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
-	jouer_coup(&modele, testeur, BAS);
-	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);*/
-	
-/*	annuler_coup(&modele, testeur);
-	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
-	annuler_coup(&modele, testeur);
-	printf("Position du pion maintenant : %d // %d\n", testeur->position.x, testeur->position.y);
-*/
-
 	annuler_tour(&modele);
 
 	printf("Position du pion (après la suppression du tour) maintenant : %d // %d\n", testeur->position.x, testeur->position.y);	
+
+	// #########################################
+	// TEST SAUVEGARDE TOUR
+	// #########################################
+
+	//Tour tour = tour_init(&pion);
+	//sauvegardeTour(tour, "sauvegardetest.txt");
+
+
 	return 0;	
 }
 

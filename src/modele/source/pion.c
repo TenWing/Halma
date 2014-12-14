@@ -245,24 +245,12 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau)
 	return 1;
 }
 
-void sauvegardePion(Pion pion, char* emplacement_fichier_sauvegarde)
+void sauvegardePion(Pion pion, FILE* emplacement_fichier_sauvegarde)
 {
-	FILE *fichier_contient_pion;
-	fichier_contient_pion = fopen(emplacement_fichier_sauvegarde, "wb");
-
-	if (fichier_contient_pion != NULL)
-	    {
-	    	fwrite(&pion.couleur, sizeof(int) , 1, fichier_contient_pion);
-	    	fwrite(&pion.position.x, sizeof(int) , 1, fichier_contient_pion);
-	    	fwrite(&pion.position.y, sizeof(int) , 1, fichier_contient_pion);
-	    	fwrite(&pion.identifiant, sizeof(int) , 1, fichier_contient_pion);
-			fclose(fichier_contient_pion);
-	    }
-
-	else
-	    {
-	         printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
-	    }
+   	fwrite(&pion.couleur, sizeof(Couleur) , 1, emplacement_fichier_sauvegarde);
+   	fwrite(&pion.position.x, sizeof(int) , 1, emplacement_fichier_sauvegarde);
+   	fwrite(&pion.position.y, sizeof(int) , 1, emplacement_fichier_sauvegarde);
+   	fwrite(&pion.identifiant, sizeof(int) , 1, emplacement_fichier_sauvegarde);
 }
 
 
@@ -382,24 +370,14 @@ void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction dir
 	}
 }
 
-Pion chargerPion(char* emplacement_fichier)
+Pion chargerPion(FILE* emplacement_fichier)
 {
-	FILE *fichier_contient_pion;
-	fichier_contient_pion = fopen(emplacement_fichier, "rb");
 	Pion pion;
 
-	if (fichier_contient_pion != NULL)
-	{
-		fread(&pion.couleur, sizeof(int) , 1, fichier_contient_pion);
-	    fread(&pion.position.x, sizeof(int) , 1, fichier_contient_pion);
-	   	fread(&pion.position.y, sizeof(int) , 1, fichier_contient_pion);
-	   	fread(&pion.identifiant, sizeof(int) , 1, fichier_contient_pion);	
-		fclose(fichier_contient_pion);
-	}
-	else
-	{
-	    printf("Impossible d'ouvrir le fichier depart.txt");
-	}
-
+	fread(&pion.couleur, sizeof(int) , 1, emplacement_fichier);
+	fread(&pion.position.x, sizeof(int) , 1, emplacement_fichier);
+	fread(&pion.position.y, sizeof(int) , 1, emplacement_fichier);
+	fread(&pion.identifiant, sizeof(int) , 1, emplacement_fichier);	
+	
 	return pion;
 }

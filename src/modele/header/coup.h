@@ -136,7 +136,7 @@ void pileCoups_ajouterCoup(PileCoups* pile, Coup coup);
 * \param 	Coup 	le coup à sauvegarder
 * \param 	emplacement_fichier_sauvegarde
 */
-void sauvegardeCoup(Coup coup, char* emplacement_fichier_sauvegarde);
+void sauvegardeCoup(Coup coup, FILE* emplacement_fichier_sauvegarde);
 
 /**
 * \brief 	charge un coup
@@ -145,6 +145,6 @@ void sauvegardeCoup(Coup coup, char* emplacement_fichier_sauvegarde);
 * \param 	emplacement_fichier_sauvegarde
 * \return 	le coup chargé
 */
-Coup chargerCoup(char* emplacement_fichier);
+Coup chargerCoup(FILE* emplacement_fichier);
 
 #endif

@@ -130,7 +130,7 @@ void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction dir
 * \param	pion 	le pion a sauvegardé
 * \param	emplacement_fichier_sauvegarde
 */
-void sauvegardePion(Pion pion, char* emplacement_fichier_sauvegarde);
+void sauvegardePion(Pion pion, FILE* emplacement_fichier_sauvegarde);
 
 /**
 * \brief 	charge un pion dans un fichier texte
@@ -139,6 +139,6 @@ void sauvegardePion(Pion pion, char* emplacement_fichier_sauvegarde);
 * \param	emplacement_fichier
 * \return	retourne un pointeur de pion
 */
-Pion chargerPion(char* emplacement_fichier);
+Pion chargerPion(FILE* emplacement_fichier);
 
  #endif

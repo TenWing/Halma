@@ -267,5 +267,53 @@ void pion_marquer(Pion* pion, Plateau* plateau)
 
 void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction direction)
 {
-	
+	// La position analysée
+	Position position_direction = position_init(pion->position.x, pion->position.y);
+
+	// On regarde la direction analysée
+	switch(direction)
+	{
+		case HAUT:
+			position_direction.x -= 2;
+			break;
+
+		case HAUT_DROITE:
+			position_direction.x -= 2;
+			position_direction.y += 2;
+			break;
+
+		case DROITE:
+			position_direction.y += 2;
+			break;
+
+		case BAS_DROITE:
+			position_direction.y += 2;
+			position_direction.x += 2;
+			break;
+
+		case BAS:
+			position_direction.x += 2;
+			break;
+
+		case BAS_GAUCHE:
+			position_direction.x += 2;
+			position_direction.y -= 2;
+			break;
+
+		case GAUCHE:
+			position_direction.y -= 2;
+			break;
+
+		case HAUT_GAUCHE:
+			position_direction.x -= 2;
+			position_direction.y -= 2;
+			break;
+
+		default:
+			break;
+	}
+
+	// Si la case est vide ET dans la portée de déplacement
+	if(plateau_getpion(plateau, position_direction).identifiant == -1)
+		printf("\n");
 }

@@ -95,7 +95,7 @@ void pileCoups_ajouterCoup(PileCoups* pile, Coup coup)
 
 void sauvegardeCoup(Coup coup, char* emplacement_fichier_sauvegarde)
 {
-	sauvegardePion(coup.pion, emplacement_fichier_sauvegarde);
+	/*sauvegardePion(coup.pion, emplacement_fichier_sauvegarde);
 
 	FILE *fichier_contient_coup;
 	fichier_contient_coup = fopen(emplacement_fichier_sauvegarde, "a");
@@ -111,5 +111,5 @@ void sauvegardeCoup(Coup coup, char* emplacement_fichier_sauvegarde)
 	else
 	    {
 	         printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
-	    }
+	    }*/
 }

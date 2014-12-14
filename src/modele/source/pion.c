@@ -1,6 +1,7 @@
 
 
 
+
 /**
  * \file      modele.c
  * \author    Geliot
@@ -242,13 +243,14 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau)
 void sauvegardePion(Pion pion, char* emplacement_fichier_sauvegarde)
 {
 	FILE *fichier_contient_pion;
-	fichier_contient_pion = fopen(emplacement_fichier_sauvegarde, "w");
+	fichier_contient_pion = fopen(emplacement_fichier_sauvegarde, "wb");
 
 	if (fichier_contient_pion != NULL)
 	    {
-	    	fprintf(fichier_contient_pion, "%d", pion.couleur);
-	    	fprintf(fichier_contient_pion, "%d%d", pion.position.x, pion.position.y);
-	    	fprintf(fichier_contient_pion, "%d", pion.identifiant);
+	    	fwrite(&pion.couleur, sizeof(int) , 1, fichier_contient_pion);
+	    	fwrite(&pion.position.x, sizeof(int) , 1, fichier_contient_pion);
+	    	fwrite(&pion.position.y, sizeof(int) , 1, fichier_contient_pion);
+	    	fwrite(&pion.identifiant, sizeof(int) , 1, fichier_contient_pion);
 			fclose(fichier_contient_pion);
 	    }
 

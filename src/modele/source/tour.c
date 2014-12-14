@@ -81,3 +81,33 @@ void pileTours_ajouterTour(PileTours* pile, Tour tour)
 	//On indique bien que l'élément ajouté est la tête de la pile
 	pile->premier = ajout;
 }
+
+void sauvegardeTour(Tour tour, char* emplacement_fichier_sauvegarde)
+{
+	/*NoeudCoup* actuel = tour->liste_coups.premier;
+	FILE *fichier_contient_tour;
+	fichier_contient_tour = fopen(emplacement_fichier_sauvegarde, "a");
+
+	while(actuel != NULL)
+	{
+		sauvegardeCoup(actuel, emplacement_fichier_sauvegarde);
+
+		actuel = actuel -> suivant;
+
+		if (fichier_contient_tour != NULL)
+	    {
+	    	fseek(fichier_contient_tour, 0, SEEK_END);
+	    
+	    	fprintf(fichier_contient_tour, "%d%d", tour.depart.x, tour.depart.y);
+			fclose(fichier_contient_tour);			
+	    }
+
+		else
+	    {
+	         printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
+	    }
+	}
+
+
+*/
+}

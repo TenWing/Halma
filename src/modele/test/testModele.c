@@ -35,7 +35,7 @@ int main ()
  	//On crée deux pions la seule différence qu'ils ont c'est leur couleur et leur ID
  	Pion pion = pion_init(ROUGE, position, 1);
  	Pion pion2 = pion_init(ORANGE, position, 2);
-
+ 	sauvegardePion(pion, "sauvegardetest.txt");
  	printf("ID : %d, couleur : %d\n", pion.identifiant, pion.couleur);
  	printf("ID : %d, couleur : %d\n", pion2.identifiant, pion2.couleur);
 
@@ -51,7 +51,7 @@ int main ()
  	PileCoups pile = pileCoups_init();
  	pileCoups_ajouterCoup(&pile, coup);
  	pileCoups_ajouterCoup(&pile, coup2);
- 	sauvegardeCoup(coup, "sauvegardetest.txt");
+ 	//sauvegardeCoup(coup, "sauvegardetest.txt");
 
  	//Donc normalement on devrait lire 2 puis 1
  	printf("Je dépile\n");

@@ -1,5 +1,6 @@
 
 
+
 /**
 * \file		tour.h
 * \author	Tendry
@@ -127,5 +128,12 @@ Tour pileTours_depiler(PileTours* pile);
 */
 void pileTours_ajouterTour(PileTours* pile, Tour tour);
 
-
+/**
+* \brief 	sauvegarde un tour
+* \author 	Quentin
+* \version 1.0
+* \param 	tour 	le tour a sauvegarder
+* \param 	emplacement_fichier_sauvegarde
+*/
+void sauvegardeTour(Tour tour, char* emplacement_fichier_sauvegarde);
 #endif

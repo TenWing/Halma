@@ -1,5 +1,6 @@
 
 
+
 /**
  * \file      modele.c
  * \author    Geliot
@@ -236,6 +237,27 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau)
 	pion->position = position_direction;
 
 	return 1;
+}
+
+void sauvegardePion(Pion pion, char* emplacement_fichier_sauvegarde)
+{
+	FILE *fichier_contient_pion;
+	fichier_contient_pion = fopen(emplacement_fichier_sauvegarde, "wb");
+
+	if (fichier_contient_pion != NULL)
+	    {
+	    	fprintf(fichier_contient_pion, "%d", pion.couleur);
+	    	fprintf(fichier_contient_pion, "%d%d", pion.position.x, pion.position.y);
+	    	fprintf(fichier_contient_pion, "%d", pion.identifiant);
+			fclose(fichier_contient_pion);
+			return 1;
+	    }
+
+	    else
+	    {
+	         printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
+	         return 0;
+	    }
 }
 /*
 int direction_opposée(Direction direction, Pion* pion)

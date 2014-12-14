@@ -95,4 +95,13 @@ int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction);
 */
 int pion_sauter(Pion* pion, Direction direction, Plateau* plateau);
 
+/**
+* \brief 	sauvegarde un pion dans un fichier texte
+* \author	Quentin
+* \version 	1.0
+* \param	pion 	le pion a sauvegardé
+* \param	emplacement_fichier_sauvegarde
+*/
+void sauvegardePion(Pion* pion, char* emplacement_fichier_sauvegarde);
+
  #endif

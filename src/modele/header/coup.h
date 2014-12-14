@@ -129,4 +129,13 @@ Coup pileCoups_depiler(PileCoups* pile);
 */
 void pileCoups_ajouterCoup(PileCoups* pile, Coup coup);
 
+/**
+* \brief 	sauvegarde un coup
+* \author 	Quentin
+* \version 1.0
+* \param 	Coup 	le coup à sauvegarder
+* \param 	emplacement_fichier_sauvegarde
+*/
+void sauvegardePion(Coup coup, char* emplacement_fichier_sauvegarde);
+
 #endif

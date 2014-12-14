@@ -98,10 +98,12 @@ void sauvegardeCoup(Coup coup, char* emplacement_fichier_sauvegarde)
 	sauvegardePion(coup.pion, emplacement_fichier_sauvegarde);
 
 	FILE *fichier_contient_coup;
-	fichier_contient_coup = fopen(emplacement_fichier_sauvegarde, "wb");
+	fichier_contient_coup = fopen(emplacement_fichier_sauvegarde, "a");
 
 	if (fichier_contient_coup != NULL)
 	    {
+	    	fseek(fichier_contient_coup, 0, SEEK_END);
+	    
 	    	fprintf(fichier_contient_coup, "%d%d", coup.precedente.x, coup.precedente.y);
 			fclose(fichier_contient_coup);			
 	    }

@@ -242,7 +242,7 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau)
 void sauvegardePion(Pion pion, char* emplacement_fichier_sauvegarde)
 {
 	FILE *fichier_contient_pion;
-	fichier_contient_pion = fopen(emplacement_fichier_sauvegarde, "wb");
+	fichier_contient_pion = fopen(emplacement_fichier_sauvegarde, "w");
 
 	if (fichier_contient_pion != NULL)
 	    {

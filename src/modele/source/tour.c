@@ -21,6 +21,7 @@ Tour tour_init(Pion* p)
 	// On alloue ce qui peut-être alloué
 	tour.pion = p;
 	tour.depart = position_init(p->position.x, p->position.y);
+	tour.pile_coups=pileCoups_init();
 
 	// on renvoie le tour initialisé
 	return tour;
@@ -84,21 +85,22 @@ void pileTours_ajouterTour(PileTours* pile, Tour tour)
 
 void sauvegardeTour(Tour tour, char* emplacement_fichier_sauvegarde)
 {
-	/*NoeudCoup* actuel = tour->liste_coups.premier;
+	NoeudCoup* actuel = tour.pile_coups.premier;
 	FILE *fichier_contient_tour;
 	fichier_contient_tour = fopen(emplacement_fichier_sauvegarde, "a");
 
 	while(actuel != NULL)
 	{
-		sauvegardeCoup(actuel, emplacement_fichier_sauvegarde);
+		sauvegardeCoup(actuel->coup, emplacement_fichier_sauvegarde);
 
 		actuel = actuel -> suivant;
 
 		if (fichier_contient_tour != NULL)
-	    {
-	    	fseek(fichier_contient_tour, 0, SEEK_END);
-	    
-	    	fprintf(fichier_contient_tour, "%d%d", tour.depart.x, tour.depart.y);
+	    {	    
+	    	fwrite(&tour.depart.x, sizeof(int) , 1, fichier_contient_tour);
+	    	fwrite(&tour.depart.y, sizeof(int) , 1, fichier_contient_tour);
+	    	fwrite (tour.pion , sizeof(Pion) , 1 , fichier_contient_tour);
+
 			fclose(fichier_contient_tour);			
 	    }
 
@@ -109,5 +111,5 @@ void sauvegardeTour(Tour tour, char* emplacement_fichier_sauvegarde)
 	}
 
 
-*/
+
 }

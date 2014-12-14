@@ -324,3 +324,24 @@ void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction dir
 		printf("\n");
 }
 
+Pion chargerPion(char* emplacement_fichier)
+{
+	FILE *fichier_contient_pion;
+	fichier_contient_pion = fopen(emplacement_fichier, "rb");
+	Pion pion;
+
+	if (fichier_contient_pion != NULL)
+	{
+		fread(&pion.couleur, sizeof(int) , 1, fichier_contient_pion);
+	    fread(&pion.position.x, sizeof(int) , 1, fichier_contient_pion);
+	   	fread(&pion.position.y, sizeof(int) , 1, fichier_contient_pion);
+	   	fread(&pion.identifiant, sizeof(int) , 1, fichier_contient_pion);	
+		fclose(fichier_contient_pion);
+	}
+	else
+	{
+	    printf("Impossible d'ouvrir le fichier depart.txt");
+	}
+
+	return pion;
+}

@@ -257,3 +257,15 @@ void sauvegardePion(Pion pion, char* emplacement_fichier_sauvegarde)
 	         printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
 	    }
 }
+
+
+void pion_marquer(Pion* pion, Plateau* plateau)
+{
+
+}
+
+void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction direction)
+{
+	
+}
+

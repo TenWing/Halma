@@ -16,6 +16,7 @@
 #include <plateau.h>
 #include <pion.h>
 #include <unistd.h>
+#include <zone.h>
 
 /**
  * \brief    Génère le plateau de jeu
@@ -30,6 +31,8 @@ Plateau plateau_init(int nombre_joueur)
 		
 	// On initialise la liste
 	plateau.liste_pions = liste_pions_init();
+
+	plateau.vides = liste_positions_init();
 
 	// On initialise avec les fichiers
 	if(nombre_joueur == 4)
@@ -59,6 +62,11 @@ Plateau plateau_init(int nombre_joueur)
 				Pion pion = pion_init(number, position_init(i, j), id);
 				liste_pions_ajout(&plateau.liste_pions, pion);
 				id++;
+			}
+			// Sinon on stocke la position vide
+			else
+			{
+				liste_positions_ajout(&plateau.vides, position_init(i,j));
 			}
 		}
 	}

@@ -170,7 +170,10 @@ int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction)
 	}
 
 	// On effectue le déplacement ^^
+	// Mais avant on change les positions vides existantes
+	liste_positions_ajout(&plateau->vides, pion->position);
 	pion->position = position_direction;
+	liste_positions_supprimer(&plateau->vides, position_direction);
 	return 1;
 }
 
@@ -235,8 +238,10 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau)
 	}
 
 	// Arrivé ici bingo saut effectué
+	liste_positions_ajout(&plateau->vides, pion->position);
 	pion->position = position_direction;
-
+	liste_positions_supprimer(&plateau->vides, position_direction);
+	
 	return 1;
 }
 

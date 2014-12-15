@@ -195,3 +195,49 @@ int position_hors_plateau(Position* position, Plateau* plateau)
 	else 
 		return 0;
 }
+
+void sauvegardePlateau(Plateau plateau, char* emplacement_fichier_sauvegarde)
+{
+	sauvegardeMatrice(plateau.matrice, emplacement_fichier_sauvegarde);
+}
+
+Plateau chargerPlateau(char* emplacement_fichier)
+{
+	Plateau plateau;
+
+	// On initialise la liste
+	plateau.liste_pions = liste_pions_init();
+
+	plateau.vides = liste_positions_init();
+
+	plateau.matrice = initMatrice(emplacement_fichier);
+
+	// On récupère les pions !
+	int i =0, j = 0, id = 0;
+
+	// On parcoure notre matrice
+	for(i = 0; i < plateau.matrice.nbLignes; i++)
+	{
+		for(j = 0; j < plateau.matrice.nbColonnes; j++)
+		{
+			// S'il y a un pion
+			if(plateau.matrice.donnees[i][j] != '.')
+			{
+				// Convertit bien le nombre récupéré en entier
+				int number = plateau.matrice.donnees[i][j] - '0';
+				
+				// Récupération de la couleur
+				Pion pion = pion_init(number, position_init(i, j), id);
+				liste_pions_ajout(&plateau.liste_pions, pion);
+				id++;
+			}
+			// Sinon on stocke la position vide
+			else
+			{
+				liste_positions_ajout(&plateau.vides, position_init(i,j));
+			}
+		}
+	}
+
+	return plateau;
+}

@@ -28,24 +28,34 @@ int main ()
 	// TEST SAUVEGARDE
 	///////////////////////////
 
-	Pion pion = pion_init(BLEU, position_init(4,2), 9);
-	Coup coup = coup_init(&pion, position_init(3,3));
+	/*Pion pion = pion_init(BLEU, position_init(4,2), 9);
+	Coup coup = coup_init(&pion, position_init(4,2));
+	Coup coup2 = coup_init(&pion, position_init(3,3));
+	Tour tour = tour_init(&pion);
+	pileCoups_ajouterCoup(&tour.pile_coups, coup);
+	pileCoups_ajouterCoup(&tour.pile_coups, coup2);
 
 
 
 	FILE *fichier_contient_pion;
 	fichier_contient_pion = fopen("sauvegardetest.txt", "wb");
 
-	sauvegardeCoup(coup, fichier_contient_pion);
+	//sauvegardeCoup(coup, fichier_contient_pion);
 
-	fclose(fichier_contient_pion);
+	sauvegardeTour(tour, fichier_contient_pion);
 
+	fclose(fichier_contient_pion);*/
 
+	Plateau plateau;
+	plateau=plateau_init(2);
 
+	sauvegardePlateau(plateau, "sauvegardePlateau.txt");
 
+	Plateau plateau2 = chargerPlateau("sauvegardePlateau.txt");
 
+	afficheMatrice(plateau.matrice);
 
-
+	printf("ID : %d", plateau.liste_pions.premier->pion.identifiant);
 
 
 	///////////////////////////
@@ -54,16 +64,16 @@ int main ()
 
 
 
-
+/*
 	fichier_contient_pion = fopen("sauvegardetest.txt", "rb");
 
-	Coup coup2=chargerCoup(fichier_contient_pion);
+	Tour tour2 = chargerTour(fichier_contient_pion);
 
 	fclose(fichier_contient_pion);
 
-	printf("ID : %d\n", coup2.pion.identifiant);
-	printf("precedent x : %d\n", coup2.precedente.x);
-
+	printf("ID (9 normalement) : %d\n", tour2.pion->identifiant);
+	printf("precedent x (3 normalement) : %d\n", tour2.pile_coups.premier->coup.precedente.x);
+	printf("position depart x (4 normalement ): %d\n", tour2.depart.x);*/
 	return 0;	
 }
 

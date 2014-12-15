@@ -95,8 +95,10 @@ void pileCoups_ajouterCoup(PileCoups* pile, Coup coup)
 
 void sauvegardeCoup(Coup coup, FILE* emplacement_fichier_sauvegarde)
 {
+	//On écrit dans le fichier texte les données du pion dans le coup
 	sauvegardePion(coup.pion, emplacement_fichier_sauvegarde);
 
+	//On écrit les données de la position precedent le coup joué dans le fichier
 	fwrite(&coup.precedente.x, sizeof(int) , 1, emplacement_fichier_sauvegarde);
 	fwrite(&coup.precedente.y, sizeof(int) , 1, emplacement_fichier_sauvegarde);	
 }
@@ -105,10 +107,13 @@ Coup chargerCoup(FILE* emplacement_fichier)
 {
 	Coup coup;
 	
+	//On charge les données du pion dans le pion du coup
 	coup.pion = chargerPion(emplacement_fichier);
 
+	//De même avec la position precedente
 	fread(&coup.precedente.x, sizeof(int) , 1, emplacement_fichier);
 	fread(&coup.precedente.y, sizeof(int) , 1, emplacement_fichier);	
 	
+	//On retourne le coup
 	return coup;
 }

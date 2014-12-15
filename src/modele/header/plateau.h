@@ -122,4 +122,7 @@ Position* plateau_getVide(Plateau* plateau, Position position);
 */
 int position_hors_plateau(Position* position, Plateau* plateau);
 
+void sauvegardePlateau(Plateau plateau, char* emplacement_fichier_sauvegarde);
+
+Plateau chargerPlateau(char* emplacement_fichier);
  #endif

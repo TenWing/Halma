@@ -196,6 +196,36 @@ int position_hors_plateau(Position* position, Plateau* plateau)
 		return 0;
 }
 
+Plateau updateMatrice(Plateau plateau)
+{
+	int i,j;
+
+	NoeudPion* actuel = plateau.liste_pions.premier;
+
+	while(actuel != NULL)
+	{
+		for(i=0; i<16; i++)
+		{
+			for(j=0; j<16; j++)
+			{
+				if(i == actuel -> pion.position.x && j == actuel -> pion.position.y)
+				{
+					plateau.matrice.donnees[i][j] = actuel -> pion.identifiant;
+					printf("%d\n", plateau.matrice.donnees[i][j]);
+				}
+				else
+				{
+					plateau.matrice.donnees[i][j] = '.';
+				}
+			}
+		}
+
+		actuel = actuel -> suivant;
+	}
+
+	return plateau;
+}
+
 void sauvegardePlateau(Plateau plateau, char* emplacement_fichier_sauvegarde)
 {
 	sauvegardeMatrice(plateau.matrice, emplacement_fichier_sauvegarde);

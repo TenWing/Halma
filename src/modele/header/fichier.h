@@ -16,6 +16,8 @@
 * \version 1.0
 * \return 	1 si la sauvegarde a reussi, 0 si echec
 */
-int sauvegardePartie(Modele* modele, char* emplacement_fichier_sauvegarde);
+int sauvegarderPartie(Modele* modele, int sauvegarde);
+
+Modele* chargerPartie(int charger);
 
 #endif

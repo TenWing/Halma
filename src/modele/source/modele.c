@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <modele.h>
+#include <plateau.h>
 // ###################################
 
 Modele modele_init(int nombreJoueurs)
@@ -126,6 +127,8 @@ int jouer_coup(Modele* modele, Pion* pion, Direction direction)
 	return succes;
 }
 
+
+
 void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char* emplacement_fichier_sauvegarde_plateau)
 {
 	NoeudTour* actuel = modele.pile_tours.premier;
@@ -159,6 +162,8 @@ void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char
 
 		actuelFactice = actuelFactice -> suivant;
 	}
+
+	//modele.plateau = updateMatrice(modele.plateau);
 
 	sauvegardePlateau(modele.plateau, emplacement_fichier_sauvegarde_plateau);
 

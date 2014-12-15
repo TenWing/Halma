@@ -1,3 +1,4 @@
+
 /**
 * \file		fichier.c
 * \brief	Contient les fonctions qui permettent de sauvegarder/charger
@@ -14,44 +15,131 @@
 #include <string.h>
 // #################################
 
-int sauvegardePartie(Modele* modele, char* emplacement_fichier_sauvegarde)
+int sauvegarderPartie(Modele* modele, int sauvegarde)
 {
 	FILE *fichier_contient_partie;
-	fichier_contient_partie = fopen(emplacement_fichier_sauvegarde, "wb");
+	switch(sauvegarde)
+	{
+		case 1 :
+			
+			fichier_contient_partie = fopen("../../../bin/Parties/partie_1/general.txt", "wb");
 
-   int i, j;
-
-	 if (fichier_contient_partie != NULL)
-	    {
-
-			fprintf(fichier_contient_partie, "%d %d", modele->plateau.matrice.nbLignes, modele->plateau.matrice.nbColonnes);
-		    fprintf(fichier_contient_partie, "\n");
-					
-			for(i=0; i<modele->plateau.matrice.nbLignes; i++)
+			if (fichier_contient_partie != NULL)
 			{
-				for(j=0; j<modele->plateau.matrice.nbColonnes; j++)
-				{
-		    		fprintf(fichier_contient_partie, "%d", modele->plateau.matrice.donnees[i][j]);
-		    		fprintf(fichier_contient_partie, " ");		    		
-	  			}
+			   	sauvegarderModele(*modele, fichier_contient_partie, "../../../bin/Parties/partie_1/plateau.txt");
+			   	fclose(fichier_contient_partie);
 
-	   			fprintf(fichier_contient_partie, "\n");
-	    	}
+			   	return 1;
 
-	    	fprintf(fichier_contient_partie, "%d\n", modele->nombreJoueurs);
-	    	fprintf(fichier_contient_partie, "\n");
+			}
 
+			else
+			{
+			    return 0;
+			}
+			break;
+		case 2 :
+			
+			fichier_contient_partie = fopen("../../../bin/Parties/partie_2/general.txt", "wb");
 
+			if (fichier_contient_partie != NULL)
+			{
+			   	sauvegarderModele(*modele, fichier_contient_partie, "../../../bin/Parties/partie_2/plateau.txt");
+			   	fclose(fichier_contient_partie);
 
+			   	return 1;
 
+			}
 
-			fclose(fichier_contient_partie);
-			return 1;
-	    }
+			else
+			{
+			    return 0;
+			}
+			break;
+		case 3 :
+			
+			fichier_contient_partie = fopen("../../../bin/Parties/partie_3/general.txt", "wb");
 
-	    else
-	    {
-	         printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
-	         return 0;
-	    }
+			if (fichier_contient_partie != NULL)
+			{
+			   	sauvegarderModele(*modele, fichier_contient_partie, "../../../bin/Parties/partie_3/plateau.txt");
+			   	fclose(fichier_contient_partie);
+
+			   	return 1;
+
+			}
+
+			else
+			{
+			    return 0;
+			}
+			break;
+		default :
+			break;
+	}
 }
+/*
+Modele* chargerPartie(int charger)
+{
+	Modele modele;
+
+	switch(sauvegarde)
+	{
+		case 1 :
+			FILE *fichier_contient_partie;
+			fichier_contient_partie = fopen("../../../bin/Parties/partie_1/general.txt", "wb");
+
+			if (fichier_contient_partie != NULL)
+			{
+			   	modele=chargerModele(fichier_contient_partie, "../../../bin/Parties/partie_1/plateau.txt");
+			   	fclose(fichier_contient_partie);
+
+			   	return &modele;
+
+			}
+
+			else
+			{
+			    return &modele;
+			}
+			break;
+		case 2 :
+			FILE *fichier_contient_partie;
+			fichier_contient_partie = fopen("../../../bin/Parties/partie_2/general.txt", "wb");
+
+			if (fichier_contient_partie != NULL)
+			{
+			   	modele=chargerModele(fichier_contient_partie, "../../../bin/Parties/partie_2/plateau.txt");
+			   	fclose(fichier_contient_partie);
+			   	
+			   	return &modele;
+
+			}
+
+			else
+			{
+			    return &modele;
+			}
+			break;
+		case 3 :
+			FILE *fichier_contient_partie;
+			fichier_contient_partie = fopen("../../../bin/Parties/partie_3/general.txt", "wb");
+
+			if (fichier_contient_partie != NULL)
+			{
+			   	modele=chargerModele(fichier_contient_partie, "../../../bin/Parties/partie_3/plateau.txt");
+			   	fclose(fichier_contient_partie);
+
+			   	return &modele;
+
+			}
+
+			else
+			{
+			    return &modele;
+			}
+			break;
+		default :
+			break;
+	}
+}*/

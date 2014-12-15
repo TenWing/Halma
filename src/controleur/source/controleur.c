@@ -92,7 +92,14 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 			affiche_sauvegarde(0);
 			sauvegarde=recuperer_entier();
 
-			// SauvegarderPartie(sauvegarde, modele);
+			if(sauvegarderPartie(modele, sauvegarde))
+			{
+				affiche_sauvegarde(1);
+			}
+			else
+			{
+				affiche_sauvegarde(2);
+			}
 		}
 	}while(choix != 'd');
 

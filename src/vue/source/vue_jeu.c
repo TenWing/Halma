@@ -1,5 +1,6 @@
 
 
+
 /**
 * \file		vue_jeu.c
 * \author	Tendry
@@ -233,8 +234,6 @@ void affiche_sauvegarde(int sauvegarde)
 		printf("		1.emplacement 1 pour la sauvegarde de votre partie\n");
 		printf("		2.emplacement 2 pour la sauvegarde de votre partie\n");
 		printf("		3.emplacement 3 pour la sauvegarde de votre partie\n");
-		printf("		4.emplacement 4 pour la sauvegarde de votre partie\n");
-		printf("		5.emplacement 5 pour la sauvegarde de votre partie\n");
 		printf("		##################################################\n");
 		printf("\n");
 	}

@@ -102,8 +102,22 @@ void annuler_tour(Modele* modele);
 */
 int jouer_coup(Modele* modele, Pion* pion, Direction direction);
 
+/**
+* \brief 	Sauvegarde le modele
+* \author 	Quentin
+* \param	modele le modele qui sera sauvegardé
+* \param	FILE* 	le fichier où sont sauvegardé les tours, pions etc
+* \param	char* 	le fichier où est enregistré le plateau
+*/
 void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char* emplacement_fichier_sauvegarde_plateau);
 
+/**
+* \brief 	charge le modele
+* \author 	Quentin
+* \param	FILE* 	le fichier où sont sauvegardé les tours, pions etc
+* \param	char* 	le fichier où est enregistré le plateau
+* \return 	le modele
+*/
 Modele chargerModele(FILE* emplacement_fichier, char* emplacement_fichier_plateau);
 
 #endif

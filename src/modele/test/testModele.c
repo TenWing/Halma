@@ -30,30 +30,19 @@ int main ()
 
 	Modele modele = modele_init(2);
 
-	FILE *fichier_contient_pion;
-	fichier_contient_pion = fopen("sauvegardetest.txt", "wb");
+	modele.plateau=updateMatrice(modele.plateau);
 
-	sauvegarderModele(modele, fichier_contient_pion, "sauvegardePlateau.txt");
+	NoeudPion* actuel = modele.plateau.liste_pions.premier;
 
-	fclose(fichier_contient_pion);
+	while(actuel != NULL)
+	{
+		printf("ID : %d\n", actuel -> pion.identifiant);
 
-
-
-
-	///////////////////////////
-	// TEST CHARGEMENT
-	///////////////////////////
+		actuel = actuel -> suivant;
+	}
 
 
-
-
-	fichier_contient_pion = fopen("sauvegardetest.txt", "rb");
-
-	Modele modele2= chargerModele(fichier_contient_pion, "sauvegardePlateau.txt");
-
-	fclose(fichier_contient_pion);
-
-	printf("nombre de joueurs (2 normalement) : %d\n", modele2.nombreJoueurs);
+	
 	
 	return 0;	
 }

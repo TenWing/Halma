@@ -87,12 +87,35 @@ void pileTours_ajouterTour(PileTours* pile, Tour tour)
 void sauvegardeTour(Tour tour, FILE* emplacement_fichier_sauvegarde)
 {
 	NoeudCoup* actuel = tour.pile_coups.premier;
+	int compteur=0;
+	Tour factice;
+	int i;
+
+	factice.pile_coups=pileCoups_init();
 
 	while(actuel != NULL)
 	{
-		sauvegardeCoup(actuel->coup, emplacement_fichier_sauvegarde);
+		compteur++;
 
 		actuel = actuel -> suivant;
+	}
+
+	for (i = 0; i < compteur; i++)
+	{
+		pileCoups_ajouterCoup(&factice.pile_coups, pileCoups_depiler(&tour.pile_coups));
+	}
+
+	NoeudCoup* actuelFactice = factice.pile_coups.premier;
+
+
+
+	fwrite(&compteur, sizeof(int), 1, emplacement_fichier_sauvegarde);
+
+	while(actuelFactice != NULL)
+	{
+		sauvegardeCoup(actuelFactice->coup, emplacement_fichier_sauvegarde);
+
+		actuelFactice = actuelFactice -> suivant;
 	}
 	   
 	Pion p = *tour.pion;
@@ -106,10 +129,17 @@ Tour chargerTour(FILE* emplacement_fichier)
 {
 	Tour tour;
 	Pion p;
+	int compteur,i;
 
 	tour.pile_coups = pileCoups_init();
 
-	pileCoups_ajouterCoup(&tour.pile_coups, chargerCoup(emplacement_fichier));
+	fread(&compteur, sizeof(int), 1, emplacement_fichier);
+
+	for (i = 0; i < compteur; i++)
+	{
+		pileCoups_ajouterCoup(&tour.pile_coups, chargerCoup(emplacement_fichier));
+	}
+	
 	   
 	fread(&tour.depart.x, sizeof(int), 1, emplacement_fichier);
 	fread(&tour.depart.y, sizeof(int), 1, emplacement_fichier);

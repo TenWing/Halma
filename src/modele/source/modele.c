@@ -126,3 +126,80 @@ int jouer_coup(Modele* modele, Pion* pion, Direction direction)
 	return succes;
 }
 
+void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char* emplacement_fichier_sauvegarde_plateau)
+{
+	NoeudTour* actuel = modele.pile_tours.premier;
+
+	int i, compteur=0;
+
+	Modele factice;
+
+	factice.pile_tours = pileTours_init();
+
+	while(actuel != NULL)
+	{
+		compteur++;
+
+		actuel = actuel -> suivant;
+	}
+
+
+	for (i = 0; i < compteur; i++)
+	{
+		pileTours_ajouterTour(&factice.pile_tours, pileTours_depiler(&modele.pile_tours));
+	}
+
+	NoeudTour* actuelFactice = factice.pile_tours.premier;
+
+	fwrite(&compteur, sizeof(int), 1, emplacement_fichier_sauvegarde);
+
+	while(actuelFactice != NULL)
+	{
+		sauvegardeTour(actuelFactice->tour, emplacement_fichier_sauvegarde);
+
+		actuelFactice = actuelFactice -> suivant;
+	}
+
+	sauvegardePlateau(modele.plateau, emplacement_fichier_sauvegarde_plateau);
+
+	fwrite(&modele.nombreJoueurs, sizeof(int), 1, emplacement_fichier_sauvegarde);
+}
+
+Modele chargerModele(FILE* emplacement_fichier, char* emplacement_fichier_plateau)
+{
+	Modele modele;
+	int compteur,i;
+
+	modele.pile_tours = pileTours_init();
+
+	//On charge le nombre de coup du tour
+	fread(&compteur, sizeof(int), 1, emplacement_fichier);
+
+	//On empile le nombre de coups qu'il y avait dans le tour sauvegarder
+	for (i = 0; i < compteur; i++)
+	{
+		pileTours_ajouterTour(&modele.pile_tours, chargerTour(emplacement_fichier));
+	}
+
+	modele.plateau = chargerPlateau(emplacement_fichier_plateau);
+
+	fread(&modele.nombreJoueurs, sizeof(int), 1, emplacement_fichier);
+
+	if(modele.nombreJoueurs > 2)
+	{
+		for(i=0; i<4; i++)
+		{
+			modele.tableau_joueur[i] = joueur_init(&modele.plateau, i);		
+			modele.tableau_zone[i] = zone_init(i, modele.nombreJoueurs);
+		}
+	}
+	else
+	{
+			modele.tableau_joueur[0] = joueur_init(&modele.plateau, 1);		
+			modele.tableau_zone[0] = zone_init(1, modele.nombreJoueurs);
+			modele.tableau_joueur[1] = joueur_init(&modele.plateau, 3);		
+			modele.tableau_zone[1] = zone_init(3, modele.nombreJoueurs);		
+	}
+
+	return modele;
+}

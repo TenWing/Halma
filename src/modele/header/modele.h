@@ -102,4 +102,8 @@ void annuler_tour(Modele* modele);
 */
 int jouer_coup(Modele* modele, Pion* pion, Direction direction);
 
+void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char* emplacement_fichier_sauvegarde_plateau);
+
+Modele chargerModele(FILE* emplacement_fichier, char* emplacement_fichier_plateau);
+
 #endif

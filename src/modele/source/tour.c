@@ -112,8 +112,6 @@ void sauvegardeTour(Tour tour, FILE* emplacement_fichier_sauvegarde)
 		pileCoups_ajouterCoup(&factice.pile_coups, pileCoups_depiler(&tour.pile_coups));
 	}
 
-
-
 	//On créé un coup qui va se déplacer dans la pile de coup du tour factice
 	NoeudCoup* actuelFactice = factice.pile_coups.premier;
 

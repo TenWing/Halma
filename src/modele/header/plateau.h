@@ -122,7 +122,21 @@ Position* plateau_getVide(Plateau* plateau, Position position);
 */
 int position_hors_plateau(Position* position, Plateau* plateau);
 
+/**
+* \brief Sauvegarde le modele
+* \author Quentin
+* \version 1.0
+* \param emplacement_fichier_sauvegarde
+* \param plateau le plateau de jeu testé
+*/
 void sauvegardePlateau(Plateau plateau, char* emplacement_fichier_sauvegarde);
 
+/**
+* \brief 	chage le plateau
+* \author Quentin
+* \version 1.0
+* \param emplacement_fichier 	la où est sauvegardé le plateau
+* \return le palteau chargé
+*/
 Plateau chargerPlateau(char* emplacement_fichier);
  #endif

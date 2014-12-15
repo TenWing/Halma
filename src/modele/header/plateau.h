@@ -64,6 +64,7 @@ struct Plateau
  	* \brief la liste des positions vides
  	*/
  	ListePositions vides;
+
 };
 
 /**

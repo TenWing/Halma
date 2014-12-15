@@ -238,8 +238,10 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau)
 	}
 
 	// Arrivé ici bingo saut effectué
+	// printf("add %d %d\n", pion->position.x, pion->position.y);
 	liste_positions_ajout(&plateau->vides, pion->position);
 	pion->position = position_direction;
+	// printf("Suppr %d %d\n", position_direction.x, position_direction.y);
 	liste_positions_supprimer(&plateau->vides, position_direction);
 	
 	return 1;
@@ -269,11 +271,16 @@ void pion_marquer(Pion* pion, Plateau* plateau)
 void pion_demarquer(Plateau* plateau)
 {
 	NoeudPosition* noeud = plateau->vides.premier;
+	if(noeud != NULL)
+		noeud->position.marque = 0;
+
 	while(noeud -> suivant != NULL)
 	{
-		noeud->position.marque = 0;
 		noeud = noeud -> suivant;
+		noeud->position.marque = 0;
 	}
+
+	noeud->position.marque = 0;
 }
 
 void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction direction)

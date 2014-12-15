@@ -43,7 +43,8 @@ void liste_positions_supprimer(ListePositions* liste, Position position)
 		// On la supprime de la liste
 		noeud -> precedent -> suivant = noeud -> suivant;
 		
-		noeud -> suivant -> precedent = noeud -> precedent;
+		if(noeud -> suivant != NULL)
+			noeud -> suivant -> precedent = noeud -> precedent;
 		
 		free(noeud);
 	}
@@ -53,11 +54,6 @@ void liste_positions_ajout(ListePositions* liste, Position position)
 {
 	//Création d'un nouvel élément
 	NoeudPosition* nouveau = malloc(sizeof(NoeudPosition));
-
-	if(nouveau == NULL)
-	{
-		exit(EXIT_FAILURE);
-	}
 
 	// Le noeud possède la position comme valeur
 	nouveau->position = position;

@@ -42,7 +42,6 @@ Modele modele_init(int nombreJoueurs)
 			modele.tableau_zone[1] = zone_init(3, nombreJoueurs);
 		
 	}
-
 	return modele;
 }
 

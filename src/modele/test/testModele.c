@@ -46,7 +46,10 @@ int main ()
 
 	fclose(fichier_contient_pion);
 
+	Plateau plateau;
+	plateau_init(2);
 
+	sauvegardePlateau(plateau, "sauvegardePlateau.txt");
 
 
 

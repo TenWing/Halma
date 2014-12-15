@@ -195,3 +195,8 @@ int position_hors_plateau(Position* position, Plateau* plateau)
 	else 
 		return 0;
 }
+
+void sauvegardePlateau(Plateau plateau, char* emplacement_fichier_sauvegarde)
+{
+	sauvegardeMatrice(plateau.matrice, emplacement_fichier_sauvegarde);
+}

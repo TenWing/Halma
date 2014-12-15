@@ -247,6 +247,7 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau)
 
 void sauvegardePion(Pion pion, FILE* emplacement_fichier_sauvegarde)
 {
+	//On écrit dans le fichier texte les données du pion
    	fwrite(&pion.couleur, sizeof(Couleur) , 1, emplacement_fichier_sauvegarde);
    	fwrite(&pion.position.x, sizeof(int) , 1, emplacement_fichier_sauvegarde);
    	fwrite(&pion.position.y, sizeof(int) , 1, emplacement_fichier_sauvegarde);
@@ -374,15 +375,18 @@ Pion chargerPion(FILE* emplacement_fichier)
 {
 	Pion pion;
 
+	//On lit les données du fichier texte
 	fread(&pion.couleur, sizeof(int) , 1, emplacement_fichier);
 	fread(&pion.position.x, sizeof(int) , 1, emplacement_fichier);
 	fread(&pion.position.y, sizeof(int) , 1, emplacement_fichier);
 	fread(&pion.identifiant, sizeof(int) , 1, emplacement_fichier);	
 	
+	//On retourne le pion
 	return pion;
 }
 
 Pion* pointeurPion(Pion pion)
 {
+	//On retourne l'adresse du pion
 	return &pion;
 }

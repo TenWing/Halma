@@ -86,13 +86,19 @@ void pileTours_ajouterTour(PileTours* pile, Tour tour)
 
 void sauvegardeTour(Tour tour, FILE* emplacement_fichier_sauvegarde)
 {
+	//On déclare un coup qui se deplacera dans la pile de coup
 	NoeudCoup* actuel = tour.pile_coups.premier;
-	int compteur=0;
-	Tour factice;
-	int i;
 
+	//On déclare un compteur et une varible muette
+	int i,compteur=0;
+
+	//On crée un tour factice pour la pile de coups
+	Tour factice;
+
+	//On initialise la pile de coups du tour factice
 	factice.pile_coups=pileCoups_init();
 
+	//On compte le nombre de coup qu'il y a dans le tour que l'on veut sauvegarder
 	while(actuel != NULL)
 	{
 		compteur++;
@@ -100,17 +106,21 @@ void sauvegardeTour(Tour tour, FILE* emplacement_fichier_sauvegarde)
 		actuel = actuel -> suivant;
 	}
 
+	//On dépile le nombre de coups dans le tour et on les empile tout de suite dans la pile du tour factice
 	for (i = 0; i < compteur; i++)
 	{
 		pileCoups_ajouterCoup(&factice.pile_coups, pileCoups_depiler(&tour.pile_coups));
 	}
 
+
+
+	//On créé un coup qui va se déplacer dans la pile de coup du tour factice
 	NoeudCoup* actuelFactice = factice.pile_coups.premier;
 
-
-
+	//On écrit le nombre de coup dans la pile de coup du tour
 	fwrite(&compteur, sizeof(int), 1, emplacement_fichier_sauvegarde);
 
+	//On sauvegarde tous les coups dans le fichier texte dans l'ordre où ils ont été joué
 	while(actuelFactice != NULL)
 	{
 		sauvegardeCoup(actuelFactice->coup, emplacement_fichier_sauvegarde);
@@ -118,7 +128,10 @@ void sauvegardeTour(Tour tour, FILE* emplacement_fichier_sauvegarde)
 		actuelFactice = actuelFactice -> suivant;
 	}
 	   
+	//On déclare un pion qui prend la valeur du pointeur de pion dans le tour
 	Pion p = *tour.pion;
+
+	//On stocke la position de depart du pion, et les données du pointeur de pion
 	fwrite(&tour.depart.x, sizeof(int), 1, emplacement_fichier_sauvegarde);
 	fwrite(&tour.depart.y, sizeof(int), 1, emplacement_fichier_sauvegarde);
 	fwrite(&p, sizeof(Pion), 1, emplacement_fichier_sauvegarde);
@@ -127,25 +140,31 @@ void sauvegardeTour(Tour tour, FILE* emplacement_fichier_sauvegarde)
 
 Tour chargerTour(FILE* emplacement_fichier)
 {
+	//On déclare un tour, un pion, un compteur et une variable muette
 	Tour tour;
 	Pion p;
 	int compteur,i;
 
+	//On initialise la pile de coups du tour
 	tour.pile_coups = pileCoups_init();
 
+	//On charge le nombre de coup du tour
 	fread(&compteur, sizeof(int), 1, emplacement_fichier);
 
+	//On empile le nombre de coups qu'il y avait dans le tour sauvegarder
 	for (i = 0; i < compteur; i++)
 	{
 		pileCoups_ajouterCoup(&tour.pile_coups, chargerCoup(emplacement_fichier));
 	}
 	
-	   
+	//On charge la position de depart du pion et les données du pointeur
 	fread(&tour.depart.x, sizeof(int), 1, emplacement_fichier);
 	fread(&tour.depart.y, sizeof(int), 1, emplacement_fichier);
 	fread(&p, sizeof(Pion), 1, emplacement_fichier);
 
+	//On stocke dans le pointeur de pion dans tour les données precedemment chargées
 	tour.pion = pointeurPion(p);
 
+	//On retourne le tour
 	return tour;
 }

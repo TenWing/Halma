@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <tour.h>
+#include <pion.h>
 // #######################
 
 Tour tour_init(Pion* p)
@@ -114,7 +115,7 @@ Tour chargerTour(FILE* emplacement_fichier)
 	fread(&tour.depart.y, sizeof(int), 1, emplacement_fichier);
 	fread(&p, sizeof(Pion), 1, emplacement_fichier);
 
-	//*tour.pion = p;
+	tour.pion = pointeurPion(p);
 
 	return tour;
 }

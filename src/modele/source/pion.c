@@ -381,3 +381,8 @@ Pion chargerPion(FILE* emplacement_fichier)
 	
 	return pion;
 }
+
+Pion* pointeurPion(Pion pion)
+{
+	return &pion;
+}

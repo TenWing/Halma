@@ -35,7 +35,6 @@ struct Coup
 {
 	/**
 	* \brief le pion qui se déplace
-	* \details Un pointeur car il s'agit d'une information ne nécessitant pas d'exister en tant que tel
 	* \see Pion
 	*/
 	Pion pion;

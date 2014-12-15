@@ -29,7 +29,7 @@ int main ()
 	///////////////////////////
 
 	Pion pion = pion_init(BLEU, position_init(4,2), 9);
-	Coup coup = coup_init(&pion, position_init(3,3));
+	Coup coup = coup_init(&pion, position_init(4,2));
 	Tour tour = tour_init(&pion);
 	pileCoups_ajouterCoup(&tour.pile_coups, coup);
 
@@ -64,9 +64,9 @@ int main ()
 
 	fclose(fichier_contient_pion);
 
-	//printf("ID : %d\n", tour2.pion->identifiant);
+	printf("ID : %d\n", tour2.pion->identifiant);
 	printf("precedent x : %d\n", tour2.pile_coups.premier->coup.precedente.x);
-
+	printf("position depart x : %d\n", tour2.depart.x);
 	return 0;	
 }
 

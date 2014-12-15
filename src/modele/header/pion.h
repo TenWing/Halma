@@ -141,4 +141,5 @@ void sauvegardePion(Pion pion, FILE* emplacement_fichier_sauvegarde);
 */
 Pion chargerPion(FILE* emplacement_fichier);
 
+Pion* pointeurPion(Pion pion);
  #endif

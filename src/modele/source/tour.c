@@ -83,7 +83,7 @@ void pileTours_ajouterTour(PileTours* pile, Tour tour)
 	pile->premier = ajout;
 }
 
-/*void sauvegardeTour(Tour tour, char* emplacement_fichier_sauvegarde)
+void sauvegardeTour(Tour tour, FILE* emplacement_fichier_sauvegarde)
 {
 	NoeudCoup* actuel = tour.pile_coups.premier;
 
@@ -93,48 +93,28 @@ void pileTours_ajouterTour(PileTours* pile, Tour tour)
 
 		actuel = actuel -> suivant;
 	}
+	   
+	Pion p = *tour.pion;
+	fwrite(&tour.depart.x, sizeof(int), 1, emplacement_fichier_sauvegarde);
+	fwrite(&tour.depart.y, sizeof(int), 1, emplacement_fichier_sauvegarde);
+	fwrite(&p, sizeof(Pion), 1, emplacement_fichier_sauvegarde);
 
-	FILE *fichier_contient_tour;
-	fichier_contient_tour = fopen(emplacement_fichier_sauvegarde, "ab");
-
-	if (fichier_contient_tour != NULL)
-	{	   
-		Pion p = *tour.pion;
-	    fwrite(&tour.depart.x, sizeof(int), 1, fichier_contient_tour);
-	    fwrite(&tour.depart.y, sizeof(int), 1, fichier_contient_tour);
-	    fwrite(&p, sizeof(Pion), 1, fichier_contient_tour);
-
-		fclose(fichier_contient_tour);			
-	}
-	else
-	{
-	    printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
-	}
 }
 
-Tour chargerTour(char* emplacement_fichier)
+Tour chargerTour(FILE* emplacement_fichier)
 {
 	Tour tour;
+	Pion p;
 
 	tour.pile_coups = pileCoups_init();
 
 	pileCoups_ajouterCoup(&tour.pile_coups, chargerCoup(emplacement_fichier));
+	   
+	fread(&tour.depart.x, sizeof(int), 1, emplacement_fichier);
+	fread(&tour.depart.y, sizeof(int), 1, emplacement_fichier);
+	fread(&p, sizeof(Pion), 1, emplacement_fichier);
 
-	FILE *fichier_contient_tour;
-	fichier_contient_tour = fopen(emplacement_fichier, "rb");
-
-	if (fichier_contient_tour != NULL)
-	{	   
-	   	fread(&tour.depart.x, sizeof(int), 1, fichier_contient_tour);
-	    fread(&tour.depart.y, sizeof(int), 1, fichier_contient_tour);
-	    //fread(tour.pion, sizeof(Pion), 1, fichier_contient_tour);
-
-		fclose(fichier_contient_tour);			
-	}
-	else
-	{
-	    printf("Impossible d'ouvrir le fichier sauvegarde.txt\n");
-	}
+	//*tour.pion = p;
 
 	return tour;
-}*/
+}

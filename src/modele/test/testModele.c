@@ -30,13 +30,16 @@ int main ()
 
 	Pion pion = pion_init(BLEU, position_init(4,2), 9);
 	Coup coup = coup_init(&pion, position_init(3,3));
-
+	Tour tour = tour_init(&pion);
+	pileCoups_ajouterCoup(&tour.pile_coups, coup);
 
 
 	FILE *fichier_contient_pion;
 	fichier_contient_pion = fopen("sauvegardetest.txt", "wb");
 
-	sauvegardeCoup(coup, fichier_contient_pion);
+	//sauvegardeCoup(coup, fichier_contient_pion);
+
+	sauvegardeTour(tour, fichier_contient_pion);
 
 	fclose(fichier_contient_pion);
 
@@ -57,12 +60,12 @@ int main ()
 
 	fichier_contient_pion = fopen("sauvegardetest.txt", "rb");
 
-	Coup coup2=chargerCoup(fichier_contient_pion);
+	Tour tour2 = chargerTour(fichier_contient_pion);
 
 	fclose(fichier_contient_pion);
 
-	printf("ID : %d\n", coup2.pion.identifiant);
-	printf("precedent x : %d\n", coup2.precedente.x);
+	//printf("ID : %d\n", tour2.pion->identifiant);
+	printf("precedent x : %d\n", tour2.pile_coups.premier->coup.precedente.x);
 
 	return 0;	
 }

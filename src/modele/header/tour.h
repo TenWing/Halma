@@ -135,7 +135,7 @@ void pileTours_ajouterTour(PileTours* pile, Tour tour);
 * \param 	tour 	le tour a sauvegarder
 * \param 	emplacement_fichier_sauvegarde
 */
-void sauvegardeTour(Tour tour, char* emplacement_fichier_sauvegarde);
+void sauvegardeTour(Tour tour, FILE* emplacement_fichier_sauvegarde);
 
 /**
 * \brief 	charge un tour
@@ -144,5 +144,5 @@ void sauvegardeTour(Tour tour, char* emplacement_fichier_sauvegarde);
 * \param 	emplacement_fichier_sauvegarde
 * \return	le tour chargé
 */
-Tour chargerTour(char* emplacement_fichier);
+Tour chargerTour(FILE* emplacement_fichier);
 #endif

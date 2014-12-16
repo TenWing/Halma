@@ -1,4 +1,5 @@
 
+
 /**
 * \file		fichier.c
 * \brief	Contient les fonctions qui permettent de sauvegarder/charger
@@ -16,68 +17,25 @@
 #include <unistd.h>
 // #################################
 
-int sauvegarderPartie(Modele* modele, int sauvegarde)
+int sauvegarderPartie(Modele* modele, char* fichier)
 {
-	FILE *fichier_contient_partie;
-	switch(sauvegarde)
+	FILE* fp;
+
+	char* seek;
+	strcat(seek, fichier);
+	strcat(seek, ".txt");
+
+	fp = fopen(seek, "wb");
+
+	if(fp != NULL)
 	{
-		// char tampon[1000];
-		// printf("%s\n", getcwd(tampon, 1000));
-		case 1 :
-			fichier_contient_partie = fopen("Parties/general_1.txt", "wb");
-
-			if (fichier_contient_partie != NULL)
-			{
-			   	sauvegarderModele(*modele, fichier_contient_partie, "Parties/plateau_1.txt");
-			   	fclose(fichier_contient_partie);
-
-			   	return 1;
-
-			}
-
-			else
-			{
-			    return 0;
-			}
-			break;
-		case 2 :
-			
-			fichier_contient_partie = fopen("Parties/general_2.txt", "wb");
-
-			if (fichier_contient_partie != NULL)
-			{
-			   	sauvegarderModele(*modele, fichier_contient_partie, "Parties/plateau_2.txt");
-			   	fclose(fichier_contient_partie);
-
-			   	return 1;
-
-			}
-
-			else
-			{
-			    return 0;
-			}
-			break;
-		case 3 :
-			
-			fichier_contient_partie = fopen("Parties/general_3.txt", "wb");
-
-			if (fichier_contient_partie != NULL)
-			{
-			   	sauvegarderModele(*modele, fichier_contient_partie, "Parties/plateau_3.txt");
-			   	fclose(fichier_contient_partie);
-
-			   	return 1;
-
-			}
-
-			else
-			{
-			    return 0;
-			}
-			break;
-		default :
-			break;
+		sauvegarderModele(modele, fp);
+		return 1;
+	}
+	else
+	{
+		printf("erreur : impossible de sauvegarder la partie");
+		return 0;
 	}
 }
 
@@ -89,7 +47,7 @@ Modele chargerModele(char* fichier)
 
 	FILE* fp = NULL;
 
-	fp = fopen(fichier, "r");
+	fp = fopen(fichier, "rb");
 
 	if(fp != NULL)
 	{

@@ -1,3 +1,4 @@
+
 /**
 * \file		fichier.h
 * \author	Quentin
@@ -16,7 +17,7 @@
 * \version 1.0
 * \return 	1 si la sauvegarde a reussi, 0 si echec
 */
-int sauvegarderPartie(Modele* modele, int sauvegarde);
+int sauvegarderPartie(Modele* modele, char* fichier);
 
 Modele chargerModele(char* fichier);
 

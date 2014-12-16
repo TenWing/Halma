@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <modele.h>
 #include <plateau.h>
+#include <tour.h>
 // ###################################
 
 Modele modele_init(int nombreJoueurs)
@@ -131,33 +132,45 @@ int jouer_coup(Modele* modele, Pion* pion, Direction direction)
 
 
 
-void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char* emplacement_fichier_sauvegarde_plateau)
+void sauvegarderModele(Modele* modele, FILE* emplacement_fichier_sauvegarde)
 {
-	NoeudTour* actuel = modele.pile_tours.premier;
+	//écrit le nombre de joueurs dans le fichier de sauvegarde
+	//fwrite(&modele.nombreJoueurs, sizeof(int), 1, emplacement_fichier_sauvegarde);
 
+	//Déclaration d'un pointeur qui parcoura la pile de tours
+	NoeudTour* actuel = modele->pile_tours.premier;
+
+	//Déclaration d'un variable muette et d'un compteur
 	int i, compteur=0;
 
+	//Déclaration d'un modele qui aura pour but de retourner la pile d etours
 	Modele factice;
 
+	//On initialise la pile de tours
 	factice.pile_tours = pileTours_init();
 
+	//On parcourt la pile du vrai modele
 	while(actuel != NULL)
 	{
+		//On compte le nombre de tours qu'il y a dans la pile
 		compteur++;
 
 		actuel = actuel -> suivant;
 	}
 
-
+	//On dépile les tours de la pile du vrai modele pour les empiler dans la pile du modele factice
 	for (i = 0; i < compteur; i++)
 	{
-		pileTours_ajouterTour(&factice.pile_tours, pileTours_depiler(&modele.pile_tours));
+		pileTours_ajouterTour(&factice.pile_tours, pileTours_depiler(&modele->pile_tours));
 	}
 
+	//On crée un pointeur qui parcoura la pile de tours du faux modele
 	NoeudTour* actuelFactice = factice.pile_tours.premier;
 
+	//On écrit le nombre de tour qu'il y a dans le fichier de sauvegarde
 	fwrite(&compteur, sizeof(int), 1, emplacement_fichier_sauvegarde);
 
+	//On sauvegarde tous les tours dans l'ordre où ils ont été joué dans le jeu dans le fichier de sauvegarde
 	while(actuelFactice != NULL)
 	{
 		sauvegardeTour(actuelFactice->tour, emplacement_fichier_sauvegarde);
@@ -165,32 +178,76 @@ void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char
 		actuelFactice = actuelFactice -> suivant;
 	}
 
-	modele.plateau = updateMatrice(&modele.plateau);
-
-	sauvegardePlateau(modele.plateau, emplacement_fichier_sauvegarde_plateau);
-
-	fwrite(&modele.nombreJoueurs, sizeof(int), 1, emplacement_fichier_sauvegarde);
+	
 }
 
 Pion* modele_get_reference_pion(Modele* modele, Pion pion)
 {
+	//On crée un pointeur qui parcoura la liste de pions
 	NoeudPion* actuel;
 	actuel = modele -> plateau.liste_pions.premier;
 
+	//On parcourt la liste de pions
 	while(actuel != NULL)
 	{
+		//On vérifie la condition sur les identifiants
 		if(pion.identifiant == actuel->pion.identifiant)
 		{
+			//S'ils sont égaux on retourne l'adresse du pion de la liste de pions
 			return &actuel->pion;
 		}
 
 		actuel = actuel -> suivant;
 	}
 
+	//Sinon on retourne un pointeur nul
 	return NULL;
 }
 
 PileTours charger_tours(FILE* fp, Modele* modele)
 {
-	
+	//On déclare une variable muette et un compteur
+	int i,compteur=0;
+
+	//On initialise la pile de tours du modele
+	modele->pile_tours = pileTours_init();
+
+	//On lit dans le fichie de sauvegarde le nombre de tour
+	fread(&compteur, sizeof(int), 1, fp);
+
+	//On ajoute tous les tours dans la pile du modele
+	for(i=0; i<compteur; i++)
+	{
+		pileTours_ajouterTour(&modele->pile_tours, chargerTour(fp, modele));
+	}
+
+	//On crée une pile inverser par rapport à la pile du modele
+	PileTours pile_inverser=inversePile(modele->pile_tours);
+
+	//On fait jouer fictivement le modele pour retrouver l'état avant d'avoir quitté le jeu
+	jouer_fictif(modele, pile_inverser);
+
+	//On retourne la pile de tours du modele
+	return modele->pile_tours;
 }
+
+void jouer_fictif(Modele* modele, PileTours pileInverser)
+{
+	NoeudTour* actueltour = pileInverser.premier;
+
+	while(actueltour != NULL)
+	{
+		Tour tour = pileTours_depiler(&pileInverser);
+
+		Pion* pion = modele_get_reference_pion(modele, *tour.pion);
+
+		pion -> position.x = tour.pion->position.x;
+		pion -> position.y = tour.pion->position.y;
+
+		actueltour = actueltour -> suivant;
+	}
+}
+
+
+
+

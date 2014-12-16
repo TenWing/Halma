@@ -238,10 +238,9 @@ int pion_sauter(Pion* pion, Direction direction, Plateau* plateau)
 	}
 
 	// Arrivé ici bingo saut effectué
-	// printf("add %d %d\n", pion->position.x, pion->position.y);
 	liste_positions_ajout(&plateau->vides, pion->position);
 	pion->position = position_direction;
-	// printf("Suppr %d %d\n", position_direction.x, position_direction.y);
+
 	liste_positions_supprimer(&plateau->vides, position_direction);
 	
 	return 1;

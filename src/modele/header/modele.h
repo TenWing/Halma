@@ -109,7 +109,7 @@ int jouer_coup(Modele* modele, Pion* pion, Direction direction);
 * \param	FILE* 	le fichier où sont sauvegardé les tours, pions etc
 * \param	char* 	le fichier où est enregistré le plateau
 */
-void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char* emplacement_fichier_sauvegarde_plateau);
+void sauvegarderModele(Modele* modele, FILE* emplacement_fichier_sauvegarde);
 
 /**
 * \brief 	charge le modele
@@ -120,6 +120,21 @@ void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char
 */
 Pion* modele_get_reference_pion(Modele* modele, Pion pion);
 
+/**
+* \brief 	charge les tours
+* \author 	Quentin
+* \param	FILE* 	le fichier où sont sauvegardé les tours, pions etc
+* \param	Modele* le modele du jeu
+* \return 	la pile de tours du modele
+*/
 PileTours charger_tours(FILE* fp, Modele* modele);
+
+/**
+* \brief 	jouer des coups fictifs pour initialiser la pile de tours du modele
+* \author 	Quentin
+* \param	Modele* 	le modele du jeu
+* \param 	pile_tours 	la pile de tours qui "jouera"
+*/
+void jouer_fictif(Modele* modele, PileTours pileInverser);
 
 #endif

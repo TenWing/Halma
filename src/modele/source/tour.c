@@ -136,7 +136,7 @@ void sauvegardeTour(Tour tour, FILE* emplacement_fichier_sauvegarde)
 
 }
 
-Tour chargerTour(FILE* emplacement_fichier)
+Tour chargerTour(FILE* emplacement_fichier, Modele* modele)
 {
 	//On déclare un tour, un pion, un compteur et une variable muette
 	Tour tour;
@@ -155,14 +155,32 @@ Tour chargerTour(FILE* emplacement_fichier)
 		pileCoups_ajouterCoup(&tour.pile_coups, chargerCoup(emplacement_fichier));
 	}
 	
-	//On charge la position de depart du pion et les données du pointeur
+	//On charge la position de depart du pion et les données du pointeur de pion
 	fread(&tour.depart.x, sizeof(int), 1, emplacement_fichier);
 	fread(&tour.depart.y, sizeof(int), 1, emplacement_fichier);
 	fread(&p, sizeof(Pion), 1, emplacement_fichier);
 
 	//On stocke dans le pointeur de pion dans tour les données precedemment chargées
-	// tour.pion = modele_get_referen
+	tour.pion = modele_get_reference_pion(modele, p);
 
 	//On retourne le tour
 	return tour;
+}
+
+
+PileTours inversePile(PileTours pile_tours)
+{
+	PileTours pile_inverser = pileTours_init();
+
+	NoeudTour* actuel = pile_tours.premier;
+
+	while(actuel != NULL)
+	{
+
+		pileTours_ajouterTour(&pile_inverser, actuel->tour);
+		
+		actuel = actuel -> suivant;
+	}
+
+	return pile_inverser;
 }

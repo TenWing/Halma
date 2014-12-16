@@ -21,6 +21,9 @@
 #include <coup.h>
 //######################################
 
+typedef struct Modele Modele;
+struct Modele;
+
 /**
 * \brief Un tour de jeu dans la partie
 * \author Tendry
@@ -144,5 +147,14 @@ void sauvegardeTour(Tour tour, FILE* emplacement_fichier_sauvegarde);
 * \param 	emplacement_fichier_sauvegarde
 * \return	le tour chargé
 */
-Tour chargerTour(FILE* emplacement_fichier);
+Tour chargerTour(FILE* emplacement_fichier, Modele* modele);
+
+/**
+* \brief 	inverse une pile
+* \author 	Quentin
+* \version 1.0
+* \param 	pile_tours 	la pile à inverser
+* \return	la pile inversée
+*/
+PileTours inversePile(PileTours pile_tours);
 #endif

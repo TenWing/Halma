@@ -91,7 +91,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		else if(choix == 'c')
 		{
 			affiche_sauvegarde(0);
-			sauvegarde=recuperer_entier();
+			sauvegarde=recuperer_caractere();
 
 			if(sauvegarderPartie(modele, sauvegarde))
 			{
@@ -318,8 +318,7 @@ void jouer_partie(int jouer)
 	{
 		controleur = controleur_charger();
 	}
-	printf("chargement controleur OK");
-	//Tant qu'il n'y a pas de joueur gagnant
+		//Tant qu'il n'y a pas de joueur gagnant
 		while(victoire != 1)
 		{
 			//Les joueurs jouent chacuns à leur tour

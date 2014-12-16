@@ -18,6 +18,8 @@
 */
 int sauvegarderPartie(Modele* modele, int sauvegarde);
 
-Modele chargerPartie(int charger);
+Modele chargerModele(char* fichier);
+
+int chargerPartie(Modele* modele, char* fichier);
 
 #endif

@@ -81,67 +81,44 @@ int sauvegarderPartie(Modele* modele, int sauvegarde)
 	}
 }
 
-Modele chargerPartie(int charger)
+Modele chargerModele(char* fichier)
 {
-	Modele modele;
-	FILE *fichier_contient_partie;
+	Modele tufaischier;
 
-		
-	switch(charger)
+	int nb_joueurs = 0;
+
+	FILE* fp = NULL;
+
+	fp = fopen(fichier, "r");
+
+	if(fp != NULL)
 	{
-		case 1 :
-			fichier_contient_partie = fopen("Parties/general_1.txt", "rb");
+		fread(&nb_joueurs, sizeof(int), 1, fp);
+		fclose(fp);
+		return modele_init(nb_joueurs);
+	}	
+	else
+		printf("Erreur fichier\n");
 
-			if (fichier_contient_partie != NULL)
-			{
+	return tufaischier;
+}
 
-			   	modele=chargerModele(fichier_contient_partie, "Parties/plateau_1.txt");
-			   	fclose(fichier_contient_partie);
+int chargerPartie(Modele* modele, char* fichier)
+{
+	FILE *fp = NULL;
+		
+	char* seek = "Parties/";
+	strcat(seek, fichier);
+	strcat(seek, ".txt");
 
-			   	return modele;
+	fp = fopen(seek, "rb");
 
-			}
-
-			else
-			{
-			    return modele;
-			}
-			break;
-		case 2 :
-			fichier_contient_partie = fopen("Parties/general_2.txt", "rb");
-
-			if (fichier_contient_partie != NULL)
-			{
-			   	modele=chargerModele(fichier_contient_partie, "Parties/plateau_2.txt");
-			   	fclose(fichier_contient_partie);
-			   	
-			   	return modele;
-
-			}
-
-			else
-			{
-			    return modele;
-			}
-			break;
-		case 3 :
-			fichier_contient_partie = fopen("Parties/general_3.txt", "rb");
-
-			if (fichier_contient_partie != NULL)
-			{
-			   	modele=chargerModele(fichier_contient_partie, "Parties/plateau_3.txt");
-			   	fclose(fichier_contient_partie);
-
-			   	return modele;
-
-			}
-
-			else
-			{
-			    return modele;
-			}
-			break;
-		default :
-			break;
+	if(fp != NULL)
+	{
+		modele->pile_tours = charger_tours(fp, modele);
+		fclose(fp);
 	}
+	else
+		printf("TUPUES\n");
+
 }

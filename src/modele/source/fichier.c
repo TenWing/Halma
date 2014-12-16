@@ -1,5 +1,4 @@
 
-
 /**
 * \file		fichier.c
 * \brief	Contient les fonctions qui permettent de sauvegarder/charger
@@ -18,18 +17,19 @@
 // #################################
 
 int sauvegarderPartie(Modele* modele, char* fichier)
-{
+{	
 	FILE* fp;
 
-	char* seek;
+	/*char* seek;
 	strcat(seek, fichier);
-	strcat(seek, ".txt");
+	strcat(seek, ".txt");*/
 
-	fp = fopen(seek, "wb");
+	fp = fopen( "sauvegarde.txt", "wb");
 
 	if(fp != NULL)
 	{
 		sauvegarderModele(modele, fp);
+		fclose(fp);
 		return 1;
 	}
 	else

@@ -38,7 +38,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 {
 	int i;
 	int tour=0;
-	int sauvegarde;
+	char* sauvegarde;
 	// Le pion qui jouera
 	Pion* pion = NULL;
 
@@ -91,7 +91,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		else if(choix == 'c')
 		{
 			affiche_sauvegarde(0);
-			sauvegarde=recuperer_caractere();
+			sauvegarde=recuperer_entier();
 
 			if(sauvegarderPartie(modele, sauvegarde))
 			{

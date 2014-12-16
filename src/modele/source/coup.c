@@ -1,5 +1,6 @@
 
 
+
 /**
 * \file		coup.c
 * \author 	Tendry
@@ -95,6 +96,7 @@ void pileCoups_ajouterCoup(PileCoups* pile, Coup coup)
 
 void sauvegardeCoup(Coup coup, FILE* emplacement_fichier_sauvegarde)
 {
+	printf("dans sauvegarde coup\n");
 	//On écrit dans le fichier texte les données du pion dans le coup
 	sauvegardePion(coup.pion, emplacement_fichier_sauvegarde);
 

@@ -122,7 +122,7 @@ Position* plateau_getVide(Plateau* plateau, Position position);
 */
 int position_hors_plateau(Position* position, Plateau* plateau);
 
-Plateau updateMatrice(Plateau plateau);
+Plateau updateMatrice(Plateau* plateau);
 /**
 * \brief Sauvegarde le modele
 * \author Quentin

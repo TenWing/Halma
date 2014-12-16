@@ -196,34 +196,46 @@ int position_hors_plateau(Position* position, Plateau* plateau)
 		return 0;
 }
 
-Plateau updateMatrice(Plateau plateau)
+Plateau updateMatrice(Plateau* plateau)
 {
 	int i,j;
 
-	NoeudPion* actuel = plateau.liste_pions.premier;
 
-	while(actuel != NULL)
-	{
-		for(i=0; i<16; i++)
+		for(i=0; i<plateau->matrice.nbLignes; i++)
 		{
-			for(j=0; j<16; j++)
+			for(j=0; j<plateau->matrice.nbColonnes; j++)
 			{
-				if(i == actuel -> pion.position.x && j == actuel -> pion.position.y)
+				Position position = position_init(i,j);
+				Pion pion = plateau_getpion(plateau, position);
+
+				if(pion.identifiant != -1)
 				{
-					plateau.matrice.donnees[i][j] = actuel -> pion.identifiant;
-					printf("%d\n", plateau.matrice.donnees[i][j]);
+					switch(pion.couleur)
+					{
+						case ROUGE :
+							plateau->matrice.donnees[i][j] = '0';
+							break;
+						case BLEU :
+							plateau->matrice.donnees[i][j] = '1';
+							break;
+						case VERT :
+							plateau->matrice.donnees[i][j] = '2';
+							break;
+						case JAUNE :
+							plateau->matrice.donnees[i][j] = '3';
+							break;
+						default :
+							break;
+					}
 				}
 				else
 				{
-					plateau.matrice.donnees[i][j] = '.';
+					plateau->matrice.donnees[i][j] = '.';
 				}
 			}
 		}
 
-		actuel = actuel -> suivant;
-	}
-
-	return plateau;
+	return *plateau;
 }
 
 void sauvegardePlateau(Plateau plateau, char* emplacement_fichier_sauvegarde)

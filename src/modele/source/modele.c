@@ -90,22 +90,13 @@ void annuler_coup(Modele* modele, Pion* pion)
 
 void annuler_tour(Modele* modele)
 {
-<<<<<<< HEAD
-	//On cherche le tour voulu
-	Tour tour;
 
-	// On accède au tour courant
-	NoeudTour* noeud = modele->pile_tours.premier;
-=======
 	Tour dernier;
 	//On dépile le tour du joueur qui joue
 
 	//On prend le tour du joueur précedent
 	dernier = pileTours_depiler(&modele->pile_tours);
->>>>>>> 8d00b60f778ff38efdddbd213f3f60d10498150a
 
-	//On dépile le dernier tour 
-	tour=pileTours_depiler(&modele->pile_tours);
 
 	// On change la position du pion
 	dernier.pion->position.x = dernier.depart.x;
@@ -174,7 +165,7 @@ void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char
 		actuelFactice = actuelFactice -> suivant;
 	}
 
-	//modele.plateau = updateMatrice(modele.plateau);
+	modele.plateau = updateMatrice(&modele.plateau);
 
 	sauvegardePlateau(modele.plateau, emplacement_fichier_sauvegarde_plateau);
 

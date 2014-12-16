@@ -53,11 +53,11 @@ int main()
 		{
 			//Le controleur a décidé de jouer au jeu
 			case 'a' :
-						jouer_partie();
+						jouer_partie(1);
 						break;
 			case 'b' :
 						
-						clean_terminal();
+						jouer_partie(0);
 						break;
 			case 'c' :
 						while(choix2 != 'y')

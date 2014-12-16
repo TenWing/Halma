@@ -84,7 +84,7 @@ int selectionner_direction(Modele* modele, Direction* direction);
 * \brief 	Lance une partie du jeu
 * \author	Quentin
 */
-void jouer_partie();
+void jouer_partie(int jouer);
 
 /**
 * \brief 	Sauvegarde une partie
@@ -106,4 +106,6 @@ int SauvegardeMatrice(Matrice matrice, char *emplacement_fichier_sauvegarde, int
 * \return 	la matrice qui est en fait le plateau du jeu de l'halma
 */
 Matrice chargerMatrice(char *emplacement_fichier, int choix);
+
+Controleur controleur_charger();
 

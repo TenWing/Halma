@@ -20,12 +20,13 @@
 #include <saisie.h>
 #include <controleur.h>
 #include <direction.h>
+#include <fichier.h>
 // #################################
 
 Controleur controleur_init(int nombreJoueurs)
 {
 	Controleur controleur;
-
+	
 	controleur.nombreJoueurs = nombreJoueurs;
 
 	controleur.modele = modele_init(nombreJoueurs);
@@ -292,7 +293,7 @@ int selectionner_direction(Modele* modele, Direction* direction)
 	return 1;
 }
 
-void jouer_partie()
+void jouer_partie(int jouer)
 {
 	int nombre_joueur,i;
 	Controleur controleur;
@@ -302,15 +303,21 @@ void jouer_partie()
 	int victoire=0;
 	int verification = 1;
 
-	clean_terminal();
-	affiche_configuration_partie();
-	printf("Choix: ");
+	if(jouer)
+	{
+		clean_terminal();
+		affiche_configuration_partie();
+		printf("Choix: ");
 
-	//On demande le nombre de joueur pour initialiser le jeu
-	nombre_joueur = recuperer_entier();
+		//On demande le nombre de joueur pour initialiser le jeu
+		nombre_joueur = recuperer_entier();
 
-	controleur = controleur_init(nombre_joueur);
-
+		controleur = controleur_init(nombre_joueur);
+	}
+	else
+	{
+		controleur = controleur_charger();
+	}
 	//Tant qu'il n'y a pas de joueur gagnant
 		while(victoire != 1)
 		{
@@ -333,3 +340,20 @@ void jouer_partie()
 
 		affichage_victoire(couleur);			
 }
+
+Controleur controleur_charger()
+{
+	int partie;
+	Controleur controleur;
+
+	printf("numéro de la partie à charger :");
+
+	partie = recuperer_entier();
+	
+	controleur.modele = chargerPartie(partie);
+
+	controleur.nombreJoueurs = controleur.modele.nombreJoueurs;
+
+	return controleur;
+}
+	

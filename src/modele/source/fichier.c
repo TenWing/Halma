@@ -13,6 +13,7 @@
 #include <matrice.h>
 #include <modele.h>
 #include <string.h>
+#include <unistd.h>
 // #################################
 
 int sauvegarderPartie(Modele* modele, int sauvegarde)
@@ -20,13 +21,14 @@ int sauvegarderPartie(Modele* modele, int sauvegarde)
 	FILE *fichier_contient_partie;
 	switch(sauvegarde)
 	{
+		// char tampon[1000];
+		// printf("%s\n", getcwd(tampon, 1000));
 		case 1 :
-			
-			fichier_contient_partie = fopen("../../../bin/Parties/partie_1/general.txt", "wb");
+			fichier_contient_partie = fopen("Parties/general_1.txt", "wb");
 
 			if (fichier_contient_partie != NULL)
 			{
-			   	sauvegarderModele(*modele, fichier_contient_partie, "../../../bin/Parties/partie_1/plateau.txt");
+			   	sauvegarderModele(*modele, fichier_contient_partie, "Parties/plateau_1.txt");
 			   	fclose(fichier_contient_partie);
 
 			   	return 1;
@@ -40,11 +42,11 @@ int sauvegarderPartie(Modele* modele, int sauvegarde)
 			break;
 		case 2 :
 			
-			fichier_contient_partie = fopen("../../../bin/Parties/partie_2/general.txt", "wb");
+			fichier_contient_partie = fopen("Parties/general_2.txt", "wb");
 
 			if (fichier_contient_partie != NULL)
 			{
-			   	sauvegarderModele(*modele, fichier_contient_partie, "../../../bin/Parties/partie_2/plateau.txt");
+			   	sauvegarderModele(*modele, fichier_contient_partie, "Parties/plateau_2.txt");
 			   	fclose(fichier_contient_partie);
 
 			   	return 1;
@@ -58,11 +60,11 @@ int sauvegarderPartie(Modele* modele, int sauvegarde)
 			break;
 		case 3 :
 			
-			fichier_contient_partie = fopen("../../../bin/Parties/partie_3/general.txt", "wb");
+			fichier_contient_partie = fopen("Parties/general_3.txt", "wb");
 
 			if (fichier_contient_partie != NULL)
 			{
-			   	sauvegarderModele(*modele, fichier_contient_partie, "../../../bin/Parties/partie_3/plateau.txt");
+			   	sauvegarderModele(*modele, fichier_contient_partie, "Parties/plateau_3.txt");
 			   	fclose(fichier_contient_partie);
 
 			   	return 1;
@@ -78,68 +80,68 @@ int sauvegarderPartie(Modele* modele, int sauvegarde)
 			break;
 	}
 }
-/*
-Modele* chargerPartie(int charger)
+
+Modele chargerPartie(int charger)
 {
 	Modele modele;
+	FILE *fichier_contient_partie;
 
-	switch(sauvegarde)
+		
+	switch(charger)
 	{
 		case 1 :
-			FILE *fichier_contient_partie;
-			fichier_contient_partie = fopen("../../../bin/Parties/partie_1/general.txt", "wb");
+			fichier_contient_partie = fopen("Parties/general_1.txt", "rb");
 
 			if (fichier_contient_partie != NULL)
 			{
-			   	modele=chargerModele(fichier_contient_partie, "../../../bin/Parties/partie_1/plateau.txt");
+
+			   	modele=chargerModele(fichier_contient_partie, "Parties/plateau_1.txt");
 			   	fclose(fichier_contient_partie);
 
-			   	return &modele;
+			   	return modele;
 
 			}
 
 			else
 			{
-			    return &modele;
+			    return modele;
 			}
 			break;
 		case 2 :
-			FILE *fichier_contient_partie;
-			fichier_contient_partie = fopen("../../../bin/Parties/partie_2/general.txt", "wb");
+			fichier_contient_partie = fopen("Parties/general_2.txt", "rb");
 
 			if (fichier_contient_partie != NULL)
 			{
-			   	modele=chargerModele(fichier_contient_partie, "../../../bin/Parties/partie_2/plateau.txt");
+			   	modele=chargerModele(fichier_contient_partie, "Parties/plateau_2.txt");
 			   	fclose(fichier_contient_partie);
 			   	
-			   	return &modele;
+			   	return modele;
 
 			}
 
 			else
 			{
-			    return &modele;
+			    return modele;
 			}
 			break;
 		case 3 :
-			FILE *fichier_contient_partie;
-			fichier_contient_partie = fopen("../../../bin/Parties/partie_3/general.txt", "wb");
+			fichier_contient_partie = fopen("Parties/general_3.txt", "rb");
 
 			if (fichier_contient_partie != NULL)
 			{
-			   	modele=chargerModele(fichier_contient_partie, "../../../bin/Parties/partie_3/plateau.txt");
+			   	modele=chargerModele(fichier_contient_partie, "Parties/plateau_3.txt");
 			   	fclose(fichier_contient_partie);
 
-			   	return &modele;
+			   	return modele;
 
 			}
 
 			else
 			{
-			    return &modele;
+			    return modele;
 			}
 			break;
 		default :
 			break;
 	}
-}*/
+}

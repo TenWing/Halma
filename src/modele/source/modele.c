@@ -189,7 +189,7 @@ Modele chargerModele(FILE* emplacement_fichier, char* emplacement_fichier_platea
 	}
 
 	modele.plateau = chargerPlateau(emplacement_fichier_plateau);
-
+	
 	fread(&modele.nombreJoueurs, sizeof(int), 1, emplacement_fichier);
 
 	if(modele.nombreJoueurs > 2)

@@ -1,3 +1,4 @@
+
 /**
  * \file      modele.c
  * \author    Geliot
@@ -15,6 +16,7 @@
 #include <plateau.h>
 #include <pion.h>
 #include <unistd.h>
+#include <zone.h>
 
 /**
  * \brief    Génère le plateau de jeu
@@ -30,14 +32,16 @@ Plateau plateau_init(int nombre_joueur)
 	// On initialise la liste
 	plateau.liste_pions = liste_pions_init();
 
+	plateau.vides = liste_positions_init();
+
 	// On initialise avec les fichiers
 	if(nombre_joueur == 4)
 	{
-		plateau.matrice = initMatrice("../../../bin/depart_jeu_halma_4.txt");
+		plateau.matrice = initMatrice("depart_jeu_halma_4.txt");
 	}
 	else
 	{
-		plateau.matrice = initMatrice("../../../bin/depart_jeu_halma_2.txt");
+		plateau.matrice = initMatrice("depart_jeu_halma_2.txt");
 	}
 
 	// On récupère les pions !
@@ -58,6 +62,11 @@ Plateau plateau_init(int nombre_joueur)
 				Pion pion = pion_init(number, position_init(i, j), id);
 				liste_pions_ajout(&plateau.liste_pions, pion);
 				id++;
+			}
+			// Sinon on stocke la position vide
+			else
+			{
+				liste_positions_ajout(&plateau.vides, position_init(i,j));
 			}
 		}
 	}
@@ -148,6 +157,32 @@ Pion plateau_getpion(Plateau* plateau, Position position)
 	return pion;
 }
 
+Position* plateau_getVide(Plateau* plateau, Position position)
+{
+	// On récupère le premier noeud de la liste des noeuds
+	NoeudPosition* noeud = plateau->vides.premier;
+
+	// liste non vide
+	if(noeud != NULL)
+	{
+		// Parcours de la liste
+		while(noeud->suivant != NULL
+			&& !position_egale(noeud->position, position))
+		{
+			noeud = noeud -> suivant;
+		}
+
+		// Renvoi du vide
+		if(position_egale(noeud->position, position))
+		{
+			return &noeud->position;
+		}
+	}
+
+	// Sinon renvoi de rien
+	return NULL;
+}
+
 int position_hors_plateau(Position* position, Plateau* plateau)
 {
 	// On vérifie si on ne déborde pas du plateau en sautant
@@ -159,4 +194,80 @@ int position_hors_plateau(Position* position, Plateau* plateau)
 	}
 	else 
 		return 0;
+}
+
+Plateau updateMatrice(Plateau plateau)
+{
+	int i,j;
+
+	NoeudPion* actuel = plateau.liste_pions.premier;
+
+	while(actuel != NULL)
+	{
+		for(i=0; i<16; i++)
+		{
+			for(j=0; j<16; j++)
+			{
+				if(i == actuel -> pion.position.x && j == actuel -> pion.position.y)
+				{
+					plateau.matrice.donnees[i][j] = actuel -> pion.identifiant;
+					printf("%d\n", plateau.matrice.donnees[i][j]);
+				}
+				else
+				{
+					plateau.matrice.donnees[i][j] = '.';
+				}
+			}
+		}
+
+		actuel = actuel -> suivant;
+	}
+
+	return plateau;
+}
+
+void sauvegardePlateau(Plateau plateau, char* emplacement_fichier_sauvegarde)
+{
+	sauvegardeMatrice(plateau.matrice, emplacement_fichier_sauvegarde);
+}
+
+Plateau chargerPlateau(char* emplacement_fichier)
+{
+	Plateau plateau;
+
+	// On initialise la liste
+	plateau.liste_pions = liste_pions_init();
+
+	plateau.vides = liste_positions_init();
+
+	plateau.matrice = initMatrice(emplacement_fichier);
+
+	// On récupère les pions !
+	int i =0, j = 0, id = 0;
+
+	// On parcoure notre matrice
+	for(i = 0; i < plateau.matrice.nbLignes; i++)
+	{
+		for(j = 0; j < plateau.matrice.nbColonnes; j++)
+		{
+			// S'il y a un pion
+			if(plateau.matrice.donnees[i][j] != '.')
+			{
+				// Convertit bien le nombre récupéré en entier
+				int number = plateau.matrice.donnees[i][j] - '0';
+				
+				// Récupération de la couleur
+				Pion pion = pion_init(number, position_init(i, j), id);
+				liste_pions_ajout(&plateau.liste_pions, pion);
+				id++;
+			}
+			// Sinon on stocke la position vide
+			else
+			{
+				liste_positions_ajout(&plateau.vides, position_init(i,j));
+			}
+		}
+	}
+
+	return plateau;
 }

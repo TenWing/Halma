@@ -1,4 +1,3 @@
-
 /**
  * \file      modele.h
  * \author    Quentin
@@ -91,7 +90,7 @@ void annuler_coup(Modele* modele, Pion* pion);
 * \param	pion le pion qui sera modifié
 * \version	1.0
 */
-void annuler_tour(Modele* modele, Pion* pion);
+void annuler_tour(Modele* modele);
 
 /**
 * \brief 	Joue un coup, cad fait un déplacement
@@ -104,10 +103,21 @@ void annuler_tour(Modele* modele, Pion* pion);
 int jouer_coup(Modele* modele, Pion* pion, Direction direction);
 
 /**
-* \brief 	Supprime un tour de la pile de tours
-* \author 	Tendry
-* \param	modele le modele qui sera modifié
+* \brief 	Sauvegarde le modele
+* \author 	Quentin
+* \param	modele le modele qui sera sauvegardé
+* \param	FILE* 	le fichier où sont sauvegardé les tours, pions etc
+* \param	char* 	le fichier où est enregistré le plateau
 */
-void supprimer_tour(Modele* modele);
+void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char* emplacement_fichier_sauvegarde_plateau);
+
+/**
+* \brief 	charge le modele
+* \author 	Quentin
+* \param	FILE* 	le fichier où sont sauvegardé les tours, pions etc
+* \param	char* 	le fichier où est enregistré le plateau
+* \return 	le modele
+*/
+Modele chargerModele(FILE* emplacement_fichier, char* emplacement_fichier_plateau);
 
 #endif

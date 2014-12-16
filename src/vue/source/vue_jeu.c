@@ -1,4 +1,6 @@
 
+
+
 /**
 * \file		vue_jeu.c
 * \author	Tendry
@@ -12,6 +14,7 @@
 #include <vue_jeu.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <couleur.h>
 //######################################
 
 void affiche_selection_pion()
@@ -36,42 +39,66 @@ void affiche_selection_direction()
 	printf("		########################################\n");
 }
 
-void affiche_menu_commencer_tour()
+void affiche_menu_tour(int tour)
 {
-	printf("		########################################\n");
-	printf("		||*----------DEBUT DE TOUR-----------*||\n");
-	printf("		########################################\n");
-	printf("		a. Sélectionner un pion\n");
-	printf("		b. Revenir à votre tour précédent\n");
-	printf("		c. Sauvegarder la partie\n");
-	printf("		d. Fin de votre tour\n");
-	printf("		########################################\n");
+	if(!tour)
+	{
+		printf("		########################################\n");
+		printf("		||*----------DEBUT DE TOUR-----------*||\n");
+		printf("		########################################\n");
+		printf("		a. Sélectionner un pion\n");
+		printf("		b. Revenir à votre tour précédent\n");
+		printf("		########################################\n");
+	}
+	else
+	{
+		printf("		########################################\n");
+		printf("		||*----------FIN  DU  TOUR-----------*||\n");
+		printf("		########################################\n");
+		printf("		c. Sauvegarder la partie\n");
+		printf("		d. Fin de votre tour\n");
+		printf("		########################################\n");
+	}
 }
 
-void affiche_menu_coup(int retour)
-{
-	printf("		########################################\n");
-	printf("		||*-----------JOUER UN COUP----------*||\n");
-	printf("		########################################\n");
-	printf("		a. Déplacer le pion\n");
-	printf("		b. Revenir au coup précédent\n");
-	printf("		c. Sauvegarder la partie\n");
-	printf("		d. Fin du(es) déplacement de votre pion\n");
-	
-	if(retour)
-	printf("		e.Changer de pion\n");
-	
-	printf("		########################################\n");
+void affiche_menu_coup(int coup)
+{	
+		printf("		########################################\n");
+		printf("		||*-----------JOUER UN COUP----------*||\n");
+		printf("		########################################\n");
+		printf("		a. Déplacer le pion\n");
+
+		if(coup)
+		{
+		printf("		r. Revenir au(x) coup(s) précédent(s)\n");
+		}
+		printf("		c. Sauvegarder la partie\n");
+		printf("		d. Fin du(es) déplacement de votre pion\n");
+		printf("		########################################\n");
 }
 
-void affiche_echec_deplacement()
+void affiche_echec_deplacement(int echec)
 {
-	printf("		#################################################\n");
-	printf("		Vous n'avez pas réussi à vous déplacer, \n");
-	printf("		Changer de pion ou retenter une autre direction ?\n");
-	printf("		a. changer de pion\n");	
-	printf("		b. changer de direction\n");
-	printf("		#################################################\n");
+	if(echec == 0)
+	{
+		printf("		#################################################\n");
+		printf("		Vous n'avez pas réussi à vous déplacer, \n");
+		printf("		Changer de pion ou retenter une autre direction ?\n");
+		printf("		a. changer de pion\n");	
+		printf("		b. changer de direction\n");
+		printf("		#################################################\n");
+	}
+
+	else
+	{
+		printf("		#################################################\n");
+		printf("		Vous n'avez pas réussi à vous déplacer, \n");
+		printf("		Retenter une autre direction ou mettre fin à vos déplacements?\n");
+		printf("		b. changer de direction\n");
+		printf("		r. Revenir au(x) coup(s) précédent(s)\n");
+		printf("		d. Fin du(es) déplacement de votre pion\n");
+		printf("		#################################################\n");
+	}
 }
 
 void affiche_joueur(int couleur)
@@ -114,7 +141,119 @@ void affiche_joueur(int couleur)
 void affiche_echec_pion()
 {
 	printf("		###############################################\n");
-	printf("		Vous n'avez pas sélecionner l'un de vos pions!\n");
+	printf("		Vous n'avez pas sélectionner l'un de vos pions!\n");
 	printf("		Veuillez rentrer un identifiant de vos pions!\n");
 	printf("		###############################################\n");
+}
+
+void affichage_victoire(Couleur couleur)
+{
+	switch(couleur)
+	{
+		case ROUGE :
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*----Felicitation! Joueur Rouge!----*||\n");
+			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*--Appuyer sur entrée pour revenir--*||\n");
+			printf("		||*---------au menu principal---------*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+
+			getchar();
+			break;
+		case BLEU :
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*----Felicitation! Joueur  Bleu!----*||\n");
+			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*--Appuyer sur entrée pour revenir--*||\n");
+			printf("		||*---------au menu principal---------*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+
+			getchar();
+			break;
+		case VERT :
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*----Felicitation! Joueur  Vert!----*||\n");
+			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*--Appuyer sur entrée pour revenir--*||\n");
+			printf("		||*---------au menu principal---------*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+
+			getchar();
+			break;
+		case JAUNE :
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*----Felicitation! Joueur Jaune!----*||\n");
+			printf("		||*-Vous avez ecrasé vos concurrents!-*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+			
+			printf("\n");
+			printf("		#########################################\n");
+			printf("		||*--Appuyer sur entrée pour revenir--*||\n");
+			printf("		||*---------au menu principal---------*||\n");
+			printf("		#########################################\n");
+			printf("\n");
+
+			getchar();
+			break;
+		default :
+			break;
+	}
+}
+
+void affiche_sauvegarde(int sauvegarde)
+{
+	if(sauvegarde == 0)
+	{
+		printf("\n");
+		printf("		##################################################\n");
+		printf("		||*-----------Sauvegarder une Partie-----------*||\n");
+		printf("		##################################################\n");
+		printf("		1.emplacement 1 pour la sauvegarde de votre partie\n");
+		printf("		2.emplacement 2 pour la sauvegarde de votre partie\n");
+		printf("		3.emplacement 3 pour la sauvegarde de votre partie\n");
+		printf("		##################################################\n");
+		printf("\n");
+	}
+
+	else if(sauvegarde == 1)
+	{
+		printf("		##################################################\n");
+		printf("		Votre partie a été enregistrée avec succès!!\n");
+		printf("		Appuyer sur entrée pour continuer votre partie\n");
+		printf("		##################################################\n");
+		getchar();
+
+	}
+
+	else
+	{
+		printf("		##################################################\n");
+		printf("		Echec lors de la sauvegarde de votre partie\n");
+		printf("		Appuyer sur entrée pour continuer votre partie\n");
+		printf("		##################################################\n");
+		getchar();
+	}
 }

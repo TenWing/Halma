@@ -37,6 +37,11 @@ struct NoeudPosition
 	* \brief un pointeur vers le noeud suivant
 	*/
 	NoeudPosition* suivant;
+
+	/**
+	* \brief pointeur vers le noeud précédent
+	*/
+	NoeudPosition* precedent;
 };
 
 /**
@@ -103,6 +108,15 @@ ListePositions liste_positions_init();
 * \param position 	la position à ajouter	
 */
 void liste_positions_ajout(ListePositions* liste, Position position);
+
+/**
+* \brief	Supprime une position d'une liste de positions
+* \author	Tendry
+* \version	1.0
+* \param	liste la liste modifiée
+* \param	position la position supprimée
+*/
+void liste_positions_supprimer(ListePositions* liste, Position position);
 
 /**
 * \brief Initialise la zone par rapport à la couleur

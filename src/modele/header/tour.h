@@ -1,4 +1,6 @@
 
+
+
 /**
 * \file		tour.h
 * \author	Tendry
@@ -31,7 +33,7 @@ struct Tour
 	* \brief Le pion concerné par le tour 
 	* \see Pion
 	*/
-	Pion pion;
+	Pion* pion;
 
 	/**
 	* \brief la position de départ du pion concerné au début du tour
@@ -94,16 +96,7 @@ struct PileTours
 * \param p le pion qui concerne le tour
 * \return renvoie un Tour bien initialisé
 */
-Tour tour_init(Pion p);
-
-/**
-* \brief change le pion associé à un tour
-* \author Tendry
-* \version 1.0
-* \param tour le tour modifié
-* \param pion le nouveau pion
-*/
-void tour_changer_pion(Tour* tour, Pion* pion);
+Tour tour_init(Pion* p);
 
 //######################################
 //FONCTIONS PILE TOURS
@@ -135,5 +128,21 @@ Tour pileTours_depiler(PileTours* pile);
 */
 void pileTours_ajouterTour(PileTours* pile, Tour tour);
 
+/**
+* \brief 	sauvegarde un tour
+* \author 	Quentin
+* \version 1.0
+* \param 	tour 	le tour a sauvegarder
+* \param 	emplacement_fichier_sauvegarde
+*/
+void sauvegardeTour(Tour tour, FILE* emplacement_fichier_sauvegarde);
 
+/**
+* \brief 	charge un tour
+* \author 	Quentin
+* \version 1.0
+* \param 	emplacement_fichier_sauvegarde
+* \return	le tour chargé
+*/
+Tour chargerTour(FILE* emplacement_fichier);
 #endif

@@ -35,7 +35,6 @@ struct Coup
 {
 	/**
 	* \brief le pion qui se déplace
-	* \details Un pointeur car il s'agit d'une information ne nécessitant pas d'exister en tant que tel
 	* \see Pion
 	*/
 	Pion pion;
@@ -128,5 +127,23 @@ Coup pileCoups_depiler(PileCoups* pile);
 * \param coup le coup à ajouter
 */
 void pileCoups_ajouterCoup(PileCoups* pile, Coup coup);
+
+/**
+* \brief 	sauvegarde un coup
+* \author 	Quentin
+* \version 1.0
+* \param 	Coup 	le coup à sauvegarder
+* \param 	emplacement_fichier_sauvegarde
+*/
+void sauvegardeCoup(Coup coup, FILE* emplacement_fichier_sauvegarde);
+
+/**
+* \brief 	charge un coup
+* \author 	Quentin
+* \version 1.0
+* \param 	emplacement_fichier_sauvegarde
+* \return 	le coup chargé
+*/
+Coup chargerCoup(FILE* emplacement_fichier);
 
 #endif

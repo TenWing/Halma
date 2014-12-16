@@ -15,7 +15,7 @@
 /**
 * \brief Une position est l'association d'une abscisse et d'une ordonnée
 * \auhtor Quentin
-* \version 1.0
+* \version 2.0
 */
 typedef struct Position Position;
 struct Position 
@@ -29,6 +29,11 @@ struct Position
  	* \brief La position y correspondant à l'ordonnée (la colonne de la matrice)
  	*/
  	int y;
+
+ 	/**
+ 	* \brief indique si la position est marquée
+ 	*/
+ 	int marque;
 };
 
 /**
@@ -39,5 +44,15 @@ struct Position
  * \return   La position du pion
  */
 Position position_init(int x, int y);
+
+/**
+* \brief	Indique si deux positions sont égales
+* \author	Tendry
+* \version	1.0
+* \param 	a la première position testée
+* \param	b la deuxième position testée
+* \return	1 si les positions sont égales, 0 sinon
+*/
+int position_egale(Position a, Position b);
 
  #endif

@@ -28,23 +28,43 @@ ListePositions liste_positions_init()
  	return liste_positions;
 }
 
+void liste_positions_supprimer(ListePositions* liste, Position position)
+{
+	// On va parcourir la liste
+	NoeudPosition* noeud = liste -> premier;
+	while(noeud != NULL && !position_egale(noeud->position, position))
+	{
+		noeud = noeud -> suivant;
+	}
+
+	// Si la position existe bien
+	if(noeud != NULL)
+	{
+		// On la supprime de la liste
+		noeud -> precedent -> suivant = noeud -> suivant;
+		
+		if(noeud -> suivant != NULL)
+			noeud -> suivant -> precedent = noeud -> precedent;
+		
+		free(noeud);
+	}
+}
+
 void liste_positions_ajout(ListePositions* liste, Position position)
 {
 	//Création d'un nouvel élément
 	NoeudPosition* nouveau = malloc(sizeof(NoeudPosition));
 
-	if(nouveau == NULL)
-	{
-		exit(EXIT_FAILURE);
-	}
-
 	// Le noeud possède la position comme valeur
 	nouveau->position = position;
 	nouveau->suivant = NULL;
+	nouveau->precedent = NULL;
 
 	//Le premier élément de la liste
 	if(liste->premier == NULL)
+	{
 		liste -> premier = nouveau;
+	}
 	// Après on ajoute à la fin
 	else
 	{
@@ -57,6 +77,7 @@ void liste_positions_ajout(ListePositions* liste, Position position)
 
 		// On dit que le suivant du dernier est le dernier
 		tmp->suivant = nouveau;
+		nouveau -> precedent = tmp;
 	}
 }
 
@@ -77,7 +98,7 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 		{
 			case JAUNE:
 				zone.zone_direction = DROITE;
-				liste_positions_ajout(&zone.liste_positions, position_init(0,11));
+				liste_positions_ajout(&zone.liste_positions, position_init(0,10));
 				liste_positions_ajout(&zone.liste_positions, position_init(1,11));
 				liste_positions_ajout(&zone.liste_positions, position_init(2,12));
 				liste_positions_ajout(&zone.liste_positions, position_init(3,13));
@@ -89,7 +110,7 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 				liste_positions_ajout(&zone.liste_positions, position_init(12,2));
 				liste_positions_ajout(&zone.liste_positions, position_init(13,3));
 				liste_positions_ajout(&zone.liste_positions, position_init(14,4));
-				liste_positions_ajout(&zone.liste_positions, position_init(15,4));
+				liste_positions_ajout(&zone.liste_positions, position_init(15,5));
 				break;
 			default:
 				break;

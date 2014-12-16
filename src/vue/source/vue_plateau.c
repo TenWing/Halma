@@ -90,8 +90,14 @@ void affiche_case(Plateau* plateau, Position* position, Mode mode)
 	}
 	else
 	{
+		// Si la case est vide
+		Position* ptr = plateau_getVide(plateau, *position);
+		// et est marquée
+		if(ptr != NULL && ptr -> marque)
+			printf("\033[39m[++]");
 		// On affiche rien
-		printf("\033[37m[  ]");
+		else
+			printf("\033[37m[  ]");
 	}
 
 	// On remet la couleur par défaut

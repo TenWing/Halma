@@ -20,7 +20,15 @@ Position position_init(int x, int y)
 
 	position.x=x;
 	position.y=y;
+	position.marque = 0;
 
 	return position;
 }
 
+int position_egale(Position a, Position b)
+{
+	if(a.x == b.x && a.y == b.y)
+		return 1;
+
+	return 0;
+}

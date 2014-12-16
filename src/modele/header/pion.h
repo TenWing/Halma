@@ -1,4 +1,5 @@
 
+
 /**
  * \file      pion.h
  * \author    Quentin
@@ -95,4 +96,57 @@ int pion_deplacer(Pion* pion, Plateau* plateau, Direction direction);
 */
 int pion_sauter(Pion* pion, Direction direction, Plateau* plateau);
 
+/**
+* \brief	marque les positions autour du pion où celui-ci peut se rendre
+* \author	Tendry
+* \version	1.0
+* \param	pion le pion qui sert à marquer les positions
+* \param	plateau le plateau qui contient toutes les positions
+*/
+void pion_marquer(Pion* pion, Plateau* plateau);
+
+/**
+* \brief	démarque les positions autour du pion
+* \author	Tendry
+* \version	1.0
+* \param	plateau le plateau qui contient toutes les positions
+*/
+void pion_demarquer(Plateau* plateau);
+
+/**
+* \brief	marque les positions possible de déplacement autour du pion pour un direction donnée
+* \author	Tendry
+* \version	1.0
+* \param	pion le pion qui sert à marquer les positions
+* \param	plateau le plateau qui contient toutes les positions
+* \param	direction la direction dans laquelle on teste les déplacements
+*/
+void pion_analyse_marquage_direction(Pion* pion, Plateau* plateau, Direction direction);
+
+/**
+* \brief 	sauvegarde un pion dans un fichier texte
+* \author	Quentin
+* \version 	1.0
+* \param	pion 	le pion a sauvegardé
+* \param	emplacement_fichier_sauvegarde
+*/
+void sauvegardePion(Pion pion, FILE* emplacement_fichier_sauvegarde);
+
+/**
+* \brief 	charge un pion dans un fichier texte
+* \author	Quentin
+* \version 	1.0
+* \param	emplacement_fichier
+* \return	retourne un pointeur de pion
+*/
+Pion chargerPion(FILE* emplacement_fichier);
+
+/**
+* \brief 	Permet de retourner une valeur à un pointeur
+* \author	Quentin
+* \version 	1.0
+* \param	Pion 	le pion concerné
+* \return	retourne un pointeur de pion
+*/
+Pion* pointeurPion(Pion pion);
  #endif

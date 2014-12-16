@@ -1,4 +1,5 @@
 
+
 /**
 * \file 		vue.c
 * \author		Tendry
@@ -16,7 +17,7 @@ void affiche_menu_principal()
 	printf("		||*----------MENU PRINCIPAL----------*||\n");
 	printf("		########################################\n");
 	printf("		____Menu principal du jeu de l'Halma____\n");
-	printf("		a. Lancer une partie\n");
+	printf("		a. Commencer une nouvelle partie\n");
 	printf("		b. Charger une partie\n");
 	printf("		c. Afficher les règles du jeu\n");
 	printf("		d. Quitter\n");

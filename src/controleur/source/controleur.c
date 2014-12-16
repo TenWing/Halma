@@ -318,6 +318,7 @@ void jouer_partie(int jouer)
 	{
 		controleur = controleur_charger();
 	}
+	printf("chargement controleur OK");
 	//Tant qu'il n'y a pas de joueur gagnant
 		while(victoire != 1)
 		{

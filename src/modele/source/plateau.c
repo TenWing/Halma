@@ -266,19 +266,19 @@ Plateau chargerPlateau(char* emplacement_fichier)
 			// S'il y a un pion
 			if(plateau.matrice.donnees[i][j] != '.')
 			{
-
+/*
 				// Convertit bien le nombre récupéré en entier
 				int number = plateau.matrice.donnees[i][j] - '0';
 				
 				// Récupération de la couleur
 				Pion pion = pion_init(number, position_init(i, j), id);
 				liste_pions_ajout(&plateau.liste_pions, pion);
-				id++;
+				id++;*/
 			}
 			// Sinon on stocke la position vide
 			else
 			{
-				liste_positions_ajout(&plateau.vides, position_init(i,j));
+				//liste_positions_ajout(&plateau.vides, position_init(i,j));
 			}
 		}
 	}

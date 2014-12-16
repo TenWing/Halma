@@ -161,7 +161,7 @@ Tour chargerTour(FILE* emplacement_fichier)
 	fread(&p, sizeof(Pion), 1, emplacement_fichier);
 
 	//On stocke dans le pointeur de pion dans tour les données precedemment chargées
-	tour.pion = pointeurPion(p);
+	// tour.pion = modele_get_referen
 
 	//On retourne le tour
 	return tour;

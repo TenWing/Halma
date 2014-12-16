@@ -391,9 +391,3 @@ Pion chargerPion(FILE* emplacement_fichier)
 	//On retourne le pion
 	return pion;
 }
-
-Pion* pointeurPion(Pion pion)
-{
-	//On retourne l'adresse du pion
-	return &pion;
-}

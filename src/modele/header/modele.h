@@ -118,6 +118,8 @@ void sauvegarderModele(Modele modele, FILE* emplacement_fichier_sauvegarde, char
 * \param	char* 	le fichier où est enregistré le plateau
 * \return 	le modele
 */
-Modele chargerModele(FILE* emplacement_fichier, char* emplacement_fichier_plateau);
+Pion* modele_get_reference_pion(Modele* modele, Pion pion);
+
+PileTours charger_tours(FILE* fp, Modele* modele);
 
 #endif

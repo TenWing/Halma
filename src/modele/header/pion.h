@@ -141,12 +141,4 @@ void sauvegardePion(Pion pion, FILE* emplacement_fichier_sauvegarde);
 */
 Pion chargerPion(FILE* emplacement_fichier);
 
-/**
-* \brief 	Permet de retourner une valeur à un pointeur
-* \author	Quentin
-* \version 	1.0
-* \param	Pion 	le pion concerné
-* \return	retourne un pointeur de pion
-*/
-Pion* pointeurPion(Pion pion);
  #endif

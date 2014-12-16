@@ -344,16 +344,21 @@ void jouer_partie(int jouer)
 
 Controleur controleur_charger()
 {
-	int partie;
+	char partie;
 	Controleur controleur;
 
 	printf("numéro de la partie à charger :");
 
-	partie = recuperer_entier();
+	partie = recuperer_caractere();
 	
-	controleur.modele = chargerPartie(partie);
+	controleur.modele = chargerModele(&partie);
 
 	controleur.nombreJoueurs = controleur.modele.nombreJoueurs;
+
+	// ARRIVE ICI = Modele initialisé
+	// MAINTENANT le charger
+
+	chargerPartie(&controleur.modele, &partie);
 
 	return controleur;
 }

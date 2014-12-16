@@ -90,8 +90,14 @@ void annuler_coup(Modele* modele, Pion* pion)
 
 void annuler_tour(Modele* modele, Pion* pion)
 {
+	//On cherche le tour voulu
+	Tour tour;
+
 	// On accède au tour courant
 	NoeudTour* noeud = modele->pile_tours.premier;
+
+	//On dépile le dernier tour 
+	tour=pileTours_depiler(&modele->pile_tours);
 
 	// On change la position du pion
 	pion->position = position_init(noeud->tour.pion.position.x, noeud->tour.pion.position.y);

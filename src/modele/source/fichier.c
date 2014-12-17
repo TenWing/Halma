@@ -47,7 +47,7 @@ Modele chargerModele(char* fichier)
 
 	FILE* fp = NULL;
 
-	fp = fopen(fichier, "rb");
+	fp = fopen("sauvegarde.txt", "rb");
 
 	if(fp != NULL)
 	{
@@ -65,18 +65,22 @@ int chargerPartie(Modele* modele, char* fichier)
 {
 	FILE *fp = NULL;
 		
-	char* seek = "Parties/";
+	/*char* seek = "Parties/";
 	strcat(seek, fichier);
-	strcat(seek, ".txt");
+	strcat(seek, ".txt");*/
 
-	fp = fopen(seek, "rb");
+	fp = fopen("sauvegarde.txt", "rb");
 
 	if(fp != NULL)
 	{
 		modele->pile_tours = charger_tours(fp, modele);
 		fclose(fp);
+		return 1;
 	}
 	else
+	{
 		printf("TUPUES\n");
+		return 0;
+	}
 
 }

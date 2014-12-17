@@ -163,6 +163,9 @@ Tour chargerTour(FILE* emplacement_fichier, Modele* modele)
 	//On stocke dans le pointeur de pion dans tour les données precedemment chargées
 	tour.pion = modele_get_reference_pion(modele, p);
 
+	printf("x : %d, y : %d\n", tour.pion ->position.x, tour.pion->position.y);
+
+
 	//On retourne le tour
 	return tour;
 }
@@ -170,13 +173,13 @@ Tour chargerTour(FILE* emplacement_fichier, Modele* modele)
 
 PileTours inversePile(PileTours pile_tours)
 {
+
 	PileTours pile_inverser = pileTours_init();
 
 	NoeudTour* actuel = pile_tours.premier;
 
 	while(actuel != NULL)
 	{
-
 		pileTours_ajouterTour(&pile_inverser, actuel->tour);
 		
 		actuel = actuel -> suivant;

@@ -70,3 +70,61 @@ void liste_possibilites_ajout(ListePossibilites* liste, Possibilite ajout)
 		parcours->suivant = noeud;
 	}
 }
+
+// #########################################################
+
+EnsemblePossibilites ensemble_possibilites_init()
+{
+	EnsemblePossibilites ensemble;
+
+	ensemble.premier = NULL;
+
+	return ensemble;
+}
+
+void ensemble_possibilites_ajout(EnsemblePossibilites* liste, ListePossibilites ajout)
+{
+	// On crée le nouveau noeud qui sera ajouté
+	NoeudListe* noeud = malloc(sizeof(NoeudListe));
+
+	// On façonne le noeud
+	noeud->liste = ajout;
+	noeud->suivant = NULL;
+
+	// cas premier ajout
+	if(liste->premier == NULL)
+	{
+		liste->premier = noeud;
+	}	
+	// Sinon ajout à la fin
+	else
+	{
+		NoeudListe* parcours = liste->premier;
+
+		// Parcours de la liste jusqu'à sa fin
+		while(parcours->suivant != NULL)
+		{
+			parcours = parcours->suivant;
+		}
+
+		// Ajout de notre élément à la fin
+		parcours->suivant = noeud;
+	}
+}
+
+void ensemble_possibilites_detruire(EnsemblePossibilites* liste)
+{
+	// Une variable sert à délivrer la mémoire
+	// l'autre à parcourir ce qu'il est encore faisable
+	NoeudListe* noeud = liste->premier;
+	NoeudListe* reine_des_neiges;
+
+	while(noeud != NULL)
+	{
+		reine_des_neiges = noeud;
+		noeud = noeud -> suivant;
+		free(reine_des_neiges);
+	}
+
+	free(liste);
+}

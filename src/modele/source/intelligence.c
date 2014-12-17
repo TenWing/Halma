@@ -128,3 +128,18 @@ void ensemble_possibilites_detruire(EnsemblePossibilites* liste)
 
 	free(liste);
 }
+
+// #############################################################
+
+ListePossibilites possibilites_du_pion(Modele* modele, Pion pion, Joueur* joueur)
+{
+	// création de l'ensemble des possibilités du pion
+	ListePossibilites liste = liste_possibilites_init(pion);
+
+	// La direction idéale
+	
+
+	// On va chercher chaque possibilité
+
+	return liste;
+}

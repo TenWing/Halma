@@ -45,11 +45,11 @@ Modele modele_init(int nombreJoueurs)
 				case 1:
 					destination = BAS_GAUCHE;
 					break;
-				// Joueur en bas à gauche
+				// Joueur en bas à droite
 				case 2:
 					destination = HAUT_DROITE;
 					break;
-				// Joueur en bas à droite
+				// Joueur en bas à gauche
 				case 3:
 					destination = HAUT_GAUCHE;
 					break;

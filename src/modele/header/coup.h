@@ -129,6 +129,15 @@ Coup pileCoups_depiler(PileCoups* pile);
 void pileCoups_ajouterCoup(PileCoups* pile, Coup coup);
 
 /**
+* \brief calcule la taille d'une pile de coups
+* \author	Tendry
+* \version	1.0
+* \param	pile la pile mesurée
+* \return	la taille de la pile
+*/
+int pileCoups_taille(PileCoups* pile);
+
+/**
 * \brief 	sauvegarde un coup
 * \author 	Quentin
 * \version 1.0

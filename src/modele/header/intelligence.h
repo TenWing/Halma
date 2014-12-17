@@ -136,9 +136,10 @@ Possibilite possibilite_init(int poids, Position position);
 * \brief	Initialise une liste de possibilités pour l'IA
 * \author	Tendry
 * \version	1.0
+* \param	pion le pion qui concerne l'ensemble des possibilité de lui-même (INCEPTION)
 * \return	Une liste bien allouée
 */
-ListePossibilites liste_possibilites_init();
+ListePossibilites liste_possibilites_init(Pion pion);
 
 /**
 * \brief	vide/détruit une liste de possibilités
@@ -239,8 +240,6 @@ PileCoups recuperer_meilleurs_coups(EnsemblePossibilites* ensemble);
 * \return	un coup choisi au hasard
 */
 Coup coup_au_hasard(PileCoups* liste);
-
-// TODO MICRO FONCTIONS
 
 // #############################
 

@@ -58,6 +58,19 @@ void affiche_configuration_partie()
 	printf("		########################################\n");	
 }
 
+void affiche_configuration_partie_bot()
+{
+	printf("		########################################\n");
+	printf("		||*-------CONFIGURATION PARTIE-------*||\n");
+	printf("		########################################\n");	
+	printf("		Sélectionnez le nombre de bots à ajouter!\n");
+	printf("		Soit 1 pour une partie 1V1\n");
+	printf("		Soit 3 pour une partie chacun pour soi\n");
+	printf("		Soit 0 : Vous êtes assez de joueurs physiques\n");
+	printf("		La partie commencera juste après !\n");
+	printf("		########################################\n");
+}
+
 void presentation_jeu()
 {
 	printf("\n\n");

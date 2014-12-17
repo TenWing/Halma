@@ -36,6 +36,14 @@ void affiche_regles();
 void affiche_configuration_partie();
 
 /**
+* \brief	affiche le nombre de bots à initialiser
+* \author	Tendry
+* \version	1.0
+*/
+void affiche_configuration_partie_bot();
+
+
+/**
 * \brief	affiche la présentation du jeu de l'Halma
 * \author	Tendry
 * \version	1.0

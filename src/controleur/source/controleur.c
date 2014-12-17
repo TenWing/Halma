@@ -313,19 +313,25 @@ void jouer_partie(int jouer)
 		nombre_joueur = recuperer_entier();
 
 		controleur = controleur_init(nombre_joueur);
+
+		i=controleur.modele.joueurJoue;
 	}
 	else
 	{
+		//On charge le controleur sauvegardé
 		controleur = controleur_charger();
-		nombre_joueur = controleur.nombreJoueurs;
 
+		//On initialise i pour que le joueur qui a sauvegardé joue en 1er
+		i=controleur.modele.joueurJoue;
 	}
 		//Tant qu'il n'y a pas de joueur gagnant
 		while(victoire != 1)
 		{	
 			//Les joueurs jouent chacuns à leur tour
-			for(i=0; i<nombre_joueur; i++)
+			for(i; i<controleur.nombreJoueurs; i++)
 			{	
+				controleur.modele.joueurJoue = i;
+
 				controleur_jouer_tour(&(controleur.modele.tableau_joueur[i]), &(controleur.modele));
 
 				//Si l'un des joueur a placé tous ses pions dans la zone de victoire
@@ -355,9 +361,6 @@ Controleur controleur_charger()
 	controleur.modele = chargerModele("sauvegarde.txt");
 
 	controleur.nombreJoueurs = controleur.modele.nombreJoueurs;
-	
-	// ARRIVE ICI = Modele initialisé
-	// MAINTENANT le charger
 
 	chargerPartie(&controleur.modele, &partie);
 	return controleur;

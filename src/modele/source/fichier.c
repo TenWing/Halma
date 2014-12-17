@@ -41,24 +41,35 @@ int sauvegarderPartie(Modele* modele, char* fichier)
 
 Modele chargerModele(char* fichier)
 {
-	Modele tufaischier;
+	Modele modele;
 
 	int nb_joueurs = 0;
 
 	FILE* fp = NULL;
 
+	//On ouvre le fichier de sauvegarde
 	fp = fopen("sauvegarde.txt", "rb");
 
 	if(fp != NULL)
 	{
+		//On lit le nombre de joueur dans le fichier de sauvegarde
 		fread(&nb_joueurs, sizeof(int), 1, fp);
+
+		//On initialise le modele
+		modele = modele_init(nb_joueurs);
+
+		//On regarde qu'elle joueur a sauvegardé la partie
+		fread(&modele.joueurJoue, sizeof(int), 1, fp);
+
+		//On ferme le fichier de sauvegarde
 		fclose(fp);
-		return modele_init(nb_joueurs);
+
+		return modele;
 	}	
 	else
 		printf("Erreur fichier\n");
 
-	return tufaischier;
+	return modele;
 }
 
 int chargerPartie(Modele* modele, char* fichier)

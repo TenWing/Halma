@@ -25,6 +25,7 @@ Modele modele_init(int nombreJoueurs)
 	modele.nombreJoueurs = nombreJoueurs;
 	modele.plateau = plateau_init(nombreJoueurs);
 	modele.pile_tours = pileTours_init();
+	modele.joueurJoue = 0;
 
 	// On attribue le bon nombre de joueurs
 	if(nombreJoueurs > 2)
@@ -137,6 +138,9 @@ void sauvegarderModele(Modele* modele, FILE* emplacement_fichier_sauvegarde)
 	//écrit le nombre de joueurs dans le fichier de sauvegarde
 	fwrite(&modele->nombreJoueurs, sizeof(int), 1, emplacement_fichier_sauvegarde);
 
+	//écrit quel joueur a sauvegardé
+	fwrite(&modele->joueurJoue, sizeof(int), 1, emplacement_fichier_sauvegarde);
+
 	//Déclaration d'un pointeur qui parcoura la pile de tours
 	NoeudTour* actuel = modele->pile_tours.premier;
 
@@ -206,13 +210,16 @@ Pion* modele_get_reference_pion(Modele* modele, Pion pion)
 
 PileTours charger_tours(FILE* fp, Modele* modele)
 {
-	//On déclare une variable muette et un compteur et un entier inutile
-	int i,compteur=0,a;
+	//On déclare une variable muette et un compteur et deux entiers inutiles 
+	//(juste utilisés pour faire avancer le curseur dans le fichier de sauvegarde)
+	int i,compteur=0,a,b;
 
 	//On initialise la pile de tours du modele
 	modele->pile_tours = pileTours_init();
 
 	fread(&a, sizeof(int), 1, fp);
+	fread(&b, sizeof(int), 1, fp);
+	
 	//On lit dans le fichie de sauvegarde le nombre de tour
 	fread(&compteur, sizeof(int), 1, fp);
 

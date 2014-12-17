@@ -48,6 +48,11 @@ struct Modele
 	* 
 	*/
 	Zone tableau_zone[4];
+
+	/**
+	* \brief le numéro du joueur qui joue son tour
+	*/
+	int joueurJoue;
 };
 
 /**

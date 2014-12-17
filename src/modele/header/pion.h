@@ -15,6 +15,7 @@
 
  //######################################
 //Inclusions
+#include <stdio.h>
 #include <position.h>
 #include <couleur.h>
 #include <direction.h>

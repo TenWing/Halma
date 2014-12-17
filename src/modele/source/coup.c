@@ -94,6 +94,21 @@ void pileCoups_ajouterCoup(PileCoups* pile, Coup coup)
 	pile->premier = ajout;
 }
 
+int pileCoups_taille(PileCoups* pile)
+{
+	int taille = 0;
+
+	NoeudCoup* noeud = pile->premier;
+
+	while(noeud != NULL)
+	{
+		noeud = noeud -> suivant;
+		taille++;
+	}
+
+	return taille;
+}
+
 void sauvegardeCoup(Coup coup, FILE* emplacement_fichier_sauvegarde)
 {
 	//On écrit dans le fichier texte les données du pion dans le coup

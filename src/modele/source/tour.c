@@ -8,6 +8,7 @@
 
 // #######################
 // INCLUSIONS
+#include <modele.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <tour.h>

@@ -186,7 +186,7 @@ void ensemble_possibilites_ajout(EnsemblePossibilites* liste, ListePossibilites 
 * \version	1.0
 * \param	liste la liste réinitialisée
 */
-void ensemble_possibilites_detruire();
+void ensemble_possibilites_detruire(EnsemblePossibilites* liste);
 
 // #############################
 

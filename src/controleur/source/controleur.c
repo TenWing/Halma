@@ -38,7 +38,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 {
 	int i;
 	int tour=0;
-	char* sauvegarde;
+	char sauvegarde[100];
 	// Le pion qui jouera
 	Pion* pion = NULL;
 
@@ -91,7 +91,9 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		else if(choix == 'c')
 		{
 			affiche_sauvegarde(0);
-			sauvegarde=recuperer_entier();
+			
+			scanf("%s", sauvegarde);
+			viderBuffer();
 
 			if(sauvegarderPartie(modele, sauvegarde))
 			{
@@ -351,18 +353,21 @@ void jouer_partie(int jouer)
 
 Controleur controleur_charger()
 {
-	char partie;
+	char partie[100];
 	Controleur controleur;
 
-	printf("numéro de la partie à charger :");
+	printf("Nom de la partie à charger : ");
 
-	partie = recuperer_caractere();
+	scanf("%s", partie);
 	
-	controleur.modele = chargerModele("sauvegarde.txt");
+	strcat(partie, ".txt");
+
+	controleur.modele = chargerModele(partie);
 
 	controleur.nombreJoueurs = controleur.modele.nombreJoueurs;
 
-	chargerPartie(&controleur.modele, &partie);
+	chargerPartie(&controleur.modele, partie);
+
 	return controleur;
 }
 	

@@ -137,9 +137,10 @@ ListePossibilites possibilites_du_pion(Modele* modele, Pion pion, Joueur* joueur
 	ListePossibilites liste = liste_possibilites_init(pion);
 
 	// La direction idéale
-	
+	Direction ideale = joueur->direction;
 
 	// On va chercher chaque possibilité
+	// TODO
 
 	return liste;
 }

@@ -142,6 +142,7 @@ Tour chargerTour(FILE* emplacement_fichier, Modele* modele)
 	Tour tour;
 	Pion p;
 	int compteur,i;
+	Pion* factice;
 
 	//On initialise la pile de coups du tour
 	tour.pile_coups = pileCoups_init();
@@ -160,11 +161,15 @@ Tour chargerTour(FILE* emplacement_fichier, Modele* modele)
 	fread(&tour.depart.y, sizeof(int), 1, emplacement_fichier);
 	fread(&p, sizeof(Pion), 1, emplacement_fichier);
 
-	//On stocke dans le pointeur de pion dans tour les données precedemment chargées
-	tour.pion = modele_get_reference_pion(modele, p);
+	//On stocke dans le pointeur de pion dans un pointeur de pion factice
+	factice = modele_get_reference_pion(modele, p);
 
-	printf("x : %d, y : %d\n", tour.pion ->position.x, tour.pion->position.y);
+	//On initialise la position du pointeur de pion avec la position sauvegarder dans le tour
+	factice->position.x=p.position.x;
+	factice->position.y = p.position.y;
 
+	//On stocke l'adresse du pion factice dans celui du tour
+	tour.pion = factice;
 
 	//On retourne le tour
 	return tour;

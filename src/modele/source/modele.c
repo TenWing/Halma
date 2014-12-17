@@ -220,29 +220,13 @@ PileTours charger_tours(FILE* fp, Modele* modele)
 	for(i=0; i<compteur; i++)
 	{
 		pileTours_ajouterTour(&modele->pile_tours, chargerTour(fp, modele));
-	printf("x : %d, y : %d\n", modele->pile_tours.premier->tour.pion ->position.x, modele->pile_tours.premier->tour.pion->position.y);
-
 	}
 
-	//On crée une pile inverser par rapport à la pile du modele
-	PileTours pile_inverser=inversePile(modele->pile_tours);
-
-	//On fait jouer fictivement le modele pour retrouver l'état avant d'avoir quitté le jeu
-	jouer_fictif(modele, pile_inverser);
-
-	NoeudPion* p = modele ->plateau.liste_pions.premier;
-
-	while(p != NULL)
-	{
-		printf("identifiant : %d, x : %d,  y : %d\n", p -> pion.identifiant, p->pion.position.x, p->pion.position.y);
-
-		p=p->suivant;
-	}
 	//On retourne la pile de tours du modele
 	return modele->pile_tours;
 }
 
-void jouer_fictif(Modele* modele, PileTours pileInverser)
+/*void jouer_fictif(Modele* modele, PileTours pileInverser)
 {
 	//Déclaration d'un pointeur qui va parcourir la pile de tour
 	NoeudTour* actueltour = pileInverser.premier;
@@ -251,18 +235,18 @@ void jouer_fictif(Modele* modele, PileTours pileInverser)
 	{
 		//On déclare en dépilant le tour concerncé
 		Tour tour = pileTours_depiler(&pileInverser);
-		//printf("x : %d, y : %d\n", tour.pion ->position.x, tour.pion->position.y);
+
 		//On prend le pion qui est concerné entre le modele et le pion qui est dans le tour
 		Pion* pion = modele_get_reference_pion(modele, *tour.pion);
 
-		pion->position.x = tour.pion->position.x;
-		pion->position.y = tour.pion->position.y;
+		//pion->position.x = tour.pion->position.x;
+		//pion->position.y = tour.pion->position.y;
 
 
 		actueltour = actueltour -> suivant;
 	}
 
-}
+}*/
 
 
 

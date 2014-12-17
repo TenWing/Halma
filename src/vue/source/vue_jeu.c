@@ -1,6 +1,7 @@
 
 
 
+
 /**
 * \file		vue_jeu.c
 * \author	Tendry
@@ -48,6 +49,7 @@ void affiche_menu_tour(int tour)
 		printf("		########################################\n");
 		printf("		a. Sélectionner un pion\n");
 		printf("		b. Revenir à votre tour précédent\n");
+		printf("		c. Sauvegarder la partie\n");
 		printf("		########################################\n");
 	}
 	else
@@ -55,7 +57,6 @@ void affiche_menu_tour(int tour)
 		printf("		########################################\n");
 		printf("		||*----------FIN  DU  TOUR-----------*||\n");
 		printf("		########################################\n");
-		printf("		c. Sauvegarder la partie\n");
 		printf("		d. Fin de votre tour\n");
 		printf("		########################################\n");
 	}
@@ -231,9 +232,7 @@ void affiche_sauvegarde(int sauvegarde)
 		printf("		##################################################\n");
 		printf("		||*-----------Sauvegarder une Partie-----------*||\n");
 		printf("		##################################################\n");
-		printf("		1.emplacement 1 pour la sauvegarde de votre partie\n");
-		printf("		2.emplacement 2 pour la sauvegarde de votre partie\n");
-		printf("		3.emplacement 3 pour la sauvegarde de votre partie\n");
+		printf("			Taper le nom de votre partie \n");
 		printf("		##################################################\n");
 		printf("\n");
 	}

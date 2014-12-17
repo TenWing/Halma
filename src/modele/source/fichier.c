@@ -1,4 +1,5 @@
 
+
 /**
 * \file		fichier.c
 * \brief	Contient les fonctions qui permettent de sauvegarder/charger
@@ -16,30 +17,38 @@
 #include <unistd.h>
 // #################################
 
-int sauvegarderPartie(Modele* modele, char* fichier)
+int sauvegarderPartie(Modele* modele, char fichier[100])
 {	
-	FILE* fp;
+	//On crée un pointeur sur FILE
+	FILE* fp=NULL;
 
-	/*char* seek;
-	strcat(seek, fichier);
-	strcat(seek, ".txt");*/
+	//On concatene la chaine de caractère fichier pour avoir fichier.txt
+	strcat(fichier, ".txt");
 
-	fp = fopen( "sauvegarde.txt", "wb");
+	//On ouvre le fichier pour écrire en binaire
+	fp = fopen( fichier, "wb");
 
 	if(fp != NULL)
 	{
+		//On sauvegarde le modele dans le fichier.txt
 		sauvegarderModele(modele, fp);
+
+		//On ferme le fichier
 		fclose(fp);
+
+		//On retourne un succès
 		return 1;
 	}
 	else
 	{
 		printf("erreur : impossible de sauvegarder la partie");
+
+		//On retourne un échec
 		return 0;
 	}
 }
 
-Modele chargerModele(char* fichier)
+Modele chargerModele(char fichier[100])
 {
 	Modele modele;
 
@@ -47,8 +56,8 @@ Modele chargerModele(char* fichier)
 
 	FILE* fp = NULL;
 
-	//On ouvre le fichier de sauvegarde
-	fp = fopen("sauvegarde.txt", "rb");
+	//On ouvre le fichier de sauvegarde sauvé en binaire
+	fp = fopen(fichier, "rb");
 
 	if(fp != NULL)
 	{
@@ -72,15 +81,11 @@ Modele chargerModele(char* fichier)
 	return modele;
 }
 
-int chargerPartie(Modele* modele, char* fichier)
+int chargerPartie(Modele* modele, char fichier[100])
 {
 	FILE *fp = NULL;
-		
-	/*char* seek = "Parties/";
-	strcat(seek, fichier);
-	strcat(seek, ".txt");*/
-
-	fp = fopen("sauvegarde.txt", "rb");
+	
+	fp = fopen(fichier, "rb");
 
 	if(fp != NULL)
 	{

@@ -104,6 +104,10 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 				affiche_sauvegarde(2);
 			}
 		}
+		else if(choix == 'q')
+		{
+			exit(0);
+		}
 	}while(choix != 'd');
 
 	if(pion != NULL)

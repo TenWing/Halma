@@ -50,6 +50,7 @@ void affiche_menu_tour(int tour)
 		printf("		a. Sélectionner un pion\n");
 		printf("		b. Revenir à votre tour précédent\n");
 		printf("		c. Sauvegarder la partie\n");
+		printf("		q. Quitter le jeu (passer à sauvegarder...)\n");
 		printf("		########################################\n");
 	}
 	else
@@ -58,6 +59,7 @@ void affiche_menu_tour(int tour)
 		printf("		||*----------FIN  DU  TOUR-----------*||\n");
 		printf("		########################################\n");
 		printf("		d. Fin de votre tour\n");
+		printf("		q. Quitter le jeu (passer à sauvegarder...)\n");
 		printf("		########################################\n");
 	}
 }

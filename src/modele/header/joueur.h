@@ -61,6 +61,11 @@ struct Joueur
 	* \brief    Une liste de références de pions
 	*/
  	ListeReferencePions liste_references_pions;
+
+ 	/**
+ 	* \brief 	la direction dans laquelle le joueur doit aller
+ 	*/
+ 	Direction direction;
 };
 
 // ###################################

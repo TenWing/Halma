@@ -1,3 +1,4 @@
+
 /**
  * \file      modele.h
  * \author    Quentin
@@ -133,13 +134,5 @@ Pion* modele_get_reference_pion(Modele* modele, Pion pion);
 * \return 	la pile de tours du modele
 */
 PileTours charger_tours(FILE* fp, Modele* modele);
-
-/**
-* \brief 	jouer des coups fictifs pour initialiser la pile de tours du modele
-* \author 	Quentin
-* \param	Modele* 	le modele du jeu
-* \param 	pile_tours 	la pile de tours qui "jouera"
-*/
-void jouer_fictif(Modele* modele, PileTours pileInverser);
 
 #endif

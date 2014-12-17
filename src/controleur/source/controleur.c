@@ -1,5 +1,6 @@
 
 
+
 /**
 * \file		controleur.c
 * \brief	Contient le code source des fonctions de contrôle
@@ -357,19 +358,25 @@ void jouer_partie(int jouer)
 
 Controleur controleur_charger()
 {
+	//Déclaration d'un chaine de caractère et d'un controleur
 	char partie[100];
 	Controleur controleur;
 
+	//Demande à l'utilisateur le nom de sa partie
 	printf("Nom de la partie à charger : ");
 
 	scanf("%s", partie);
 	
+	//Concatene le nom de sa partie avec ".txt"
 	strcat(partie, ".txt");
 
+	//On charge le controleur à l'état initial
 	controleur.modele = chargerModele(partie);
 
+	//On initialise le nombre de joueur
 	controleur.nombreJoueurs = controleur.modele.nombreJoueurs;
 
+	//On initialise correctement le controleur là où le joueur l'avait laissé au moment de la sauvegarde
 	chargerPartie(&controleur.modele, partie);
 
 	return controleur;

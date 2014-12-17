@@ -1,4 +1,5 @@
 
+
 /**
 * \file		tour.c
 * \author	Tendry
@@ -179,17 +180,21 @@ Tour chargerTour(FILE* emplacement_fichier, Modele* modele)
 
 PileTours inversePile(PileTours pile_tours)
 {
-
+	//Déclaration d'un pile et son initialisation
 	PileTours pile_inverser = pileTours_init();
 
 	NoeudTour* actuel = pile_tours.premier;
 
 	while(actuel != NULL)
 	{
+		//Tant qu'il a des tours dans pil_tours
+
+		//On ajoute dans pile_inverser les tours de pile_tours
 		pileTours_ajouterTour(&pile_inverser, actuel->tour);
 		
 		actuel = actuel -> suivant;
 	}
 
+	//On retourne pile_inverser
 	return pile_inverser;
 }

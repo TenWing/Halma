@@ -1,5 +1,6 @@
 
 
+
 /**
 * \file		fichier.c
 * \brief	Contient les fonctions qui permettent de sauvegarder/charger
@@ -83,19 +84,25 @@ Modele chargerModele(char fichier[100])
 
 int chargerPartie(Modele* modele, char fichier[100])
 {
-	FILE *fp = NULL;
+	FILE *fp;
 	
+	//On ouvre le fichier de sauvegarde pour le lire
 	fp = fopen(fichier, "rb");
 
 	if(fp != NULL)
 	{
+		//On initialise la pile du modele à partir du fichier de sauvegarde
 		modele->pile_tours = charger_tours(fp, modele);
+
+		//On ferme le fichier texte et on retourne le succès
 		fclose(fp);
+
 		return 1;
 	}
 	else
 	{
-		printf("TUPUES\n");
+
+		printf("Erreur : Impossibilité de charger votre partie....\n");
 		return 0;
 	}
 

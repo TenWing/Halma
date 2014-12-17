@@ -1,4 +1,5 @@
 
+
 /**
  * \file      position.h
  * \author    Quentin

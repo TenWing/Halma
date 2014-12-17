@@ -1,6 +1,7 @@
 
 
 
+
 /**
 * \file		coup.c
 * \author 	Tendry
@@ -96,16 +97,19 @@ void pileCoups_ajouterCoup(PileCoups* pile, Coup coup)
 
 int pileCoups_taille(PileCoups* pile)
 {
+	//Déclaration d'un compteur et d'un pointeur qui parcoura la pile
 	int taille = 0;
 
 	NoeudCoup* noeud = pile->premier;
 
+	//Tant qu'il y a un élément, on incremente le compteur
 	while(noeud != NULL)
 	{
 		noeud = noeud -> suivant;
 		taille++;
 	}
 
+	//On retourne le compteur qui est la taille de la pile
 	return taille;
 }
 

@@ -1,4 +1,5 @@
 
+
 /**
 * \file		fichier.h
 * \author	Quentin
@@ -13,14 +14,29 @@
 * \brief 	Sauvegarder une partie
 * \author 	Quentin
 * \param	Modele
-* \param	L'emplacement où sera le fichier de sauvegarde
-* \version 1.0
+* \param	le nom du fichier
+* \version 	1.0
 * \return 	1 si la sauvegarde a reussi, 0 si echec
 */
-int sauvegarderPartie(Modele* modele, char* fichier);
+int sauvegarderPartie(Modele* modele, char fichier[100]);
 
-Modele chargerModele(char* fichier);
+/**
+* \brief 	Charge le modele a l'état initiale
+* \author 	Quentin
+* \param	Le nom du fichier
+* \version 	1.0
+* \return 	le modele
+*/
+Modele chargerModele(char fichier[100]);
 
-int chargerPartie(Modele* modele, char* fichier);
+/**
+* \brief 	Charge le modele avec tous les tours qui ont été joué
+* \author 	Quentin
+* \param 	le modele
+* \param	Le nom du fichier
+* \version 	1.0
+* \return 	1 si succès 0 si echec
+*/
+int chargerPartie(Modele* modele, char fichier[100]);
 
 #endif

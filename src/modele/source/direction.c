@@ -1,3 +1,4 @@
+
 /**
  * \file      direction.c
  * \author    Geliot

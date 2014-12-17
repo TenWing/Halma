@@ -1,3 +1,4 @@
+
 /**
 * \file		joueur.c
 * \author 	Tendry
@@ -79,21 +80,30 @@ void liste_references_pions_ajout(ListeReferencePions* liste, Pion* pion)
 
 Pion* joueur_get_reference_pion(Joueur* joueur, int identifiant)
 {
+	//Declaration d'un pointeur qui parcoura la liste et d'un pointeur de pion
 	NoeudReferencePion* actuel;
 	actuel = joueur -> liste_references_pions.premier;
 	Pion* pion_nulle=NULL;
 
+	//Tant qu'il y a un pion dans la liste de reference
 	while(actuel != NULL)
 	{
+
 		if(identifiant == actuel->pion->identifiant)
 		{
+			//Si les deux identifiants sont corrects
+
+			//On dit  qu'on selectionne bien ce pion
 			actuel->pion->selectionne = 1;
+
+			//On le retourne
 			return (actuel->pion);
 		}
 
 		actuel = actuel -> suivant;
 	}
 
+	//Sinon, on retourne le pointeur nulle : le joueur n'a pas ce pion dans sa liste
 	return pion_nulle;
 }
 

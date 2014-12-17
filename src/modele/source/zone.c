@@ -1,4 +1,5 @@
 
+
 /**
  * \file      zone.c
  * \author    Geliot
@@ -166,34 +167,44 @@ int verification_zone(Zone* zone, Joueur* joueur)
 
 	NoeudPosition* actuel_position = zone->liste_positions.premier;
 
- 	//Dans que actuel_position n'a pas atteint l'élément NULL
  	if(zone->zone_direction == GAUCHE)
  	{
  		
  		while( actuel_position != NULL)
  		{
- 			
+ 			//On parcourt les positions qu'il y a dans les zones
  			while(actuel_pion != NULL)
  			{
- 			
+ 				//On parcourt la liste de pions du joueurs
  				if((actuel_position -> position.x == actuel_pion -> pion->position.x) &&
  					(actuel_position -> position.y >= actuel_pion -> pion->position.y))
  				{
+ 						//Si l'ordonnée de la zone et du pion sont égales et que l'abscisse est supérieur ou égale
+
+ 						//On incremente le compteur
  						compteur_pion++;
  				}
  			
+
  				actuel_pion = actuel_pion -> suivant;
  			}
 
+ 			//Une fois le parcourt de la liste de pions du joueur fini
+ 			//On pointe denouveau sur le premier pour continuer la vérification avec une autre position de la zone
  			actuel_pion = joueur->liste_references_pions.premier;
  			actuel_position = actuel_position->suivant;
  		}
 
+ 		//Si le nombre de pion dans la zone est égale à celui du nombre de pion du joueur
  		if(compteur_pion == joueur_nombre_pions(joueur))
+ 			//On retourne 1
  			return 1;
  		else
  			return 0;
  	}
+
+ 	//Même explication que precedemment mise à part pour l'ordonnée et l'abscisse de la condition dans 
+ 	//la double boucle while
  	else
  	{
  		while( actuel_position != NULL)

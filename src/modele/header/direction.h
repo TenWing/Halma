@@ -1,3 +1,4 @@
+
 /**
 * \file		direction.h
 * \author	Tendry

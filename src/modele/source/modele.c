@@ -1,4 +1,5 @@
 
+
 /**
 * \file		modele.c
 * \author	Tendry
@@ -257,28 +258,6 @@ PileTours charger_tours(FILE* fp, Modele* modele)
 	//On retourne la pile de tours du modele
 	return modele->pile_tours;
 }
-
-/*void jouer_fictif(Modele* modele, PileTours pileInverser)
-{
-	//Déclaration d'un pointeur qui va parcourir la pile de tour
-	NoeudTour* actueltour = pileInverser.premier;
-
-	while(actueltour != NULL)
-	{
-		//On déclare en dépilant le tour concerncé
-		Tour tour = pileTours_depiler(&pileInverser);
-
-		//On prend le pion qui est concerné entre le modele et le pion qui est dans le tour
-		Pion* pion = modele_get_reference_pion(modele, *tour.pion);
-
-		//pion->position.x = tour.pion->position.x;
-		//pion->position.y = tour.pion->position.y;
-
-
-		actueltour = actueltour -> suivant;
-	}
-
-}*/
 
 
 

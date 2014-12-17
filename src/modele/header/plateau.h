@@ -1,3 +1,4 @@
+
 /**
  * \file      plateau.h
  * \author    Quentin

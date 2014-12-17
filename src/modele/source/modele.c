@@ -33,15 +33,40 @@ Modele modele_init(int nombreJoueurs)
 		for(i=0; i<4; i++)
 		{
 			modele.tableau_joueur[i] = joueur_init(&modele.plateau, i);		
+			Direction destination;
+			switch(i)
+			{
+				// Joueur en haut a gauche
+				case 0:
+					destination = BAS_DROITE;
+					break;
+				// Joueur en haut a droite
+				case 1:
+					destination = BAS_GAUCHE;
+					break;
+				// Joueur en bas à gauche
+				case 2:
+					destination = HAUT_DROITE;
+					break;
+				// Joueur en bas à droite
+				case 3:
+					destination = HAUT_GAUCHE;
+					break;
+			}
+			modele.tableau_joueur[i].direction = destination;
 			modele.tableau_zone[i] = zone_init(i, nombreJoueurs);
 		}
 
 	}
 	else
 	{
-			modele.tableau_joueur[0] = joueur_init(&modele.plateau, 1);		
+			modele.tableau_joueur[0] = joueur_init(&modele.plateau, 1);
+			modele.tableau_joueur[0].direction = BAS_GAUCHE;		
 			modele.tableau_zone[0] = zone_init(1, nombreJoueurs);
+
+
 			modele.tableau_joueur[1] = joueur_init(&modele.plateau, 3);		
+			modele.tableau_joueur[1].direction = HAUT_DROITE;		
 			modele.tableau_zone[1] = zone_init(3, nombreJoueurs);
 		
 	}

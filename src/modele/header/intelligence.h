@@ -218,9 +218,10 @@ EnsemblePossibilites construire_possibilites(Modele* modele, Joueur* joueur);
 * \version	1.0
 * \param	modele le modele qui est le jeu en cours
 * \param	pion le pion qui sert à chercher les coups
+* \param	joueur le joueur qui sait dans quelle direction il est plus favorable d'aller
 * \return	un ensemble de possibilités pour un pion
 */
-ListePossibilites possibilites_du_pion(Modele* modele, Pion pion);
+ListePossibilites possibilites_du_pion(Modele* modele, Pion pion, Joueur* joueur);
 
 /**
 * \brief	Crée une liste de coups que l'IA peut jouer

@@ -141,6 +141,22 @@ void ensemble_possibilites_detruire(EnsemblePossibilites* liste)
 
 // #############################################################
 
+EnsemblePossibilites construire_possibilites(Modele* modele, Joueur* joueur)
+{
+	EnsemblePossibilites ensemble;
+
+	NoeudReferencePion* noeud = joueur->liste_references_pions.premier;
+	
+	// Pour chaque pion du joueur
+	while(noeud != NULL)
+	{	
+		ListePossibilites possibilite_de_ce_pion = possibilites_du_pion(modele, *noeud->pion, joueur);
+		ensemble_possibilites_ajout(&ensemble, possibilite_de_ce_pion);
+	}
+
+	return ensemble;
+}
+
 ListePossibilites possibilites_du_pion(Modele* modele, Pion pion, Joueur* joueur)
 {
 	// création de l'ensemble des possibilités du pion
@@ -160,6 +176,13 @@ ListePossibilites possibilites_du_pion(Modele* modele, Pion pion, Joueur* joueur
 	possibilite_direction(&liste, &modele->plateau, &pion, HAUT_GAUCHE, ideale);	
 
 	return liste;
+}
+
+PileCoups recuperer_meilleurs_coups(EnsemblePossibilites* ensemble)
+{
+	PileCoups pile;
+
+	return pile;
 }
 
 // #############################################################
@@ -260,14 +283,26 @@ void possibilite_direction(ListePossibilites* liste, Plateau* plateau, Pion* pio
 		Position* p = plateau_getVide(plateau, position_direction);
 		if(p != NULL)
 		{
-			p -> marque = 1;
+			// Un déplacement de saut possible dans la bonne direction, le poids est plus important
+			if(ideale == direction)
+				poids++;
+
+			Possibilite possible = possibilite_init(poids, position_direction_saut);
+			liste_possibilites_ajout(liste, possible);
 		}
 		// S'il y a un pion a portée on regarde s'il on peut sauter
 		else
 		{
 			p = plateau_getVide(plateau, position_direction_saut);
 			if(p != NULL)
-				p -> marque = 1;
+			{
+				// Un déplacement de saut possible dans la bonne direction, le poids est plus important
+				if(ideale == direction)
+					poids++;
+
+				Possibilite possible = possibilite_init(poids, position_direction_saut);
+				liste_possibilites_ajout(liste, possible);
+			}
 		}
 	}
 }

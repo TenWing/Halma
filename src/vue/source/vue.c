@@ -54,7 +54,7 @@ void affiche_configuration_partie()
 	printf("		########################################\n");	
 	printf("		Sélectionnez le nombre de joueurs!\n");
 	printf("		Le nombre de joueurs varie entre 1 et 4 joueurs\n");
-	printf("		La partie commencera juste après !\n");
+	//printf("		La partie commencera juste après !\n");
 	printf("		########################################\n");	
 }
 

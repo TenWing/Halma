@@ -75,7 +75,6 @@ void affiche_menu_coup(int coup)
 		{
 		printf("		r. Revenir au(x) coup(s) précédent(s)\n");
 		}
-		printf("		c. Sauvegarder la partie\n");
 		printf("		d. Fin du(es) déplacement de votre pion\n");
 		printf("		########################################\n");
 }

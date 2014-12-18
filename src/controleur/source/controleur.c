@@ -368,7 +368,7 @@ Controleur controleur_charger()
 	printf("Nom de la partie à charger : ");
 
 	scanf("%s", partie);
-	
+	viderBuffer();
 	//Concatene le nom de sa partie avec ".txt"
 	strcat(partie, ".txt");
 

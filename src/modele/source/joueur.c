@@ -27,7 +27,7 @@ Joueur joueur_init(Plateau* plateau, Couleur couleur)
 	// Sur ceux qui appartiennent au joueur
 	NoeudPion* actuel = plateau->liste_pions.premier;
 
-	while(actuel->suivant != NULL)
+	while(actuel != NULL)
 	{
 		// Si on trouve un pion du joueur
 		if(actuel->pion.couleur == couleur)

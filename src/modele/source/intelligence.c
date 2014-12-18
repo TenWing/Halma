@@ -159,22 +159,22 @@ EnsemblePossibilites construire_possibilites(Modele* modele, Joueur* joueur)
 		ListePossibilites possibilite_de_ce_pion = possibilites_du_pion(modele, *noeud->pion, joueur);
 		ensemble_possibilites_ajout(&ensemble, possibilite_de_ce_pion);
 
+		printf("id du pion traité : %d\n", possibilite_de_ce_pion.pion.identifiant);
+		printf("pion modèle : %d\n", noeud->pion->identifiant);
+
 		// On passe au suivant
 		noeud = noeud -> suivant;
 	}
-
-	// cas dernier
-	if(noeud != NULL)
-	{
-		ListePossibilites possibilite_de_ce_pion = possibilites_du_pion(modele, *noeud->pion, joueur);
-		ensemble_possibilites_ajout(&ensemble, possibilite_de_ce_pion);
-	}
+	
+	printf("mais qué ? first : %d et second ? %d\n", ensemble.premier->liste.pion.identifiant, ensemble.premier->suivant->liste.pion.identifiant);
 
 	return ensemble;
 }
 
 ListePossibilites possibilites_du_pion(Modele* modele, Pion pion, Joueur* joueur)
 {
+	// c'est le bon pion
+
 	// création de l'ensemble des possibilités du pion
 	ListePossibilites liste = liste_possibilites_init(pion);
 

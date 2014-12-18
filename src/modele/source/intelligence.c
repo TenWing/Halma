@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <intelligence.h>
 #include <direction.h>
+#include <pion.h>
 // #####################
 
 Possibilite possibilite_init(int poids, Position position)
@@ -28,7 +29,7 @@ ListePossibilites liste_possibilites_init(Pion pion)
 	ListePossibilites liste;
 
 	liste.poids = 0;
-	liste.pion = pion;
+	liste.pion = pion_copie(pion);
 	liste.premier = NULL;
 
 	return liste;
@@ -144,12 +145,11 @@ void ensemble_possibilites_detruire(EnsemblePossibilites* liste)
 void ia_jouer_coup(Modele* modele, Joueur* joueur)
 {
 	EnsemblePossibilites possibles = construire_possibilites(modele, joueur);
-	printf("%d\n", possibles.premier->liste.pion.identifiant);
 }
 
 EnsemblePossibilites construire_possibilites(Modele* modele, Joueur* joueur)
 {
-	EnsemblePossibilites ensemble;
+	EnsemblePossibilites ensemble = ensemble_possibilites_init();
 
 	NoeudReferencePion* noeud = joueur->liste_references_pions.premier;
 	
@@ -159,14 +159,9 @@ EnsemblePossibilites construire_possibilites(Modele* modele, Joueur* joueur)
 		ListePossibilites possibilite_de_ce_pion = possibilites_du_pion(modele, *noeud->pion, joueur);
 		ensemble_possibilites_ajout(&ensemble, possibilite_de_ce_pion);
 
-		printf("id du pion traité : %d\n", possibilite_de_ce_pion.pion.identifiant);
-		printf("pion modèle : %d\n", noeud->pion->identifiant);
-
 		// On passe au suivant
 		noeud = noeud -> suivant;
-	}
-	
-	printf("mais qué ? first : %d et second ? %d\n", ensemble.premier->liste.pion.identifiant, ensemble.premier->suivant->liste.pion.identifiant);
+	}	
 
 	return ensemble;
 }

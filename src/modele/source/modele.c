@@ -34,6 +34,12 @@ Modele modele_init(int nombreJoueurs)
 		for(i=0; i<4; i++)
 		{
 			modele.tableau_joueur[i] = joueur_init(&modele.plateau, i);		
+
+			// Cas on veut jouer avec une IA
+			if(nombreJoueurs == 3 && i == 3)
+				// le joueur 4 est une IA
+				modele.tableau_joueur[i].ia = 1;
+
 			Direction destination;
 			switch(i)
 			{
@@ -69,7 +75,11 @@ Modele modele_init(int nombreJoueurs)
 			modele.tableau_joueur[1] = joueur_init(&modele.plateau, 3);		
 			modele.tableau_joueur[1].direction = HAUT_DROITE;		
 			modele.tableau_zone[1] = zone_init(3, nombreJoueurs);
-		
+
+			// Cas on veut jouer avec une IA
+			if(nombreJoueurs == 1)
+				// le joueur 2 est une IA
+				modele.tableau_joueur[1].ia = 1;		
 	}
 	return modele;
 }

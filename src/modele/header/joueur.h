@@ -67,6 +67,11 @@ struct Joueur
  	* \brief 	la direction dans laquelle le joueur doit aller
  	*/
  	Direction direction;
+
+ 	/**
+ 	* \brief 	indique si il s'agit d'une IA
+ 	*/
+ 	int ia;
 };
 
 // ###################################

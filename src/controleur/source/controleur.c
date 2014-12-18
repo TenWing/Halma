@@ -22,15 +22,20 @@
 #include <controleur.h>
 #include <direction.h>
 #include <fichier.h>
+#include <intelligence.h>
 // #################################
 
 Controleur controleur_init(int nombreJoueurs)
 {
 	Controleur controleur;
-	
-	controleur.nombreJoueurs = nombreJoueurs;
 
 	controleur.modele = modele_init(nombreJoueurs);
+
+	// Cas on joue avec des IA
+	if(nombreJoueurs == 1 || nombreJoueurs == 3)
+		nombreJoueurs++;
+	
+	controleur.nombreJoueurs = nombreJoueurs;
 
 	return controleur;
 }
@@ -339,7 +344,12 @@ void jouer_partie(int jouer)
 			{	
 				controleur.modele.joueurJoue = i;
 
-				controleur_jouer_tour(&(controleur.modele.tableau_joueur[i]), &(controleur.modele));
+				// Si le joueur est une IA
+				if(controleur.modele.tableau_joueur[i].ia)
+					ia_jouer_coup(&(controleur.modele), &(controleur.modele.tableau_joueur[i]));
+				else
+				// Sinon joueur joue normal
+					controleur_jouer_tour(&(controleur.modele.tableau_joueur[i]), &(controleur.modele));
 
 				//Si l'un des joueur a placé tous ses pions dans la zone de victoire
 				if(verification == verification_zone(&(controleur.modele.tableau_zone[i]), &(controleur.modele.tableau_joueur[i])))
@@ -389,4 +399,3 @@ Controleur controleur_charger()
 
 	return controleur;
 }
-	

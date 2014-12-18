@@ -141,6 +141,12 @@ void ensemble_possibilites_detruire(EnsemblePossibilites* liste)
 
 // #############################################################
 
+void ia_jouer_coup(Modele* modele, Joueur* joueur)
+{
+	EnsemblePossibilites possibles = construire_possibilites(modele, joueur);
+	printf("%d\n", possibles.premier->liste.pion.identifiant);
+}
+
 EnsemblePossibilites construire_possibilites(Modele* modele, Joueur* joueur)
 {
 	EnsemblePossibilites ensemble;
@@ -150,6 +156,16 @@ EnsemblePossibilites construire_possibilites(Modele* modele, Joueur* joueur)
 	// Pour chaque pion du joueur
 	while(noeud != NULL)
 	{	
+		ListePossibilites possibilite_de_ce_pion = possibilites_du_pion(modele, *noeud->pion, joueur);
+		ensemble_possibilites_ajout(&ensemble, possibilite_de_ce_pion);
+
+		// On passe au suivant
+		noeud = noeud -> suivant;
+	}
+
+	// cas dernier
+	if(noeud != NULL)
+	{
 		ListePossibilites possibilite_de_ce_pion = possibilites_du_pion(modele, *noeud->pion, joueur);
 		ensemble_possibilites_ajout(&ensemble, possibilite_de_ce_pion);
 	}

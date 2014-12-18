@@ -108,4 +108,3 @@ int SauvegardeMatrice(Matrice matrice, char *emplacement_fichier_sauvegarde, int
 Matrice chargerMatrice(char *emplacement_fichier, int choix);
 
 Controleur controleur_charger();
-

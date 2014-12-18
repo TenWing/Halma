@@ -37,23 +37,6 @@ ListePossibilites liste_possibilites_init(Pion pion)
 	return liste;
 }
 
-void liste_possibilites_detruire(ListePossibilites* liste)
-{
-	// Une variable sert à délivrer la mémoire
-	// l'autre à parcourir ce qu'il est encore faisable
-	NoeudPossibilite* noeud = liste->premier;
-	NoeudPossibilite* reine_des_neiges;
-
-	while(noeud != NULL)
-	{
-		reine_des_neiges = noeud;
-		noeud = noeud -> suivant;
-		free(reine_des_neiges);
-	}
-
-	free(liste);
-}
-
 void liste_possibilites_ajout(ListePossibilites* liste, Possibilite ajout)
 {
 	// On crée le nouveau noeud qui sera ajouté
@@ -140,23 +123,6 @@ void ensemble_possibilites_ajout(EnsemblePossibilites* liste, ListePossibilites 
 		// Ajout de notre élément à la fin
 		parcours->suivant = noeud;
 	}
-}
-
-void ensemble_possibilites_detruire(EnsemblePossibilites* liste)
-{
-	// Une variable sert à délivrer la mémoire
-	// l'autre à parcourir ce qu'il est encore faisable
-	NoeudListe* noeud = liste->premier;
-	NoeudListe* reine_des_neiges;
-
-	while(noeud != NULL)
-	{
-		reine_des_neiges = noeud;
-		noeud = noeud -> suivant;
-		free(reine_des_neiges);
-	}
-
-	free(liste);
 }
 
 int ensemble_poids_plus_fort(EnsemblePossibilites* ensemble)

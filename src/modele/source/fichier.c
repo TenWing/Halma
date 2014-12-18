@@ -23,11 +23,15 @@ int sauvegarderPartie(Modele* modele, char fichier[100])
 	//On crée un pointeur sur FILE
 	FILE* fp=NULL;
 
+	char ungrostableaucahein[100] = "Parties/";
+
 	//On concatene la chaine de caractère fichier pour avoir fichier.txt
-	strcat(fichier, ".txt");
+	strcat(ungrostableaucahein, fichier);
+
+	strcat(ungrostableaucahein, ".txt");
 
 	//On ouvre le fichier pour écrire en binaire
-	fp = fopen( fichier, "wb");
+	fp = fopen( ungrostableaucahein, "wb");
 
 	if(fp != NULL)
 	{
@@ -47,6 +51,8 @@ int sauvegarderPartie(Modele* modele, char fichier[100])
 		//On retourne un échec
 		return 0;
 	}
+
+
 }
 
 Modele chargerModele(char fichier[100])

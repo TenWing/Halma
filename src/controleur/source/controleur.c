@@ -362,18 +362,24 @@ Controleur controleur_charger()
 {
 	//Déclaration d'un chaine de caractère et d'un controleur
 	char partie[100];
+	char pipi[100]="Parties/";
 	Controleur controleur;
 
 	//Demande à l'utilisateur le nom de sa partie
-	printf("Nom de la partie à charger : ");
+	printf("Liste de tous les fichiers de sauvegardes : \n");
 
+	system("cd Parties && ls");
+
+	printf("\nNom de la partie à charger (ne pas ajouter .txt) : ");
 	scanf("%s", partie);
+
 	viderBuffer();
 	//Concatene le nom de sa partie avec ".txt"
-	strcat(partie, ".txt");
+	strcat(pipi, partie);
+	strcat(pipi, ".txt");
 
 	//On charge le controleur à l'état initial
-	controleur.modele = chargerModele(partie);
+	controleur.modele = chargerModele(pipi);
 
 	//On initialise le nombre de joueur
 	controleur.nombreJoueurs = controleur.modele.nombreJoueurs;

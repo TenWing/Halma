@@ -335,7 +335,7 @@ void jouer_partie(int jouer)
 		while(victoire != 1)
 		{	
 			//Les joueurs jouent chacuns à leur tour
-			for(i; i<controleur.nombreJoueurs; i++)
+			for(i=i; i<controleur.nombreJoueurs; i++)
 			{	
 				controleur.modele.joueurJoue = i;
 
@@ -351,6 +351,8 @@ void jouer_partie(int jouer)
 					couleur = controleur.modele.tableau_joueur[i].couleur;
 				}
 			}
+
+			i=0;
 		}
 
 		affichage_victoire(couleur);			

@@ -244,4 +244,22 @@ Coup coup_au_hasard(PileCoups* liste);
 
 // #############################
 
+// #############################
+// MICRO FONCTIONS
+
+/**
+* \brief	ajoute l'ensemble des possibilités de coups dans une liste, en fonction d'un pion et d'une direction
+* \author	Tendry
+* \version	1.0
+* \param	liste la liste modifiée
+* \param	plateau le plateau de jeu
+* \param	pion le pion pour l'analayse
+* \param	direction la direction de l'analyse
+* \param	ideale la direction dans laquelle il serait mieux d'aller
+*/
+void possibilite_direction(ListePossibilites* liste, Plateau* plateau, Pion* pion,
+							Direction direction, Direction ideale);
+
+// #############################
+
 #endif

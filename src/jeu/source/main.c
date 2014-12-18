@@ -26,6 +26,7 @@
 #include <controleur.h>
 #include <saisie.h>
 #include <vue_plateau.h>
+#include <didacticiel.h>
 //##########################################
 
 /**
@@ -61,20 +62,19 @@ int main()
 						jouer_partie(0);
 						break;
 			case 'c' :
-						while(choix2 != 'y')
-						{
+						
 							//Le controleur regarde les regles du jeu de l'halma
 							clean_terminal();
 							affiche_regles();
-							printf("\nAppuyer sur la touche Y pour retourner au menu principal \n");
+							printf("Si vous voulez lancer le didacticiel, appuyer sur : a\n");
+							printf("\nSinon appuyer sur une touche pour retourner au menu principal \n");
 							choix2 = recuperer_caractere();
-						}
 
-						clean_terminal();
-
-						affiche_menu_principal();
-						printf("Choix: ");
-						choix=recuperer_caractere();
+							if(choix2 == 'a')
+							{
+								didacticiel();
+							}
+		
 						break;
 			default  :
 						clean_terminal();

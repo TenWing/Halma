@@ -1,6 +1,7 @@
 
 
 
+
 /**
 * \file		controleur.c
 * \brief	Contient le code source des fonctions de contrôle
@@ -112,6 +113,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 		}
 		else if(choix == 'q')
 		{
+			clean_terminal();
 			exit(0);
 		}
 	}while(choix != 'd');

@@ -1,3 +1,4 @@
+
 /**
 * \file 		vue.h
 * \author		Tendry
@@ -71,5 +72,24 @@ void erreur_saisie();
 */
 void nombre_coup();
 
+/**
+* \brief	vue du menu principal du didacticiel
+* \author	Quentin
+* \version	1.0
+*/
+void didacticiel_principal();
 
+/**
+* \brief	l'une des vus dans le didacticiel (but du jeu)
+* \author	Quentin
+* \version	1.0
+*/
+void but_jeu();
+
+/**
+* \brief	l'une des vus dans le didacticiel (pour les déplacements)
+* \author	Quentin
+* \version	1.0
+*/
+void deplacements(int deplacement);
 #endif

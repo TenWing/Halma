@@ -158,6 +158,14 @@ void liste_possibilites_detruire(ListePossibilites* liste);
 */
 void liste_possibilites_ajout(ListePossibilites* liste, Possibilite ajout);
 
+/**
+* \brief	Calcule le poids du plus haut coup pour un pion
+* \author	Tendry
+* \version	1.0
+* \param	liste la liste qui calcule son poids
+*/
+void liste_possibilites_calcule_poids(ListePossibilites* liste);
+
 // #############################
 
 // #############################
@@ -187,6 +195,15 @@ void ensemble_possibilites_ajout(EnsemblePossibilites* liste, ListePossibilites 
 * \param	liste la liste réinitialisée
 */
 void ensemble_possibilites_detruire(EnsemblePossibilites* liste);
+
+/**
+* \brief	récupère le poids le plus fort de toute la liste des pions
+* \author	Tendry
+* \version	1.0
+* \param	ensemble l'ensemble de coups
+* \return	le poids le plus fort de toute la liste
+*/
+int ensemble_poids_plus_fort(EnsemblePossibilites* ensemble);
 
 // #############################
 

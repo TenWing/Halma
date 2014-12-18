@@ -11,6 +11,9 @@
 #include <stdlib.h>
 #include <intelligence.h>
 #include <direction.h>
+#include <pion.h>
+#include <coup.h>
+#include <time.h>
 // #####################
 
 Possibilite possibilite_init(int poids, Position position)
@@ -28,27 +31,10 @@ ListePossibilites liste_possibilites_init(Pion pion)
 	ListePossibilites liste;
 
 	liste.poids = 0;
-	liste.pion = pion;
+	liste.pion = pion_copie(pion);
 	liste.premier = NULL;
 
 	return liste;
-}
-
-void liste_possibilites_detruire(ListePossibilites* liste)
-{
-	// Une variable sert à délivrer la mémoire
-	// l'autre à parcourir ce qu'il est encore faisable
-	NoeudPossibilite* noeud = liste->premier;
-	NoeudPossibilite* reine_des_neiges;
-
-	while(noeud != NULL)
-	{
-		reine_des_neiges = noeud;
-		noeud = noeud -> suivant;
-		free(reine_des_neiges);
-	}
-
-	free(liste);
 }
 
 void liste_possibilites_ajout(ListePossibilites* liste, Possibilite ajout)
@@ -79,6 +65,23 @@ void liste_possibilites_ajout(ListePossibilites* liste, Possibilite ajout)
 		// Ajout de notre élément à la fin
 		parcours->suivant = noeud;
 	}
+}
+
+void liste_possibilites_calcule_poids(ListePossibilites* liste)
+{
+	NoeudPossibilite* noeud = liste->premier;
+	int max = -1;
+
+	// parcours de la liste
+	while(noeud != NULL)
+	{
+		if(noeud -> possibilite.poids > max)
+			max = noeud -> possibilite.poids;
+
+		noeud = noeud -> suivant;
+	}
+
+	liste->poids = max;
 }
 
 // #########################################################
@@ -122,21 +125,20 @@ void ensemble_possibilites_ajout(EnsemblePossibilites* liste, ListePossibilites 
 	}
 }
 
-void ensemble_possibilites_detruire(EnsemblePossibilites* liste)
+int ensemble_poids_plus_fort(EnsemblePossibilites* ensemble)
 {
-	// Une variable sert à délivrer la mémoire
-	// l'autre à parcourir ce qu'il est encore faisable
-	NoeudListe* noeud = liste->premier;
-	NoeudListe* reine_des_neiges;
+	int poids = -1;
+
+	NoeudListe* noeud = ensemble->premier;
 
 	while(noeud != NULL)
 	{
-		reine_des_neiges = noeud;
+		if(noeud -> liste.poids > poids)
+			poids = noeud->liste.poids;
 		noeud = noeud -> suivant;
-		free(reine_des_neiges);
 	}
 
-	free(liste);
+	return poids;
 }
 
 // #############################################################
@@ -144,12 +146,24 @@ void ensemble_possibilites_detruire(EnsemblePossibilites* liste)
 void ia_jouer_coup(Modele* modele, Joueur* joueur)
 {
 	EnsemblePossibilites possibles = construire_possibilites(modele, joueur);
-	printf("%d\n", possibles.premier->liste.pion.identifiant);
+
+	PileCoups pile = recuperer_meilleurs_coups(&possibles);
+
+	Coup a_jouer = coup_au_hasard(&pile);
+
+	Pion* move = modele_get_reference_pion(modele, a_jouer.pion);
+
+	// Bien sur mise a jour des positions du modèle
+	liste_positions_ajout(&modele->plateau.vides, move->position);
+
+	// Ok .. precedente = position mais c'est une erreur de nommage
+	move->position = a_jouer.precedente;
+	liste_positions_supprimer(&modele->plateau.vides, a_jouer.precedente);
 }
 
 EnsemblePossibilites construire_possibilites(Modele* modele, Joueur* joueur)
 {
-	EnsemblePossibilites ensemble;
+	EnsemblePossibilites ensemble = ensemble_possibilites_init();
 
 	NoeudReferencePion* noeud = joueur->liste_references_pions.premier;
 	
@@ -159,14 +173,9 @@ EnsemblePossibilites construire_possibilites(Modele* modele, Joueur* joueur)
 		ListePossibilites possibilite_de_ce_pion = possibilites_du_pion(modele, *noeud->pion, joueur);
 		ensemble_possibilites_ajout(&ensemble, possibilite_de_ce_pion);
 
-		printf("id du pion traité : %d\n", possibilite_de_ce_pion.pion.identifiant);
-		printf("pion modèle : %d\n", noeud->pion->identifiant);
-
 		// On passe au suivant
 		noeud = noeud -> suivant;
-	}
-	
-	printf("mais qué ? first : %d et second ? %d\n", ensemble.premier->liste.pion.identifiant, ensemble.premier->suivant->liste.pion.identifiant);
+	}	
 
 	return ensemble;
 }
@@ -191,14 +200,62 @@ ListePossibilites possibilites_du_pion(Modele* modele, Pion pion, Joueur* joueur
 	possibilite_direction(&liste, &modele->plateau, &pion, GAUCHE, ideale);	
 	possibilite_direction(&liste, &modele->plateau, &pion, HAUT_GAUCHE, ideale);	
 
+	// la liste calcule son poids
+	liste_possibilites_calcule_poids(&liste);
 	return liste;
 }
 
 PileCoups recuperer_meilleurs_coups(EnsemblePossibilites* ensemble)
 {
-	PileCoups pile;
+	// le meilleur des poids
+	int meilleur_poids = ensemble_poids_plus_fort(ensemble);
+
+	PileCoups pile = pileCoups_init();
+
+	NoeudListe* noeud = ensemble->premier;
+
+	// parcours de liste
+	while(noeud != NULL)
+	{
+		// On crée un coup qu'on stocke si le poids
+		// correspondant est un des plus forts
+		if(noeud -> liste.poids == meilleur_poids)
+		{
+			// Pour ça il faut récupérer la meilleur possibilité
+			NoeudPossibilite* node = noeud -> liste.premier;
+			while(node != NULL)
+			{
+				if(node->possibilite.poids == meilleur_poids)
+				{
+					Position position = node->possibilite.position;
+					Coup coup = coup_init(&noeud->liste.pion, position);
+					pileCoups_ajouterCoup(&pile, coup);
+				}
+				node = node -> suivant;
+			}
+		}
+
+		noeud = noeud -> suivant;
+	}
 
 	return pile;
+}
+
+Coup coup_au_hasard(PileCoups* liste)
+{
+	srand(time(NULL));
+	int taille = pileCoups_taille(liste);
+	int indice = rand() % taille-1;
+	int i = 0;
+	NoeudCoup* noeud = liste->premier;
+
+	// On choisit le coup
+	for(i = 0; i < indice; i++)
+	{
+		noeud = noeud -> suivant;
+	}
+
+	return noeud -> coup;
 }
 
 // #############################################################
@@ -273,52 +330,28 @@ void possibilite_direction(ListePossibilites* liste, Plateau* plateau, Pion* pio
 			break;
 	}
 
-	// Si on saute
-	if(pion->saut)
+	// On regarde ce qui est à portée
+	Position* p = plateau_getVide(plateau, position_direction);
+	if(p == NULL) //Un pion a été trouvé
 	{
-		// On ne regarde la portée de ce qui est a portée dez saut
-		// SI ET SEULEMENT SI un pion est a portée directe
-		if(plateau_getVide(plateau, position_direction) == NULL)
-		{
-			Position* p = plateau_getVide(plateau, position_direction_saut);
-			if(p != NULL)
-			{
-				// Un déplacement de saut possible dans la bonne direction, le poids est plus important
-				if(ideale == direction)
-					poids++;
-
-				Possibilite possible = possibilite_init(poids, position_direction_saut);
-				liste_possibilites_ajout(liste, possible);
-			}
-		}
-	}
-	// Si on saute pas
-	else
-	{
-		// On regarde ce qui est à portée
-		Position* p = plateau_getVide(plateau, position_direction);
+		// on regarde s'il est possible de sauter par dessus lui
+		p = plateau_getVide(plateau, position_direction_saut);
 		if(p != NULL)
 		{
-			// Un déplacement de saut possible dans la bonne direction, le poids est plus important
 			if(ideale == direction)
-				poids++;
+				poids+=2;
 
 			Possibilite possible = possibilite_init(poids, position_direction_saut);
-			liste_possibilites_ajout(liste, possible);
+			liste_possibilites_ajout(liste, possible);			
 		}
-		// S'il y a un pion a portée on regarde s'il on peut sauter
-		else
-		{
-			p = plateau_getVide(plateau, position_direction_saut);
-			if(p != NULL)
-			{
-				// Un déplacement de saut possible dans la bonne direction, le poids est plus important
-				if(ideale == direction)
-					poids++;
+	}
+	// S'il y a un espace vide a portée sinon ben on peut aller la quoi 
+	else
+	{
+		if(ideale == direction)
+				poids++;
 
-				Possibilite possible = possibilite_init(poids, position_direction_saut);
-				liste_possibilites_ajout(liste, possible);
-			}
-		}
+		Possibilite possible = possibilite_init(poids, position_direction);
+		liste_possibilites_ajout(liste, possible);
 	}
 }

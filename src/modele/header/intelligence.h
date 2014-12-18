@@ -142,14 +142,6 @@ Possibilite possibilite_init(int poids, Position position);
 ListePossibilites liste_possibilites_init(Pion pion);
 
 /**
-* \brief	vide/détruit une liste de possibilités
-* \author	Tendry
-* \version	1.0
-* \param	liste la liste réinitialisée
-*/
-void liste_possibilites_detruire(ListePossibilites* liste);
-
-/**
 * \brief	Ajoute une possibilité dans une liste de possibilités
 * \author	Tendry
 * \version	1.0
@@ -157,6 +149,14 @@ void liste_possibilites_detruire(ListePossibilites* liste);
 * \param	ajout l'élément ajouté
 */
 void liste_possibilites_ajout(ListePossibilites* liste, Possibilite ajout);
+
+/**
+* \brief	Calcule le poids du plus haut coup pour un pion
+* \author	Tendry
+* \version	1.0
+* \param	liste la liste qui calcule son poids
+*/
+void liste_possibilites_calcule_poids(ListePossibilites* liste);
 
 // #############################
 
@@ -181,12 +181,13 @@ EnsemblePossibilites ensemble_possibilites_init();
 void ensemble_possibilites_ajout(EnsemblePossibilites* liste, ListePossibilites ajout);
 
 /**
-* \brief	vide/détruit un ensemble de possibilités
+* \brief	récupère le poids le plus fort de toute la liste des pions
 * \author	Tendry
 * \version	1.0
-* \param	liste la liste réinitialisée
+* \param	ensemble l'ensemble de coups
+* \return	le poids le plus fort de toute la liste
 */
-void ensemble_possibilites_detruire(EnsemblePossibilites* liste);
+int ensemble_poids_plus_fort(EnsemblePossibilites* ensemble);
 
 // #############################
 

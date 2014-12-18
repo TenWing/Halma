@@ -109,7 +109,7 @@ int chargerPartie(Modele* modele, char fichier[100])
 	if(fp != NULL)
 	{
 		//On initialise la pile du modele à partir du fichier de sauvegarde
-		modele->pile_tours = charger_tours(fp, modele);
+		charger_tours(fp, modele);
 
 		//On ferme le fichier texte et on retourne le succès
 		fclose(fp);

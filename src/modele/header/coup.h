@@ -99,6 +99,11 @@ struct PileCoups
 */
 Coup coup_init(Pion* p, Position pos);
 
+/**
+* \brief	Copie un coup
+*/
+Coup coup_copier(Coup coup);
+
 //######################################
 //FONCTIONS PILE COUPS
 //######################################
@@ -110,6 +115,11 @@ Coup coup_init(Pion* p, Position pos);
 * \return Une pile de coups initialisée
 */
 PileCoups pileCoups_init();
+
+/**
+* \brief	Copie une pile de coups
+*/
+PileCoups pileCoups_copier(PileCoups* pile);
 
 /**
 * \brief dépile le dernier élément des coups

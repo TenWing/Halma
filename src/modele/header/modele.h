@@ -138,8 +138,7 @@ Pion* modele_get_reference_pion(Modele* modele, Pion pion);
 * \author 	Quentin
 * \param	FILE* 	le fichier où sont sauvegardé les tours, pions etc
 * \param	Modele* le modele du jeu
-* \return 	la pile de tours du modele
 */
-PileTours charger_tours(FILE* fp, Modele* modele);
+void charger_tours(FILE* fp, Modele* modele);
 
 #endif

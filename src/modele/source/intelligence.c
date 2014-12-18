@@ -153,6 +153,9 @@ void ia_jouer_coup(Modele* modele, Joueur* joueur)
 
 	Pion* move = modele_get_reference_pion(modele, a_jouer.pion);
 
+	// L'IA commence un tour OLOLOL CAY POUR LES TOURS
+	commencer_tour(modele, move);
+
 	// Bien sur mise a jour des positions du modèle
 	liste_positions_ajout(&modele->plateau.vides, move->position);
 

@@ -328,7 +328,7 @@ void jouer_partie(int jouer)
 			nombre_ia = recuperer_entier();
 		
 			if(nombre_ia <= nombre_joueur && nombre_joueur > 0
-				&& nombre_joueur < 4)
+				&& nombre_joueur <= 4)
 				continuer = 0;
 
 		}
@@ -355,7 +355,12 @@ void jouer_partie(int jouer)
 
 				// Si le joueur est une IA
 				if(controleur.modele.tableau_joueur[i].ia)
+				{
+					// on affiche quand même
+					system("clear");
+					affiche_plateau(&controleur.modele.plateau, AFFICHAGE);
 					ia_jouer_coup(&(controleur.modele), &(controleur.modele.tableau_joueur[i]));
+				}
 				else
 				// Sinon joueur joue normal
 					controleur_jouer_tour(&(controleur.modele.tableau_joueur[i]), &(controleur.modele));
@@ -371,7 +376,15 @@ void jouer_partie(int jouer)
 				}
 			}
 
-			i=0;
+			i=0;		
+			
+			// S'il n'y a que des IA
+			if(controleur.modele.nombreJoueurs == controleur.modele.nombreIA)
+			{
+				// On ralentit le programme quand même
+				printf("Avancer au tour suivant\n");
+				recuperer_caractere();
+			}
 		}
 
 		affichage_victoire(couleur);			
@@ -404,7 +417,13 @@ Controleur controleur_charger()
 	controleur.nombreJoueurs = controleur.modele.nombreJoueurs;
 
 	//On initialise correctement le controleur là où le joueur l'avait laissé au moment de la sauvegarde
-	chargerPartie(&controleur.modele, partie);
+	int succes = chargerPartie(&controleur.modele, pipi);
+
+	if(!succes)
+	{
+		printf("Attention ECHEC DE CHARGEMENT\n");
+		exit(EXIT_FAILURE);
+	}
 
 	return controleur;
 }

@@ -102,6 +102,14 @@ struct PileTours
 */
 Tour tour_init(Pion* p);
 
+/**
+* \brief renvoie une copie du tour
+* \author	Tendry
+* \param	tour le tout copié
+* \return	le tour copie
+*/
+Tour tour_copier(Tour tour);
+
 //######################################
 //FONCTIONS PILE TOURS
 //######################################
@@ -131,6 +139,14 @@ Tour pileTours_depiler(PileTours* pile);
 * \param coup le tour à ajouter
 */
 void pileTours_ajouterTour(PileTours* pile, Tour tour);
+
+/**
+* \brief	Copie une pile de tours
+* \author	Tendry
+* \version	1.0
+* \return	PileTours la copie de la pile de tours
+*/
+PileTours pileTours_copier(PileTours* pile);
 
 /**
 * \brief 	sauvegarde un tour

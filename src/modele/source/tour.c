@@ -198,3 +198,29 @@ PileTours inversePile(PileTours pile_tours)
 	//On retourne pile_inverser
 	return pile_inverser;
 }
+
+Tour tour_copier(Tour tour)
+{
+	Tour copie;
+
+	copie.pion = tour.pion;
+	copie.depart = position_init(tour.depart.x, tour.depart.y);
+	copie.pile_coups = pileCoups_copier(&tour.pile_coups);
+
+	return copie;
+}
+
+PileTours pileTours_copier(PileTours* pile)
+{
+	PileTours copie = pileTours_init();
+
+	NoeudTour* noeud = pile->premier;
+
+	while(noeud != NULL)
+	{
+		pileTours_ajouterTour(&copie, tour_copier(noeud->tour));
+		noeud = noeud-> suivant;
+	}
+
+	return copie;
+}

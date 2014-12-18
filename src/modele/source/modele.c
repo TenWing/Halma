@@ -70,6 +70,7 @@ Modele modele_init(int nombreJoueurs, int nombreIA, int charge)
 			int j = 0, done = 0;
 			for(j = 0; j < nombreIA; j++)
 			{
+				done = 0;
 				// Si ce n'est pas déja une ia
 				if(!modele.tableau_joueur[indice].ia)
 					modele.tableau_joueur[indice].ia = 1;
@@ -286,29 +287,40 @@ Pion* modele_get_reference_pion(Modele* modele, Pion pion)
 	return NULL;
 }
 
-PileTours charger_tours(FILE* fp, Modele* modele)
+void charger_tours(FILE* fp, Modele* modele)
 {
+	printf("Il est la\n");
 	//On déclare une variable muette et un compteur et deux entiers inutiles 
 	//(juste utilisés pour faire avancer le curseur dans le fichier de sauvegarde)
-	int i,compteur=0,a,b;
+	int i,compteur=0, nb_joueur, nb_ia, a;
 
 	//On initialise la pile de tours du modele
 	modele->pile_tours = pileTours_init();
 
+	// On lit le nb de joueur pour décaler le curseur
+	fread(&nb_joueur, sizeof(int), 1, fp);
+
+	// On lit le nb d'ia pour décaler le curseur
+	fread(&nb_ia, sizeof(int), 1, fp);
+	for(i=0; i < nb_ia; i++)
+	{
+		printf("read_ia\n");
+		fread(&a, sizeof(int), 1, fp);
+	}
+
+	// Enfin on lit qui a sauvegardé la partie
 	fread(&a, sizeof(int), 1, fp);
-	fread(&b, sizeof(int), 1, fp);
 	
 	//On lit dans le fichie de sauvegarde le nombre de tour
 	fread(&compteur, sizeof(int), 1, fp);
+
+	printf("Compteur : %d\n", compteur);
 
 	//On ajoute tous les tours dans la pile du modele
 	for(i=0; i<compteur; i++)
 	{
 		pileTours_ajouterTour(&modele->pile_tours, chargerTour(fp, modele));
 	}
-
-	//On retourne la pile de tours du modele
-	return modele->pile_tours;
 }
 
 

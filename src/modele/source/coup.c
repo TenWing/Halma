@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <coup.h>
+#include <position.h>
 
 //#########################
 //FONCTIONS COUP
@@ -36,6 +37,15 @@ Coup coup_init(Pion* p, Position pos)
 	return coup;
 }
 
+Coup coup_copier(Coup coup)
+{
+	Coup copie;
+	coup.pion = pion_copie(coup.pion);
+	coup.precedente = position_init(coup.precedente.x, coup.precedente.y);
+
+	return copie;
+}
+
 //#########################
 //FONCTIONS COUPS
 //#########################
@@ -50,6 +60,21 @@ PileCoups pileCoups_init()
 
 	//On renvoie la pile initialisée
 	return pile;
+}
+
+PileCoups pileCoups_copier(PileCoups* pile)
+{
+	PileCoups copie = pileCoups_init();
+
+	NoeudCoup* noeud = pile->premier;
+
+	while(noeud != NULL)
+	{
+		pileCoups_ajouterCoup(&copie, coup_copier(noeud->coup));
+		noeud = noeud->suivant;
+	}
+
+	return copie;
 }
 
 Coup pileCoups_depiler(PileCoups* pile)

@@ -13,6 +13,16 @@
 #include <direction.h>
 // #####################
 
+Possibilite possibilite_init(int poids, Position position)
+{
+	Possibilite possibilite;
+
+	possibilite.poids = poids;
+	possibilite.position = position;
+
+	return possibilite;
+}
+
 ListePossibilites liste_possibilites_init(Pion pion)
 {
 	ListePossibilites liste;
@@ -140,7 +150,124 @@ ListePossibilites possibilites_du_pion(Modele* modele, Pion pion, Joueur* joueur
 	Direction ideale = joueur->direction;
 
 	// On va chercher chaque possibilité
-	// TODO
+	possibilite_direction(&liste, &modele->plateau, &pion, HAUT, ideale);	
+	possibilite_direction(&liste, &modele->plateau, &pion, HAUT_DROITE, ideale);	
+	possibilite_direction(&liste, &modele->plateau, &pion, DROITE, ideale);	
+	possibilite_direction(&liste, &modele->plateau, &pion, BAS_DROITE, ideale);	
+	possibilite_direction(&liste, &modele->plateau, &pion, BAS, ideale);	
+	possibilite_direction(&liste, &modele->plateau, &pion, BAS_GAUCHE, ideale);	
+	possibilite_direction(&liste, &modele->plateau, &pion, GAUCHE, ideale);	
+	possibilite_direction(&liste, &modele->plateau, &pion, HAUT_GAUCHE, ideale);	
 
 	return liste;
+}
+
+// #############################################################
+
+void possibilite_direction(ListePossibilites* liste, Plateau* plateau, Pion* pion,
+							Direction direction, Direction ideale)
+{
+	// Calcul du poids
+	int poids = 0;
+	// SI on va dans le bon sens
+	if(ideale == direction)
+		poids++;
+	else
+		poids--;
+
+	// La position analysée
+	Position position_direction = position_init(pion->position.x, pion->position.y);
+	Position position_direction_saut = position_init(pion->position.x, pion->position.y);
+
+	// On regarde la direction analysée
+	switch(direction)
+	{
+		case HAUT:
+			position_direction.x -= 1;
+			position_direction_saut.x -= 2;
+			break;
+
+		case HAUT_DROITE:
+			position_direction.x -= 1;
+			position_direction.y += 1;
+			position_direction_saut.x -= 2;
+			position_direction_saut.y += 2;
+			break;
+
+		case DROITE:
+			position_direction.y += 1;
+			position_direction_saut.y += 2;
+			break;
+
+		case BAS_DROITE:
+			position_direction_saut.y += 2;
+			position_direction_saut.x += 2;
+			position_direction.y += 1;
+			position_direction.x += 1;
+			break;
+
+		case BAS:
+			position_direction_saut.x += 2;
+			position_direction.x += 1;
+			break;
+
+		case BAS_GAUCHE:
+			position_direction_saut.x += 2;
+			position_direction_saut.y -= 2;
+			position_direction.x += 1;
+			position_direction.y -= 1;
+			break;
+
+		case GAUCHE:
+			position_direction_saut.y -= 2;
+			position_direction.y -= 1;
+			break;
+
+		case HAUT_GAUCHE:
+			position_direction.x -= 1;
+			position_direction.y -= 1;
+			position_direction_saut.x -= 2;
+			position_direction_saut.y -= 2;
+			break;
+
+		default:
+			break;
+	}
+
+	// Si on saute
+	if(pion->saut)
+	{
+		// On ne regarde la portée de ce qui est a portée dez saut
+		// SI ET SEULEMENT SI un pion est a portée directe
+		if(plateau_getVide(plateau, position_direction) == NULL)
+		{
+			Position* p = plateau_getVide(plateau, position_direction_saut);
+			if(p != NULL)
+			{
+				// Un déplacement de saut possible dans la bonne direction, le poids est plus important
+				if(ideale == direction)
+					poids++;
+
+				Possibilite possible = possibilite_init(poids, position_direction_saut);
+				liste_possibilites_ajout(liste, possible);
+			}
+		}
+	}
+	// Si on saute pas
+	else
+	{
+		// On regarde ce qui est à portée
+		Position* p = plateau_getVide(plateau, position_direction);
+		if(p != NULL)
+		{
+			p -> marque = 1;
+		}
+		// S'il y a un pion a portée on regarde s'il on peut sauter
+		else
+		{
+			p = plateau_getVide(plateau, position_direction_saut);
+			if(p != NULL)
+				p -> marque = 1;
+		}
+	}
 }

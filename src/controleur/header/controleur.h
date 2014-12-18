@@ -58,8 +58,9 @@ void clean(char* chaine);
 * \brief 	permet d'initialiser le controleur du jeu de l'halma
 * \author 	Quentin
 * \param	nombreJoueurs	le nombre de joueurs qui veut jouer au jeu de l'Halma
+* \param	nombreIA	le nombre de joueurs IA
 */
-Controleur controleur_init(int nombreJoueurs);
+Controleur controleur_init(int nombreJoueurs, int nombreIA);
 
 /**
 * \brief 	Fait sélectionner un pion par le joueur courant

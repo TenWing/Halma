@@ -26,15 +26,11 @@
 #include <intelligence.h>
 // #################################
 
-Controleur controleur_init(int nombreJoueurs)
+Controleur controleur_init(int nombreJoueurs, int nombreIA)
 {
 	Controleur controleur;
 
-	controleur.modele = modele_init(nombreJoueurs);
-
-	// Cas on joue avec des IA
-	if(nombreJoueurs == 1 || nombreJoueurs == 3)
-		nombreJoueurs++;
+	controleur.modele = modele_init(nombreJoueurs, nombreIA, 0);
 	
 	controleur.nombreJoueurs = nombreJoueurs;
 
@@ -309,7 +305,7 @@ int selectionner_direction(Modele* modele, Direction* direction)
 
 void jouer_partie(int jouer)
 {
-	int nombre_joueur,i;
+	int nombre_joueur = -1, nombre_ia = -1, i;
 	Controleur controleur;
 	Couleur couleur;
 	
@@ -319,14 +315,25 @@ void jouer_partie(int jouer)
 
 	if(jouer)
 	{
-		clean_terminal();
-		affiche_configuration_partie();
-		printf("Choix: ");
+		int continuer = 1;
 
-		//On demande le nombre de joueur pour initialiser le jeu
-		nombre_joueur = recuperer_entier();
+		while(continuer)
+		{
+			clean_terminal();
+			affiche_configuration_partie();
+			printf("\nChoix du nombre de joueurs: ");
+			//On demande le nombre de joueur pour initialiser le jeu
+			nombre_joueur = recuperer_entier();
+			printf("\nChoix du nombre d'IA: ");
+			nombre_ia = recuperer_entier();
+		
+			if(nombre_ia <= nombre_joueur && nombre_joueur > 0
+				&& nombre_joueur < 4)
+				continuer = 0;
 
-		controleur = controleur_init(nombre_joueur);
+		}
+
+		controleur = controleur_init(nombre_joueur, nombre_ia);
 
 		i=controleur.modele.joueurJoue;
 	}

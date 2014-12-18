@@ -59,7 +59,7 @@ Modele chargerModele(char fichier[100])
 {
 	Modele modele;
 
-	int nb_joueurs = 0;
+	int nb_joueurs = 0, nb_ia, indice_ia;
 
 	FILE* fp = NULL;
 
@@ -71,8 +71,19 @@ Modele chargerModele(char fichier[100])
 		//On lit le nombre de joueur dans le fichier de sauvegarde
 		fread(&nb_joueurs, sizeof(int), 1, fp);
 
-		//On initialise le modele
-		modele = modele_init(nb_joueurs);
+		// On lit le nombre d'IA
+		fread(&nb_ia, sizeof(int), 1, fp);
+
+		//On initialise le modele 1 pour indiquer qu'on charge
+		modele = modele_init(nb_joueurs, nb_ia, 1);
+
+		// On va chercher quels joueurs sont IA
+		int i = 0;
+		for(i = 0; i < nb_ia; i++)
+		{
+			fread(&indice_ia, sizeof(int), 1, fp);
+			modele.tableau_joueur[indice_ia].ia = 1;
+		}
 
 		//On regarde qu'elle joueur a sauvegardé la partie
 		fread(&modele.joueurJoue, sizeof(int), 1, fp);

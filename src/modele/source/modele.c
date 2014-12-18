@@ -1,5 +1,3 @@
-
-
 /**
 * \file		modele.c
 * \author	Tendry
@@ -15,15 +13,21 @@
 #include <modele.h>
 #include <plateau.h>
 #include <tour.h>
+#include <time.h>
 // ###################################
 
-Modele modele_init(int nombreJoueurs)
+Modele modele_init(int nombreJoueurs, int nombreIA, int charge)
 {
 	int i;
+
+	// On se prépare a la distribution aléatoire de l'IA
+	srand(time(NULL));
+
 	// On Crée le modèle
 	Modele modele;
 
 	modele.nombreJoueurs = nombreJoueurs;
+	modele.nombreIA = nombreIA;
 	modele.plateau = plateau_init(nombreJoueurs);
 	modele.pile_tours = pileTours_init();
 	modele.joueurJoue = 0;
@@ -34,11 +38,6 @@ Modele modele_init(int nombreJoueurs)
 		for(i=0; i<4; i++)
 		{
 			modele.tableau_joueur[i] = joueur_init(&modele.plateau, i);		
-
-			// Cas on veut jouer avec une IA
-			if(nombreJoueurs == 3 && i == 3)
-				// le joueur 4 est une IA
-				modele.tableau_joueur[i].ia = 1;
 
 			Direction destination;
 			switch(i)
@@ -53,34 +52,68 @@ Modele modele_init(int nombreJoueurs)
 					break;
 				// Joueur en bas à droite
 				case 2:
-					destination = HAUT_DROITE;
+					destination = HAUT_GAUCHE;
 					break;
 				// Joueur en bas à gauche
 				case 3:
-					destination = HAUT_GAUCHE;
+					destination = HAUT_DROITE;
 					break;
 			}
 			modele.tableau_joueur[i].direction = destination;
 			modele.tableau_zone[i] = zone_init(i, nombreJoueurs);
 		}
 
+		// Cas on veut jouer avec une(des) IA
+		if(nombreIA > 0 && !charge)
+		{	
+			int indice = rand() % 4;
+			int j = 0, done = 0;
+			for(j = 0; j < nombreIA; j++)
+			{
+				// Si ce n'est pas déja une ia
+				if(!modele.tableau_joueur[indice].ia)
+					modele.tableau_joueur[indice].ia = 1;
+				else
+				{
+					// Sinon tant que c'est pas fait ben on cherche
+					while(!done)
+					{
+						indice = rand() % 4;
+						// Si ce n'est pas déja une ia
+						if(!modele.tableau_joueur[indice].ia)
+						{
+							modele.tableau_joueur[indice].ia = 1;
+							done = 1;
+						}
+					}
+				}
+			}
+		}
 	}
 	else
 	{
-			modele.tableau_joueur[0] = joueur_init(&modele.plateau, 1);
-			modele.tableau_joueur[0].direction = BAS_GAUCHE;		
-			modele.tableau_zone[0] = zone_init(1, nombreJoueurs);
+		modele.tableau_joueur[0] = joueur_init(&modele.plateau, 1);
+		modele.tableau_joueur[0].direction = BAS_GAUCHE;		
+		modele.tableau_zone[0] = zone_init(1, nombreJoueurs);
 
 
-			modele.tableau_joueur[1] = joueur_init(&modele.plateau, 3);		
-			modele.tableau_joueur[1].direction = HAUT_DROITE;		
-			modele.tableau_zone[1] = zone_init(3, nombreJoueurs);
+		modele.tableau_joueur[1] = joueur_init(&modele.plateau, 3);		
+		modele.tableau_joueur[1].direction = HAUT_DROITE;		
+		modele.tableau_zone[1] = zone_init(3, nombreJoueurs);
 
-			// Cas on veut jouer avec une IA
-			if(nombreJoueurs == 1)
-				// le joueur 2 est une IA
-				modele.tableau_joueur[1].ia = 1;		
+		// Cas on veut jouer avec une(des) IA
+		if(nombreIA == 1 && !charge)
+		{	
+			modele.tableau_joueur[1].ia = 1;
+		}
+		else if(nombreIA == 2 && !charge)
+		{
+			modele.tableau_joueur[0].ia = 1;
+			modele.tableau_joueur[1].ia = 1;
+		} 
 	}
+	
+
 	return modele;
 }
 
@@ -167,12 +200,21 @@ int jouer_coup(Modele* modele, Pion* pion, Direction direction)
 	return succes;
 }
 
-
-
 void sauvegarderModele(Modele* modele, FILE* emplacement_fichier_sauvegarde)
 {
 	//écrit le nombre de joueurs dans le fichier de sauvegarde
 	fwrite(&modele->nombreJoueurs, sizeof(int), 1, emplacement_fichier_sauvegarde);
+
+	// écrit le nombre d'IA dans le fichier de sauvegarde
+	fwrite(&modele->nombreIA, sizeof(int), 1, emplacement_fichier_sauvegarde);
+
+	// On stocke ensuite les id des joueurs qui sont IA
+	int q = 0;
+	for(q = 0; q < modele->nombreJoueurs; q++)
+	{
+		if(modele->tableau_joueur[q].ia)
+			fwrite(&q, sizeof(int), 1, emplacement_fichier_sauvegarde);
+	}
 
 	//écrit quel joueur a sauvegardé
 	fwrite(&modele->joueurJoue, sizeof(int), 1, emplacement_fichier_sauvegarde);

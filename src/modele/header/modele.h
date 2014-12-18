@@ -39,6 +39,11 @@ struct Modele
 	int nombreJoueurs;
 
 	/**
+	* \brief le nombre d'IA dans le jeu
+	*/
+	int nombreIA;
+
+	/**
 	* \brief le tableau des joueurs
 	* 
 	*/
@@ -60,9 +65,11 @@ struct Modele
 * \brief 	initialise le modèle
 * \author 	Tendry
 * \param	nombreJoueurs le nombre de joueurs dans le modèle
+* \param	nombreIA le nombre de joueurs IA
+* \param	charge indique si le modèle se charge
 * \version	1.0
 */
-Modele modele_init(int nombreJoueurs);
+Modele modele_init(int nombreJoueurs, int nombreIA, int charge);
 
 /**
 * \brief	Commence un tour de jeu

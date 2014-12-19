@@ -252,6 +252,5 @@ int position_dans_zone(Position position, Zone* zone)
 
 		noeud = noeud -> suivant;
 	}
-
 	return 0;
 }

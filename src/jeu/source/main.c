@@ -42,7 +42,7 @@ int main()
 
 	while(choix != 'd')
 	{	
-			clean_terminal();
+		clean_terminal();
 		presentation_jeu();
 
 		affiche_menu_principal();

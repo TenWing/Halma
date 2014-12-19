@@ -50,7 +50,7 @@ void controleur_jouer_tour(Joueur* joueur, Modele* modele)
 
 	do
 	{
-		system("clear");
+		clean_terminal();
 		// On affiche le menu de debut de tour
 		affiche_plateau(modele, AFFICHAGE);
 		affiche_joueur(joueur->couleur);
@@ -147,7 +147,7 @@ int controleur_jouer_coup(Joueur* joueur, Modele* modele, Pion* pion)
 		}
 
 		// Affichage + demande choix utilisateur
-		system("clear");
+		clean_terminal();
 		affiche_plateau(modele, AFFICHAGE);
 		affiche_joueur(joueur->couleur);
 		affiche_menu_coup(coup);
@@ -248,7 +248,7 @@ int selectionner_pion(Modele* modele, Joueur* joueur, Pion** pion)
 	int identifiant;
 
 	// FONCTION DE LA VUE QUI AFFICHE CE QUE DOIT FAIRE L'UTILISATEUR
-	system("clear");
+	clean_terminal();
 	affiche_plateau(modele, SELECTION);
 	affiche_joueur(joueur->couleur);
 	affiche_selection_pion();
@@ -286,7 +286,7 @@ int selectionner_direction(Modele* modele, Direction* direction)
 	int pave_numerique;
 
 	//FONCTION DE LA VUE QUI Demander la direction
-	system("clear");
+	clean_terminal();
 	affiche_plateau(modele, AFFICHAGE);
 	affiche_selection_direction();
 
@@ -357,7 +357,7 @@ void jouer_partie(int jouer)
 				if(controleur.modele.tableau_joueur[i].ia)
 				{
 					// on affiche quand même
-					system("clear");
+					clean_terminal();
 					affiche_plateau(&controleur.modele, AFFICHAGE);
 					ia_jouer_coup(&(controleur.modele), &(controleur.modele.tableau_joueur[i]));
 				}

@@ -11,27 +11,27 @@
 
 // ######################
 // INCLUSIONS
-#include <plateau.h>
+#include <modele.h>
 #include <mode.h>	
 // ######################
 
 /**
 * \brief	Affiche le plateau de jeu complet
-* \param 	plateau le plateau à afficher
+* \param 	modele le modele observé
 * \param	mode indique si le joueur sélectionne ou contemple le plateau
 * \author	Tendry
 * \version	1.0
 */
-void affiche_plateau(Plateau* plateau, Mode mode);
+void affiche_plateau(Modele* modele, Mode mode);
 
 /**
 * \brief 	Affiche une case 
-* \param 	plateau le plateau qui fait le lien vers le modèle
+* \param 	modele le modele observé
 * \param	position la position de la case traitée
 * \param	mode indique si le joueur sélectionne ou contemple le plateau
 * \author 	Tendry
 * \version	1.0
 */
-void affiche_case(Plateau* plateau, Position* position, Mode mode);
+void affiche_case(Modele* modele, Position* position, Mode mode);
 
 #endif

@@ -12,10 +12,12 @@
 #include <stdlib.h>
 #include <vue_plateau.h>
 #include <position.h>
+#include <modele.h>
 // ######################
 
-void affiche_plateau(Plateau* plateau, Mode mode)
+void affiche_plateau(Modele* modele, Mode mode)
 {
+	Plateau* plateau = &modele->plateau;
 	// Variables de parcours
 	int i = 0, j = 0;
 
@@ -26,14 +28,18 @@ void affiche_plateau(Plateau* plateau, Mode mode)
 		for(j = 0; j < plateau->matrice.nbColonnes; j++)
 		{
 			Position position = position_init(i, j);
-			affiche_case(plateau, &position, mode);
+			affiche_case(modele, &position, mode);
 		}
 		printf("\n");
 	}
 }
 
-void affiche_case(Plateau* plateau, Position* position, Mode mode)
+void affiche_case(Modele* modele, Position* position, Mode mode)
 {
+	Plateau* plateau = &modele->plateau;
+
+	int i = 0;
+
 	// On récupère le contenu 
 	Pion pion = plateau_getpion(plateau, *position);
 	// S'il y a un pion à la position
@@ -94,10 +100,67 @@ void affiche_case(Plateau* plateau, Position* position, Mode mode)
 		Position* ptr = plateau_getVide(plateau, *position);
 		// et est marquée
 		if(ptr != NULL && ptr -> marque)
+			// On affiche une portée
 			printf("\033[39m[++]");
-		// On affiche rien
+
+		// On affiche une case vide
 		else
-			printf("\033[37m[  ]");
+		{
+			// On adapte la couleur !!
+			char couleur[10];
+
+			// Mais avant on va regarder si c'est une case dans une zone
+			int taille = 0;
+			if(modele->nombreJoueurs == 2)
+				taille = 2;
+			else
+				taille = 4;
+
+			Couleur color = FAIL;
+
+			for(i = 0; i < taille; i++)
+			{
+				// Si la position est dans une zone de couleur alors on colorie la case
+				if(position_dans_zone(*ptr, &modele->tableau_zone[i]))
+				{
+					color = modele->tableau_zone[i].couleur_zone;
+
+					switch(color)
+					{
+						case ROUGE:
+							sprintf(couleur,"%s", "\033[31m");
+							break;
+
+						case BLEU:
+							sprintf(couleur,"%s", "\033[34m");
+							break;
+
+						case VERT:
+							sprintf(couleur,"%s", "\033[32m");
+							break;
+
+						case JAUNE:
+							sprintf(couleur,"%s", "\033[33m");					
+							break;
+
+						default:
+							break;		
+					}
+				}
+			}
+
+			// Si la case est dans une zone
+			if(color != FAIL)
+			{
+				// On affiche la case de manière colorée à la zone
+				printf("%s", couleur);
+				printf("[  ]");
+
+			}
+			// sinon affichage normal
+			else
+				printf("\033[37m[  ]");
+		}
 	}
 
 	// On remet la couleur par défaut

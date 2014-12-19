@@ -22,7 +22,7 @@
 typedef enum Couleur Couleur;
 enum Couleur
 {
-	ROUGE, BLEU, VERT, JAUNE, BLANC, ORANGE 
+	ROUGE, BLEU, VERT, JAUNE, BLANC, ORANGE, FAIL 
 };
 
 /*

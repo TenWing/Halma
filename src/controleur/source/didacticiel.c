@@ -14,12 +14,13 @@
 #include <vue_plateau.h>
 #include <plateau.h>
 #include <saisie.h>
+#include <mode.h>
 // #################################
 
 
 void didacticiel()
 {
-	Plateau plateau;
+	Modele modele;
 
 	char choix;
 
@@ -35,25 +36,27 @@ void didacticiel()
 		{
 				clean_terminal();
 
-				plateau=plateau_init(2,1);
+				modele=modele_init(2,0,0);
 
 				but_jeu();
 
 				getchar();
 
-				affiche_plateau(&plateau,1);
+				affiche_plateau(&modele, AFFICHAGE);
 
 				printf("\n");
 
-				plateau=plateau_init(1,1);
+				modele=modele_init(2,0,0);
+				modele.plateau=plateau_init(1,1);
 
-				affiche_plateau(&plateau,1);
+				affiche_plateau(&modele,AFFICHAGE);
 
 				printf("\n 		Voilà le joueur jaune à la place exacte du joueur bleu!!\n");
 				printf(" 		Pas le joueur bleu.....\n");
 				printf("		appuyer sur entree pour continuer\n");				
 
 				getchar();
+				clean_terminal();
 
 				didacticiel_principal();
 				choix=recuperer_caractere();
@@ -62,22 +65,23 @@ void didacticiel()
 		{
 				clean_terminal();
 
-				plateau=plateau_init(2,1);
+				modele=modele_init(2,0,0);
+				modele.plateau=plateau_init(2,1);
 
 				deplacements(1);
 
 				printf("\n");
 				printf(" 		appuyer sur entree pour faire défiler la suite\n");
 
-				affiche_plateau(&plateau, 1);
+				affiche_plateau(&modele, 1);
 
 				getchar();
 
-				plateau=plateau_init(5,1);
+				modele.plateau=plateau_init(5,1);
 
 				printf("\n");
 
-				affiche_plateau(&plateau, 1);
+				affiche_plateau(&modele, 1);
 
 				printf("\n");
 				printf(" 		On voit bien que le pion a fait un déplacement simple\n");
@@ -91,62 +95,62 @@ void didacticiel()
 				getchar();
 
 				clean_terminal();
-
-				plateau=plateau_init(6,1);
+				
+				modele.plateau=plateau_init(6,1);
 
 				printf("\n");
 
-				affiche_plateau(&plateau, 1);
+				affiche_plateau(&modele, 1);
 
 				getchar();
 
 				clean_terminal();
 
-				plateau=plateau_init(7,1);
+				modele.plateau=plateau_init(7,1);
 
 				printf("\n");
 
-				affiche_plateau(&plateau, 1);
+				affiche_plateau(&modele, 1);
 
 				getchar();
 
 				clean_terminal();
 
-				plateau=plateau_init(8,1);
+				modele.plateau=plateau_init(8,1);
 
 				printf("\n");
 
-				affiche_plateau(&plateau, 1);
+				affiche_plateau(&modele, 1);
 
 				getchar();
 
 				clean_terminal();
 
-				plateau=plateau_init(9,1);
+				modele.plateau=plateau_init(9,1);
 
 				printf("\n");
 
-				affiche_plateau(&plateau, 1);
+				affiche_plateau(&modele, 1);
 
 				getchar();
 
 				clean_terminal();
 
-				plateau=plateau_init(10,1);
+				modele.plateau=plateau_init(10,1);
 
 				printf("\n");
 
-				affiche_plateau(&plateau, 1);
+				affiche_plateau(&modele, 1);
 
 				getchar();
 
 				clean_terminal();
 
-				plateau=plateau_init(11,1);
+				modele.plateau=plateau_init(11,1);
 
 				printf("\n");
 
-				affiche_plateau(&plateau, 1);
+				affiche_plateau(&modele, 1);
 
 				printf("\n");
 

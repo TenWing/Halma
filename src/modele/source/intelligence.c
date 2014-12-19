@@ -343,25 +343,28 @@ void possibilite_direction(ListePossibilites* liste, Modele* modele, Pion* pion,
 		p = plateau_getVide(plateau, position_direction_saut);
 		if(p != NULL)
 		{
+			// Si oui on regarde la zone ou on doit aller
 			Zone* zone = zone_de_direction(modele, ideale);
+			// Si la direction ou on va correspond à la direction
+			// vers la zone de victoire
 			if(zone != NULL)
-			{
-				if(position_dans_zone(position_direction_saut, zone))
-					poids+=4;
-				else if(ideale == direction)
-					poids+=3;
-				else if(direction_proche(ideale, direction))
-					poids+=2;
-				else if(position_dans_zone(pion->position, zone))
-					poids = 0;
-			}
-			else
 			{
 				if(ideale == direction)
 					poids+=3;
 				else if(direction_proche(ideale, direction))
 					poids+=2;
 			}
+			else
+			{
+				if(ideale == direction)
+					poids+=2;
+				else if(direction_proche(ideale, direction))
+					poids+=2;
+			}
+
+			if(position_dans_zone(pion->position, zone)
+				&& position_bord(pion->position))
+					poids = -10;
 
 			Possibilite possible = possibilite_init(poids, position_direction_saut);
 			liste_possibilites_ajout(liste, possible);			
@@ -373,22 +376,23 @@ void possibilite_direction(ListePossibilites* liste, Modele* modele, Pion* pion,
 			Zone* zone = zone_de_direction(modele, ideale);
 			if(zone != NULL)
 			{
-				if(position_dans_zone(position_direction, zone))
-					poids+=4;
-				else if(ideale == direction)
-					poids+=3;
+				if(ideale == direction)
+					poids++;
 				else if(direction_proche(ideale, direction))
-					poids+=2;
-				else if(position_dans_zone(pion->position, zone))
-					poids = 0;
+					poids++;
 			}
 			else
 			{
 				if(ideale == direction)
-					poids+=3;
+					poids++;
 				else if(direction_proche(ideale, direction))
-					poids+=2;
+					poids++;
 			}
+
+			if(position_dans_zone(pion->position, zone)
+				&& position_bord(pion->position))
+					poids = -10;
+
 		Possibilite possible = possibilite_init(poids, position_direction);
 		liste_possibilites_ajout(liste, possible);
 	}

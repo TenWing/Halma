@@ -321,14 +321,14 @@ void jouer_partie(int jouer)
 		{
 			clean_terminal();
 			affiche_configuration_partie();
-			printf("\nChoix du nombre de joueurs: ");
+			printf("\nChoix du nombre de joueurs (LE NOMBRE TOTAL DE JOUEURS SUR LE PLATEAU DE JEU)\nSi vous voulez jouer avec 4 joueurs taper 4 sinon pour 2 tapez 2 : ");
 			//On demande le nombre de joueur pour initialiser le jeu
 			nombre_joueur = recuperer_entier();
 			printf("\nChoix du nombre d'IA: ");
 			nombre_ia = recuperer_entier();
 		
 			if(nombre_ia <= nombre_joueur && nombre_joueur > 0
-				&& nombre_joueur <= 4)
+				&& (nombre_joueur == 2 || nombre_joueur == 4))
 				continuer = 0;
 
 		}

@@ -70,4 +70,12 @@ int position_egale(Position a, Position b);
 */
 int position_dans_intervalle(Position test, Position borne, Direction direction);
 
+/**
+* \brief	Indique si une position est au bord du plateau
+* \author	Tendry
+* \param	position la testée
+* \return	1 oui 0 non
+*/
+int position_bord(Position position);
+
  #endif

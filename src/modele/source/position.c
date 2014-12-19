@@ -62,3 +62,12 @@ int position_dans_intervalle(Position test, Position borne, Direction direction)
 
 	return 0;
 }
+
+int position_bord(Position position)
+{
+	if(position.x == 0 || position.y == 15
+		|| position.y == 0 || position.y == 15)
+		return 1;
+
+	return 0;
+}

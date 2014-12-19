@@ -27,7 +27,7 @@
  * \param    Plateau plateau
  * \return   Le plateau de jeu
  */
-Plateau plateau_init(int nombre_joueur) 
+Plateau plateau_init(int nombre_joueur, int didacticiel) 
 {
 	Plateau plateau;
 		
@@ -37,40 +37,51 @@ Plateau plateau_init(int nombre_joueur)
 	plateau.vides = liste_positions_init();
 
 	// On initialise avec les fichiers
-	switch(nombre_joueur)
+	if(didacticiel)
 	{
-		case 1 : 
-			plateau.matrice=initMatrice("Didacticiel/didacticiel_1.txt");
-			break;
-		case 2 :
+		switch(nombre_joueur)
+		{
+			case 1 : 
+				plateau.matrice=initMatrice("Didacticiel/didacticiel_1.txt");
+				break;
+			case 2 :
+				plateau.matrice = initMatrice("depart_jeu_halma_2.txt");
+				break;
+			case 4 :
+				plateau.matrice = initMatrice("depart_jeu_halma_4.txt");
+				break;
+			case 5 :
+				plateau.matrice = initMatrice("Didacticiel/didacticiel_2.txt");
+				break;
+			case 6 :
+				plateau.matrice = initMatrice("Didacticiel/didacticiel_3.txt");
+				break;
+			case 7 :
+				plateau.matrice = initMatrice("Didacticiel/didacticiel_4.txt");
+				break;
+			case 8 :
+				plateau.matrice = initMatrice("Didacticiel/didacticiel_5.txt");
+				break;
+			case 9 :
+				plateau.matrice = initMatrice("Didacticiel/didacticiel_6.txt");
+				break;
+			case 10 :
+				plateau.matrice = initMatrice("Didacticiel/didacticiel_7.txt");
+				break;
+			case 11 :
+				plateau.matrice = initMatrice("Didacticiel/didacticiel_8.txt");
+				break;
+			default :
+				break;
+		}
+	}
+	else
+	{
+		if(nombre_joueur == 2)
 			plateau.matrice = initMatrice("depart_jeu_halma_2.txt");
-			break;
-		case 4 :
+		else
 			plateau.matrice = initMatrice("depart_jeu_halma_4.txt");
-			break;
-		case 5 :
-			plateau.matrice = initMatrice("Didacticiel/didacticiel_2.txt");
-			break;
-		case 6 :
-			plateau.matrice = initMatrice("Didacticiel/didacticiel_3.txt");
-			break;
-		case 7 :
-			plateau.matrice = initMatrice("Didacticiel/didacticiel_4.txt");
-			break;
-		case 8 :
-			plateau.matrice = initMatrice("Didacticiel/didacticiel_5.txt");
-			break;
-		case 9 :
-			plateau.matrice = initMatrice("Didacticiel/didacticiel_6.txt");
-			break;
-		case 10 :
-			plateau.matrice = initMatrice("Didacticiel/didacticiel_7.txt");
-			break;
-		case 11 :
-			plateau.matrice = initMatrice("Didacticiel/didacticiel_8.txt");
-			break;
-		default :
-			break;
+			
 	}		
 
 	// On récupère les pions !

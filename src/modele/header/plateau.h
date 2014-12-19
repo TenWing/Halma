@@ -75,7 +75,7 @@ struct Plateau
  * \param    Plateau plateau
  * \return   Le plateau de jeu
  */
-Plateau plateau_init();
+Plateau plateau_init(int nombre_joueur, int didacticiel) ;
 
 /**
  * \brief    Génère la liste des pions

@@ -35,7 +35,7 @@ void didacticiel()
 		{
 				clean_terminal();
 
-				plateau=plateau_init(2);
+				plateau=plateau_init(2,1);
 
 				but_jeu();
 
@@ -45,7 +45,7 @@ void didacticiel()
 
 				printf("\n");
 
-				plateau=plateau_init(1);
+				plateau=plateau_init(1,1);
 
 				affiche_plateau(&plateau,1);
 
@@ -62,7 +62,7 @@ void didacticiel()
 		{
 				clean_terminal();
 
-				plateau=plateau_init(2);
+				plateau=plateau_init(2,1);
 
 				deplacements(1);
 
@@ -73,7 +73,7 @@ void didacticiel()
 
 				getchar();
 
-				plateau=plateau_init(5);
+				plateau=plateau_init(5,1);
 
 				printf("\n");
 
@@ -92,7 +92,7 @@ void didacticiel()
 
 				clean_terminal();
 
-				plateau=plateau_init(6);
+				plateau=plateau_init(6,1);
 
 				printf("\n");
 
@@ -102,7 +102,7 @@ void didacticiel()
 
 				clean_terminal();
 
-				plateau=plateau_init(7);
+				plateau=plateau_init(7,1);
 
 				printf("\n");
 
@@ -112,7 +112,7 @@ void didacticiel()
 
 				clean_terminal();
 
-				plateau=plateau_init(8);
+				plateau=plateau_init(8,1);
 
 				printf("\n");
 
@@ -122,7 +122,7 @@ void didacticiel()
 
 				clean_terminal();
 
-				plateau=plateau_init(9);
+				plateau=plateau_init(9,1);
 
 				printf("\n");
 
@@ -132,7 +132,7 @@ void didacticiel()
 
 				clean_terminal();
 
-				plateau=plateau_init(10);
+				plateau=plateau_init(10,1);
 
 				printf("\n");
 
@@ -142,7 +142,7 @@ void didacticiel()
 
 				clean_terminal();
 
-				plateau=plateau_init(11);
+				plateau=plateau_init(11,1);
 
 				printf("\n");
 

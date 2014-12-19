@@ -28,7 +28,8 @@ Modele modele_init(int nombreJoueurs, int nombreIA, int charge)
 
 	modele.nombreJoueurs = nombreJoueurs;
 	modele.nombreIA = nombreIA;
-	modele.plateau = plateau_init(nombreJoueurs);
+	int nombre_joueurs_total = nombreJoueurs + nombreIA;
+	modele.plateau = plateau_init(nombre_joueurs_total, 0);
 	modele.pile_tours = pileTours_init();
 	modele.joueurJoue = 0;
 

@@ -58,3 +58,46 @@ Direction direction_souhaitee(int pave_numerique)
 
 	return direction;
 }
+
+int direction_proche(Direction masse, Direction test)
+{
+	switch(masse)
+	{
+		case HAUT:
+			if(test == HAUT_DROITE || test == HAUT_GAUCHE)
+				return 1;
+			break;
+		case HAUT_DROITE:
+			if(test == HAUT || test == DROITE)
+				return 1;
+			break;
+		case DROITE:
+			if(test == HAUT_DROITE || test == BAS_DROITE)
+				return 1;
+			break;
+		case BAS_DROITE:
+			if(test == BAS || test == DROITE)
+				return 1;
+			break;		
+		case BAS:
+			if(test == BAS_GAUCHE || test == BAS_DROITE)
+				return 1;
+			break;
+		case BAS_GAUCHE:
+			if(test == BAS || test == GAUCHE)
+				return 1;
+			break;
+		case GAUCHE:
+			if(test == BAS || test == HAUT_GAUCHE)
+				return 1;
+			break;		
+		case HAUT_GAUCHE:
+			if(test == GAUCHE || test == HAUT)
+				return 1;
+			break;
+		default:
+			break;
+	}
+
+	return 0;	
+}

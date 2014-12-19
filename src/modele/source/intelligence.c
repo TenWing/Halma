@@ -342,6 +342,8 @@ void possibilite_direction(ListePossibilites* liste, Plateau* plateau, Pion* pio
 		if(p != NULL)
 		{
 			if(ideale == direction)
+				poids+=3;
+			else if(direction_proche(ideale, direction))
 				poids+=2;
 
 			Possibilite possible = possibilite_init(poids, position_direction_saut);
@@ -352,6 +354,8 @@ void possibilite_direction(ListePossibilites* liste, Plateau* plateau, Pion* pio
 	else
 	{
 		if(ideale == direction)
+				poids+=2;
+		else if(direction_proche(ideale, direction))
 				poids++;
 
 		Possibilite possible = possibilite_init(poids, position_direction);

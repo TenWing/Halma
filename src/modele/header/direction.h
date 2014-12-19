@@ -32,4 +32,12 @@ enum Direction
 
 Direction direction_souhaitee(int pave_numerique);
 
+/**
+* \brief	Indique si la direction testée est proche de celle voulue
+* \author	Tendry
+* \param	masse la direction qui sert à bien tester
+* \param	test la direction testée
+*/
+int direction_proche(Direction masse, Direction test);
+
 #endif

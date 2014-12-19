@@ -138,4 +138,14 @@ Zone zone_init(Couleur couleur, int nombre_joueur);
 */
 int verification_zone(Zone* zone, Joueur* joueur);
 
+/**
+* \brief	Indique si la position se trouve dans la zone
+* \author	Tendry
+* \version	1.0
+* \param	position la position testée
+* \param	la zone testée
+* \return	oui ou non (1 / 0)
+*/
+int position_dans_zone(Position position, Zone* zone);
+
 #endif

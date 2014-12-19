@@ -232,3 +232,17 @@ int verification_zone(Zone* zone, Joueur* joueur)
  	}
 return 0;
 }
+
+int position_dans_zone(Position position, Zone* zone)
+{
+	NoeudPosition* noeud = zone->liste_positions.premier;
+
+	while(noeud != NULL)
+	{
+		if(position_egale(position, noeud->position))
+			return 1;
+		noeud = noeud -> suivant;
+	}
+
+	return 0;
+}

@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <position.h>
+#include <zone.h>
 // ############################
 
 Position position_init(int x, int y)
@@ -33,3 +34,4 @@ int position_egale(Position a, Position b)
 
 	return 0;
 }
+

@@ -379,8 +379,9 @@ void possibilite_direction(ListePossibilites* liste, Modele* modele, Pion* pion,
 					poids+=3;
 				else if(direction_proche(ideale, direction))
 					poids+=2;
-				else if(position_dans_zone(pion->position, zone))
-					poids = 0;
+
+				// if(position_dans_zone(pion->position, zone))
+					// poids = -2;
 			}
 			else
 			{
@@ -388,6 +389,9 @@ void possibilite_direction(ListePossibilites* liste, Modele* modele, Pion* pion,
 					poids+=3;
 				else if(direction_proche(ideale, direction))
 					poids+=2;
+				
+				// if(position_dans_zone(pion->position, zone))
+					// poids = -2;
 			}
 		Possibilite possible = possibilite_init(poids, position_direction);
 		liste_possibilites_ajout(liste, possible);

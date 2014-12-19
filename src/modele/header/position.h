@@ -13,6 +13,8 @@
 #ifndef POSITION_H
 #define POSITION_H
 
+#include <direction.h>
+
 /**
 * \brief Une position est l'association d'une abscisse et d'une ordonnée
 * \auhtor Quentin
@@ -55,5 +57,17 @@ Position position_init(int x, int y);
 * \return	1 si les positions sont égales, 0 sinon
 */
 int position_egale(Position a, Position b);
+
+/**
+* \brief	regarde si une position est comprise dans un intervalle
+			définie par une position autre
+* \author	Tendry
+* \version	1.0
+* \param	test la position testée
+* \param	borne la borne pour l'intervalle
+* \param	direction la direction de l'analyse
+* \return	1 si oui 0 si non
+*/
+int position_dans_intervalle(Position test, Position borne, Direction direction);
 
  #endif

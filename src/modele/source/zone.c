@@ -247,6 +247,9 @@ int position_dans_zone(Position position, Zone* zone)
 	{
 		if(position_egale(position, noeud->position))
 			return 1;
+		else if(position_dans_intervalle(position, noeud->position, zone->zone_direction))
+			return 1;
+
 		noeud = noeud -> suivant;
 	}
 

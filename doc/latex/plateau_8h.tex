@@ -1,0 +1,268 @@
+\hypertarget{plateau_8h}{\section{modele/header/plateau.h File Reference}
+\label{plateau_8h}\index{modele/header/plateau.\-h@{modele/header/plateau.\-h}}
+}
+
+
+Définit le plateau.  
+
+
+{\ttfamily \#include $<$matrice.\-h$>$}\\*
+{\ttfamily \#include $<$pion.\-h$>$}\\*
+{\ttfamily \#include $<$zone.\-h$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_noeud_pion}{Noeud\-Pion}
+\item 
+struct \hyperlink{struct_liste_pions}{Liste\-Pions}
+\item 
+struct \hyperlink{struct_plateau}{Plateau}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{plateau_8h_a59ac8eac346336ede44ebd6441ec008b}{Taille\-\_\-plateau}~16;
+\item 
+\#define \hyperlink{plateau_8h_ae6ad0540d5109a0200f0dde5dc5b4bf6}{T\-A\-I\-L\-L\-E\-\_\-\-M\-A\-X}~1000
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_noeud_pion}{Noeud\-Pion} \hyperlink{plateau_8h_a69e2b8fb38bdf7b1ca1e83c3b558cd25}{Noeud\-Pion}
+\begin{DoxyCompactList}\small\item\em Un élément d'une liste de pions  Quentin. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct_liste_pions}{Liste\-Pions} \hyperlink{plateau_8h_ad624d6f8d2b465562a2b58d1e95e982d}{Liste\-Pions}
+\begin{DoxyCompactList}\small\item\em une liste de pions \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct_plateau}{Plateau} \hyperlink{plateau_8h_a1e65877920c996cedb5fb7908acfef49}{Plateau}
+\begin{DoxyCompactList}\small\item\em Le plateau où se déroule une partie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_plateau}{Plateau} \hyperlink{plateau_8h_a97ca74bbac36c1fafa9f00cdec1c47fd}{plateau\-\_\-init} (int nombre\-\_\-joueur, int \hyperlink{didacticiel_8c_af01d5cdf9d9a910e7d01b80e3f8ced80}{didacticiel})
+\begin{DoxyCompactList}\small\item\em Génère le plateau de jeu. \end{DoxyCompactList}\item 
+\hyperlink{struct_liste_pions}{Liste\-Pions} \hyperlink{plateau_8h_ae29a2374ec0fda46a3695cfbe500eb86}{liste\-\_\-pions\-\_\-init} ()
+\begin{DoxyCompactList}\small\item\em Génère la liste des pions. \end{DoxyCompactList}\item 
+void \hyperlink{plateau_8h_a91e9c5ddc5114544eb3740719143b6a9}{liste\-\_\-pions\-\_\-ajout} (\hyperlink{struct_liste_pions}{Liste\-Pions} $\ast$liste, \hyperlink{struct_pion}{Pion} pion)
+\begin{DoxyCompactList}\small\item\em Ajoute un pion dans la liste des pions. \end{DoxyCompactList}\item 
+\hyperlink{struct_pion}{Pion} \hyperlink{plateau_8h_ace72ded8fd65cc285d4d4db6ce41a3d8}{plateau\-\_\-getpion} (\hyperlink{struct_plateau}{Plateau} $\ast$plateau, \hyperlink{struct_position}{Position} position)
+\begin{DoxyCompactList}\small\item\em Vérifie si la position choisie est un pion ou non. \end{DoxyCompactList}\item 
+\hyperlink{struct_position}{Position} $\ast$ \hyperlink{plateau_8h_a5f17f739b124dc61a08b62a0db6f7aca}{plateau\-\_\-get\-Vide} (\hyperlink{struct_plateau}{Plateau} $\ast$plateau, \hyperlink{struct_position}{Position} position)
+\begin{DoxyCompactList}\small\item\em Renvoie un accès direct à la position vide donnée. \end{DoxyCompactList}\item 
+int \hyperlink{plateau_8h_a04d3a6e7deea449853d6cfd2277a05ab}{position\-\_\-hors\-\_\-plateau} (\hyperlink{struct_position}{Position} $\ast$position, \hyperlink{struct_plateau}{Plateau} $\ast$plateau)
+\begin{DoxyCompactList}\small\item\em indique si une position est en dehors de la zone de jeu \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Définit le plateau. \begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+21 novembre 2014
+\end{DoxyDate}
+Définit une matrice pour le plateau 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{plateau_8h_ae6ad0540d5109a0200f0dde5dc5b4bf6}{\index{plateau.\-h@{plateau.\-h}!T\-A\-I\-L\-L\-E\-\_\-\-M\-A\-X@{T\-A\-I\-L\-L\-E\-\_\-\-M\-A\-X}}
+\index{T\-A\-I\-L\-L\-E\-\_\-\-M\-A\-X@{T\-A\-I\-L\-L\-E\-\_\-\-M\-A\-X}!plateau.h@{plateau.\-h}}
+\subsubsection[{T\-A\-I\-L\-L\-E\-\_\-\-M\-A\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-L\-E\-\_\-\-M\-A\-X~1000}}\label{plateau_8h_ae6ad0540d5109a0200f0dde5dc5b4bf6}
+\hypertarget{plateau_8h_a59ac8eac346336ede44ebd6441ec008b}{\index{plateau.\-h@{plateau.\-h}!Taille\-\_\-plateau@{Taille\-\_\-plateau}}
+\index{Taille\-\_\-plateau@{Taille\-\_\-plateau}!plateau.h@{plateau.\-h}}
+\subsubsection[{Taille\-\_\-plateau}]{\setlength{\rightskip}{0pt plus 5cm}\#define Taille\-\_\-plateau~16;}}\label{plateau_8h_a59ac8eac346336ede44ebd6441ec008b}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{plateau_8h_ad624d6f8d2b465562a2b58d1e95e982d}{\index{plateau.\-h@{plateau.\-h}!Liste\-Pions@{Liste\-Pions}}
+\index{Liste\-Pions@{Liste\-Pions}!plateau.h@{plateau.\-h}}
+\subsubsection[{Liste\-Pions}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Liste\-Pions} {\bf Liste\-Pions}}}\label{plateau_8h_ad624d6f8d2b465562a2b58d1e95e982d}
+
+
+une liste de pions 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{plateau_8h_a69e2b8fb38bdf7b1ca1e83c3b558cd25}{\index{plateau.\-h@{plateau.\-h}!Noeud\-Pion@{Noeud\-Pion}}
+\index{Noeud\-Pion@{Noeud\-Pion}!plateau.h@{plateau.\-h}}
+\subsubsection[{Noeud\-Pion}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Noeud\-Pion} {\bf Noeud\-Pion}}}\label{plateau_8h_a69e2b8fb38bdf7b1ca1e83c3b558cd25}
+
+
+Un élément d'une liste de pions  Quentin. 
+
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{plateau_8h_a1e65877920c996cedb5fb7908acfef49}{\index{plateau.\-h@{plateau.\-h}!Plateau@{Plateau}}
+\index{Plateau@{Plateau}!plateau.h@{plateau.\-h}}
+\subsubsection[{Plateau}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Plateau} {\bf Plateau}}}\label{plateau_8h_a1e65877920c996cedb5fb7908acfef49}
+
+
+Le plateau où se déroule une partie. 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{plateau_8h_a91e9c5ddc5114544eb3740719143b6a9}{\index{plateau.\-h@{plateau.\-h}!liste\-\_\-pions\-\_\-ajout@{liste\-\_\-pions\-\_\-ajout}}
+\index{liste\-\_\-pions\-\_\-ajout@{liste\-\_\-pions\-\_\-ajout}!plateau.h@{plateau.\-h}}
+\subsubsection[{liste\-\_\-pions\-\_\-ajout}]{\setlength{\rightskip}{0pt plus 5cm}void liste\-\_\-pions\-\_\-ajout (
+\begin{DoxyParamCaption}
+\item[{{\bf Liste\-Pions} $\ast$}]{liste, }
+\item[{{\bf Pion}}]{pion}
+\end{DoxyParamCaption}
+)}}\label{plateau_8h_a91e9c5ddc5114544eb3740719143b6a9}
+
+
+Ajoute un pion dans la liste des pions. 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{plateau_8h_ae29a2374ec0fda46a3695cfbe500eb86}{\index{plateau.\-h@{plateau.\-h}!liste\-\_\-pions\-\_\-init@{liste\-\_\-pions\-\_\-init}}
+\index{liste\-\_\-pions\-\_\-init@{liste\-\_\-pions\-\_\-init}!plateau.h@{plateau.\-h}}
+\subsubsection[{liste\-\_\-pions\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Liste\-Pions} liste\-\_\-pions\-\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{plateau_8h_ae29a2374ec0fda46a3695cfbe500eb86}
+
+
+Génère la liste des pions. 
+
+Permet de créer la liste des pions de l'ensemble du tableau \begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+La Liste des pions 
+\end{DoxyReturn}
+\hypertarget{plateau_8h_ace72ded8fd65cc285d4d4db6ce41a3d8}{\index{plateau.\-h@{plateau.\-h}!plateau\-\_\-getpion@{plateau\-\_\-getpion}}
+\index{plateau\-\_\-getpion@{plateau\-\_\-getpion}!plateau.h@{plateau.\-h}}
+\subsubsection[{plateau\-\_\-getpion}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pion} plateau\-\_\-getpion (
+\begin{DoxyParamCaption}
+\item[{{\bf Plateau} $\ast$}]{plateau, }
+\item[{{\bf Position}}]{position}
+\end{DoxyParamCaption}
+)}}\label{plateau_8h_ace72ded8fd65cc285d4d4db6ce41a3d8}
+
+
+Vérifie si la position choisie est un pion ou non. 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{struct_position}{Position}} & la position choisie \\
+\hline
+{\em plateau} & le plateau où se situe l'ensemble des pions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+Un pion \-: soit un pion fictif avec des donnees seulement utiles pour le développeur, soit un pion du jeu 
+\end{DoxyReturn}
+\hypertarget{plateau_8h_a5f17f739b124dc61a08b62a0db6f7aca}{\index{plateau.\-h@{plateau.\-h}!plateau\-\_\-get\-Vide@{plateau\-\_\-get\-Vide}}
+\index{plateau\-\_\-get\-Vide@{plateau\-\_\-get\-Vide}!plateau.h@{plateau.\-h}}
+\subsubsection[{plateau\-\_\-get\-Vide}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position}$\ast$ plateau\-\_\-get\-Vide (
+\begin{DoxyParamCaption}
+\item[{{\bf Plateau} $\ast$}]{plateau, }
+\item[{{\bf Position}}]{position}
+\end{DoxyParamCaption}
+)}}\label{plateau_8h_a5f17f739b124dc61a08b62a0db6f7aca}
+
+
+Renvoie un accès direct à la position vide donnée. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em plateau} & le plateau contenant les positions vides \\
+\hline
+{\em position} & les coordonnées cherchées \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un pointeur si il y a eu résultat, N\-U\-L\-L si la position n'est pas vide 
+\end{DoxyReturn}
+\hypertarget{plateau_8h_a97ca74bbac36c1fafa9f00cdec1c47fd}{\index{plateau.\-h@{plateau.\-h}!plateau\-\_\-init@{plateau\-\_\-init}}
+\index{plateau\-\_\-init@{plateau\-\_\-init}!plateau.h@{plateau.\-h}}
+\subsubsection[{plateau\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Plateau} plateau\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{int}]{nombre\-\_\-joueur, }
+\item[{int}]{didacticiel}
+\end{DoxyParamCaption}
+)}}\label{plateau_8h_a97ca74bbac36c1fafa9f00cdec1c47fd}
+
+
+Génère le plateau de jeu. 
+
+Permet de créer le plateau de jeu à partir des fonctions de la librairie matrice
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{struct_plateau}{Plateau}} & plateau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le plateau de jeu
+\end{DoxyReturn}
+Permet de créer le plateau de jeu à partir des fonctions de la librairie matrice 
+\begin{DoxyParams}{Parameters}
+{\em int} & nombre\-\_\-joueur \\
+\hline
+{\em \hyperlink{struct_plateau}{Plateau}} & plateau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le plateau de jeu 
+\end{DoxyReturn}
+\hypertarget{plateau_8h_a04d3a6e7deea449853d6cfd2277a05ab}{\index{plateau.\-h@{plateau.\-h}!position\-\_\-hors\-\_\-plateau@{position\-\_\-hors\-\_\-plateau}}
+\index{position\-\_\-hors\-\_\-plateau@{position\-\_\-hors\-\_\-plateau}!plateau.h@{plateau.\-h}}
+\subsubsection[{position\-\_\-hors\-\_\-plateau}]{\setlength{\rightskip}{0pt plus 5cm}int position\-\_\-hors\-\_\-plateau (
+\begin{DoxyParamCaption}
+\item[{{\bf Position} $\ast$}]{position, }
+\item[{{\bf Plateau} $\ast$}]{plateau}
+\end{DoxyParamCaption}
+)}}\label{plateau_8h_a04d3a6e7deea449853d6cfd2277a05ab}
+
+
+indique si une position est en dehors de la zone de jeu 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pion} & la position testée \\
+\hline
+{\em plateau} & le plateau de jeu testé \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 si oui hors limite, 0 sinon 
+\end{DoxyReturn}

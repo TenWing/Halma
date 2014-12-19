@@ -1,0 +1,301 @@
+\hypertarget{coup_8h}{\section{modele/header/coup.h File Reference}
+\label{coup_8h}\index{modele/header/coup.\-h@{modele/header/coup.\-h}}
+}
+
+
+Définit la structure d'un coup, mais aussi d'une liste de coups.  
+
+
+{\ttfamily \#include $<$pion.\-h$>$}\\*
+{\ttfamily \#include $<$position.\-h$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_coup}{Coup}
+\item 
+struct \hyperlink{struct_noeud_coup}{Noeud\-Coup}
+\item 
+struct \hyperlink{struct_pile_coups}{Pile\-Coups}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_coup}{Coup} \hyperlink{coup_8h_a111a326d7d03b95c1c21bb3bd35cb98f}{Coup}
+\begin{DoxyCompactList}\small\item\em Un coup peut se résumer en un déplacement d'un pion. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct_noeud_coup}{Noeud\-Coup} \hyperlink{coup_8h_ae3189e1dd6b1647f366ce8bc52d7e05e}{Noeud\-Coup}
+\begin{DoxyCompactList}\small\item\em un noeud d'une pile de coups \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct_pile_coups}{Pile\-Coups} \hyperlink{coup_8h_a4a750067ecc34562cf1e37b1a6cf6c88}{Pile\-Coups}
+\begin{DoxyCompactList}\small\item\em Une pile de coups. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_coup}{Coup} \hyperlink{coup_8h_a1b8a938474857c78839d6ad67cb55eb1}{coup\-\_\-init} (\hyperlink{struct_pion}{Pion} $\ast$p, \hyperlink{struct_position}{Position} pos)
+\begin{DoxyCompactList}\small\item\em initialise un coup \end{DoxyCompactList}\item 
+\hyperlink{struct_coup}{Coup} \hyperlink{coup_8h_ac366f09ea8f695d750bb91dc14ff62bc}{coup\-\_\-copier} (\hyperlink{struct_coup}{Coup} coup)
+\begin{DoxyCompactList}\small\item\em Copie un coup. \end{DoxyCompactList}\item 
+\hyperlink{struct_pile_coups}{Pile\-Coups} \hyperlink{coup_8h_af1048de8c16aba3299ccda0021ac8ec9}{pile\-Coups\-\_\-init} ()
+\begin{DoxyCompactList}\small\item\em initialise une pile de coups \end{DoxyCompactList}\item 
+\hyperlink{struct_pile_coups}{Pile\-Coups} \hyperlink{coup_8h_a96edad87d5772b9d44a402e8be2ebfcf}{pile\-Coups\-\_\-copier} (\hyperlink{struct_pile_coups}{Pile\-Coups} $\ast$pile)
+\begin{DoxyCompactList}\small\item\em Copie une pile de coups. \end{DoxyCompactList}\item 
+\hyperlink{struct_coup}{Coup} \hyperlink{coup_8h_a77b2857873343e9f3febbb54e8cb6ad9}{pile\-Coups\-\_\-depiler} (\hyperlink{struct_pile_coups}{Pile\-Coups} $\ast$pile)
+\begin{DoxyCompactList}\small\item\em dépile le dernier élément des coups \end{DoxyCompactList}\item 
+void \hyperlink{coup_8h_a8117776039e88aabe0b3b33c9c126340}{pile\-Coups\-\_\-ajouter\-Coup} (\hyperlink{struct_pile_coups}{Pile\-Coups} $\ast$pile, \hyperlink{struct_coup}{Coup} coup)
+\begin{DoxyCompactList}\small\item\em ajoute un coup en haut de la pile \end{DoxyCompactList}\item 
+int \hyperlink{coup_8h_a0ccc3623e71f4b1dce29bf36f8d775f7}{pile\-Coups\-\_\-taille} (\hyperlink{struct_pile_coups}{Pile\-Coups} $\ast$pile)
+\begin{DoxyCompactList}\small\item\em calcule la taille d'une pile de coups \end{DoxyCompactList}\item 
+void \hyperlink{coup_8h_ad566092f1eb1aacd84986247ade796d2}{sauvegarde\-Coup} (\hyperlink{struct_coup}{Coup} coup, F\-I\-L\-E $\ast$emplacement\-\_\-fichier\-\_\-sauvegarde)
+\begin{DoxyCompactList}\small\item\em sauvegarde un coup \end{DoxyCompactList}\item 
+\hyperlink{struct_coup}{Coup} \hyperlink{coup_8h_aa41a3559261dbf476c1d151d9797a6ed}{charger\-Coup} (F\-I\-L\-E $\ast$emplacement\-\_\-fichier)
+\begin{DoxyCompactList}\small\item\em charge un coup \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Définit la structure d'un coup, mais aussi d'une liste de coups. \begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+21 novembre 2014
+\end{DoxyDate}
+Un coup est considéré comme étant un déplacement de pion, dans le jeu de l'Halma, un pion peut se déplacer plusieurs fois dans un tour en sautant d'autre pions et en enchaînant les sauts, chaque étape intermédiaire est un coup. Une liste de coups est considérée comme une pile de coups, puisque lorsqu'on dépile le dernier l'élément le plus haut de la pile est sensé être l'avant dernier coup. 
+
+\subsection{Typedef Documentation}
+\hypertarget{coup_8h_a111a326d7d03b95c1c21bb3bd35cb98f}{\index{coup.\-h@{coup.\-h}!Coup@{Coup}}
+\index{Coup@{Coup}!coup.h@{coup.\-h}}
+\subsubsection[{Coup}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Coup} {\bf Coup}}}\label{coup_8h_a111a326d7d03b95c1c21bb3bd35cb98f}
+
+
+Un coup peut se résumer en un déplacement d'un pion. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{coup_8h_ae3189e1dd6b1647f366ce8bc52d7e05e}{\index{coup.\-h@{coup.\-h}!Noeud\-Coup@{Noeud\-Coup}}
+\index{Noeud\-Coup@{Noeud\-Coup}!coup.h@{coup.\-h}}
+\subsubsection[{Noeud\-Coup}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Noeud\-Coup} {\bf Noeud\-Coup}}}\label{coup_8h_ae3189e1dd6b1647f366ce8bc52d7e05e}
+
+
+un noeud d'une pile de coups 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{coup_8h_a4a750067ecc34562cf1e37b1a6cf6c88}{\index{coup.\-h@{coup.\-h}!Pile\-Coups@{Pile\-Coups}}
+\index{Pile\-Coups@{Pile\-Coups}!coup.h@{coup.\-h}}
+\subsubsection[{Pile\-Coups}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Pile\-Coups} {\bf Pile\-Coups}}}\label{coup_8h_a4a750067ecc34562cf1e37b1a6cf6c88}
+
+
+Une pile de coups. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+la pile de coups contient plusieurs noeud contenant les coups 
+
+\subsection{Function Documentation}
+\hypertarget{coup_8h_aa41a3559261dbf476c1d151d9797a6ed}{\index{coup.\-h@{coup.\-h}!charger\-Coup@{charger\-Coup}}
+\index{charger\-Coup@{charger\-Coup}!coup.h@{coup.\-h}}
+\subsubsection[{charger\-Coup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Coup} charger\-Coup (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{emplacement\-\_\-fichier}
+\end{DoxyParamCaption}
+)}}\label{coup_8h_aa41a3559261dbf476c1d151d9797a6ed}
+
+
+charge un coup 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em emplacement\-\_\-fichier\-\_\-sauvegarde} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le coup chargé 
+\end{DoxyReturn}
+\hypertarget{coup_8h_ac366f09ea8f695d750bb91dc14ff62bc}{\index{coup.\-h@{coup.\-h}!coup\-\_\-copier@{coup\-\_\-copier}}
+\index{coup\-\_\-copier@{coup\-\_\-copier}!coup.h@{coup.\-h}}
+\subsubsection[{coup\-\_\-copier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Coup} coup\-\_\-copier (
+\begin{DoxyParamCaption}
+\item[{{\bf Coup}}]{coup}
+\end{DoxyParamCaption}
+)}}\label{coup_8h_ac366f09ea8f695d750bb91dc14ff62bc}
+
+
+Copie un coup. 
+
+\hypertarget{coup_8h_a1b8a938474857c78839d6ad67cb55eb1}{\index{coup.\-h@{coup.\-h}!coup\-\_\-init@{coup\-\_\-init}}
+\index{coup\-\_\-init@{coup\-\_\-init}!coup.h@{coup.\-h}}
+\subsubsection[{coup\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Coup} coup\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf Pion} $\ast$}]{p, }
+\item[{{\bf Position}}]{pos}
+\end{DoxyParamCaption}
+)}}\label{coup_8h_a1b8a938474857c78839d6ad67cb55eb1}
+
+
+initialise un coup 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & le pointeur du pion qui concerne le coup \\
+\hline
+{\em pos} & la position qu'occupe le pion au début du coup \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+renvoie un \hyperlink{struct_coup}{Coup} bien initialisé 
+\end{DoxyReturn}
+\hypertarget{coup_8h_a8117776039e88aabe0b3b33c9c126340}{\index{coup.\-h@{coup.\-h}!pile\-Coups\-\_\-ajouter\-Coup@{pile\-Coups\-\_\-ajouter\-Coup}}
+\index{pile\-Coups\-\_\-ajouter\-Coup@{pile\-Coups\-\_\-ajouter\-Coup}!coup.h@{coup.\-h}}
+\subsubsection[{pile\-Coups\-\_\-ajouter\-Coup}]{\setlength{\rightskip}{0pt plus 5cm}void pile\-Coups\-\_\-ajouter\-Coup (
+\begin{DoxyParamCaption}
+\item[{{\bf Pile\-Coups} $\ast$}]{pile, }
+\item[{{\bf Coup}}]{coup}
+\end{DoxyParamCaption}
+)}}\label{coup_8h_a8117776039e88aabe0b3b33c9c126340}
+
+
+ajoute un coup en haut de la pile 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pile} & la pile de coups \\
+\hline
+{\em coup} & le coup à ajouter \\
+\hline
+\end{DoxyParams}
+\hypertarget{coup_8h_a96edad87d5772b9d44a402e8be2ebfcf}{\index{coup.\-h@{coup.\-h}!pile\-Coups\-\_\-copier@{pile\-Coups\-\_\-copier}}
+\index{pile\-Coups\-\_\-copier@{pile\-Coups\-\_\-copier}!coup.h@{coup.\-h}}
+\subsubsection[{pile\-Coups\-\_\-copier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pile\-Coups} pile\-Coups\-\_\-copier (
+\begin{DoxyParamCaption}
+\item[{{\bf Pile\-Coups} $\ast$}]{pile}
+\end{DoxyParamCaption}
+)}}\label{coup_8h_a96edad87d5772b9d44a402e8be2ebfcf}
+
+
+Copie une pile de coups. 
+
+\hypertarget{coup_8h_a77b2857873343e9f3febbb54e8cb6ad9}{\index{coup.\-h@{coup.\-h}!pile\-Coups\-\_\-depiler@{pile\-Coups\-\_\-depiler}}
+\index{pile\-Coups\-\_\-depiler@{pile\-Coups\-\_\-depiler}!coup.h@{coup.\-h}}
+\subsubsection[{pile\-Coups\-\_\-depiler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Coup} pile\-Coups\-\_\-depiler (
+\begin{DoxyParamCaption}
+\item[{{\bf Pile\-Coups} $\ast$}]{pile}
+\end{DoxyParamCaption}
+)}}\label{coup_8h_a77b2857873343e9f3febbb54e8cb6ad9}
+
+
+dépile le dernier élément des coups 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pile} & la pile de coups \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le coup en haut de la pile 
+\end{DoxyReturn}
+\hypertarget{coup_8h_af1048de8c16aba3299ccda0021ac8ec9}{\index{coup.\-h@{coup.\-h}!pile\-Coups\-\_\-init@{pile\-Coups\-\_\-init}}
+\index{pile\-Coups\-\_\-init@{pile\-Coups\-\_\-init}!coup.h@{coup.\-h}}
+\subsubsection[{pile\-Coups\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pile\-Coups} pile\-Coups\-\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{coup_8h_af1048de8c16aba3299ccda0021ac8ec9}
+
+
+initialise une pile de coups 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+Une pile de coups initialisée 
+\end{DoxyReturn}
+\hypertarget{coup_8h_a0ccc3623e71f4b1dce29bf36f8d775f7}{\index{coup.\-h@{coup.\-h}!pile\-Coups\-\_\-taille@{pile\-Coups\-\_\-taille}}
+\index{pile\-Coups\-\_\-taille@{pile\-Coups\-\_\-taille}!coup.h@{coup.\-h}}
+\subsubsection[{pile\-Coups\-\_\-taille}]{\setlength{\rightskip}{0pt plus 5cm}int pile\-Coups\-\_\-taille (
+\begin{DoxyParamCaption}
+\item[{{\bf Pile\-Coups} $\ast$}]{pile}
+\end{DoxyParamCaption}
+)}}\label{coup_8h_a0ccc3623e71f4b1dce29bf36f8d775f7}
+
+
+calcule la taille d'une pile de coups 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pile} & la pile mesurée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la taille de la pile 
+\end{DoxyReturn}
+\hypertarget{coup_8h_ad566092f1eb1aacd84986247ade796d2}{\index{coup.\-h@{coup.\-h}!sauvegarde\-Coup@{sauvegarde\-Coup}}
+\index{sauvegarde\-Coup@{sauvegarde\-Coup}!coup.h@{coup.\-h}}
+\subsubsection[{sauvegarde\-Coup}]{\setlength{\rightskip}{0pt plus 5cm}void sauvegarde\-Coup (
+\begin{DoxyParamCaption}
+\item[{{\bf Coup}}]{coup, }
+\item[{F\-I\-L\-E $\ast$}]{emplacement\-\_\-fichier\-\_\-sauvegarde}
+\end{DoxyParamCaption}
+)}}\label{coup_8h_ad566092f1eb1aacd84986247ade796d2}
+
+
+sauvegarde un coup 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{struct_coup}{Coup}} & le coup à sauvegarder \\
+\hline
+{\em emplacement\-\_\-fichier\-\_\-sauvegarde} & \\
+\hline
+\end{DoxyParams}

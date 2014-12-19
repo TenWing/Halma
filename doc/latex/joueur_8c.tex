@@ -1,0 +1,151 @@
+\hypertarget{joueur_8c}{\section{modele/source/joueur.c File Reference}
+\label{joueur_8c}\index{modele/source/joueur.\-c@{modele/source/joueur.\-c}}
+}
+
+
+Définit le code source des fonctions du joueur.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$joueur.\-h$>$}\\*
+{\ttfamily \#include $<$plateau.\-h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_joueur}{Joueur} \hyperlink{joueur_8c_a61bccd9124d0ce042fbc6075fe7740d0}{joueur\-\_\-init} (\hyperlink{struct_plateau}{Plateau} $\ast$plateau, \hyperlink{couleur_8h_aa304d0ca681f782b1d7735da33037dd7}{Couleur} couleur)
+\begin{DoxyCompactList}\small\item\em initialise un joueur à partir de sa couleur \end{DoxyCompactList}\item 
+\hyperlink{struct_liste_reference_pions}{Liste\-Reference\-Pions} \hyperlink{joueur_8c_a2d5b338fbb8370e0e89268cd38463771}{liste\-\_\-references\-\_\-pions\-\_\-init} ()
+\begin{DoxyCompactList}\small\item\em initialise une liste de références vers les pions \end{DoxyCompactList}\item 
+void \hyperlink{joueur_8c_adcc155ebb823b2c044e7e7028306102b}{liste\-\_\-references\-\_\-pions\-\_\-ajout} (\hyperlink{struct_liste_reference_pions}{Liste\-Reference\-Pions} $\ast$liste, \hyperlink{struct_pion}{Pion} $\ast$pion)
+\begin{DoxyCompactList}\small\item\em ajoute une référence vers un pion à la liste \end{DoxyCompactList}\item 
+\hyperlink{struct_pion}{Pion} $\ast$ \hyperlink{joueur_8c_af82657674e5ab983cb8d5fbbe8f9acc9}{joueur\-\_\-get\-\_\-reference\-\_\-pion} (\hyperlink{struct_joueur}{Joueur} $\ast$joueur, int identifiant)
+\begin{DoxyCompactList}\small\item\em renvoie la référence d'un pion, si elle est nulle le joueur n'a pas ce pion \end{DoxyCompactList}\item 
+int \hyperlink{joueur_8c_aba5e6ae3aeb3b98aa1a0079fae3e5cca}{joueur\-\_\-nombre\-\_\-pions} (\hyperlink{struct_joueur}{Joueur} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em renvoie le nombre de pion qu'à un joueur \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Définit le code source des fonctions du joueur. \begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+29 Novembre 2014 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{joueur_8c_af82657674e5ab983cb8d5fbbe8f9acc9}{\index{joueur.\-c@{joueur.\-c}!joueur\-\_\-get\-\_\-reference\-\_\-pion@{joueur\-\_\-get\-\_\-reference\-\_\-pion}}
+\index{joueur\-\_\-get\-\_\-reference\-\_\-pion@{joueur\-\_\-get\-\_\-reference\-\_\-pion}!joueur.c@{joueur.\-c}}
+\subsubsection[{joueur\-\_\-get\-\_\-reference\-\_\-pion}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pion}$\ast$ joueur\-\_\-get\-\_\-reference\-\_\-pion (
+\begin{DoxyParamCaption}
+\item[{{\bf Joueur} $\ast$}]{joueur, }
+\item[{int}]{identifiant}
+\end{DoxyParamCaption}
+)}}\label{joueur_8c_af82657674e5ab983cb8d5fbbe8f9acc9}
+
+
+renvoie la référence d'un pion, si elle est nulle le joueur n'a pas ce pion 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em Joueur$\ast$} & joueur Un joueur du jeu \\
+\hline
+{\em int} & indentifiant un entier qui est l'identifiant d'un pion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{joueur_8c_a61bccd9124d0ce042fbc6075fe7740d0}{\index{joueur.\-c@{joueur.\-c}!joueur\-\_\-init@{joueur\-\_\-init}}
+\index{joueur\-\_\-init@{joueur\-\_\-init}!joueur.c@{joueur.\-c}}
+\subsubsection[{joueur\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Joueur} joueur\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf Plateau} $\ast$}]{plateau, }
+\item[{{\bf Couleur}}]{couleur}
+\end{DoxyParamCaption}
+)}}\label{joueur_8c_a61bccd9124d0ce042fbc6075fe7740d0}
+
+
+initialise un joueur à partir de sa couleur 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em plateau} & le plateau qui contient tout \\
+\hline
+{\em couleur} & la futur couleur du joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un joueur initialisé 
+\end{DoxyReturn}
+\hypertarget{joueur_8c_aba5e6ae3aeb3b98aa1a0079fae3e5cca}{\index{joueur.\-c@{joueur.\-c}!joueur\-\_\-nombre\-\_\-pions@{joueur\-\_\-nombre\-\_\-pions}}
+\index{joueur\-\_\-nombre\-\_\-pions@{joueur\-\_\-nombre\-\_\-pions}!joueur.c@{joueur.\-c}}
+\subsubsection[{joueur\-\_\-nombre\-\_\-pions}]{\setlength{\rightskip}{0pt plus 5cm}int joueur\-\_\-nombre\-\_\-pions (
+\begin{DoxyParamCaption}
+\item[{{\bf Joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{joueur_8c_aba5e6ae3aeb3b98aa1a0079fae3e5cca}
+
+
+renvoie le nombre de pion qu'à un joueur 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em Joueur$\ast$} & joueur Un joueur du jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{joueur_8c_adcc155ebb823b2c044e7e7028306102b}{\index{joueur.\-c@{joueur.\-c}!liste\-\_\-references\-\_\-pions\-\_\-ajout@{liste\-\_\-references\-\_\-pions\-\_\-ajout}}
+\index{liste\-\_\-references\-\_\-pions\-\_\-ajout@{liste\-\_\-references\-\_\-pions\-\_\-ajout}!joueur.c@{joueur.\-c}}
+\subsubsection[{liste\-\_\-references\-\_\-pions\-\_\-ajout}]{\setlength{\rightskip}{0pt plus 5cm}void liste\-\_\-references\-\_\-pions\-\_\-ajout (
+\begin{DoxyParamCaption}
+\item[{{\bf Liste\-Reference\-Pions} $\ast$}]{liste, }
+\item[{{\bf Pion} $\ast$}]{pion}
+\end{DoxyParamCaption}
+)}}\label{joueur_8c_adcc155ebb823b2c044e7e7028306102b}
+
+
+ajoute une référence vers un pion à la liste 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em liste} & la liste modifiée \\
+\hline
+{\em pion} & la référence ajoutée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{joueur_8c_a2d5b338fbb8370e0e89268cd38463771}{\index{joueur.\-c@{joueur.\-c}!liste\-\_\-references\-\_\-pions\-\_\-init@{liste\-\_\-references\-\_\-pions\-\_\-init}}
+\index{liste\-\_\-references\-\_\-pions\-\_\-init@{liste\-\_\-references\-\_\-pions\-\_\-init}!joueur.c@{joueur.\-c}}
+\subsubsection[{liste\-\_\-references\-\_\-pions\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Liste\-Reference\-Pions} liste\-\_\-references\-\_\-pions\-\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{joueur_8c_a2d5b338fbb8370e0e89268cd38463771}
+
+
+initialise une liste de références vers les pions 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+une liste initialisée 
+\end{DoxyReturn}

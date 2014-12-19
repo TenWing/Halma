@@ -1,0 +1,295 @@
+\hypertarget{modele_8c}{\section{modele/source/modele.c File Reference}
+\label{modele_8c}\index{modele/source/modele.\-c@{modele/source/modele.\-c}}
+}
+
+
+Contient le code source des fonctions du modèle.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$modele.\-h$>$}\\*
+{\ttfamily \#include $<$plateau.\-h$>$}\\*
+{\ttfamily \#include $<$tour.\-h$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_modele}{Modele} \hyperlink{modele_8c_aa24b3c726cdfbd3dd7a651c0e59915c1}{modele\-\_\-init} (int nombre\-Joueurs, int nombre\-I\-A, int charge)
+\begin{DoxyCompactList}\small\item\em initialise le modèle \end{DoxyCompactList}\item 
+void \hyperlink{modele_8c_a452796e926e080e648c107235f20854d}{commencer\-\_\-tour} (\hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{struct_pion}{Pion} $\ast$pion)
+\begin{DoxyCompactList}\small\item\em Commence un tour de jeu. \end{DoxyCompactList}\item 
+void \hyperlink{modele_8c_a684e2c150f914c05b02dc06a339b1500}{fin\-\_\-tour} (\hyperlink{struct_pion}{Pion} $\ast$$\ast$pion)
+\begin{DoxyCompactList}\small\item\em Finit un tour de jeu. \end{DoxyCompactList}\item 
+void \hyperlink{modele_8c_ab011ffaebf0d5fc67acbd77c0a938fda}{annuler\-\_\-coup} (\hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{struct_pion}{Pion} $\ast$pion)
+\begin{DoxyCompactList}\small\item\em Annule un coup dans le modèle. \end{DoxyCompactList}\item 
+void \hyperlink{modele_8c_a7f26412f54737c8ece6d756d137adfae}{annuler\-\_\-tour} (\hyperlink{struct_modele}{Modele} $\ast$modele)
+\begin{DoxyCompactList}\small\item\em Annule un tour dans le modèle. \end{DoxyCompactList}\item 
+int \hyperlink{modele_8c_a4201604ba2e3147efb0bcfeb033cfb28}{jouer\-\_\-coup} (\hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{struct_pion}{Pion} $\ast$pion, \hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} direction)
+\begin{DoxyCompactList}\small\item\em Joue un coup, cad fait un déplacement. \end{DoxyCompactList}\item 
+void \hyperlink{modele_8c_afece8200fead6091574059e182d94f8c}{sauvegarder\-Modele} (\hyperlink{struct_modele}{Modele} $\ast$modele, F\-I\-L\-E $\ast$emplacement\-\_\-fichier\-\_\-sauvegarde)
+\begin{DoxyCompactList}\small\item\em Sauvegarde le modele. \end{DoxyCompactList}\item 
+\hyperlink{struct_pion}{Pion} $\ast$ \hyperlink{modele_8c_aea1314a272bef0da7661fd117bb2b19d}{modele\-\_\-get\-\_\-reference\-\_\-pion} (\hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{struct_pion}{Pion} pion)
+\begin{DoxyCompactList}\small\item\em charge le modele \end{DoxyCompactList}\item 
+void \hyperlink{modele_8c_ab9c12fd58072934ca098ed6682942b26}{charger\-\_\-tours} (F\-I\-L\-E $\ast$fp, \hyperlink{struct_modele}{Modele} $\ast$modele)
+\begin{DoxyCompactList}\small\item\em charge les tours \end{DoxyCompactList}\item 
+\hyperlink{struct_zone}{Zone} $\ast$ \hyperlink{modele_8c_a3b46821a4781d68da13d80b1f53cab65}{zone\-\_\-de\-\_\-direction} (\hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} direction)
+\begin{DoxyCompactList}\small\item\em Indique la zone correspondant à la zone de destination d'un joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contient le code source des fonctions du modèle. Définit les fonctions pour jouer au jeu de l'Halma.
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+30 Novembre 2014
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Geliot 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+19 Novembre 2014
+\end{DoxyDate}
+Ces fonctions permettent de créer le jeu, pouvoir y jouer ... 
+
+\subsection{Function Documentation}
+\hypertarget{modele_8c_ab011ffaebf0d5fc67acbd77c0a938fda}{\index{modele.\-c@{modele.\-c}!annuler\-\_\-coup@{annuler\-\_\-coup}}
+\index{annuler\-\_\-coup@{annuler\-\_\-coup}!modele.c@{modele.\-c}}
+\subsubsection[{annuler\-\_\-coup}]{\setlength{\rightskip}{0pt plus 5cm}void annuler\-\_\-coup (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Pion} $\ast$}]{pion}
+\end{DoxyParamCaption}
+)}}\label{modele_8c_ab011ffaebf0d5fc67acbd77c0a938fda}
+
+
+Annule un coup dans le modèle. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em modele} & le modèle qui est modifié \\
+\hline
+{\em pion} & le pion qui sera modifié \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{modele_8c_a7f26412f54737c8ece6d756d137adfae}{\index{modele.\-c@{modele.\-c}!annuler\-\_\-tour@{annuler\-\_\-tour}}
+\index{annuler\-\_\-tour@{annuler\-\_\-tour}!modele.c@{modele.\-c}}
+\subsubsection[{annuler\-\_\-tour}]{\setlength{\rightskip}{0pt plus 5cm}void annuler\-\_\-tour (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele}
+\end{DoxyParamCaption}
+)}}\label{modele_8c_a7f26412f54737c8ece6d756d137adfae}
+
+
+Annule un tour dans le modèle. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em modele} & le modèle qui est modifié \\
+\hline
+{\em pion} & le pion qui sera modifié \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{modele_8c_ab9c12fd58072934ca098ed6682942b26}{\index{modele.\-c@{modele.\-c}!charger\-\_\-tours@{charger\-\_\-tours}}
+\index{charger\-\_\-tours@{charger\-\_\-tours}!modele.c@{modele.\-c}}
+\subsubsection[{charger\-\_\-tours}]{\setlength{\rightskip}{0pt plus 5cm}void charger\-\_\-tours (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{fp, }
+\item[{{\bf Modele} $\ast$}]{modele}
+\end{DoxyParamCaption}
+)}}\label{modele_8c_ab9c12fd58072934ca098ed6682942b26}
+
+
+charge les tours 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em F\-I\-L\-E$\ast$} & le fichier où sont sauvegardé les tours, pions etc \\
+\hline
+{\em Modele$\ast$} & le modele du jeu \\
+\hline
+\end{DoxyParams}
+\hypertarget{modele_8c_a452796e926e080e648c107235f20854d}{\index{modele.\-c@{modele.\-c}!commencer\-\_\-tour@{commencer\-\_\-tour}}
+\index{commencer\-\_\-tour@{commencer\-\_\-tour}!modele.c@{modele.\-c}}
+\subsubsection[{commencer\-\_\-tour}]{\setlength{\rightskip}{0pt plus 5cm}void commencer\-\_\-tour (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Pion} $\ast$}]{pion}
+\end{DoxyParamCaption}
+)}}\label{modele_8c_a452796e926e080e648c107235f20854d}
+
+
+Commence un tour de jeu. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em modele} & le modèle qui joue \\
+\hline
+{\em pion} & le pion selectionné par le joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{modele_8c_a684e2c150f914c05b02dc06a339b1500}{\index{modele.\-c@{modele.\-c}!fin\-\_\-tour@{fin\-\_\-tour}}
+\index{fin\-\_\-tour@{fin\-\_\-tour}!modele.c@{modele.\-c}}
+\subsubsection[{fin\-\_\-tour}]{\setlength{\rightskip}{0pt plus 5cm}void fin\-\_\-tour (
+\begin{DoxyParamCaption}
+\item[{{\bf Pion} $\ast$$\ast$}]{pion}
+\end{DoxyParamCaption}
+)}}\label{modele_8c_a684e2c150f914c05b02dc06a339b1500}
+
+
+Finit un tour de jeu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pion} & le pion modifié \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\hypertarget{modele_8c_a4201604ba2e3147efb0bcfeb033cfb28}{\index{modele.\-c@{modele.\-c}!jouer\-\_\-coup@{jouer\-\_\-coup}}
+\index{jouer\-\_\-coup@{jouer\-\_\-coup}!modele.c@{modele.\-c}}
+\subsubsection[{jouer\-\_\-coup}]{\setlength{\rightskip}{0pt plus 5cm}int jouer\-\_\-coup (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Pion} $\ast$}]{pion, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{modele_8c_a4201604ba2e3147efb0bcfeb033cfb28}
+
+
+Joue un coup, cad fait un déplacement. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em modele} & le modele qui sera modifié \\
+\hline
+{\em pion} & le pion qui va se déplacer \\
+\hline
+{\em direction} & la direction de déplacement du pion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 coup a pu être joué 0 coup n'a pas pu 
+\end{DoxyReturn}
+\hypertarget{modele_8c_aea1314a272bef0da7661fd117bb2b19d}{\index{modele.\-c@{modele.\-c}!modele\-\_\-get\-\_\-reference\-\_\-pion@{modele\-\_\-get\-\_\-reference\-\_\-pion}}
+\index{modele\-\_\-get\-\_\-reference\-\_\-pion@{modele\-\_\-get\-\_\-reference\-\_\-pion}!modele.c@{modele.\-c}}
+\subsubsection[{modele\-\_\-get\-\_\-reference\-\_\-pion}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pion}$\ast$ modele\-\_\-get\-\_\-reference\-\_\-pion (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Pion}}]{pion}
+\end{DoxyParamCaption}
+)}}\label{modele_8c_aea1314a272bef0da7661fd117bb2b19d}
+
+
+charge le modele 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em F\-I\-L\-E$\ast$} & le fichier où sont sauvegardé les tours, pions etc \\
+\hline
+{\em char$\ast$} & le fichier où est enregistré le plateau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le modele 
+\end{DoxyReturn}
+\hypertarget{modele_8c_aa24b3c726cdfbd3dd7a651c0e59915c1}{\index{modele.\-c@{modele.\-c}!modele\-\_\-init@{modele\-\_\-init}}
+\index{modele\-\_\-init@{modele\-\_\-init}!modele.c@{modele.\-c}}
+\subsubsection[{modele\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Modele} modele\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{int}]{nombre\-Joueurs, }
+\item[{int}]{nombre\-I\-A, }
+\item[{int}]{charge}
+\end{DoxyParamCaption}
+)}}\label{modele_8c_aa24b3c726cdfbd3dd7a651c0e59915c1}
+
+
+initialise le modèle 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em nombre\-Joueurs} & le nombre de joueurs dans le modèle \\
+\hline
+{\em nombre\-I\-A} & le nombre de joueurs I\-A \\
+\hline
+{\em charge} & indique si le modèle se charge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{modele_8c_afece8200fead6091574059e182d94f8c}{\index{modele.\-c@{modele.\-c}!sauvegarder\-Modele@{sauvegarder\-Modele}}
+\index{sauvegarder\-Modele@{sauvegarder\-Modele}!modele.c@{modele.\-c}}
+\subsubsection[{sauvegarder\-Modele}]{\setlength{\rightskip}{0pt plus 5cm}void sauvegarder\-Modele (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{F\-I\-L\-E $\ast$}]{emplacement\-\_\-fichier\-\_\-sauvegarde}
+\end{DoxyParamCaption}
+)}}\label{modele_8c_afece8200fead6091574059e182d94f8c}
+
+
+Sauvegarde le modele. 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em modele} & le modele qui sera sauvegardé \\
+\hline
+{\em F\-I\-L\-E$\ast$} & le fichier où sont sauvegardé les tours, pions etc \\
+\hline
+{\em char$\ast$} & le fichier où est enregistré le plateau \\
+\hline
+\end{DoxyParams}
+\hypertarget{modele_8c_a3b46821a4781d68da13d80b1f53cab65}{\index{modele.\-c@{modele.\-c}!zone\-\_\-de\-\_\-direction@{zone\-\_\-de\-\_\-direction}}
+\index{zone\-\_\-de\-\_\-direction@{zone\-\_\-de\-\_\-direction}!modele.c@{modele.\-c}}
+\subsubsection[{zone\-\_\-de\-\_\-direction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Zone}$\ast$ zone\-\_\-de\-\_\-direction (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{modele_8c_a3b46821a4781d68da13d80b1f53cab65}
+
+
+Indique la zone correspondant à la zone de destination d'un joueur. 
+

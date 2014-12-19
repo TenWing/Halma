@@ -1,0 +1,386 @@
+\hypertarget{intelligence_8c}{\section{modele/source/intelligence.c File Reference}
+\label{intelligence_8c}\index{modele/source/intelligence.\-c@{modele/source/intelligence.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$intelligence.\-h$>$}\\*
+{\ttfamily \#include $<$direction.\-h$>$}\\*
+{\ttfamily \#include $<$pion.\-h$>$}\\*
+{\ttfamily \#include $<$coup.\-h$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_possibilite}{Possibilite} \hyperlink{intelligence_8c_a89573eff183834774b6fcb20d870de38}{possibilite\-\_\-init} (int poids, \hyperlink{struct_position}{Position} position)
+\begin{DoxyCompactList}\small\item\em alloue une possibilité \end{DoxyCompactList}\item 
+\hyperlink{struct_liste_possibilites}{Liste\-Possibilites} \hyperlink{intelligence_8c_a7d26a09ce6fcc8482ec177a6db68220b}{liste\-\_\-possibilites\-\_\-init} (\hyperlink{struct_pion}{Pion} pion)
+\begin{DoxyCompactList}\small\item\em Initialise une liste de possibilités pour l'I\-A. \end{DoxyCompactList}\item 
+void \hyperlink{intelligence_8c_a3cb26fcd89b4565c6957898e673f6a7f}{liste\-\_\-possibilites\-\_\-ajout} (\hyperlink{struct_liste_possibilites}{Liste\-Possibilites} $\ast$liste, \hyperlink{struct_possibilite}{Possibilite} ajout)
+\begin{DoxyCompactList}\small\item\em Ajoute une possibilité dans une liste de possibilités. \end{DoxyCompactList}\item 
+void \hyperlink{intelligence_8c_ada079a834a456ad651efa827552d8057}{liste\-\_\-possibilites\-\_\-calcule\-\_\-poids} (\hyperlink{struct_liste_possibilites}{Liste\-Possibilites} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Calcule le poids du plus haut coup pour un pion. \end{DoxyCompactList}\item 
+\hyperlink{struct_ensemble_possibilites}{Ensemble\-Possibilites} \hyperlink{intelligence_8c_ab602f16ec6fe839d06ff3c7322d2bd79}{ensemble\-\_\-possibilites\-\_\-init} ()
+\begin{DoxyCompactList}\small\item\em Initialise un ensemble de possibilités pour l'I\-A. \end{DoxyCompactList}\item 
+void \hyperlink{intelligence_8c_af4ff130752a08048c11ec89e7b4a64c7}{ensemble\-\_\-possibilites\-\_\-ajout} (\hyperlink{struct_ensemble_possibilites}{Ensemble\-Possibilites} $\ast$liste, \hyperlink{struct_liste_possibilites}{Liste\-Possibilites} ajout)
+\begin{DoxyCompactList}\small\item\em Ajoute une liste dans une liste de liste. \end{DoxyCompactList}\item 
+int \hyperlink{intelligence_8c_a9a68e5c81e6c43e7c81d7612ff428ccd}{ensemble\-\_\-poids\-\_\-plus\-\_\-fort} (\hyperlink{struct_ensemble_possibilites}{Ensemble\-Possibilites} $\ast$ensemble)
+\begin{DoxyCompactList}\small\item\em récupère le poids le plus fort de toute la liste des pions \end{DoxyCompactList}\item 
+void \hyperlink{intelligence_8c_a3da4ed3c941ded7940666e22c1f9aff2}{ia\-\_\-jouer\-\_\-coup} (\hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{struct_joueur}{Joueur} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Fonction opaque qui fait jouer le coup à l'I\-A. \end{DoxyCompactList}\item 
+\hyperlink{struct_ensemble_possibilites}{Ensemble\-Possibilites} \hyperlink{intelligence_8c_a4d6713d0b6c33641d7ef416885e5dd74}{construire\-\_\-possibilites} (\hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{struct_joueur}{Joueur} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Construit l'ensemble des coups possible d'un joueur. \end{DoxyCompactList}\item 
+\hyperlink{struct_liste_possibilites}{Liste\-Possibilites} \hyperlink{intelligence_8c_a62fb06fa16a12104bde1f8b1fd406b2b}{possibilites\-\_\-du\-\_\-pion} (\hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{struct_pion}{Pion} pion, \hyperlink{struct_joueur}{Joueur} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Construit l'ensemble des coups possible pour U\-N pion. \end{DoxyCompactList}\item 
+\hyperlink{struct_pile_coups}{Pile\-Coups} \hyperlink{intelligence_8c_a1091b7ba672a4b62d5072f67a02e591f}{recuperer\-\_\-meilleurs\-\_\-coups} (\hyperlink{struct_ensemble_possibilites}{Ensemble\-Possibilites} $\ast$ensemble)
+\begin{DoxyCompactList}\small\item\em Crée une liste de coups que l'I\-A peut jouer ils sont sensés être les meilleurs en se basant sur le poids de chaque possibilité \end{DoxyCompactList}\item 
+\hyperlink{struct_coup}{Coup} \hyperlink{intelligence_8c_a77bf7f1d33e5eee0289997137a9be151}{coup\-\_\-au\-\_\-hasard} (\hyperlink{struct_pile_coups}{Pile\-Coups} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em récupère un coup au hasard dans une liste de coups \end{DoxyCompactList}\item 
+void \hyperlink{intelligence_8c_a47ee7e3cec12bd72f4b97e181f69d234}{possibilite\-\_\-direction} (\hyperlink{struct_liste_possibilites}{Liste\-Possibilites} $\ast$liste, \hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{struct_pion}{Pion} $\ast$pion, \hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} direction, \hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} ideale)
+\begin{DoxyCompactList}\small\item\em ajoute l'ensemble des possibilités de coups dans une liste, en fonction d'un pion et d'une direction \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{intelligence_8c_a4d6713d0b6c33641d7ef416885e5dd74}{\index{intelligence.\-c@{intelligence.\-c}!construire\-\_\-possibilites@{construire\-\_\-possibilites}}
+\index{construire\-\_\-possibilites@{construire\-\_\-possibilites}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{construire\-\_\-possibilites}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ensemble\-Possibilites} construire\-\_\-possibilites (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_a4d6713d0b6c33641d7ef416885e5dd74}
+
+
+Construit l'ensemble des coups possible d'un joueur. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em modele} & le modele qui est le jeu en cours \\
+\hline
+{\em joueur} & le joueur (I\-A) qui doit jouer le coup \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un ensemble de possibilités pour une I\-A 
+\end{DoxyReturn}
+\hypertarget{intelligence_8c_a77bf7f1d33e5eee0289997137a9be151}{\index{intelligence.\-c@{intelligence.\-c}!coup\-\_\-au\-\_\-hasard@{coup\-\_\-au\-\_\-hasard}}
+\index{coup\-\_\-au\-\_\-hasard@{coup\-\_\-au\-\_\-hasard}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{coup\-\_\-au\-\_\-hasard}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Coup} coup\-\_\-au\-\_\-hasard (
+\begin{DoxyParamCaption}
+\item[{{\bf Pile\-Coups} $\ast$}]{liste}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_a77bf7f1d33e5eee0289997137a9be151}
+
+
+récupère un coup au hasard dans une liste de coups 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em liste} & la liste de coups avec laquelle on travaille \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un coup choisi au hasard 
+\end{DoxyReturn}
+\hypertarget{intelligence_8c_a9a68e5c81e6c43e7c81d7612ff428ccd}{\index{intelligence.\-c@{intelligence.\-c}!ensemble\-\_\-poids\-\_\-plus\-\_\-fort@{ensemble\-\_\-poids\-\_\-plus\-\_\-fort}}
+\index{ensemble\-\_\-poids\-\_\-plus\-\_\-fort@{ensemble\-\_\-poids\-\_\-plus\-\_\-fort}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{ensemble\-\_\-poids\-\_\-plus\-\_\-fort}]{\setlength{\rightskip}{0pt plus 5cm}int ensemble\-\_\-poids\-\_\-plus\-\_\-fort (
+\begin{DoxyParamCaption}
+\item[{{\bf Ensemble\-Possibilites} $\ast$}]{ensemble}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_a9a68e5c81e6c43e7c81d7612ff428ccd}
+
+
+récupère le poids le plus fort de toute la liste des pions 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em ensemble} & l'ensemble de coups \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le poids le plus fort de toute la liste 
+\end{DoxyReturn}
+\hypertarget{intelligence_8c_af4ff130752a08048c11ec89e7b4a64c7}{\index{intelligence.\-c@{intelligence.\-c}!ensemble\-\_\-possibilites\-\_\-ajout@{ensemble\-\_\-possibilites\-\_\-ajout}}
+\index{ensemble\-\_\-possibilites\-\_\-ajout@{ensemble\-\_\-possibilites\-\_\-ajout}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{ensemble\-\_\-possibilites\-\_\-ajout}]{\setlength{\rightskip}{0pt plus 5cm}void ensemble\-\_\-possibilites\-\_\-ajout (
+\begin{DoxyParamCaption}
+\item[{{\bf Ensemble\-Possibilites} $\ast$}]{liste, }
+\item[{{\bf Liste\-Possibilites}}]{ajout}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_af4ff130752a08048c11ec89e7b4a64c7}
+
+
+Ajoute une liste dans une liste de liste. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em liste} & la liste modifiée \\
+\hline
+{\em ajout} & l'élément ajouté \\
+\hline
+\end{DoxyParams}
+\hypertarget{intelligence_8c_ab602f16ec6fe839d06ff3c7322d2bd79}{\index{intelligence.\-c@{intelligence.\-c}!ensemble\-\_\-possibilites\-\_\-init@{ensemble\-\_\-possibilites\-\_\-init}}
+\index{ensemble\-\_\-possibilites\-\_\-init@{ensemble\-\_\-possibilites\-\_\-init}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{ensemble\-\_\-possibilites\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ensemble\-Possibilites} ensemble\-\_\-possibilites\-\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_ab602f16ec6fe839d06ff3c7322d2bd79}
+
+
+Initialise un ensemble de possibilités pour l'I\-A. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+Une liste bien allouée 
+\end{DoxyReturn}
+\hypertarget{intelligence_8c_a3da4ed3c941ded7940666e22c1f9aff2}{\index{intelligence.\-c@{intelligence.\-c}!ia\-\_\-jouer\-\_\-coup@{ia\-\_\-jouer\-\_\-coup}}
+\index{ia\-\_\-jouer\-\_\-coup@{ia\-\_\-jouer\-\_\-coup}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{ia\-\_\-jouer\-\_\-coup}]{\setlength{\rightskip}{0pt plus 5cm}void ia\-\_\-jouer\-\_\-coup (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_a3da4ed3c941ded7940666e22c1f9aff2}
+
+
+Fonction opaque qui fait jouer le coup à l'I\-A. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em modele} & le modele qui est le jeu en cours \\
+\hline
+{\em joueur} & le joueur (I\-A) qui doit jouer le coup \\
+\hline
+\end{DoxyParams}
+\hypertarget{intelligence_8c_a3cb26fcd89b4565c6957898e673f6a7f}{\index{intelligence.\-c@{intelligence.\-c}!liste\-\_\-possibilites\-\_\-ajout@{liste\-\_\-possibilites\-\_\-ajout}}
+\index{liste\-\_\-possibilites\-\_\-ajout@{liste\-\_\-possibilites\-\_\-ajout}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{liste\-\_\-possibilites\-\_\-ajout}]{\setlength{\rightskip}{0pt plus 5cm}void liste\-\_\-possibilites\-\_\-ajout (
+\begin{DoxyParamCaption}
+\item[{{\bf Liste\-Possibilites} $\ast$}]{liste, }
+\item[{{\bf Possibilite}}]{ajout}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_a3cb26fcd89b4565c6957898e673f6a7f}
+
+
+Ajoute une possibilité dans une liste de possibilités. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em liste} & la liste modifiée \\
+\hline
+{\em ajout} & l'élément ajouté \\
+\hline
+\end{DoxyParams}
+\hypertarget{intelligence_8c_ada079a834a456ad651efa827552d8057}{\index{intelligence.\-c@{intelligence.\-c}!liste\-\_\-possibilites\-\_\-calcule\-\_\-poids@{liste\-\_\-possibilites\-\_\-calcule\-\_\-poids}}
+\index{liste\-\_\-possibilites\-\_\-calcule\-\_\-poids@{liste\-\_\-possibilites\-\_\-calcule\-\_\-poids}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{liste\-\_\-possibilites\-\_\-calcule\-\_\-poids}]{\setlength{\rightskip}{0pt plus 5cm}void liste\-\_\-possibilites\-\_\-calcule\-\_\-poids (
+\begin{DoxyParamCaption}
+\item[{{\bf Liste\-Possibilites} $\ast$}]{liste}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_ada079a834a456ad651efa827552d8057}
+
+
+Calcule le poids du plus haut coup pour un pion. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em liste} & la liste qui calcule son poids \\
+\hline
+\end{DoxyParams}
+\hypertarget{intelligence_8c_a7d26a09ce6fcc8482ec177a6db68220b}{\index{intelligence.\-c@{intelligence.\-c}!liste\-\_\-possibilites\-\_\-init@{liste\-\_\-possibilites\-\_\-init}}
+\index{liste\-\_\-possibilites\-\_\-init@{liste\-\_\-possibilites\-\_\-init}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{liste\-\_\-possibilites\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Liste\-Possibilites} liste\-\_\-possibilites\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf Pion}}]{pion}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_a7d26a09ce6fcc8482ec177a6db68220b}
+
+
+Initialise une liste de possibilités pour l'I\-A. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pion} & le pion qui concerne l'ensemble des possibilité de lui-\/même (I\-N\-C\-E\-P\-T\-I\-O\-N) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Une liste bien allouée 
+\end{DoxyReturn}
+\hypertarget{intelligence_8c_a47ee7e3cec12bd72f4b97e181f69d234}{\index{intelligence.\-c@{intelligence.\-c}!possibilite\-\_\-direction@{possibilite\-\_\-direction}}
+\index{possibilite\-\_\-direction@{possibilite\-\_\-direction}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{possibilite\-\_\-direction}]{\setlength{\rightskip}{0pt plus 5cm}void possibilite\-\_\-direction (
+\begin{DoxyParamCaption}
+\item[{{\bf Liste\-Possibilites} $\ast$}]{liste, }
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Pion} $\ast$}]{pion, }
+\item[{{\bf Direction}}]{direction, }
+\item[{{\bf Direction}}]{ideale}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_a47ee7e3cec12bd72f4b97e181f69d234}
+
+
+ajoute l'ensemble des possibilités de coups dans une liste, en fonction d'un pion et d'une direction 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em liste} & la liste modifiée \\
+\hline
+{\em plateau} & le plateau de jeu \\
+\hline
+{\em pion} & le pion pour l'analayse \\
+\hline
+{\em direction} & la direction de l'analyse \\
+\hline
+{\em ideale} & la direction dans laquelle il serait mieux d'aller \\
+\hline
+\end{DoxyParams}
+\hypertarget{intelligence_8c_a89573eff183834774b6fcb20d870de38}{\index{intelligence.\-c@{intelligence.\-c}!possibilite\-\_\-init@{possibilite\-\_\-init}}
+\index{possibilite\-\_\-init@{possibilite\-\_\-init}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{possibilite\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Possibilite} possibilite\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{int}]{poids, }
+\item[{{\bf Position}}]{position}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_a89573eff183834774b6fcb20d870de38}
+
+
+alloue une possibilité 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em poids} & le poids du coup possible \\
+\hline
+{\em position} & la position correspondant au coup \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+une possibilité initialisée 
+\end{DoxyReturn}
+\hypertarget{intelligence_8c_a62fb06fa16a12104bde1f8b1fd406b2b}{\index{intelligence.\-c@{intelligence.\-c}!possibilites\-\_\-du\-\_\-pion@{possibilites\-\_\-du\-\_\-pion}}
+\index{possibilites\-\_\-du\-\_\-pion@{possibilites\-\_\-du\-\_\-pion}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{possibilites\-\_\-du\-\_\-pion}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Liste\-Possibilites} possibilites\-\_\-du\-\_\-pion (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Pion}}]{pion, }
+\item[{{\bf Joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_a62fb06fa16a12104bde1f8b1fd406b2b}
+
+
+Construit l'ensemble des coups possible pour U\-N pion. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em modele} & le modele qui est le jeu en cours \\
+\hline
+{\em pion} & le pion qui sert à chercher les coups \\
+\hline
+{\em joueur} & le joueur qui sait dans quelle direction il est plus favorable d'aller \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un ensemble de possibilités pour un pion 
+\end{DoxyReturn}
+\hypertarget{intelligence_8c_a1091b7ba672a4b62d5072f67a02e591f}{\index{intelligence.\-c@{intelligence.\-c}!recuperer\-\_\-meilleurs\-\_\-coups@{recuperer\-\_\-meilleurs\-\_\-coups}}
+\index{recuperer\-\_\-meilleurs\-\_\-coups@{recuperer\-\_\-meilleurs\-\_\-coups}!intelligence.c@{intelligence.\-c}}
+\subsubsection[{recuperer\-\_\-meilleurs\-\_\-coups}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pile\-Coups} recuperer\-\_\-meilleurs\-\_\-coups (
+\begin{DoxyParamCaption}
+\item[{{\bf Ensemble\-Possibilites} $\ast$}]{ensemble}
+\end{DoxyParamCaption}
+)}}\label{intelligence_8c_a1091b7ba672a4b62d5072f67a02e591f}
+
+
+Crée une liste de coups que l'I\-A peut jouer ils sont sensés être les meilleurs en se basant sur le poids de chaque possibilité 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em ensemble} & l'ensemble de T\-O\-U\-S les coups possibles par l'I\-A \\
+\hline
+\end{DoxyParams}

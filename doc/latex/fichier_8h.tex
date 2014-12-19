@@ -1,0 +1,113 @@
+\hypertarget{fichier_8h}{\section{modele/header/fichier.h File Reference}
+\label{fichier_8h}\index{modele/header/fichier.\-h@{modele/header/fichier.\-h}}
+}
+
+
+Fichier qui définit les fonctions de sauvegarde/chargement.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{fichier_8h_aa8be8cae465dee66f397bdf5701d2108}{sauvegarder\-Partie} (\hyperlink{struct_modele}{Modele} $\ast$modele, char fichier\mbox{[}100\mbox{]})
+\begin{DoxyCompactList}\small\item\em Sauvegarder une partie. \end{DoxyCompactList}\item 
+\hyperlink{struct_modele}{Modele} \hyperlink{fichier_8h_aad20ef346bfa714873c71f5a74cb9e07}{charger\-Modele} (char fichier\mbox{[}100\mbox{]})
+\begin{DoxyCompactList}\small\item\em Charge le modele a l'état initiale. \end{DoxyCompactList}\item 
+int \hyperlink{fichier_8h_ac1b7c710b090ca19c2c023dd5d7eff13}{charger\-Partie} (\hyperlink{struct_modele}{Modele} $\ast$modele, char fichier\mbox{[}100\mbox{]})
+\begin{DoxyCompactList}\small\item\em Charge le modele avec tous les tours qui ont été joué \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Fichier qui définit les fonctions de sauvegarde/chargement. \begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+14 Decembre 2014 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{fichier_8h_aad20ef346bfa714873c71f5a74cb9e07}{\index{fichier.\-h@{fichier.\-h}!charger\-Modele@{charger\-Modele}}
+\index{charger\-Modele@{charger\-Modele}!fichier.h@{fichier.\-h}}
+\subsubsection[{charger\-Modele}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Modele} charger\-Modele (
+\begin{DoxyParamCaption}
+\item[{char}]{fichier\mbox{[}100\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{fichier_8h_aad20ef346bfa714873c71f5a74cb9e07}
+
+
+Charge le modele a l'état initiale. 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em Le} & nom du fichier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+le modele 
+\end{DoxyReturn}
+\hypertarget{fichier_8h_ac1b7c710b090ca19c2c023dd5d7eff13}{\index{fichier.\-h@{fichier.\-h}!charger\-Partie@{charger\-Partie}}
+\index{charger\-Partie@{charger\-Partie}!fichier.h@{fichier.\-h}}
+\subsubsection[{charger\-Partie}]{\setlength{\rightskip}{0pt plus 5cm}int charger\-Partie (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{char}]{fichier\mbox{[}100\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{fichier_8h_ac1b7c710b090ca19c2c023dd5d7eff13}
+
+
+Charge le modele avec tous les tours qui ont été joué 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em le} & modele \\
+\hline
+{\em Le} & nom du fichier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+1 si succès 0 si echec 
+\end{DoxyReturn}
+\hypertarget{fichier_8h_aa8be8cae465dee66f397bdf5701d2108}{\index{fichier.\-h@{fichier.\-h}!sauvegarder\-Partie@{sauvegarder\-Partie}}
+\index{sauvegarder\-Partie@{sauvegarder\-Partie}!fichier.h@{fichier.\-h}}
+\subsubsection[{sauvegarder\-Partie}]{\setlength{\rightskip}{0pt plus 5cm}int sauvegarder\-Partie (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{char}]{fichier\mbox{[}100\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{fichier_8h_aa8be8cae465dee66f397bdf5701d2108}
+
+
+Sauvegarder une partie. 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{struct_modele}{Modele}} & \\
+\hline
+{\em le} & nom du fichier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+1 si la sauvegarde a reussi, 0 si echec 
+\end{DoxyReturn}

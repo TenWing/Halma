@@ -1,0 +1,253 @@
+\hypertarget{pion_8c}{\section{modele/source/pion.c File Reference}
+\label{pion_8c}\index{modele/source/pion.\-c@{modele/source/pion.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$pion.\-h$>$}\\*
+{\ttfamily \#include $<$plateau.\-h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_pion}{Pion} \hyperlink{pion_8c_a0cbcdcd59a8f6c6ec671479e4b282745}{pion\-\_\-init} (\hyperlink{couleur_8h_aa304d0ca681f782b1d7735da33037dd7}{Couleur} couleur, \hyperlink{struct_position}{Position} position, int identifiant)
+\begin{DoxyCompactList}\small\item\em Génère un pion. \end{DoxyCompactList}\item 
+\hyperlink{struct_pion}{Pion} \hyperlink{pion_8c_a107a5e1be46735d6f7b9d246e0d92d79}{pion\-\_\-copie} (\hyperlink{struct_pion}{Pion} pion)
+\begin{DoxyCompactList}\small\item\em permet de copier un pion \end{DoxyCompactList}\item 
+int \hyperlink{pion_8c_aef7df0b63810c1ea0a37b81e2a003e39}{pion\-\_\-deplacer} (\hyperlink{struct_pion}{Pion} $\ast$pion, \hyperlink{struct_plateau}{Plateau} $\ast$plateau, \hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} direction)
+\begin{DoxyCompactList}\small\item\em déplace un pion sur la grille \end{DoxyCompactList}\item 
+int \hyperlink{pion_8c_a527a20803d306ba3a506131f0469a101}{pion\-\_\-sauter} (\hyperlink{struct_pion}{Pion} $\ast$pion, \hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} direction, \hyperlink{struct_plateau}{Plateau} $\ast$plateau)
+\begin{DoxyCompactList}\small\item\em fait sauter un pion \end{DoxyCompactList}\item 
+void \hyperlink{pion_8c_a96e5d01e49b859bdad94eea01aa9fe77}{sauvegarde\-Pion} (\hyperlink{struct_pion}{Pion} pion, F\-I\-L\-E $\ast$emplacement\-\_\-fichier\-\_\-sauvegarde)
+\begin{DoxyCompactList}\small\item\em sauvegarde un pion dans un fichier texte \end{DoxyCompactList}\item 
+void \hyperlink{pion_8c_a8e0e2caa1d59bb189f454ba931fd3145}{pion\-\_\-marquer} (\hyperlink{struct_pion}{Pion} $\ast$pion, \hyperlink{struct_plateau}{Plateau} $\ast$plateau)
+\begin{DoxyCompactList}\small\item\em marque les positions autour du pion où celui-\/ci peut se rendre \end{DoxyCompactList}\item 
+void \hyperlink{pion_8c_a3ad40a7da57cebd1bcb17c5c90da42ac}{pion\-\_\-demarquer} (\hyperlink{struct_plateau}{Plateau} $\ast$plateau)
+\begin{DoxyCompactList}\small\item\em démarque les positions autour du pion \end{DoxyCompactList}\item 
+void \hyperlink{pion_8c_ad73d5ca8238558a15bc8947875b442bc}{pion\-\_\-analyse\-\_\-marquage\-\_\-direction} (\hyperlink{struct_pion}{Pion} $\ast$pion, \hyperlink{struct_plateau}{Plateau} $\ast$plateau, \hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} direction)
+\begin{DoxyCompactList}\small\item\em marque les positions possible de déplacement autour du pion pour un direction donnée \end{DoxyCompactList}\item 
+\hyperlink{struct_pion}{Pion} \hyperlink{pion_8c_a2571f33c33fa4b20be9717d3ec74975d}{charger\-Pion} (F\-I\-L\-E $\ast$emplacement\-\_\-fichier)
+\begin{DoxyCompactList}\small\item\em charge un pion dans un fichier texte \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{pion_8c_a2571f33c33fa4b20be9717d3ec74975d}{\index{pion.\-c@{pion.\-c}!charger\-Pion@{charger\-Pion}}
+\index{charger\-Pion@{charger\-Pion}!pion.c@{pion.\-c}}
+\subsubsection[{charger\-Pion}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pion} charger\-Pion (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{emplacement\-\_\-fichier}
+\end{DoxyParamCaption}
+)}}\label{pion_8c_a2571f33c33fa4b20be9717d3ec74975d}
+
+
+charge un pion dans un fichier texte 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em emplacement\-\_\-fichier} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+retourne un pointeur de pion 
+\end{DoxyReturn}
+\hypertarget{pion_8c_ad73d5ca8238558a15bc8947875b442bc}{\index{pion.\-c@{pion.\-c}!pion\-\_\-analyse\-\_\-marquage\-\_\-direction@{pion\-\_\-analyse\-\_\-marquage\-\_\-direction}}
+\index{pion\-\_\-analyse\-\_\-marquage\-\_\-direction@{pion\-\_\-analyse\-\_\-marquage\-\_\-direction}!pion.c@{pion.\-c}}
+\subsubsection[{pion\-\_\-analyse\-\_\-marquage\-\_\-direction}]{\setlength{\rightskip}{0pt plus 5cm}void pion\-\_\-analyse\-\_\-marquage\-\_\-direction (
+\begin{DoxyParamCaption}
+\item[{{\bf Pion} $\ast$}]{pion, }
+\item[{{\bf Plateau} $\ast$}]{plateau, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{pion_8c_ad73d5ca8238558a15bc8947875b442bc}
+
+
+marque les positions possible de déplacement autour du pion pour un direction donnée 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pion} & le pion qui sert à marquer les positions \\
+\hline
+{\em plateau} & le plateau qui contient toutes les positions \\
+\hline
+{\em direction} & la direction dans laquelle on teste les déplacements \\
+\hline
+\end{DoxyParams}
+\hypertarget{pion_8c_a107a5e1be46735d6f7b9d246e0d92d79}{\index{pion.\-c@{pion.\-c}!pion\-\_\-copie@{pion\-\_\-copie}}
+\index{pion\-\_\-copie@{pion\-\_\-copie}!pion.c@{pion.\-c}}
+\subsubsection[{pion\-\_\-copie}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pion} pion\-\_\-copie (
+\begin{DoxyParamCaption}
+\item[{{\bf Pion}}]{pion}
+\end{DoxyParamCaption}
+)}}\label{pion_8c_a107a5e1be46735d6f7b9d246e0d92d79}
+
+
+permet de copier un pion 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\hypertarget{pion_8c_a3ad40a7da57cebd1bcb17c5c90da42ac}{\index{pion.\-c@{pion.\-c}!pion\-\_\-demarquer@{pion\-\_\-demarquer}}
+\index{pion\-\_\-demarquer@{pion\-\_\-demarquer}!pion.c@{pion.\-c}}
+\subsubsection[{pion\-\_\-demarquer}]{\setlength{\rightskip}{0pt plus 5cm}void pion\-\_\-demarquer (
+\begin{DoxyParamCaption}
+\item[{{\bf Plateau} $\ast$}]{plateau}
+\end{DoxyParamCaption}
+)}}\label{pion_8c_a3ad40a7da57cebd1bcb17c5c90da42ac}
+
+
+démarque les positions autour du pion 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em plateau} & le plateau qui contient toutes les positions \\
+\hline
+\end{DoxyParams}
+\hypertarget{pion_8c_aef7df0b63810c1ea0a37b81e2a003e39}{\index{pion.\-c@{pion.\-c}!pion\-\_\-deplacer@{pion\-\_\-deplacer}}
+\index{pion\-\_\-deplacer@{pion\-\_\-deplacer}!pion.c@{pion.\-c}}
+\subsubsection[{pion\-\_\-deplacer}]{\setlength{\rightskip}{0pt plus 5cm}int pion\-\_\-deplacer (
+\begin{DoxyParamCaption}
+\item[{{\bf Pion} $\ast$}]{pion, }
+\item[{{\bf Plateau} $\ast$}]{plateau, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{pion_8c_aef7df0b63810c1ea0a37b81e2a003e39}
+
+
+déplace un pion sur la grille 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em pion} & le pion qui sera déplacé \\
+\hline
+{\em plateau} & le plateau (la grille de jeu) \\
+\hline
+{\em direction} & la direction dans laquelle le pion se déplace\\
+\hline
+\end{DoxyParams}
+Gère les déplacements complexes via des sous fonctions (saut de pion etc.) \begin{DoxyReturn}{Returns}
+1 Si le déplacement s'est bien effectué, 0 pour déplacement raté 
+\end{DoxyReturn}
+\hypertarget{pion_8c_a0cbcdcd59a8f6c6ec671479e4b282745}{\index{pion.\-c@{pion.\-c}!pion\-\_\-init@{pion\-\_\-init}}
+\index{pion\-\_\-init@{pion\-\_\-init}!pion.c@{pion.\-c}}
+\subsubsection[{pion\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pion} pion\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf Couleur}}]{couleur, }
+\item[{{\bf Position}}]{position, }
+\item[{int}]{identifiant}
+\end{DoxyParamCaption}
+)}}\label{pion_8c_a0cbcdcd59a8f6c6ec671479e4b282745}
+
+
+Génère un pion. 
+
+Permet de créer un pion (son identifiant, sa position et sa couleur) \begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em couleur} & la couleur du pion \\
+\hline
+{\em position} & la position par défaut du pion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+2.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+Le pion initialisé 
+\end{DoxyReturn}
+\hypertarget{pion_8c_a8e0e2caa1d59bb189f454ba931fd3145}{\index{pion.\-c@{pion.\-c}!pion\-\_\-marquer@{pion\-\_\-marquer}}
+\index{pion\-\_\-marquer@{pion\-\_\-marquer}!pion.c@{pion.\-c}}
+\subsubsection[{pion\-\_\-marquer}]{\setlength{\rightskip}{0pt plus 5cm}void pion\-\_\-marquer (
+\begin{DoxyParamCaption}
+\item[{{\bf Pion} $\ast$}]{pion, }
+\item[{{\bf Plateau} $\ast$}]{plateau}
+\end{DoxyParamCaption}
+)}}\label{pion_8c_a8e0e2caa1d59bb189f454ba931fd3145}
+
+
+marque les positions autour du pion où celui-\/ci peut se rendre 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pion} & le pion qui sert à marquer les positions \\
+\hline
+{\em plateau} & le plateau qui contient toutes les positions \\
+\hline
+\end{DoxyParams}
+\hypertarget{pion_8c_a527a20803d306ba3a506131f0469a101}{\index{pion.\-c@{pion.\-c}!pion\-\_\-sauter@{pion\-\_\-sauter}}
+\index{pion\-\_\-sauter@{pion\-\_\-sauter}!pion.c@{pion.\-c}}
+\subsubsection[{pion\-\_\-sauter}]{\setlength{\rightskip}{0pt plus 5cm}int pion\-\_\-sauter (
+\begin{DoxyParamCaption}
+\item[{{\bf Pion} $\ast$}]{pion, }
+\item[{{\bf Direction}}]{direction, }
+\item[{{\bf Plateau} $\ast$}]{plateau}
+\end{DoxyParamCaption}
+)}}\label{pion_8c_a527a20803d306ba3a506131f0469a101}
+
+
+fait sauter un pion 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pion} & le pion qui saute \\
+\hline
+{\em direction} & la direction \\
+\hline
+\end{DoxyParams}
+\hypertarget{pion_8c_a96e5d01e49b859bdad94eea01aa9fe77}{\index{pion.\-c@{pion.\-c}!sauvegarde\-Pion@{sauvegarde\-Pion}}
+\index{sauvegarde\-Pion@{sauvegarde\-Pion}!pion.c@{pion.\-c}}
+\subsubsection[{sauvegarde\-Pion}]{\setlength{\rightskip}{0pt plus 5cm}void sauvegarde\-Pion (
+\begin{DoxyParamCaption}
+\item[{{\bf Pion}}]{pion, }
+\item[{F\-I\-L\-E $\ast$}]{emplacement\-\_\-fichier\-\_\-sauvegarde}
+\end{DoxyParamCaption}
+)}}\label{pion_8c_a96e5d01e49b859bdad94eea01aa9fe77}
+
+
+sauvegarde un pion dans un fichier texte 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pion} & le pion a sauvegardé \\
+\hline
+{\em emplacement\-\_\-fichier\-\_\-sauvegarde} & \\
+\hline
+\end{DoxyParams}

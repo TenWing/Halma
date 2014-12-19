@@ -1,0 +1,325 @@
+\hypertarget{tour_8h}{\section{modele/header/tour.h File Reference}
+\label{tour_8h}\index{modele/header/tour.\-h@{modele/header/tour.\-h}}
+}
+
+
+Définition de la structure d'un tour de jeu.  
+
+
+{\ttfamily \#include $<$pion.\-h$>$}\\*
+{\ttfamily \#include $<$position.\-h$>$}\\*
+{\ttfamily \#include $<$coup.\-h$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_tour}{Tour}
+\item 
+struct \hyperlink{struct_noeud_tour}{Noeud\-Tour}
+\item 
+struct \hyperlink{struct_pile_tours}{Pile\-Tours}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_modele}{Modele} \hyperlink{tour_8h_af3e2119d81ee24706aa1456b5ce60cf3}{Modele}
+\item 
+typedef struct \hyperlink{struct_tour}{Tour} \hyperlink{tour_8h_a15e9b31edcdfbe0bfdd97e75cb483e16}{Tour}
+\begin{DoxyCompactList}\small\item\em Un tour de jeu dans la partie. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct_noeud_tour}{Noeud\-Tour} \hyperlink{tour_8h_ae380844a742aa4edf9bc38a06fba16b0}{Noeud\-Tour}
+\begin{DoxyCompactList}\small\item\em un noeud d'une pile de tours \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct_pile_tours}{Pile\-Tours} \hyperlink{tour_8h_aebb5992154d117b1b42af1649ff1f12c}{Pile\-Tours}
+\begin{DoxyCompactList}\small\item\em Une pile de tours. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_tour}{Tour} \hyperlink{tour_8h_a5555c6d54279c373f120ba6f3f5189a6}{tour\-\_\-init} (\hyperlink{struct_pion}{Pion} $\ast$p)
+\begin{DoxyCompactList}\small\item\em initialise un tour \end{DoxyCompactList}\item 
+\hyperlink{struct_tour}{Tour} \hyperlink{tour_8h_ac9a0fcfc5cf485bbdcfcf75a54dcc00d}{tour\-\_\-copier} (\hyperlink{struct_tour}{Tour} tour)
+\begin{DoxyCompactList}\small\item\em renvoie une copie du tour \end{DoxyCompactList}\item 
+\hyperlink{struct_pile_tours}{Pile\-Tours} \hyperlink{tour_8h_a7a8e2d34abf47e5cbcb00badf39d7018}{pile\-Tours\-\_\-init} ()
+\begin{DoxyCompactList}\small\item\em initialise une pile de tours \end{DoxyCompactList}\item 
+\hyperlink{struct_tour}{Tour} \hyperlink{tour_8h_a97ff2bf8d6db92b5d197aec1a86c4411}{pile\-Tours\-\_\-depiler} (\hyperlink{struct_pile_tours}{Pile\-Tours} $\ast$pile)
+\begin{DoxyCompactList}\small\item\em dépile le dernier élément des tours \end{DoxyCompactList}\item 
+void \hyperlink{tour_8h_aab70df5aca1c743313d3cf3ca9e4cf85}{pile\-Tours\-\_\-ajouter\-Tour} (\hyperlink{struct_pile_tours}{Pile\-Tours} $\ast$pile, \hyperlink{struct_tour}{Tour} tour)
+\begin{DoxyCompactList}\small\item\em ajoute un coup en haut de la pile \end{DoxyCompactList}\item 
+\hyperlink{struct_pile_tours}{Pile\-Tours} \hyperlink{tour_8h_a48ec93defa4d811aaa303bd03346ce72}{pile\-Tours\-\_\-copier} (\hyperlink{struct_pile_tours}{Pile\-Tours} $\ast$pile)
+\begin{DoxyCompactList}\small\item\em Copie une pile de tours. \end{DoxyCompactList}\item 
+void \hyperlink{tour_8h_a3704b235406200d84dac91984a5d5d9f}{sauvegarde\-Tour} (\hyperlink{struct_tour}{Tour} tour, F\-I\-L\-E $\ast$emplacement\-\_\-fichier\-\_\-sauvegarde)
+\begin{DoxyCompactList}\small\item\em sauvegarde un tour \end{DoxyCompactList}\item 
+\hyperlink{struct_tour}{Tour} \hyperlink{tour_8h_aff7ed8335962c714856872bec08c3bc5}{charger\-Tour} (F\-I\-L\-E $\ast$emplacement\-\_\-fichier, \hyperlink{struct_modele}{Modele} $\ast$modele)
+\begin{DoxyCompactList}\small\item\em charge un tour \end{DoxyCompactList}\item 
+\hyperlink{struct_pile_tours}{Pile\-Tours} \hyperlink{tour_8h_a52c77f4cb4bb03f965735f230cb37325}{inverse\-Pile} (\hyperlink{struct_pile_tours}{Pile\-Tours} pile\-\_\-tours)
+\begin{DoxyCompactList}\small\item\em inverse une pile \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Définition de la structure d'un tour de jeu. \begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+21 Novembre 2014 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+Un tour de jeu consiste en une pile de tours, un pion originel que le joueur déplace, ainsi que sa position de départ absolue avant T\-O\-U\-T coup. 
+
+\subsection{Typedef Documentation}
+\hypertarget{tour_8h_af3e2119d81ee24706aa1456b5ce60cf3}{\index{tour.\-h@{tour.\-h}!Modele@{Modele}}
+\index{Modele@{Modele}!tour.h@{tour.\-h}}
+\subsubsection[{Modele}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Modele} {\bf Modele}}}\label{tour_8h_af3e2119d81ee24706aa1456b5ce60cf3}
+\hypertarget{tour_8h_ae380844a742aa4edf9bc38a06fba16b0}{\index{tour.\-h@{tour.\-h}!Noeud\-Tour@{Noeud\-Tour}}
+\index{Noeud\-Tour@{Noeud\-Tour}!tour.h@{tour.\-h}}
+\subsubsection[{Noeud\-Tour}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Noeud\-Tour} {\bf Noeud\-Tour}}}\label{tour_8h_ae380844a742aa4edf9bc38a06fba16b0}
+
+
+un noeud d'une pile de tours 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{tour_8h_aebb5992154d117b1b42af1649ff1f12c}{\index{tour.\-h@{tour.\-h}!Pile\-Tours@{Pile\-Tours}}
+\index{Pile\-Tours@{Pile\-Tours}!tour.h@{tour.\-h}}
+\subsubsection[{Pile\-Tours}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Pile\-Tours} {\bf Pile\-Tours}}}\label{tour_8h_aebb5992154d117b1b42af1649ff1f12c}
+
+
+Une pile de tours. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+la pile de tours contient plusieurs noeud contenant les tours \hypertarget{tour_8h_a15e9b31edcdfbe0bfdd97e75cb483e16}{\index{tour.\-h@{tour.\-h}!Tour@{Tour}}
+\index{Tour@{Tour}!tour.h@{tour.\-h}}
+\subsubsection[{Tour}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Tour} {\bf Tour}}}\label{tour_8h_a15e9b31edcdfbe0bfdd97e75cb483e16}
+
+
+Un tour de jeu dans la partie. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{tour_8h_aff7ed8335962c714856872bec08c3bc5}{\index{tour.\-h@{tour.\-h}!charger\-Tour@{charger\-Tour}}
+\index{charger\-Tour@{charger\-Tour}!tour.h@{tour.\-h}}
+\subsubsection[{charger\-Tour}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tour} charger\-Tour (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{emplacement\-\_\-fichier, }
+\item[{{\bf Modele} $\ast$}]{modele}
+\end{DoxyParamCaption}
+)}}\label{tour_8h_aff7ed8335962c714856872bec08c3bc5}
+
+
+charge un tour 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em emplacement\-\_\-fichier\-\_\-sauvegarde} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le tour chargé 
+\end{DoxyReturn}
+\hypertarget{tour_8h_a52c77f4cb4bb03f965735f230cb37325}{\index{tour.\-h@{tour.\-h}!inverse\-Pile@{inverse\-Pile}}
+\index{inverse\-Pile@{inverse\-Pile}!tour.h@{tour.\-h}}
+\subsubsection[{inverse\-Pile}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pile\-Tours} inverse\-Pile (
+\begin{DoxyParamCaption}
+\item[{{\bf Pile\-Tours}}]{pile\-\_\-tours}
+\end{DoxyParamCaption}
+)}}\label{tour_8h_a52c77f4cb4bb03f965735f230cb37325}
+
+
+inverse une pile 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pile\-\_\-tours} & la pile à inverser \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la pile inversée 
+\end{DoxyReturn}
+\hypertarget{tour_8h_aab70df5aca1c743313d3cf3ca9e4cf85}{\index{tour.\-h@{tour.\-h}!pile\-Tours\-\_\-ajouter\-Tour@{pile\-Tours\-\_\-ajouter\-Tour}}
+\index{pile\-Tours\-\_\-ajouter\-Tour@{pile\-Tours\-\_\-ajouter\-Tour}!tour.h@{tour.\-h}}
+\subsubsection[{pile\-Tours\-\_\-ajouter\-Tour}]{\setlength{\rightskip}{0pt plus 5cm}void pile\-Tours\-\_\-ajouter\-Tour (
+\begin{DoxyParamCaption}
+\item[{{\bf Pile\-Tours} $\ast$}]{pile, }
+\item[{{\bf Tour}}]{tour}
+\end{DoxyParamCaption}
+)}}\label{tour_8h_aab70df5aca1c743313d3cf3ca9e4cf85}
+
+
+ajoute un coup en haut de la pile 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pile} & la pile de tours \\
+\hline
+{\em coup} & le tour à ajouter \\
+\hline
+\end{DoxyParams}
+\hypertarget{tour_8h_a48ec93defa4d811aaa303bd03346ce72}{\index{tour.\-h@{tour.\-h}!pile\-Tours\-\_\-copier@{pile\-Tours\-\_\-copier}}
+\index{pile\-Tours\-\_\-copier@{pile\-Tours\-\_\-copier}!tour.h@{tour.\-h}}
+\subsubsection[{pile\-Tours\-\_\-copier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pile\-Tours} pile\-Tours\-\_\-copier (
+\begin{DoxyParamCaption}
+\item[{{\bf Pile\-Tours} $\ast$}]{pile}
+\end{DoxyParamCaption}
+)}}\label{tour_8h_a48ec93defa4d811aaa303bd03346ce72}
+
+
+Copie une pile de tours. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+\hyperlink{struct_pile_tours}{Pile\-Tours} la copie de la pile de tours 
+\end{DoxyReturn}
+\hypertarget{tour_8h_a97ff2bf8d6db92b5d197aec1a86c4411}{\index{tour.\-h@{tour.\-h}!pile\-Tours\-\_\-depiler@{pile\-Tours\-\_\-depiler}}
+\index{pile\-Tours\-\_\-depiler@{pile\-Tours\-\_\-depiler}!tour.h@{tour.\-h}}
+\subsubsection[{pile\-Tours\-\_\-depiler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tour} pile\-Tours\-\_\-depiler (
+\begin{DoxyParamCaption}
+\item[{{\bf Pile\-Tours} $\ast$}]{pile}
+\end{DoxyParamCaption}
+)}}\label{tour_8h_a97ff2bf8d6db92b5d197aec1a86c4411}
+
+
+dépile le dernier élément des tours 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em pile} & la pile de tours \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le tour en haut de la pile 
+\end{DoxyReturn}
+\hypertarget{tour_8h_a7a8e2d34abf47e5cbcb00badf39d7018}{\index{tour.\-h@{tour.\-h}!pile\-Tours\-\_\-init@{pile\-Tours\-\_\-init}}
+\index{pile\-Tours\-\_\-init@{pile\-Tours\-\_\-init}!tour.h@{tour.\-h}}
+\subsubsection[{pile\-Tours\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pile\-Tours} pile\-Tours\-\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{tour_8h_a7a8e2d34abf47e5cbcb00badf39d7018}
+
+
+initialise une pile de tours 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+Une pile de tourss initialisée 
+\end{DoxyReturn}
+\hypertarget{tour_8h_a3704b235406200d84dac91984a5d5d9f}{\index{tour.\-h@{tour.\-h}!sauvegarde\-Tour@{sauvegarde\-Tour}}
+\index{sauvegarde\-Tour@{sauvegarde\-Tour}!tour.h@{tour.\-h}}
+\subsubsection[{sauvegarde\-Tour}]{\setlength{\rightskip}{0pt plus 5cm}void sauvegarde\-Tour (
+\begin{DoxyParamCaption}
+\item[{{\bf Tour}}]{tour, }
+\item[{F\-I\-L\-E $\ast$}]{emplacement\-\_\-fichier\-\_\-sauvegarde}
+\end{DoxyParamCaption}
+)}}\label{tour_8h_a3704b235406200d84dac91984a5d5d9f}
+
+
+sauvegarde un tour 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em tour} & le tour a sauvegarder \\
+\hline
+{\em emplacement\-\_\-fichier\-\_\-sauvegarde} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{tour_8h_ac9a0fcfc5cf485bbdcfcf75a54dcc00d}{\index{tour.\-h@{tour.\-h}!tour\-\_\-copier@{tour\-\_\-copier}}
+\index{tour\-\_\-copier@{tour\-\_\-copier}!tour.h@{tour.\-h}}
+\subsubsection[{tour\-\_\-copier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tour} tour\-\_\-copier (
+\begin{DoxyParamCaption}
+\item[{{\bf Tour}}]{tour}
+\end{DoxyParamCaption}
+)}}\label{tour_8h_ac9a0fcfc5cf485bbdcfcf75a54dcc00d}
+
+
+renvoie une copie du tour 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em tour} & le tout copié \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le tour copie 
+\end{DoxyReturn}
+\hypertarget{tour_8h_a5555c6d54279c373f120ba6f3f5189a6}{\index{tour.\-h@{tour.\-h}!tour\-\_\-init@{tour\-\_\-init}}
+\index{tour\-\_\-init@{tour\-\_\-init}!tour.h@{tour.\-h}}
+\subsubsection[{tour\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tour} tour\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf Pion} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{tour_8h_a5555c6d54279c373f120ba6f3f5189a6}
+
+
+initialise un tour 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & le pion qui concerne le tour \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+renvoie un \hyperlink{struct_tour}{Tour} bien initialisé 
+\end{DoxyReturn}

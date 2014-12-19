@@ -1,0 +1,164 @@
+\hypertarget{position_8h}{\section{modele/header/position.h File Reference}
+\label{position_8h}\index{modele/header/position.\-h@{modele/header/position.\-h}}
+}
+
+
+Définit la position d'un pion.  
+
+
+{\ttfamily \#include $<$direction.\-h$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_position}{Position}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_position}{Position} \hyperlink{position_8h_aa78012e27ba983f9620fe4ff4bf1d616}{Position}
+\begin{DoxyCompactList}\small\item\em Une position est l'association d'une abscisse et d'une ordonnée  Quentin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_position}{Position} \hyperlink{position_8h_aa2b25762f30e36a10a1b90fae3719aab}{position\-\_\-init} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Génère la position d'un pion. \end{DoxyCompactList}\item 
+int \hyperlink{position_8h_a156fbe305ccc3d21b2ed152553901ca8}{position\-\_\-egale} (\hyperlink{struct_position}{Position} a, \hyperlink{struct_position}{Position} b)
+\begin{DoxyCompactList}\small\item\em Indique si deux positions sont égales. \end{DoxyCompactList}\item 
+int \hyperlink{position_8h_ad31dd3cb7e82195f88e2d2ed92a0f8cd}{position\-\_\-dans\-\_\-intervalle} (\hyperlink{struct_position}{Position} test, \hyperlink{struct_position}{Position} borne, \hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} direction)
+\begin{DoxyCompactList}\small\item\em regarde si une position est comprise dans un intervalle définie par une position autre \end{DoxyCompactList}\item 
+int \hyperlink{position_8h_a254dff10c3473ef79dec607d74857c97}{position\-\_\-bord} (\hyperlink{struct_position}{Position} position)
+\begin{DoxyCompactList}\small\item\em Indique si une position est au bord du plateau. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Définit la position d'un pion. \begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+21 novembre 2014
+\end{DoxyDate}
+Définit la structure d'une position 
+
+\subsection{Typedef Documentation}
+\hypertarget{position_8h_aa78012e27ba983f9620fe4ff4bf1d616}{\index{position.\-h@{position.\-h}!Position@{Position}}
+\index{Position@{Position}!position.h@{position.\-h}}
+\subsubsection[{Position}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Position} {\bf Position}}}\label{position_8h_aa78012e27ba983f9620fe4ff4bf1d616}
+
+
+Une position est l'association d'une abscisse et d'une ordonnée  Quentin. 
+
+\begin{DoxyVersion}{Version}
+2.\-0 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{position_8h_a254dff10c3473ef79dec607d74857c97}{\index{position.\-h@{position.\-h}!position\-\_\-bord@{position\-\_\-bord}}
+\index{position\-\_\-bord@{position\-\_\-bord}!position.h@{position.\-h}}
+\subsubsection[{position\-\_\-bord}]{\setlength{\rightskip}{0pt plus 5cm}int position\-\_\-bord (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{position}
+\end{DoxyParamCaption}
+)}}\label{position_8h_a254dff10c3473ef79dec607d74857c97}
+
+
+Indique si une position est au bord du plateau. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em position} & la testée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 oui 0 non 
+\end{DoxyReturn}
+\hypertarget{position_8h_ad31dd3cb7e82195f88e2d2ed92a0f8cd}{\index{position.\-h@{position.\-h}!position\-\_\-dans\-\_\-intervalle@{position\-\_\-dans\-\_\-intervalle}}
+\index{position\-\_\-dans\-\_\-intervalle@{position\-\_\-dans\-\_\-intervalle}!position.h@{position.\-h}}
+\subsubsection[{position\-\_\-dans\-\_\-intervalle}]{\setlength{\rightskip}{0pt plus 5cm}int position\-\_\-dans\-\_\-intervalle (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{test, }
+\item[{{\bf Position}}]{borne, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{position_8h_ad31dd3cb7e82195f88e2d2ed92a0f8cd}
+
+
+regarde si une position est comprise dans un intervalle définie par une position autre 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em test} & la position testée \\
+\hline
+{\em borne} & la borne pour l'intervalle \\
+\hline
+{\em direction} & la direction de l'analyse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 si oui 0 si non 
+\end{DoxyReturn}
+\hypertarget{position_8h_a156fbe305ccc3d21b2ed152553901ca8}{\index{position.\-h@{position.\-h}!position\-\_\-egale@{position\-\_\-egale}}
+\index{position\-\_\-egale@{position\-\_\-egale}!position.h@{position.\-h}}
+\subsubsection[{position\-\_\-egale}]{\setlength{\rightskip}{0pt plus 5cm}int position\-\_\-egale (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{a, }
+\item[{{\bf Position}}]{b}
+\end{DoxyParamCaption}
+)}}\label{position_8h_a156fbe305ccc3d21b2ed152553901ca8}
+
+
+Indique si deux positions sont égales. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em a} & la première position testée \\
+\hline
+{\em b} & la deuxième position testée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 si les positions sont égales, 0 sinon 
+\end{DoxyReturn}
+\hypertarget{position_8h_aa2b25762f30e36a10a1b90fae3719aab}{\index{position.\-h@{position.\-h}!position\-\_\-init@{position\-\_\-init}}
+\index{position\-\_\-init@{position\-\_\-init}!position.h@{position.\-h}}
+\subsubsection[{position\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position} position\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{position_8h_aa2b25762f30e36a10a1b90fae3719aab}
+
+
+Génère la position d'un pion. 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em int} & x l'abscisse du pion \\
+\hline
+{\em int} & y l'ordonnée du pion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La position du pion 
+\end{DoxyReturn}

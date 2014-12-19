@@ -1,0 +1,234 @@
+\hypertarget{vue_8c}{\section{vue/source/vue.c File Reference}
+\label{vue_8c}\index{vue/source/vue.\-c@{vue/source/vue.\-c}}
+}
+
+
+Fichier de gestion de l'affichage.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{vue_8c_a9aa2abd08924aa9b509b8a5050d5f0a9}{affiche\-\_\-menu\-\_\-principal} ()
+\begin{DoxyCompactList}\small\item\em affiche le menu principal \end{DoxyCompactList}\item 
+void \hyperlink{vue_8c_a1753d71e8902e17b45c5ba7b1b8d2a85}{affiche\-\_\-regles} ()
+\begin{DoxyCompactList}\small\item\em affiche l'ensemble des règles du jeu \end{DoxyCompactList}\item 
+void \hyperlink{vue_8c_af4def6a70fd4377479e216f95d3d667c}{affiche\-\_\-configuration\-\_\-partie} ()
+\begin{DoxyCompactList}\small\item\em affiche ce qui est nécessaire pour configurer une partie \end{DoxyCompactList}\item 
+void \hyperlink{vue_8c_a1c3332b76a7d6d66dc88b9ab49c6aaff}{affiche\-\_\-configuration\-\_\-partie\-\_\-bot} ()
+\begin{DoxyCompactList}\small\item\em affiche le nombre de bots à initialiser \end{DoxyCompactList}\item 
+void \hyperlink{vue_8c_ab197375bcccbd8302730d7bafd5abbef}{presentation\-\_\-jeu} ()
+\begin{DoxyCompactList}\small\item\em affiche la présentation du jeu de l'Halma \end{DoxyCompactList}\item 
+void \hyperlink{vue_8c_a3405fc732b4b1418288996415a43f511}{clean\-\_\-terminal} ()
+\begin{DoxyCompactList}\small\item\em rafraîchit le terminal \end{DoxyCompactList}\item 
+void \hyperlink{vue_8c_affc79b4bcc1588ac8d6a0a15fc793825}{erreur\-\_\-saisie} ()
+\begin{DoxyCompactList}\small\item\em Demande à l'utilisateur de saisir les choix imposés. \end{DoxyCompactList}\item 
+void \hyperlink{vue_8c_a79ac93254848776abc68335bfc93fe38}{nombre\-\_\-coup} ()
+\begin{DoxyCompactList}\small\item\em Demande à l'utilisateur combien de coups à annuler. \end{DoxyCompactList}\item 
+void \hyperlink{vue_8c_ae3d3158675fd7ec07eb8a3848073dd6a}{didacticiel\-\_\-principal} ()
+\begin{DoxyCompactList}\small\item\em vue du menu principal du didacticiel \end{DoxyCompactList}\item 
+void \hyperlink{vue_8c_ac70dd4f609ca0b9a95f663f67ada0ab6}{but\-\_\-jeu} ()
+\begin{DoxyCompactList}\small\item\em l'une des vus dans le didacticiel (but du jeu) \end{DoxyCompactList}\item 
+void \hyperlink{vue_8c_aeb787fb28445e92002a54bcc5374e158}{deplacements} (int deplacement)
+\begin{DoxyCompactList}\small\item\em l'une des vus dans le didacticiel (pour les déplacements) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Fichier de gestion de l'affichage. \begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+La vue observe le modele et s'occupe d'afficher les informations 
+
+\subsection{Function Documentation}
+\hypertarget{vue_8c_af4def6a70fd4377479e216f95d3d667c}{\index{vue.\-c@{vue.\-c}!affiche\-\_\-configuration\-\_\-partie@{affiche\-\_\-configuration\-\_\-partie}}
+\index{affiche\-\_\-configuration\-\_\-partie@{affiche\-\_\-configuration\-\_\-partie}!vue.c@{vue.\-c}}
+\subsubsection[{affiche\-\_\-configuration\-\_\-partie}]{\setlength{\rightskip}{0pt plus 5cm}void affiche\-\_\-configuration\-\_\-partie (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vue_8c_af4def6a70fd4377479e216f95d3d667c}
+
+
+affiche ce qui est nécessaire pour configurer une partie 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{vue_8c_a1c3332b76a7d6d66dc88b9ab49c6aaff}{\index{vue.\-c@{vue.\-c}!affiche\-\_\-configuration\-\_\-partie\-\_\-bot@{affiche\-\_\-configuration\-\_\-partie\-\_\-bot}}
+\index{affiche\-\_\-configuration\-\_\-partie\-\_\-bot@{affiche\-\_\-configuration\-\_\-partie\-\_\-bot}!vue.c@{vue.\-c}}
+\subsubsection[{affiche\-\_\-configuration\-\_\-partie\-\_\-bot}]{\setlength{\rightskip}{0pt plus 5cm}void affiche\-\_\-configuration\-\_\-partie\-\_\-bot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vue_8c_a1c3332b76a7d6d66dc88b9ab49c6aaff}
+
+
+affiche le nombre de bots à initialiser 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{vue_8c_a9aa2abd08924aa9b509b8a5050d5f0a9}{\index{vue.\-c@{vue.\-c}!affiche\-\_\-menu\-\_\-principal@{affiche\-\_\-menu\-\_\-principal}}
+\index{affiche\-\_\-menu\-\_\-principal@{affiche\-\_\-menu\-\_\-principal}!vue.c@{vue.\-c}}
+\subsubsection[{affiche\-\_\-menu\-\_\-principal}]{\setlength{\rightskip}{0pt plus 5cm}void affiche\-\_\-menu\-\_\-principal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vue_8c_a9aa2abd08924aa9b509b8a5050d5f0a9}
+
+
+affiche le menu principal 
+
+\begin{DoxyAuthor}{Author}
+Tendry
+\end{DoxyAuthor}
+Affiche le menu de configuration de partie, charger et règles du jeu \begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{vue_8c_a1753d71e8902e17b45c5ba7b1b8d2a85}{\index{vue.\-c@{vue.\-c}!affiche\-\_\-regles@{affiche\-\_\-regles}}
+\index{affiche\-\_\-regles@{affiche\-\_\-regles}!vue.c@{vue.\-c}}
+\subsubsection[{affiche\-\_\-regles}]{\setlength{\rightskip}{0pt plus 5cm}void affiche\-\_\-regles (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vue_8c_a1753d71e8902e17b45c5ba7b1b8d2a85}
+
+
+affiche l'ensemble des règles du jeu 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{vue_8c_ac70dd4f609ca0b9a95f663f67ada0ab6}{\index{vue.\-c@{vue.\-c}!but\-\_\-jeu@{but\-\_\-jeu}}
+\index{but\-\_\-jeu@{but\-\_\-jeu}!vue.c@{vue.\-c}}
+\subsubsection[{but\-\_\-jeu}]{\setlength{\rightskip}{0pt plus 5cm}void but\-\_\-jeu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vue_8c_ac70dd4f609ca0b9a95f663f67ada0ab6}
+
+
+l'une des vus dans le didacticiel (but du jeu) 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{vue_8c_a3405fc732b4b1418288996415a43f511}{\index{vue.\-c@{vue.\-c}!clean\-\_\-terminal@{clean\-\_\-terminal}}
+\index{clean\-\_\-terminal@{clean\-\_\-terminal}!vue.c@{vue.\-c}}
+\subsubsection[{clean\-\_\-terminal}]{\setlength{\rightskip}{0pt plus 5cm}void clean\-\_\-terminal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vue_8c_a3405fc732b4b1418288996415a43f511}
+
+
+rafraîchit le terminal 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{vue_8c_aeb787fb28445e92002a54bcc5374e158}{\index{vue.\-c@{vue.\-c}!deplacements@{deplacements}}
+\index{deplacements@{deplacements}!vue.c@{vue.\-c}}
+\subsubsection[{deplacements}]{\setlength{\rightskip}{0pt plus 5cm}void deplacements (
+\begin{DoxyParamCaption}
+\item[{int}]{deplacement}
+\end{DoxyParamCaption}
+)}}\label{vue_8c_aeb787fb28445e92002a54bcc5374e158}
+
+
+l'une des vus dans le didacticiel (pour les déplacements) 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{vue_8c_ae3d3158675fd7ec07eb8a3848073dd6a}{\index{vue.\-c@{vue.\-c}!didacticiel\-\_\-principal@{didacticiel\-\_\-principal}}
+\index{didacticiel\-\_\-principal@{didacticiel\-\_\-principal}!vue.c@{vue.\-c}}
+\subsubsection[{didacticiel\-\_\-principal}]{\setlength{\rightskip}{0pt plus 5cm}void didacticiel\-\_\-principal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vue_8c_ae3d3158675fd7ec07eb8a3848073dd6a}
+
+
+vue du menu principal du didacticiel 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{vue_8c_affc79b4bcc1588ac8d6a0a15fc793825}{\index{vue.\-c@{vue.\-c}!erreur\-\_\-saisie@{erreur\-\_\-saisie}}
+\index{erreur\-\_\-saisie@{erreur\-\_\-saisie}!vue.c@{vue.\-c}}
+\subsubsection[{erreur\-\_\-saisie}]{\setlength{\rightskip}{0pt plus 5cm}void erreur\-\_\-saisie (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vue_8c_affc79b4bcc1588ac8d6a0a15fc793825}
+
+
+Demande à l'utilisateur de saisir les choix imposés. 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{vue_8c_a79ac93254848776abc68335bfc93fe38}{\index{vue.\-c@{vue.\-c}!nombre\-\_\-coup@{nombre\-\_\-coup}}
+\index{nombre\-\_\-coup@{nombre\-\_\-coup}!vue.c@{vue.\-c}}
+\subsubsection[{nombre\-\_\-coup}]{\setlength{\rightskip}{0pt plus 5cm}void nombre\-\_\-coup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vue_8c_a79ac93254848776abc68335bfc93fe38}
+
+
+Demande à l'utilisateur combien de coups à annuler. 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{vue_8c_ab197375bcccbd8302730d7bafd5abbef}{\index{vue.\-c@{vue.\-c}!presentation\-\_\-jeu@{presentation\-\_\-jeu}}
+\index{presentation\-\_\-jeu@{presentation\-\_\-jeu}!vue.c@{vue.\-c}}
+\subsubsection[{presentation\-\_\-jeu}]{\setlength{\rightskip}{0pt plus 5cm}void presentation\-\_\-jeu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{vue_8c_ab197375bcccbd8302730d7bafd5abbef}
+
+
+affiche la présentation du jeu de l'Halma 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}

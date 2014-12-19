@@ -1,0 +1,209 @@
+\hypertarget{controleur_8c}{\section{controleur/source/controleur.c File Reference}
+\label{controleur_8c}\index{controleur/source/controleur.\-c@{controleur/source/controleur.\-c}}
+}
+
+
+Contient le code source des fonctions de contrôle.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$matrice.\-h$>$}\\*
+{\ttfamily \#include $<$vue.\-h$>$}\\*
+{\ttfamily \#include $<$vue\-\_\-jeu.\-h$>$}\\*
+{\ttfamily \#include $<$vue\-\_\-plateau.\-h$>$}\\*
+{\ttfamily \#include $<$modele.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$saisie.\-h$>$}\\*
+{\ttfamily \#include $<$controleur.\-h$>$}\\*
+{\ttfamily \#include $<$direction.\-h$>$}\\*
+{\ttfamily \#include $<$fichier.\-h$>$}\\*
+{\ttfamily \#include $<$intelligence.\-h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_controleur}{Controleur} \hyperlink{controleur_8c_afa4e0e4f594cd6623cc6dab8297fdc62}{controleur\-\_\-init} (int nombre\-Joueurs, int nombre\-I\-A)
+\begin{DoxyCompactList}\small\item\em permet d'initialiser le controleur du jeu de l'halma \end{DoxyCompactList}\item 
+void \hyperlink{controleur_8c_a319e2e4bec893135bbedc018ccb5f3f9}{controleur\-\_\-jouer\-\_\-tour} (\hyperlink{struct_joueur}{Joueur} $\ast$joueur, \hyperlink{struct_modele}{Modele} $\ast$modele)
+\begin{DoxyCompactList}\small\item\em permet de jouer un tour de jeu complet \end{DoxyCompactList}\item 
+int \hyperlink{controleur_8c_af0e9976c85eb7a3d8d6e895fcd4b31a9}{controleur\-\_\-jouer\-\_\-coup} (\hyperlink{struct_joueur}{Joueur} $\ast$joueur, \hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{struct_pion}{Pion} $\ast$pion)
+\begin{DoxyCompactList}\small\item\em sous fonction permettant de jouer un coup \end{DoxyCompactList}\item 
+int \hyperlink{controleur_8c_a84b6bc9cd040b2d3b12376fcb571a02b}{selectionner\-\_\-pion} (\hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{struct_joueur}{Joueur} $\ast$joueur, \hyperlink{struct_pion}{Pion} $\ast$$\ast$pion)
+\begin{DoxyCompactList}\small\item\em Fait sélectionner un pion par le joueur courant. \end{DoxyCompactList}\item 
+int \hyperlink{controleur_8c_a35c13f56c35b5decfb8830d8f1a04a5a}{selectionner\-\_\-direction} (\hyperlink{struct_modele}{Modele} $\ast$modele, \hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} $\ast$direction)
+\begin{DoxyCompactList}\small\item\em Demande à l'utilisateur une direction. \end{DoxyCompactList}\item 
+void \hyperlink{controleur_8c_ad04d7168dad80895fe4a09e70104f7bc}{jouer\-\_\-partie} (int jouer)
+\begin{DoxyCompactList}\small\item\em Lance une partie du jeu. \end{DoxyCompactList}\item 
+\hyperlink{struct_controleur}{Controleur} \hyperlink{controleur_8c_a88e7928a071ff698e9bed8125982ecb6}{controleur\-\_\-charger} ()
+\begin{DoxyCompactList}\small\item\em Charge le controleur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contient le code source des fonctions de contrôle. \begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+01 Décembre 2014 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{controleur_8c_a88e7928a071ff698e9bed8125982ecb6}{\index{controleur.\-c@{controleur.\-c}!controleur\-\_\-charger@{controleur\-\_\-charger}}
+\index{controleur\-\_\-charger@{controleur\-\_\-charger}!controleur.c@{controleur.\-c}}
+\subsubsection[{controleur\-\_\-charger}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Controleur} controleur\-\_\-charger (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{controleur_8c_a88e7928a071ff698e9bed8125982ecb6}
+
+
+Charge le controleur. 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+le controleur chargé 
+\end{DoxyReturn}
+\hypertarget{controleur_8c_afa4e0e4f594cd6623cc6dab8297fdc62}{\index{controleur.\-c@{controleur.\-c}!controleur\-\_\-init@{controleur\-\_\-init}}
+\index{controleur\-\_\-init@{controleur\-\_\-init}!controleur.c@{controleur.\-c}}
+\subsubsection[{controleur\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Controleur} controleur\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{int}]{nombre\-Joueurs, }
+\item[{int}]{nombre\-I\-A}
+\end{DoxyParamCaption}
+)}}\label{controleur_8c_afa4e0e4f594cd6623cc6dab8297fdc62}
+
+
+permet d'initialiser le controleur du jeu de l'halma 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em nombre\-Joueurs} & le nombre de joueurs qui veut jouer au jeu de l'Halma \\
+\hline
+{\em nombre\-I\-A} & le nombre de joueurs I\-A \\
+\hline
+\end{DoxyParams}
+\hypertarget{controleur_8c_af0e9976c85eb7a3d8d6e895fcd4b31a9}{\index{controleur.\-c@{controleur.\-c}!controleur\-\_\-jouer\-\_\-coup@{controleur\-\_\-jouer\-\_\-coup}}
+\index{controleur\-\_\-jouer\-\_\-coup@{controleur\-\_\-jouer\-\_\-coup}!controleur.c@{controleur.\-c}}
+\subsubsection[{controleur\-\_\-jouer\-\_\-coup}]{\setlength{\rightskip}{0pt plus 5cm}int controleur\-\_\-jouer\-\_\-coup (
+\begin{DoxyParamCaption}
+\item[{{\bf Joueur} $\ast$}]{joueur, }
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Pion} $\ast$}]{pion}
+\end{DoxyParamCaption}
+)}}\label{controleur_8c_af0e9976c85eb7a3d8d6e895fcd4b31a9}
+
+
+sous fonction permettant de jouer un coup 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em joueur} & le joueur qui joue le tour \\
+\hline
+{\em modele} & le moteur de jeu pour jouer le coup \\
+\hline
+\end{DoxyParams}
+\hypertarget{controleur_8c_a319e2e4bec893135bbedc018ccb5f3f9}{\index{controleur.\-c@{controleur.\-c}!controleur\-\_\-jouer\-\_\-tour@{controleur\-\_\-jouer\-\_\-tour}}
+\index{controleur\-\_\-jouer\-\_\-tour@{controleur\-\_\-jouer\-\_\-tour}!controleur.c@{controleur.\-c}}
+\subsubsection[{controleur\-\_\-jouer\-\_\-tour}]{\setlength{\rightskip}{0pt plus 5cm}void controleur\-\_\-jouer\-\_\-tour (
+\begin{DoxyParamCaption}
+\item[{{\bf Joueur} $\ast$}]{joueur, }
+\item[{{\bf Modele} $\ast$}]{modele}
+\end{DoxyParamCaption}
+)}}\label{controleur_8c_a319e2e4bec893135bbedc018ccb5f3f9}
+
+
+permet de jouer un tour de jeu complet 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em joueur} & le joueur qui joue le tour \\
+\hline
+{\em modele} & le moteur de jeu pour jouer le coup \\
+\hline
+\end{DoxyParams}
+\hypertarget{controleur_8c_ad04d7168dad80895fe4a09e70104f7bc}{\index{controleur.\-c@{controleur.\-c}!jouer\-\_\-partie@{jouer\-\_\-partie}}
+\index{jouer\-\_\-partie@{jouer\-\_\-partie}!controleur.c@{controleur.\-c}}
+\subsubsection[{jouer\-\_\-partie}]{\setlength{\rightskip}{0pt plus 5cm}void jouer\-\_\-partie (
+\begin{DoxyParamCaption}
+\item[{int}]{jouer}
+\end{DoxyParamCaption}
+)}}\label{controleur_8c_ad04d7168dad80895fe4a09e70104f7bc}
+
+
+Lance une partie du jeu. 
+
+\begin{DoxyAuthor}{Author}
+Quentin 
+\end{DoxyAuthor}
+\hypertarget{controleur_8c_a35c13f56c35b5decfb8830d8f1a04a5a}{\index{controleur.\-c@{controleur.\-c}!selectionner\-\_\-direction@{selectionner\-\_\-direction}}
+\index{selectionner\-\_\-direction@{selectionner\-\_\-direction}!controleur.c@{controleur.\-c}}
+\subsubsection[{selectionner\-\_\-direction}]{\setlength{\rightskip}{0pt plus 5cm}int selectionner\-\_\-direction (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Direction} $\ast$}]{direction}
+\end{DoxyParamCaption}
+)}}\label{controleur_8c_a35c13f56c35b5decfb8830d8f1a04a5a}
+
+
+Demande à l'utilisateur une direction. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & la direction qui sera choisie \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+1 si succès 0 si échec 
+\end{DoxyReturn}
+\hypertarget{controleur_8c_a84b6bc9cd040b2d3b12376fcb571a02b}{\index{controleur.\-c@{controleur.\-c}!selectionner\-\_\-pion@{selectionner\-\_\-pion}}
+\index{selectionner\-\_\-pion@{selectionner\-\_\-pion}!controleur.c@{controleur.\-c}}
+\subsubsection[{selectionner\-\_\-pion}]{\setlength{\rightskip}{0pt plus 5cm}int selectionner\-\_\-pion (
+\begin{DoxyParamCaption}
+\item[{{\bf Modele} $\ast$}]{modele, }
+\item[{{\bf Joueur} $\ast$}]{joueur, }
+\item[{{\bf Pion} $\ast$$\ast$}]{pion}
+\end{DoxyParamCaption}
+)}}\label{controleur_8c_a84b6bc9cd040b2d3b12376fcb571a02b}
+
+
+Fait sélectionner un pion par le joueur courant. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em joueur} & le joueur qui sélectionne un de ses pions \\
+\hline
+{\em pion} & le pion qui sera selectionné \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyReturn}{Returns}
+1 si succès 0 si échec 
+\end{DoxyReturn}

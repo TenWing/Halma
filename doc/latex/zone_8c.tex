@@ -1,0 +1,178 @@
+\hypertarget{zone_8c}{\section{modele/source/zone.c File Reference}
+\label{zone_8c}\index{modele/source/zone.\-c@{modele/source/zone.\-c}}
+}
+
+
+Définit les fonctions pour aider à trouver un joueur gagnant.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$zone.\-h$>$}\\*
+{\ttfamily \#include $<$position.\-h$>$}\\*
+{\ttfamily \#include $<$joueur.\-h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_liste_positions}{Liste\-Positions} \hyperlink{zone_8c_a60b401a8602289c2224c2eca7eae0692}{liste\-\_\-positions\-\_\-init} ()
+\begin{DoxyCompactList}\small\item\em initialise la liste des positions pour la zone  Quentin \end{DoxyCompactList}\item 
+void \hyperlink{zone_8c_a6ee6e4147639da95add3c72e27cbf8ea}{liste\-\_\-positions\-\_\-supprimer} (\hyperlink{struct_liste_positions}{Liste\-Positions} $\ast$liste, \hyperlink{struct_position}{Position} position)
+\begin{DoxyCompactList}\small\item\em Supprime une position d'une liste de positions. \end{DoxyCompactList}\item 
+void \hyperlink{zone_8c_af784df51eb2e399d7404d0aab22e0d09}{liste\-\_\-positions\-\_\-ajout} (\hyperlink{struct_liste_positions}{Liste\-Positions} $\ast$liste, \hyperlink{struct_position}{Position} position)
+\begin{DoxyCompactList}\small\item\em Ajout d'une position dans la liste des positions  Quentin. \end{DoxyCompactList}\item 
+\hyperlink{struct_zone}{Zone} \hyperlink{zone_8c_aba846b96cb9b25b23fb4bf9e3bfed21d}{zone\-\_\-init} (\hyperlink{couleur_8h_aa304d0ca681f782b1d7735da33037dd7}{Couleur} couleur, int nombre\-\_\-joueur)
+\begin{DoxyCompactList}\small\item\em Initialise la zone par rapport à la couleur  Quentin. \end{DoxyCompactList}\item 
+int \hyperlink{zone_8c_a5779f96c6f831a4985a1cb8da77dc95c}{verification\-\_\-zone} (\hyperlink{struct_zone}{Zone} $\ast$zone, \hyperlink{struct_joueur}{Joueur} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em verifie que la zone contient tous les pions du joueur  Quentin \end{DoxyCompactList}\item 
+int \hyperlink{zone_8c_a606e8d22af697184ce7f9dcfceed9e5f}{position\-\_\-dans\-\_\-zone} (\hyperlink{struct_position}{Position} position, \hyperlink{struct_zone}{Zone} $\ast$zone)
+\begin{DoxyCompactList}\small\item\em Indique si la position se trouve dans la zone. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Définit les fonctions pour aider à trouver un joueur gagnant. \begin{DoxyAuthor}{Author}
+Geliot 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+30 Novembre 2014 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{zone_8c_af784df51eb2e399d7404d0aab22e0d09}{\index{zone.\-c@{zone.\-c}!liste\-\_\-positions\-\_\-ajout@{liste\-\_\-positions\-\_\-ajout}}
+\index{liste\-\_\-positions\-\_\-ajout@{liste\-\_\-positions\-\_\-ajout}!zone.c@{zone.\-c}}
+\subsubsection[{liste\-\_\-positions\-\_\-ajout}]{\setlength{\rightskip}{0pt plus 5cm}void liste\-\_\-positions\-\_\-ajout (
+\begin{DoxyParamCaption}
+\item[{{\bf Liste\-Positions} $\ast$}]{liste, }
+\item[{{\bf Position}}]{position}
+\end{DoxyParamCaption}
+)}}\label{zone_8c_af784df51eb2e399d7404d0aab22e0d09}
+
+
+Ajout d'une position dans la liste des positions  Quentin. 
+
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em liste} & la liste des positions \\
+\hline
+{\em position} & la position à ajouter \\
+\hline
+\end{DoxyParams}
+\hypertarget{zone_8c_a60b401a8602289c2224c2eca7eae0692}{\index{zone.\-c@{zone.\-c}!liste\-\_\-positions\-\_\-init@{liste\-\_\-positions\-\_\-init}}
+\index{liste\-\_\-positions\-\_\-init@{liste\-\_\-positions\-\_\-init}!zone.c@{zone.\-c}}
+\subsubsection[{liste\-\_\-positions\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Liste\-Positions} liste\-\_\-positions\-\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{zone_8c_a60b401a8602289c2224c2eca7eae0692}
+
+
+initialise la liste des positions pour la zone  Quentin 
+
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\hypertarget{zone_8c_a6ee6e4147639da95add3c72e27cbf8ea}{\index{zone.\-c@{zone.\-c}!liste\-\_\-positions\-\_\-supprimer@{liste\-\_\-positions\-\_\-supprimer}}
+\index{liste\-\_\-positions\-\_\-supprimer@{liste\-\_\-positions\-\_\-supprimer}!zone.c@{zone.\-c}}
+\subsubsection[{liste\-\_\-positions\-\_\-supprimer}]{\setlength{\rightskip}{0pt plus 5cm}void liste\-\_\-positions\-\_\-supprimer (
+\begin{DoxyParamCaption}
+\item[{{\bf Liste\-Positions} $\ast$}]{liste, }
+\item[{{\bf Position}}]{position}
+\end{DoxyParamCaption}
+)}}\label{zone_8c_a6ee6e4147639da95add3c72e27cbf8ea}
+
+
+Supprime une position d'une liste de positions. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em liste} & la liste modifiée \\
+\hline
+{\em position} & la position supprimée \\
+\hline
+\end{DoxyParams}
+\hypertarget{zone_8c_a606e8d22af697184ce7f9dcfceed9e5f}{\index{zone.\-c@{zone.\-c}!position\-\_\-dans\-\_\-zone@{position\-\_\-dans\-\_\-zone}}
+\index{position\-\_\-dans\-\_\-zone@{position\-\_\-dans\-\_\-zone}!zone.c@{zone.\-c}}
+\subsubsection[{position\-\_\-dans\-\_\-zone}]{\setlength{\rightskip}{0pt plus 5cm}int position\-\_\-dans\-\_\-zone (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{position, }
+\item[{{\bf Zone} $\ast$}]{zone}
+\end{DoxyParamCaption}
+)}}\label{zone_8c_a606e8d22af697184ce7f9dcfceed9e5f}
+
+
+Indique si la position se trouve dans la zone. 
+
+\begin{DoxyAuthor}{Author}
+Tendry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em position} & la position testée \\
+\hline
+{\em la} & zone testée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+oui ou non (1 / 0) 
+\end{DoxyReturn}
+\hypertarget{zone_8c_a5779f96c6f831a4985a1cb8da77dc95c}{\index{zone.\-c@{zone.\-c}!verification\-\_\-zone@{verification\-\_\-zone}}
+\index{verification\-\_\-zone@{verification\-\_\-zone}!zone.c@{zone.\-c}}
+\subsubsection[{verification\-\_\-zone}]{\setlength{\rightskip}{0pt plus 5cm}int verification\-\_\-zone (
+\begin{DoxyParamCaption}
+\item[{{\bf Zone} $\ast$}]{zone, }
+\item[{{\bf Joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{zone_8c_a5779f96c6f831a4985a1cb8da77dc95c}
+
+
+verifie que la zone contient tous les pions du joueur  Quentin 
+
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em zone} & la zone où doivent être les pions \\
+\hline
+{\em joueur} & le joueur qui doit amener ses pions à la zone de sa victoire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le nombre de pion dans la zone 
+\end{DoxyReturn}
+\hypertarget{zone_8c_aba846b96cb9b25b23fb4bf9e3bfed21d}{\index{zone.\-c@{zone.\-c}!zone\-\_\-init@{zone\-\_\-init}}
+\index{zone\-\_\-init@{zone\-\_\-init}!zone.c@{zone.\-c}}
+\subsubsection[{zone\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Zone} zone\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf Couleur}}]{couleur, }
+\item[{int}]{nombre\-\_\-joueur}
+\end{DoxyParamCaption}
+)}}\label{zone_8c_aba846b96cb9b25b23fb4bf9e3bfed21d}
+
+
+Initialise la zone par rapport à la couleur  Quentin. 
+
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em couleur} & la couleur de la zone\\
+\hline
+\end{DoxyParams}
+La couleur correspond aux pions qui doivent se situer dans la zone pour gagner 

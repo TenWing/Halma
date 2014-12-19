@@ -23,6 +23,13 @@ $(TARGET_FOLDER)/$(EXEC):	$(OBJ)
 			 				@$(CC) -o $@ $^ $(LDFLAGS) $(LIBINCLUDEPATH)
 
 #efface TOUT les .o du sous dossier source
-mrproper:	
-							rm -rf $(SOURCE_FOLDER)/*.o
-							rm -rf $(EXEC)
+ifeq ($(OS),Windows_NT)
+mrproper:								
+							-del /F "$(SOURCE_FOLDER)\*.o"
+							-del /F "$(EXEC)"
+else
+mrproper:
+							-rm -rf $(SOURCE_FOLDER)/*.o
+							-rm -rf $(EXEC)
+endif
+							

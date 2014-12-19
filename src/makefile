@@ -34,6 +34,12 @@ RUN_DIR=../bin
 #Les options pour l'éditions des liens (IMPORTANT LIBRAIRIE DYNAMIQUE)
 export LDFLAGS=-I ../include/libMatrice -Wl,-R ../lib -L ../lib -lMatrice 
 
+#Cas Windows
+ifeq ($(OS),Windows_NT)
+    CFLAGS += -D WIN32
+    EXEC = halma.exe
+endif
+
 ##############################
 #COMMANDES DE COMPILATION
 ##############################

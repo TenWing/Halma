@@ -258,7 +258,7 @@ Coup coup_au_hasard(PileCoups* liste);
 * \param	direction la direction de l'analyse
 * \param	ideale la direction dans laquelle il serait mieux d'aller
 */
-void possibilite_direction(ListePossibilites* liste, Plateau* plateau, Pion* pion,
+void possibilite_direction(ListePossibilites* liste, Modele* modele, Pion* pion,
 							Direction direction, Direction ideale);
 
 // #############################

@@ -104,6 +104,7 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 				liste_positions_ajout(&zone.liste_positions, position_init(2,12));
 				liste_positions_ajout(&zone.liste_positions, position_init(3,13));
 				liste_positions_ajout(&zone.liste_positions, position_init(4,14));
+				zone.position = HAUT_DROITE;
 				break;
 			case BLEU:
 				zone.zone_direction = GAUCHE;
@@ -112,6 +113,7 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 				liste_positions_ajout(&zone.liste_positions, position_init(13,3));
 				liste_positions_ajout(&zone.liste_positions, position_init(14,4));
 				liste_positions_ajout(&zone.liste_positions, position_init(15,5));
+				zone.position = BAS_GAUCHE;
 				break;
 			default:
 				break;
@@ -128,6 +130,7 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 				liste_positions_ajout(&zone.liste_positions, position_init(13,13));
 				liste_positions_ajout(&zone.liste_positions, position_init(14,12));
 				liste_positions_ajout(&zone.liste_positions, position_init(15,12));
+				zone.position = BAS_DROITE;
 				break;
 			case BLEU:
 				zone.zone_direction = GAUCHE;
@@ -135,6 +138,7 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 				liste_positions_ajout(&zone.liste_positions, position_init(13,2));
 				liste_positions_ajout(&zone.liste_positions, position_init(14,3));
 				liste_positions_ajout(&zone.liste_positions, position_init(15,3));
+				zone.position = BAS_GAUCHE;		
 				break;
 			case VERT:
 				zone.zone_direction = GAUCHE;
@@ -142,6 +146,7 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 				liste_positions_ajout(&zone.liste_positions, position_init(1,3));
 				liste_positions_ajout(&zone.liste_positions, position_init(2,2));
 				liste_positions_ajout(&zone.liste_positions, position_init(3,1));
+				zone.position = HAUT_GAUCHE;
 				break;
 			case JAUNE:
 				zone.zone_direction = DROITE;
@@ -149,6 +154,7 @@ Zone zone_init(Couleur couleur, int nombre_joueur)
 				liste_positions_ajout(&zone.liste_positions, position_init(1,12));
 				liste_positions_ajout(&zone.liste_positions, position_init(2,13));
 				liste_positions_ajout(&zone.liste_positions, position_init(3,14));
+				zone.position = HAUT_DROITE;
 				break;
 			default:
 				break;

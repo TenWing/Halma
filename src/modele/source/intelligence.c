@@ -194,14 +194,14 @@ ListePossibilites possibilites_du_pion(Modele* modele, Pion pion, Joueur* joueur
 	Direction ideale = joueur->direction;
 
 	// On va chercher chaque possibilité
-	possibilite_direction(&liste, &modele->plateau, &pion, HAUT, ideale);	
-	possibilite_direction(&liste, &modele->plateau, &pion, HAUT_DROITE, ideale);	
-	possibilite_direction(&liste, &modele->plateau, &pion, DROITE, ideale);	
-	possibilite_direction(&liste, &modele->plateau, &pion, BAS_DROITE, ideale);	
-	possibilite_direction(&liste, &modele->plateau, &pion, BAS, ideale);	
-	possibilite_direction(&liste, &modele->plateau, &pion, BAS_GAUCHE, ideale);	
-	possibilite_direction(&liste, &modele->plateau, &pion, GAUCHE, ideale);	
-	possibilite_direction(&liste, &modele->plateau, &pion, HAUT_GAUCHE, ideale);	
+	possibilite_direction(&liste, modele, &pion, HAUT, ideale);	
+	possibilite_direction(&liste, modele, &pion, HAUT_DROITE, ideale);	
+	possibilite_direction(&liste, modele, &pion, DROITE, ideale);	
+	possibilite_direction(&liste, modele, &pion, BAS_DROITE, ideale);	
+	possibilite_direction(&liste, modele, &pion, BAS, ideale);	
+	possibilite_direction(&liste, modele, &pion, BAS_GAUCHE, ideale);	
+	possibilite_direction(&liste, modele, &pion, GAUCHE, ideale);	
+	possibilite_direction(&liste, modele, &pion, HAUT_GAUCHE, ideale);	
 
 	// la liste calcule son poids
 	liste_possibilites_calcule_poids(&liste);
@@ -263,9 +263,11 @@ Coup coup_au_hasard(PileCoups* liste)
 
 // #############################################################
 
-void possibilite_direction(ListePossibilites* liste, Plateau* plateau, Pion* pion,
+void possibilite_direction(ListePossibilites* liste, Modele* modele, Pion* pion,
 							Direction direction, Direction ideale)
 {
+	Plateau* plateau = &modele->plateau;
+
 	// Calcul du poids
 	int poids = 0;
 	// SI on va dans le bon sens
@@ -341,10 +343,25 @@ void possibilite_direction(ListePossibilites* liste, Plateau* plateau, Pion* pio
 		p = plateau_getVide(plateau, position_direction_saut);
 		if(p != NULL)
 		{
-			if(ideale == direction)
-				poids+=3;
-			else if(direction_proche(ideale, direction))
-				poids+=2;
+			Zone* zone = zone_de_direction(modele, ideale);
+			if(zone != NULL)
+			{
+				if(position_dans_zone(position_direction_saut, zone))
+					poids+=4;
+				else if(ideale == direction)
+					poids+=3;
+				else if(direction_proche(ideale, direction))
+					poids+=2;
+				else if(position_dans_zone(pion->position, zone))
+					poids = 0;
+			}
+			else
+			{
+				if(ideale == direction)
+					poids+=3;
+				else if(direction_proche(ideale, direction))
+					poids+=2;
+			}
 
 			Possibilite possible = possibilite_init(poids, position_direction_saut);
 			liste_possibilites_ajout(liste, possible);			
@@ -353,11 +370,25 @@ void possibilite_direction(ListePossibilites* liste, Plateau* plateau, Pion* pio
 	// S'il y a un espace vide a portée sinon ben on peut aller la quoi 
 	else
 	{
-		if(ideale == direction)
-				poids+=2;
-		else if(direction_proche(ideale, direction))
-				poids++;
-
+			Zone* zone = zone_de_direction(modele, ideale);
+			if(zone != NULL)
+			{
+				if(position_dans_zone(position_direction, zone))
+					poids+=4;
+				else if(ideale == direction)
+					poids+=3;
+				else if(direction_proche(ideale, direction))
+					poids+=2;
+				else if(position_dans_zone(pion->position, zone))
+					poids = 0;
+			}
+			else
+			{
+				if(ideale == direction)
+					poids+=3;
+				else if(direction_proche(ideale, direction))
+					poids+=2;
+			}
 		Possibilite possible = possibilite_init(poids, position_direction);
 		liste_possibilites_ajout(liste, possible);
 	}

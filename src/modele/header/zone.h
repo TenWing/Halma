@@ -92,6 +92,11 @@ struct Zone
 	* \see Direction
 	*/
 	Direction zone_direction;
+
+	/**
+	* \brief la position de la zone sur le plateau
+	*/
+	Direction position;
 };
 
 /**

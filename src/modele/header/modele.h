@@ -141,4 +141,9 @@ Pion* modele_get_reference_pion(Modele* modele, Pion pion);
 */
 void charger_tours(FILE* fp, Modele* modele);
 
+/**
+* \brief	Indique la zone correspondant à la zone de destination d'un joueur
+*/
+Zone* zone_de_direction(Modele* modele, Direction direction);
+
 #endif

@@ -323,6 +323,15 @@ void charger_tours(FILE* fp, Modele* modele)
 	}
 }
 
+Zone* zone_de_direction(Modele* modele, Direction direction)
+{
+	int i = 0;
 
+	for(i=0; i < 4; i++)
+	{
+		if(modele->tableau_zone[i].position == direction)
+			return &modele->tableau_zone[i];
+	}
 
-
+	return NULL;
+}

@@ -60,5 +60,11 @@ mrproper:
 			@(cd $(BUILD_DIR) && $(MAKE) $@)
 
 #pour lancer l'exécutable final
+#Cas Windows
+ifeq ($(OS),Windows_NT)
+run:
+			cd $(RUN_DIR) && $(EXEC)
+else	
 run:
 			@cd $(RUN_DIR); ./$(EXEC)
+endif

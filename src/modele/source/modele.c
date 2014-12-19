@@ -1,3 +1,4 @@
+
 /**
 * \file		modele.c
 * \author	Tendry
@@ -125,6 +126,7 @@ void commencer_tour(Modele* modele, Pion* pion)
 	
 	// On dit au modèle qu'il y a un nouveau tour joué
 	pileTours_ajouterTour(&modele->pile_tours, tour);
+
 }
 
 void fin_tour(Pion** pion)
@@ -162,7 +164,7 @@ void annuler_coup(Modele* modele, Pion* pion)
 
 void annuler_tour(Modele* modele)
 {
-
+	
 	Tour dernier;
 	//On dépile le tour du joueur qui joue
 

@@ -184,8 +184,9 @@ Pion plateau_getpion(Plateau* plateau, Position position)
 	while(actuel != NULL)
 	{	
 		if(actuel->pion.position.x == position.x && actuel->pion.position.y == position.y)
-		{
+		{	
 			pion = pion_copie(actuel->pion);
+			
 			return pion;
 		}
 
@@ -215,6 +216,7 @@ Position* plateau_getVide(Plateau* plateau, Position position)
 		// Renvoi du vide
 		if(position_egale(noeud->position, position))
 		{
+			
 			return &noeud->position;
 		}
 	}

@@ -29,8 +29,10 @@ void affiche_plateau(Modele* modele, Mode mode)
 		{
 			Position position = position_init(i, j);
 			affiche_case(modele, &position, mode);
+
 		}
 		printf("\n");
+
 	}
 }
 
@@ -121,7 +123,7 @@ void affiche_case(Modele* modele, Position* position, Mode mode)
 			for(i = 0; i < taille; i++)
 			{
 				// Si la position est dans une zone de couleur alors on colorie la case
-				if(position_dans_zone(*ptr, &modele->tableau_zone[i]))
+				/*if(position_dans_zone(*ptr, &modele->tableau_zone[i]))
 				{
 					color = modele->tableau_zone[i].couleur_zone;
 
@@ -146,7 +148,7 @@ void affiche_case(Modele* modele, Position* position, Mode mode)
 						default:
 							break;		
 					}
-				}
+				}*/
 			}
 
 			// Si la case est dans une zone
